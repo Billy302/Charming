@@ -4,14 +4,16 @@
         color: white;
         border-radius: 5px;
         font-weight: 800;
-
+    }
+    .logo{
+        width: 10%;
     }
 </style>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <!-- 表單名稱 -->
-            <a class="navbar-brand h1" href="#">表單名稱</a>
+            <a class="navbar-brand h1" href="#"><img src="./img/charming_logo.png" alt="" class="logo">  Charming</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +24,13 @@
                     </li>
                     <!-- 此處連結要改 -->
                     <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'location' ? 'active' : '' ?>" href="location.php">列表</a>
+                        <a class="nav-link <?= $pageName == 'location' ? 'active' : '' ?>" href="location.php">位置</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $pageName == 'list' ? 'active' : '' ?>" href="list.php">活動報名</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $pageName == 'keyword' ? 'active' : '' ?>" href="keyword.php">搜尋關鍵字</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= $pageName == 'addPage' ? 'active' : '' ?>" href="addPage.php">新增</a>
