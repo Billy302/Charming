@@ -44,12 +44,13 @@
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                         <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">新增服務</a>
+                            <a href="#" class="list-group-item list-group-item-action">修改刪除服務</a>
+                            <a href="#" class="list-group-item list-group-item-action">新增案件(x)</a>
+                            <a href="#" class="list-group-item list-group-item-action">修改刪除案件(x)</a>
+                            <a href="#" class="list-group-item list-group-item-action">管理留言(x)</a>
+                            <a href="#" class="list-group-item list-group-item-action">管理追蹤(x)</a>
+                            <a href="#" class="list-group-item list-group-item-action">管理Like(x)</a>
                         </div>
                     </div>
                 </div>
