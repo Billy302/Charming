@@ -12,23 +12,115 @@
         <div class="container-fluid">
             <!-- 表單名稱 -->
             <a class="navbar-brand h1" href="#">表單名稱</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapsed navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'home' ? 'active' : '' ?>" aria-current="page" href="home_.php">Home</a>
-                    </li>
-                    <!-- 此處連結要改 -->
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'location' ? 'active' : '' ?>" href="location.php">列表</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $pageName == 'addPage' ? 'active' : '' ?>" href="addPage.php">新增</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header " id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            會員
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            工作
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            活動
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingfour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                            Blog
+                        </button>
+                    </h2>
+                    <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour" data-bs-parent="#accordionExample">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingfive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                            作品集
+                        </button>
+                    </h2>
+                    <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingfive" data-bs-parent="#accordionExample">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            討論區
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
