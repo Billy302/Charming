@@ -31,7 +31,7 @@ CREATE TABLE `client_information` (
   `User_ID` int NOT NULL,
   `User_Account` varchar(20) NOT NULL,
   `Join_Date` datetime NOT NULL,
-  `User_Password` binary(30) NOT NULL,
+  `User_Password` varchar(30) NOT NULL,
   `Lastname` varchar(5) NOT NULL,
   `FirstName` varchar(5) NOT NULL,
   `Birthday` datetime NOT NULL,
