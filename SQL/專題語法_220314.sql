@@ -1,5 +1,5 @@
 CREATE TABLE `client_information` (
-  `ID` INT(20),
+  `ID`  int PRIMARY KEY NOT NULL AUTO_INCREMENT,,
   `account` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
