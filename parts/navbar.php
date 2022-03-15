@@ -114,12 +114,11 @@
                     </h2>
                     <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                         <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">看板管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">文章管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">留言管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">標籤管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">禁言管理</a>
                         </div>
                     </div>
                 </div>
