@@ -2,7 +2,7 @@
 
 $db_host = 'localhost';
 $db_user = 'root';
-$db_pass = 'Passw0rd';  // 填入自己本機
+$db_pass = 'Password123!';  // 填入自己本機
 $db_name = 'charming';
 
 $dsn = "mysql:host={$db_host};dbname={$db_name};charset=utf8";
@@ -19,4 +19,3 @@ $pdo = new PDO($dsn, $db_user, $db_pass, $pdo_options);
 if(! isset($_SESSION)){
     session_start();
 }
-
