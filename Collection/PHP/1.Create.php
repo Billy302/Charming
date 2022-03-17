@@ -18,15 +18,15 @@ $pageName = 'ab-add';
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body"><br>
-                    <h3 class="card-title">作品上傳</h3>
+                    <h3 class="card-title">作品新增</h3>
                     <br>
 
                     <form name="form1" method="post" novalidate onsubmit="checkForm(); return false;">
 
                         <button type="submit" class="btn btn-primary">新增</button>
-<br>
-<br>
-<br>
+                        <br>
+                        <br>
+                        <br>
                         <div class="mb-3">
                             <label for="name" class="form-label">暱稱 Nickname</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -39,15 +39,23 @@ $pageName = 'ab-add';
                         </div>
                         <div class="mb-3">
                             <label for="Discription" class="form-label">內容介紹 Discription</label>
-                            <textarea class="form-control" name="Discription" id="Discription" cols="30" rows="3"></textarea>
+                            <textarea class="form-control" placeholder="請說明作品內容" name="Discription" id="Discription" cols="30" rows="3"></textarea>
+                            <div class="form-text">
 
-                            <div class="form-text"></div>
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <label for="url">作品連結 Link</label>
+
+                                <input type="url" name="url" id="url" placeholder="https://www.example.com" pattern="https://.*" size="30" required>
+                                <div class="form-text"></div>
+                            </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="mobile" class="form-label">作品標籤 Tags</label>
                             <select type="tel" class="form-control">
-                                <option value=""selected>請選擇作品最相關的標籤</option>
+                                <option value="" selected>請選擇作品標籤</option>
                                 <option value="dog">Dog</option>
                                 <option value="cat">Cat</option>
                                 <option value="hamster">Hamster</option>
@@ -104,7 +112,7 @@ $pageName = 'ab-add';
         if (isPass) {
             const fd = new FormData(document.form1);
 
-            fetch('ab-add-api.php', {
+            fetch('6.add-api.php', {
                     method: 'POST',
                     body: fd
                 }).then(r => r.json())
@@ -112,7 +120,7 @@ $pageName = 'ab-add';
                     console.log(obj);
                     if (obj.success) {
                         alert('新增成功');
-                        // location.href = 'ab-list.php';
+                        location.href = '2.Read.php';
                     } else {
                         alert('新增失敗');
                     }

@@ -71,8 +71,9 @@ if ($totalRows) {
                         <th scope="col">暱稱 Nickname</th>
                         <th scope="col">作品名 Project Name</th>
                         <th scope="col">內容介紹 Discription</th>
+                        <th scope="col">作品連結 Link</th>
                         <th scope="col">作品標籤 Tags</th>
-                        <th scope="col">Address</th>
+                        
                         <th scope="col">
                             <i class="fas fa-edit"></i>
                         </th>
@@ -93,13 +94,14 @@ if ($totalRows) {
                             <td><?= $r['Nickname'] ?></td>
                             <td><?= $r['Project Name'] ?></td>
                             <td><?= $r['Discription'] ?></td>
+                            <td><?= $r['Link'] ?></td>
                             <td><?= $r['Tags'] ?></td>
                             <!--
-                            <td><?= htmlentities($r['address']) ?></td>
+                            <td><?= htmlentities($r['Link']) ?></td>
                             -->
-                            <td><?= strip_tags($r['address']) ?></td>
+                            <!-- <td><?= strip_tags($r['Link']) ?></td> -->
                             <td>
-                                <a href="3.UpNDel.php?sid=<?= $r['sid'] ?>">
+                                <a href="3.Update.php?sid=<?= $r['sid'] ?>">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
@@ -116,7 +118,7 @@ if ($totalRows) {
     function del_it(sid){
         if(confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)){
 
-            location.href = 'ab-delete.php?sid=' + sid;
+            location.href = '5.Delete.php?sid=' + sid;
         }
 
     }
