@@ -29,20 +29,19 @@ if ($totalRows) {
 ?>
 
 <?php include "../parts/html-head.php"; ?>
-<?php include "../parts/navbar.php"; ?>
 
-<div class="container-xxl">
+<div class="container liststyle">
     <div class="roW">
         <div class="col">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
+            <nav class="navstyle" aria-label="Page navigation example">
+                <ul class="d-flex pagination">
                     <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
                         <a class="page-link" href="?page=<?= $page - 1 ?>">
                             << </a>
                     </li>
                     <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
                         if ($i >= 1 and $i <= $totalPages) : ?>
-                            <li class="page-item <?= $page == $i ? 'active' : '' ?>">
+                            <li class="pagestyle <?= $page == $i ? 'active' : '' ?>">
                                 <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
                             </li>
                     <?php endif;
@@ -58,7 +57,7 @@ if ($totalRows) {
     </div>
     <div class="row">
         <div class="col">
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped tablestyle">
                 <thead>
                     <tr>
                         <th scope="col">刪除</th>
