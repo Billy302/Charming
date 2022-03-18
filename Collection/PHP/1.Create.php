@@ -28,13 +28,13 @@ $pageName = 'ab-add';
                         <br>
                         <br>
                         <div class="mb-3">
-                            <label for="name" class="form-label">暱稱 Nickname</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <label for="Nickname" class="form-label">暱稱 Nickname</label>
+                            <input type="text" class="form-control" id="Nickname" name="Nickname" required>
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">作品名 Project Name</label>
-                            <input type="email" class="form-control" id="email" name="email">
+                            <label for="Project Name" class="form-label">作品名 Project Name</label>
+                            <input type="Project Name" class="form-control" id="Project Name" name="Project Name">
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
@@ -43,15 +43,20 @@ $pageName = 'ab-add';
                             <div class="form-text">
 
                             </div>
-                            <br>
-                            <div class="mb-3">
-                                <label for="url">作品連結 Link</label>
 
-                                <input type="url" name="url" id="url" placeholder="https://www.example.com" pattern="https://.*" size="30" required>
-                                <div class="form-text"></div>
-                            </div>
+
                         </div>
+                        <div>
+                            <form name="p_form" onsubmit="return false;">
+                                <!-- <input type="text" id="Link" name="Link"> -->
+                                <img src="" alt="" id="myimg" width="200px">
+                                <button type="button" onclick="Link.click()">上傳作品</button>
+                            </form>
 
+                            <form name="Link_form" onsubmit="return false;" style="display: none;">
+                                <input type="file" id="Link" name="Link" accept="image/jpeg,image/png">
+                            </form>
+                        </div>
                         <div class="mb-3">
                             <label for="mobile" class="form-label">作品標籤 Tags</label>
                             <select type="tel" class="form-control">
@@ -81,10 +86,10 @@ $pageName = 'ab-add';
 </div>
 <?php include __DIR__ . '/parts/scripts.php'; ?>
 <script>
-    const mobile = document.form1.mobile; // DOM element
+    const mobile = document.form1.Discription; // DOM element
     const mobile_msg = mobile.closest('.mb-3').querySelector('.form-text');
 
-    const name = document.form1.name;
+    const name = document.form1.Nickname;
     const name_msg = name.closest('.mb-3').querySelector('.form-text');
 
     function checkForm() {
@@ -129,6 +134,24 @@ $pageName = 'ab-add';
 
 
         }
+
+        function uploadImg() {
+            const fd = new FormData(document.Link_form);
+
+            fetch('6.add-api.php', {
+                    method: 'POST',
+                    body: fd
+                }).then(r => r.json())
+                .then(obj => {
+                    console.log(obj);
+                    if (obj.success && obj.filename) {
+                        // myimg.src = '/' + obj.filename;
+                        pic.value = obj.filename;
+                    }
+                });
+        }
+
+        Link.onchange = uploadImg;
 
 
     }
