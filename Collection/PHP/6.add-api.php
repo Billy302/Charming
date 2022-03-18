@@ -12,7 +12,7 @@ $output = [
     'rowCount' => 0,
 ];
 
-if(empty($_POST['name'])){
+if(empty($_POST['Nickname'])){
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -31,11 +31,11 @@ $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
     $_POST['Nickname'],
-    $_POST['Project Name'] ?? '',
+    $_POST['ProjectName'] ?? '',
     $_POST['Discription'] ?? '',
-    $_POST['Tags'] ?? null,
+    $_POST['Tags'] ?? '',
     $_POST['Link'] ?? '',
-    $_POST['sid'],
+    // $_POST['sid'],
 ]);
 
 $output['insertId'] = $pdo->lastInsertId(); // 取得最近加入資料的 PK

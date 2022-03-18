@@ -37,8 +37,8 @@ if(empty($row)){
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="Project Name" class="form-label">作品名 Project Name</label>
-                            <input type="text" class="form-control" id="Project Name" name="Project Name"
+                            <label for="ProjectName" class="form-label">作品名 Project Name</label>
+                            <input type="text" class="form-control" id="ProjectName" name="ProjectName"
                             value="<?= htmlentities($row['Project Name']) ?>">
                             <div class="form-text"></div>
                         </div>
@@ -56,13 +56,27 @@ if(empty($row)){
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="Link" class="form-label">作品連結 Link</label>
-                            <textarea class="form-control" name="Link"
-                            id="Link" 
-                            cols="30" 
-                            rows="3"><?= $row['Link'] ?></textarea>
+                        <form name="p_form" onsubmit="return false;">
+                                <!-- <input type="text" id="Link" name="Link"> -->
+                                <img src="" alt="" id="myimg" width="200px">
+                                <button type="button" onclick="Link.click()">上傳作品</button>
+                            <?= $row['Link'] ?></form>
+                            <form name="Link_form" onsubmit="return false;" style="display: none;">
+                                <input type="file" id="Link" name="Link" accept="image/jpeg,image/png">
+                            </form>
 
                             <div class="form-text"></div>
+                        </div>
+                        <div>
+                            <!-- <form name="p_form" onsubmit="return false;"> -->
+                                <!-- <input type="text" id="Link" name="Link"> -->
+                                <!-- <img src="" alt="" id="myimg" width="200px"> -->
+                                <!-- <button type="button" onclick="Link.click()">上傳作品</button> -->
+                            <!-- </form> -->
+
+                            <!-- <form name="Link_form" onsubmit="return false;" style="display: none;">
+                                <input type="file" id="Link" name="Link" accept="image/jpeg,image/png">
+                            </form> -->
                         </div>
 
 

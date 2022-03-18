@@ -35,9 +35,9 @@ $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
     $_POST['Nickname'],
-    $_POST['Project Name'] ?? '',
+    $_POST['ProjectName'] ?? '',
     $_POST['Discription'] ?? '',
-    $_POST['Tags'] ?? null,
+    $_POST['Tags'] ?? '',
     $_POST['Link'] ?? '',
     $_POST['sid'],
 ]);
