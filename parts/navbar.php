@@ -96,12 +96,13 @@
                     </h2>
                     <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingfive" data-bs-parent="#accordionExample">
                         <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                        <a href="#" class="list-group-item list-group-item-action">管理作品</a>
+                            <a href="#" class="list-group-item list-group-item-action">管理留言</a>
+                            <a href="#" class="list-group-item list-group-item-action">管理黑名單</a>
+                            <a href="#" class="list-group-item list-group-item-action">文章案讚數管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">管理收藏作品</a>
+                            <a href="#" class="list-group-item list-group-item-action">分類標籤管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">柴米榜管理</a>
                         </div>
                     </div>
                 </div>
@@ -113,12 +114,11 @@
                     </h2>
                     <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                         <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
-                            <a href="#" class="list-group-item list-group-item-action">???</a>
+                            <a href="#" class="list-group-item list-group-item-action">看板管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">文章管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">留言管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">標籤管理</a>
+                            <a href="#" class="list-group-item list-group-item-action">禁言管理</a>
                         </div>
                     </div>
                 </div>
