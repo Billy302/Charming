@@ -1,6 +1,7 @@
 <?php require "../parts/connect.php"; ?>
 <?php
 $title = '服務項目總覽';
+$pageName = 'Service_list';
 $perPage = 10; // 每頁有幾筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1; //用戶要看的頁碼
 
