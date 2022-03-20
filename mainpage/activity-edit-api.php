@@ -25,16 +25,16 @@ if(empty($_POST['sid']) or empty($_POST['class_name'])){
     
 $sql = "UPDATE `activity` SET  
         `class_name`=?,
-        `class_time`=?,
-        `user_id`=?
+        `number`=?,
+        `class_time`=?
         WHERE `sid`=?";
 
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
-    $_POST['class_name']?? '',
-    $_POST['class_time'] ?? '',
-    $_POST['user_id'] ?? '',
+    $_POST['class_name'],
+    $_POST['number']??'',
+    $_POST['class_time'],
     $_POST['sid'],
 ]);
 

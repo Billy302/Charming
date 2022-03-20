@@ -4,7 +4,7 @@ include '../parts/connect.php';
 // SELECT `sid`, `place`, `create_at` FROM `place` WHERE 1
 // SELECT `sid`, `state`, `country`, `porder` FROM `place` WHERE 1
 $pageName = 'place';
-$perPage = 12;
+$perPage = 14;
 $t_sql = "SELECT COUNT(1) FROM place";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 $totalPages = ceil($totalRows / $perPage);
@@ -16,7 +16,11 @@ if ($page > $totalPages) {
     header('location: place.php');
 }
 
-$sql = sprintf("SELECT * FROM place  ORDER BY `place`.`sid` ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+$sql = sprintf("
+select `p`.`sid`,`state` ,`city` 
+FROM `place` as `p`
+JOIN `city` as `c`
+ON `c`.`sid` = `p` . `porder` LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
 $rows = $pdo->query($sql)->fetchAll();
 ?>
 
@@ -92,7 +96,6 @@ $rows = $pdo->query($sql)->fetchAll();
                         <th scope="col">郵遞區號</th>
                         <th scope="col">縣/市/區</th>
                         <th scope="col">直轄市</th>
-                        <th scope="col">編號</th>
                         <!-- <th scope="col">
                             <i class="fas fa-edit"></i>
                         </th> -->
@@ -111,8 +114,7 @@ $rows = $pdo->query($sql)->fetchAll();
                             </td> -->
                             <td><?= $r['sid'] ?></td>
                             <td><?= $r['state'] ?></td>
-                            <td><?= $r['country'] ?></td>
-                            <td><?= $r['porder'] ?></td>
+                            <td><?= $r['city'] ?></td>
                             <!-- <td>
                                 <a href="place-edit.php?sid=<?= $r['sid'] ?>">
                                     <i class="fas fa-edit"></i>
