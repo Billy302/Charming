@@ -1,40 +1,39 @@
 <?php
 include '../parts/connect.php';
-$title = '修改資料';
-$pagename = 'activity-edit';
-
+$title = '新增活動報名';
+$pagename = 'activity_apply-addpage';
+?>
+<?php
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$sqlmain = "SELECT * FROM activity_apply WHERE sid=$sid";
+$row = $pdo->query($sqlmain)->fetch();
 
-$sql = "SELECT * FROM activity WHERE sid=$sid";
-$row = $pdo->query($sql)->fetch();
-if (empty($row)) {
-    header('Location: activity.php'); // 找不到資炓轉向列表頁
-    exit;
-}
+$sql = "SELECT `sid`,`class_name` FROM activity";
+$rows = $pdo->query($sql)->fetchAll();
 ?>
 <?php include '../parts/html-head.php' ?>
 <div class="container">
     <div class="cardstyle">
-        <h5 class="card-title">新增活動項目</h5>
+        <h5 class="card-title">修改活動項目</h5>
         <form name="form1" method="post" novalidate onsubmit="checkForm(); return false;">
             <input type="hidden" name="sid" value="<?= $row['sid'] ?>">
             <div class="mb-3">
-                <label for="class_name">課程名稱</label>
-                <input type="text" class="form-control" id="class_name" name="class_name" required value="<?= htmlentities($row['class_name']) ?>">
-                <div class="form-text"></div>
+                <label for="user_id" class="form-label">使用者ID</label>
+                <input type="text" class="form-control" id="user_id" name="user_id" required value="<?= htmlentities($row['user_id']) ?>">
             </div>
             <div class="mb-3">
-                <label for="number">名額限制</label>
-                <input type="text" class="form-control" id="number" name="number" required value="<?= htmlentities($row['number']) ?>">
-                <div class="form-text"></div>
+                <label for="activity_id" class="form-label">課程</label>
+                <select class="form-control" id="activity_id" name="activity_id" required>
+                    <option type="text" class="form-control" id="activity_id" name="activity_id" required value="<?= htmlentities($row['activity_id']) ?>"><?= htmlentities($row['activity_id']) ?></option>
+                    <?php foreach ($rows as $r) : ?>
+                        <option value="<?= htmlentities($r['sid']) ?>"><?= htmlentities($r['class_name']) ?></option>
+                    <?php endforeach ?>
+                </select>
+                <!-- <input type="text" class="form-control" id="activity_id" name="activity_id" required> -->
             </div>
-            <div class="mb-3">
-                <label for="class_time" class="form-label">課程時間</label>
-                <input type="date" class="form-control" id="class_time" name="class_time" value="<?= htmlentities($row['class_time']) ?>">
-                <div class="form-text"></div>
-            </div>
-            <button type="submit" class="newinfo">確認修改</button>
+            <button type="submit" class="newinfo">新增</button>
         </form>
+
     </div>
 </div>
 
@@ -67,7 +66,7 @@ if (empty($row)) {
         if (isPass) {
             const fd = new FormData(document.form1);
 
-            fetch('activity-edit-api.php', {
+            fetch('activity_apply-edit-api.php', {
                     method: 'POST',
                     body: fd
                 }).then(r => r.json())
@@ -75,12 +74,13 @@ if (empty($row)) {
                     console.log(obj);
                     if (obj.success) {
                         alert('修改成功');
-                        location.href = 'activity.php';
+                        location.href = 'activity_apply.php';
                     } else {
-                        alert('沒有修改');
+                        alert('修改失敗');
                     }
 
                 })
+
 
 
         }

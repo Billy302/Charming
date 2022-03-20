@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/parts/connect_db.php';
+require  '../parts/connect_db.php';
 $title = '通訊錄列表';
 $pageName = 'ab-list';
 $perPage = 5; // 每一頁有幾筆
@@ -27,8 +27,8 @@ if ($totalRows) {
 }
 
 ?>
-<?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/navbar.php'; ?>
+<?php include  '../parts/html-head.php'; ?>
+<?php include  '../parts/navbar.php'; ?>
 <div class="container">
     <div class="row">
         <div class="col">

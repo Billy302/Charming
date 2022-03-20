@@ -16,10 +16,10 @@ if ($page > $totalPages) {
 
 // $sql = sprintf("SELECT * FROM search LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
 $sql = sprintf("
-select `S`.* ,`country` 
+select `s`.* ,`city` 
 FROM `search` as `s`
-JOIN `place` as `p`
-ON `p`.`sid` = `s` . `place-id` ORDER BY `s`.`keyword` ASC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+JOIN `city` as `c`
+ON `c`.`sid` = `s` . `city_id` LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
 $rows = $pdo->query($sql)->fetchAll();
 ?>
 
@@ -36,12 +36,13 @@ $rows = $pdo->query($sql)->fetchAll();
                     </li>
 
                     <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-
+                        <a class="pagestyle <?= $i == $page ?  'active' : '' ?>" href="?page=<?= $i ?>">
                         <li>
-                            <a class="pagestyle <?= $i == $page ?  'active' : '' ?>" href="?page=<?= $i ?>">
+                            
                                 <?= $i ?>
-                            </a>
+                            
                         </li>
+                        </a>
 
                     <?php endfor ?>
 
@@ -51,9 +52,7 @@ $rows = $pdo->query($sql)->fetchAll();
                         </a>
                     </li>
                 </ul>
-                <button class="newinfo">
-                    <a href="search-addPage.php">新增資料</a>
-                </button>
+                <input class="newinfo" type="button" value="新增資料" onclick="location.href='search-addPage.php'">
             </nav>
 
         </div>
@@ -65,9 +64,9 @@ $rows = $pdo->query($sql)->fetchAll();
                 <thead>
                     <tr>
                         <th scope="col"><i class="fas fa-trash-alt"></i></th>
-                        <th scope="col">#</th>
+                        <th scope="col">編號</th>
+                        <th scope="col">城市</th>
                         <th scope="col">關鍵字</th>
-                        <th scope="col">位置</th>
                         <th scope="col">數量</th>
                         <th scope="col">成立時間</th>
                         <th scope="col">
@@ -87,10 +86,10 @@ $rows = $pdo->query($sql)->fetchAll();
                                 </a>
                             </td>
                             <td><?= $r['sid'] ?></td>
+                            <td><?= $r['city'] ?></td>
                             <td><?= $r['keyword'] ?></td>
-                            <td><?= $r['country'] ?></td>
                             <td><?= $r['count'] ?></td>
-                            <td><?= $r['create-at'] ?></td>
+                            <td><?= $r['create_at'] ?></td>
                             <td>
                                 <a href="search-edit.php?sid=<?= $r['sid'] ?>">
                                     <i class="fas fa-edit"></i>

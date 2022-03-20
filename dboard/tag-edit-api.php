@@ -1,5 +1,5 @@
 <?php
-require  '../parts/connect_db.php';
+require '../parts/connect.php';
 
 header('Content-Type: application/json');
 // 輸出的資料格式
@@ -13,49 +13,25 @@ $output = [
 
 $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 
-if(empty($_POST['sid']) or empty($_POST['name'])){
+if(empty($_POST['id']) or empty($_POST['tag_name'])){
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
 
-
 // TODO: 欄位檢查
 
-
-$sql = "UPDATE `address_book` SET  
-        `name`=?,
-        `email`=?,
-        `mobile`=?,
-        `birthday`=?,
-        `edu`=?,
-        `gender`=?,
-        `skill`=?,
-        `work`=?,
-        `workhours`=?,
-        `bankaccount`=?,
-
-        `address`=?
-        WHERE `sid`=?";
+$sql = "UPDATE `ds_tag` SET  
+        `tag_name`=?
+        WHERE `id`=?";
 
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
-    $_POST['name'],
-    $_POST['email'] ?? '',
-    $_POST['mobile'] ?? '',
-    $_POST['birthday'] ?? null,
-    $_POST['edu'] ?? '',
-    $_POST['gender'] ?? '', 
-
-    $_POST['skill'] ?? '',
-    $_POST['work'] ?? '',
-    $_POST['workhours'] ?? '',
-    $_POST['bankaccount'] ?? '',
-    $_POST['address'] ?? '',
-
-    $_POST['sid'],
+    $_POST['tag_name'],
+    $_POST['id'],
 ]);
+
 
 
 $output['rowCount'] = $stmt->rowCount(); // 修改資料的筆數

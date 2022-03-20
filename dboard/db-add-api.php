@@ -12,7 +12,7 @@ $output = [
     'rowCount' => 0,
 ];
 
-if(empty($_POST['name'])){
+if(empty($_POST['board_name'])){
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -22,25 +22,13 @@ $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 // TODO: 欄位檢查
 
 
-$sql = "INSERT INTO `address_book`(
-    `name`, `email`, `mobile`, `birthday`, `edu`, `gender`, `skill`, `work`, `workhours`, `bankaccount`,
-    `address`, `created_at`
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
+
+$sql = "INSERT INTO `ds_board`(`board_name`) VALUES (?)";
 
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
-    $_POST['name'],
-    $_POST['email'] ?? '',
-    $_POST['mobile'] ?? '',
-    $_POST['birthday'] ?? null,
-    $_POST['edu'] ?? '',
-    $_POST['gender'] ?? '',
-    $_POST['skill'] ?? '',
-    $_POST['work'] ?? '',
-    $_POST['workhours'] ?? '',
-    $_POST['bankaccount'] ?? '',
-    $_POST['address'] ?? ''
+    $_POST['board_name'],
 ]);
 
 $output['insertId'] = $pdo->lastInsertId(); // 取得最近加入資料的 PK
