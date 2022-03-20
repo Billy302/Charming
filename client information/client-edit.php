@@ -1,5 +1,5 @@
 <?php
-require __DIR__. '/parts/connect_db.php';
+require  '../parts/connect_db.php';
 
 $title = '修改資料';
 $pageName = 'ab-edit';
@@ -13,8 +13,8 @@ if(empty($row)){
     exit;
 }
 ?>
-<?php include __DIR__. '/parts/html-head.php'; ?>
-<?php include __DIR__. '/parts/navbar.php'; ?>
+<?php include '../parts/html-head.php'; ?>
+<?php include '../parts/navbar.php'; ?>
 <style>
     form .mb-3 .form-text{
         color: red;
@@ -121,7 +121,7 @@ if(empty($row)){
 
 
 </div>
-<?php include __DIR__. '/parts/scripts.php'; ?>
+<?php include  '../parts/scripts.php'; ?>
 <script>
     const mobile = document.form1.mobile; // DOM element
     const mobile_msg = mobile.closest('.mb-3').querySelector('.form-text');
@@ -177,4 +177,4 @@ if(empty($row)){
 
 
 </script>
-<?php include __DIR__. '/parts/html-foot.php'; ?>
+<?php include  '../parts/html-foot.php'; ?>
