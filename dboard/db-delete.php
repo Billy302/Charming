@@ -1,9 +1,9 @@
 <?php
-require '../parts/connect_db.php';
+require '../parts/connect.php';
 
-$sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-$sql = "DELETE FROM `address_book` WHERE sid=$sid";
+$sql = "DELETE FROM `ds_board` WHERE id=$id";
 
 $stmt = $pdo->query($sql);
 
@@ -12,7 +12,7 @@ if(! empty($_SERVER['HTTP_REFERER'])){
     // 從哪裡來回哪裡去
     header('Location: '. $_SERVER['HTTP_REFERER']);
 } else {
-    header('Location: ab-list.php');
+    header('Location: db-list.php');
 }
 
 

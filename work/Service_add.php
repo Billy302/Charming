@@ -1,16 +1,16 @@
 <?php require "../parts/connect.php"; ?>
 <?php
 $title = '新增服務項目';
+$pageName = 'Service_list';  
 ?>
 <?php include "../parts/html-head.php"; ?>
-<?php include "../parts/navbar.php"; ?>
 <?php
 $sql = "SELECT ID,account FROM client_information";
 $rows = $pdo->query($sql)->fetchAll();
 ?>
 
 
-<div class="container">
+<div class="container liststyle">
     <div class="row">
         <div class="col-lg-6">
             <div class="card">

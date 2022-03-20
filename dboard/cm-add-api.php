@@ -12,7 +12,7 @@ $output = [
     'rowCount' => 0,
 ];
 
-if(empty($_POST['name'])){
+if(empty($_POST['user_id'])){
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -21,26 +21,37 @@ $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 
 // TODO: 欄位檢查
 
+// if(! empty($_FILES) and ! empty($_FILES['img'])){
+//     if (
+//         move_uploaded_file(
+//             $_FILES['img']['tmp_name'],
+//             __DIR__. '/' . $_FILES['img']['name']
+//             )
+//     ){
+//         echo 'ok';
+//         exit;
+//     }
+// }
+// echo 'fail';
 
-$sql = "INSERT INTO `address_book`(
-    `name`, `email`, `mobile`, `birthday`, `edu`, `gender`, `skill`, `work`, `workhours`, `bankaccount`,
-    `address`, `created_at`
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
+
+
+
+$sql = "INSERT INTO `ds_comment`(
+    `user_id`,
+    `article_id`,
+    `content`,
+    `img`,
+    `create_at`
+    ) VALUES (?,?,?,?,NOW())";
 
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
-    $_POST['name'],
-    $_POST['email'] ?? '',
-    $_POST['mobile'] ?? '',
-    $_POST['birthday'] ?? null,
-    $_POST['edu'] ?? '',
-    $_POST['gender'] ?? '',
-    $_POST['skill'] ?? '',
-    $_POST['work'] ?? '',
-    $_POST['workhours'] ?? '',
-    $_POST['bankaccount'] ?? '',
-    $_POST['address'] ?? ''
+    $_POST['user_id'],
+    $_POST['article_id'],
+    $_POST['content'],
+    $_POST['img'],
 ]);
 
 $output['insertId'] = $pdo->lastInsertId(); // 取得最近加入資料的 PK

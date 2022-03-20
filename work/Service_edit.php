@@ -1,9 +1,9 @@
 <?php require "../parts/connect.php"; ?>
 <?php
 $title = '修改服務內容';
+$pageName = 'Service_list';
 ?>
 <?php include "../parts/html-head.php"; ?>
-<?php include "../parts/navbar.php"; ?>
 <?php
 
 $sid = isset($_GET['ID']) ? intval($_GET['ID']) : 0;
@@ -29,7 +29,7 @@ $items_spilt = explode(",",htmlentities($row['service_ltems']));
 
 
 
-<div class="container">
+<div class="container liststyle">
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
