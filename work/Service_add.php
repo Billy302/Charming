@@ -37,7 +37,7 @@ $rows = $pdo->query($sql)->fetchAll();
                         </div>
                         <div class="mb-3">
                             <label for="items" class="form-label">*服務項目</label>
-                            <input type="text" class="form-control" id="item1" name="item1" required>
+                            <input type="text" class="form-control" id="item1" name="item[]" required>
                             <div id="items_more"></div>
                             <br>
                             <button class="btn btn-outline-secondary" type="button" id="items_add">更多</button>
@@ -119,7 +119,7 @@ $rows = $pdo->query($sql)->fetchAll();
         for (hour2 = Number(hour1) + 1; hour2 < 24; hour2++) {
             hour2_control.innerHTML += "<option value = \"" + hour2 + "\" > " + hour2 + "點 </option>";
         }
-    }
+    };
 
     // 製作時間
     $(document).ready(function() {
@@ -270,7 +270,7 @@ $rows = $pdo->query($sql)->fetchAll();
                     console.log(obj);
                     if (obj.success) {
                         alert('新增成功');
-                        location.href = 'Service_list.php';
+                        // location.href = 'Service_list.php';
                     } else {
                         alert('新增失敗');
                     }
