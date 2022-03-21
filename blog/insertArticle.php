@@ -45,7 +45,7 @@ $tags = $pdo->query("SELECT * FROM `tags`")->fetchAll();
                             id="<?= $t['tags_id']?>">
                         <label for="<?= $t['tags_id']?>" class="form-label" id="haha"> <?= $t['tags_desc']?></label>
                     </div>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
                     <!-- <button class="insertNewTag">test</button> -->
                 </div>
 
