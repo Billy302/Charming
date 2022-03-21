@@ -118,4 +118,4 @@ $pageName = 'Collection-Create';
 
     }
 </script>
-<?php require '../parts/connect_db.php'; ?>
+<?php require '../parts/connect.php'; ?>

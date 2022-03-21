@@ -1,5 +1,5 @@
 <?php
-require '../parts/connect_db.php';
+require '../parts/connect.php';
 $title = 'Read List';
 $pageName = 'Collection-Read';
 $perPage = 4; 
