@@ -106,9 +106,10 @@ $rows = $pdo->query($sql)->fetchAll();
 
 
         <div>
-            <form action="insertArticle.php">
+            <!-- <form action="insertArticle.php">
                 <button class="newinfo">新增文章</button>
-            </form>
+            </form> -->
+            <a href="insertArticle.php" class="newinfo">新增文章</a>
         </div>
         <div class="row">
             <div class="col">
