@@ -41,23 +41,27 @@ $tags = $pdo->query("SELECT * FROM `tags` LEFT JOIN `blog_tagtoblog` on `tags`.`
     border: 1px solid var(--bordercolor);
     margin-bottom: 20px;
     padding: 10px 10px;
-    height: 40px;
 }
 
-.style_for_link1:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+.style_for_link2:hover {
+    background-color: var(--bordercolor);
+    color: var(--maincolordark);
 }
+
+/* .style_for_link1:hover {
+    background-color: var(--bordercolor);
+    color: var(--maincolordark);
+} */
 </style>
 <div class="container liststyle">
 
     <span>標籤搜尋</span>
     <?php foreach($tags as $tag): ?>
-    <a href="searchtag.php?id=<?= $tag['tags_id']?>" class="style_for_link1"><?= $tag['tags_desc'] ?></a>
+    <a href="searchtag.php?id=<?= $tag['tags_id']?>" class="style_for_link2"><?= $tag['tags_desc'] ?></a>
     <?php endforeach;?>
 
     <div style="float:right;">
-        <span class="style_for_link2">讚數 <?= $likes?></span>
+        <span class="style_for_link1">讚數 <?= $likes?></span>
     </div>
     <?php foreach($row as $r): ?>
     <div class="row">
@@ -81,9 +85,7 @@ $tags = $pdo->query("SELECT * FROM `tags` LEFT JOIN `blog_tagtoblog` on `tags`.`
         </form>
         <a class="style_for_link2" href="javascript:delete_it(<?= $r['blog_id']?>)">刪除</a>
         <a class="style_for_link2" href="edit.php?id=<?= $r['blog_id']?>" class="style_for_link">編輯</a>
-        <form action="edit.php?id=<?= $r['blog_id']?>">
-            <button class="newinfo">test</button>
-        </form>
+
     </div>
     <?php endforeach;?>
 

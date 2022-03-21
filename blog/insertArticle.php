@@ -3,7 +3,7 @@ require '../parts/connect.php';
 // $tags = isset($_GET['tags']) ? intval($_GET['tags']) : 1;
 $title="新增文章";
 
-$tags = $pdo->query("SELECT * FROM `tags` WHERE 1")->fetchAll();
+$tags = $pdo->query("SELECT * FROM `tags`")->fetchAll();
 
 
 ?>

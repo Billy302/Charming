@@ -63,8 +63,7 @@ $i = 1;
                     <tr>
                         <td><?= $i++ ?></td>
                         <td><?= $r['comments_desc']; ?></td>
-                        <td><a href="javascript:delete_it(<?= $r['comments_ID']?>)"><i
-                                    class="fa-solid fa-trash-can"></i></a></td>
+                        <td><a href="javascript:delete_it(<?= $r['comments_ID']?>)">刪除</a></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
