@@ -1,5 +1,5 @@
 <?php
-require  '../parts/connect_db.php';
+require  '../parts/connect.php';
 
 $title = '修改資料';
 $pageName = 'ab-edit';
