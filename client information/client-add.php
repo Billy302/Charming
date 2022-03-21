@@ -3,7 +3,7 @@ $title = '新增資料';
 $pageName = 'ab-add';
 ?>
 <?php include  '../parts/html-head.php'; ?>
-<?php include  '../parts/navbar.php'; ?>
+<!-- <?php include  '../parts/navbar.php'; ?> -->
 <style>
     form .mb-3 .form-text{
         color: red;
@@ -138,7 +138,7 @@ $pageName = 'ab-add';
                 console.log(obj);
                 if(obj.success){
                     alert('新增成功');
-                    // location.href = 'ab-list.php';
+                    // location.href = 'client-list.php';
                 } else {
                     alert('新增失敗');
                 }
@@ -147,4 +147,4 @@ $pageName = 'ab-add';
     }
 
 </script>
-<?php include '/parts/html-foot.php'; ?>
+<?php include '../parts/html-foot.php'; ?>

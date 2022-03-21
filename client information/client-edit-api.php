@@ -1,5 +1,5 @@
 <?php
-require  '../parts/connect.php';
+require  '../parts/connect_db.php';
 
 header('Content-Type: application/json');
 // 輸出的資料格式

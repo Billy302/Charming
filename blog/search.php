@@ -128,9 +128,9 @@ $search = $pdo->query("SELECT * from blog WHERE blog_content LIKE '%$keyword%' O
                             <td> <a href="check.php?id=<?= $s['blog_id']?>">
                                     <?= $s['blog_title']?> </a>
                             </td>
-                            <td><a href="edit.php?id=<?= $s['blog_id']?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <td><a href="edit.php?id=<?= $s['blog_id']?>">編輯</a>
                             </td>
-                            <td><a href="comment.php?id=<?= $s['blog_id']?>"><i class="fa-solid fa-comment-dots"></i>
+                            <td><a href="comment.php?id=<?= $s['blog_id']?>">留言
                                 </a>
                             </td>
 

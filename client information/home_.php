@@ -1,4 +1,3 @@
-
 <?php
 $title = '我的首頁';
 $pageName = 'home';

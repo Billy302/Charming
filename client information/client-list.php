@@ -1,5 +1,5 @@
 <?php
-require  '../parts/connect.php';
+require  '../parts/connect_db.php';
 $title = '通訊錄列表';
 $pageName = 'ab-list';
 $perPage = 5; // 每一頁有幾筆
@@ -27,8 +27,8 @@ if ($totalRows) {
 }
 
 ?>
-<?php include  '../parts/html-head.php'; ?>
-<?php include  '../parts/navbar.php'; ?>
+<?php include   '../parts/html-head.php'; ?>
+<?php include   '../parts/navbar.php'; ?>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -124,7 +124,7 @@ if ($totalRows) {
     </div>
 </div>
 
-<?php include __DIR__ . '/parts/scripts.php'; ?>
+<?php include  '../parts/scripts.php'; ?>
 <script>
     function del_it(sid){
         if(confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)){
@@ -136,4 +136,4 @@ if ($totalRows) {
 
 
 </script>
-<?php include __DIR__ . '/parts/html-foot.php'; ?>
+<?php include  '../parts/html-foot.php'; ?>

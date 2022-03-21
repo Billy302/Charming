@@ -1,5 +1,5 @@
 <?php
-require  '../parts/connect.php';
+require  '../parts/connect_db.php';
 
 $title = '修改資料';
 $pageName = 'ab-edit';
@@ -13,8 +13,8 @@ if(empty($row)){
     exit;
 }
 ?>
-<?php include '../parts/html-head.php'; ?>
-<?php include '../parts/navbar.php'; ?>
+<?php include  '../parts/html-head.php'; ?>
+<?php include  '../parts/navbar.php'; ?>
 <style>
     form .mb-3 .form-text{
         color: red;
