@@ -23,7 +23,7 @@ $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 
 
 $sql = "INSERT INTO `address_book`(
-    `name`, `email`, `mobile`, `birthday`, `edu`, `gender`, `skill`, `work`, `workhours`, `bankaccount`,
+    `name`, `email`, `mobile`, `birthday`, `Edu_level`, `gender`, `skill`, `Work`, `Workhours`, `Bank_accnum`,
     `address`, `created_at`
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
