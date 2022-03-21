@@ -128,6 +128,7 @@ $displayTag = $pdo->query("SELECT * FROM `tags` WHERE `tags_ID` = $keyword")->fe
                             </th>
                             <th scope="col">編輯</th>
                             <th scope="col">留言</th>
+                            <th scope="col">刪除</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -143,6 +144,9 @@ $displayTag = $pdo->query("SELECT * FROM `tags` WHERE `tags_ID` = $keyword")->fe
                             <td><a href="comment.php?id=<?= $s['blog_id']?>">留言</i>
                                 </a>
                             </td>
+                            <td>
+                                <a href="javascript:delete_it(<?= $s['blog_id']?>)" role="button">刪除</a>
+                            </td>
                         </tr>
                         <?php endforeach;?>
                     </tbody>
@@ -153,6 +157,10 @@ $displayTag = $pdo->query("SELECT * FROM `tags` WHERE `tags_ID` = $keyword")->fe
 </div>
 <?php include __DIR__. '/parts/__scripts.php';?>
 <script>
-
+function delete_it(id) {
+    if (confirm(`您是否要刪除編號${id}的資料？`)) {
+        location.href = `delete.php?id=${id}`;
+    }
+}
 </script>
 <?php include __DIR__. '/parts/__html_footer.php'; ?>

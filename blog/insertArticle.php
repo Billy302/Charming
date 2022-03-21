@@ -53,7 +53,7 @@ $tags = $pdo->query("SELECT * FROM `tags` WHERE 1")->fetchAll();
 
             </form>
             <form action="articleList.php">
-                <button class="newinfo">回上一頁</button>
+                <button class="newinfo">回到列表</button>
             </form>
 
         </div>

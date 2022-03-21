@@ -32,6 +32,12 @@ if(empty($content)){
     echo json_encode($output); exit;
 }
 
+if(empty($tagValue)){
+    $output['code'] = 407;
+    $output['error'] = "請選擇標籤";
+    echo json_encode($output); exit;
+}
+
 $sql = "UPDATE `blog` SET `blog_title`=?, `blog_content`=?
                 WHERE `blog_id`=?";  
 
@@ -69,13 +75,22 @@ $stmt->execute([
 
 if($stmt->rowCount()==0 && $tags->rowCount()==0){
     $output['error'] = '資料沒有修改';
-}
-if ($stmt->rowCount()==1 || $tags->rowCount()==1){
-    if($stmt->rowCount()==1){
-    $output['success'] = $stmt->rowCount()==1;
-}else{
-    $output['tagsCheck'] = $tags->rowCount()===1;
-}
-}
+};
+
+if($stmt->rowCount()>=1){
+    $output['success'] = true;
+};
+
+if($tags->rowCount()>=1){
+    $output['success']= true;
+};
+
+// if ($stmt->rowCount()==1 || $tags->rowCount()==1){
+//     if($stmt->rowCount()==1){
+//     $output['success'] = $stmt->rowCount()==1;
+// }else{
+//     $output['tagsCheck'] = $tags->rowCount()===1;
+// }
+// }
 
 echo json_encode($output);

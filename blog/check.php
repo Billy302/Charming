@@ -76,8 +76,8 @@ $tags = $pdo->query("SELECT * FROM `tags` LEFT JOIN `blog_tagtoblog` on `tags`.`
         <div class="col-10"><a href="comment.php?id=<?= $r['blog_id']?>">留言區</a></div>
     </div>
     <div class="d-flex">
-        <form action="javascript:history.go(-1)">
-            <button class="newinfo">回上一頁</button>
+        <form action="articleList.php">
+            <button class="newinfo">回到列表</button>
         </form>
         <a class="style_for_link2" href="javascript:delete_it(<?= $r['blog_id']?>)">刪除</a>
         <a class="style_for_link2" href="edit.php?id=<?= $r['blog_id']?>" class="style_for_link">編輯</a>

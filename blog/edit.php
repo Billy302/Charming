@@ -186,8 +186,8 @@ function sendData() {
                 } else {
                     // todo 
                     // 如果沒有選tag跳警告
-                    alert('沒有修改資料');
-                    location.href = 'articleList.php';
+                    alert(obj.error);
+                    // location.href = 'articleList.php';
                 }
             });
     }

@@ -1,26 +1,18 @@
 <?php
 require '../parts/connect.php';
-$title="文章留言";
-
-$id = $_GET['id'] ??  1 ;
-
-$row = $pdo->query("SELECT * FROM `blog_comments` WHERE blog_ID=$id")->fetchAll();
-
-
+$title="留言關鍵字查詢";
 $i = 1;
+$keyword = $_POST['search'] ?? '';
 
-// $commentid = $pdo->query("SELECT COUNT(*) FROM `likes_at_comments` WHERE `comments_id`=1")->fetchAll();
+if($keyword == "，" or $keyword == "" ){
+    header('Location: articleList.php');
+    exit();
+}
 
+if(isset($keyword)){
+$search = $pdo->query("SELECT * from blog_comments WHERE comments_desc LIKE '%$keyword%' ORDER by blog_ID asc")->fetchAll();
 
-
-// $commentid = $pdo->query("SELECT COUNT(*) FROM `likes_at_comments` INNER JOIN `blog_comments` ON `likes_at_comments`.`comments_id` = `blog_comments`.`comments_ID`and `blog_comments`.`comments_ID`= 22")->fetch();
-
-// $commentsLike = $pdo->query("SELECT count(*) FROM `likes_at_comment` WHERE comments_id=$commentid")->fetch(PDO::FETCH_NUM)[0];
-
-
-// print_r($row);
-
-
+}
 ?>
 <?php require '../parts/html-head.php' ?>
 <style>
@@ -39,7 +31,7 @@ $i = 1;
         <form name="searchbar" method="post" action="commentkeyword.php">
             <div class="input-group">
                 <div class="form-outline">
-                    <input id="search-focus" type="teax" class="form-control" placeholder="留言搜尋" name="search" />
+                    <input id="search-focus" type="teax" class="form-control" placeholder="關鍵字搜尋" name="search" />
                 </div>
                 <button type="submit" class="newinfo">
                     <i class="fas fa-search"></i>
@@ -53,17 +45,19 @@ $i = 1;
                 <thead>
                     <tr>
                         <th scope="col">留言編號</th>
+                        <th scope="col">部落格編號</th>
                         <th scope="col">留言內容</th>
-                        <!-- <th scope="col">留言讚數</th> -->
                         <th scope="col">刪除留言</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($row as $r): ?>
+                    <?php foreach($search as $s): ?>
                     <tr>
                         <td><?= $i++ ?></td>
-                        <td><?= $r['comments_desc']; ?></td>
-                        <td><a href="javascript:delete_it(<?= $r['comments_ID']?>)"><i
+
+                        <td> <a href="check.php?id=<?=$s['blog_ID'] ?>"><?= $s['blog_ID']?></a></td>
+                        <td><?= $s['comments_desc']; ?></td>
+                        <td><a href="javascript:delete_it(<?= $s['comments_ID']?>)"><i
                                     class="fa-solid fa-trash-can"></i></a></td>
                     </tr>
                     <?php endforeach; ?>
