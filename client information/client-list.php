@@ -28,7 +28,7 @@ if ($totalRows) {
 
 ?>
 <?php include   '../parts/html-head.php'; ?>
-<?php include   '../parts/navbar.php'; ?>
+
 <div class="container">
     <div class="row">
         <div class="col">
