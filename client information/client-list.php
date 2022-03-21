@@ -5,7 +5,7 @@ $pageName = 'ab-list';
 $perPage = 5; // 每一頁有幾筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  // 用戶要看的頁碼
 if ($page < 1) {
-    header('Location: ab-list.php?page=1');
+    header('Location: client-list.php?page=1');
     exit;
 }
 
@@ -18,7 +18,7 @@ if ($totalRows) {
     // 總頁數
     $totalPages = ceil($totalRows / $perPage);
     if ($page > $totalPages) {
-        header("Location: ab-list.php?page=$totalPages");
+        header("Location: client-list.php?page=$totalPages");
         exit;
     }
 
@@ -111,7 +111,7 @@ if ($totalRows) {
                             -->
                             <td><?= strip_tags($r['address']) ?></td>
                             <td>
-                                <a href="ab-edit.php?sid=<?= $r['sid'] ?>">
+                                <a href="client-edit.php?sid=<?= $r['sid'] ?>">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
@@ -129,7 +129,7 @@ if ($totalRows) {
     function del_it(sid){
         if(confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)){
 
-            location.href = 'ab-delete.php?sid=' + sid;
+            location.href = 'client-delete.php?sid=' + sid;
         }
 
     }
