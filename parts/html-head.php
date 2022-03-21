@@ -26,18 +26,18 @@
     </div>
     <div class="d-flex">
         <aside class="asidestyle sticky-top">
-            <ul class="s-active">
-                <!-- 會員部分 -->
+            <!-- 會員部分 -->
+            <ul>
                 <h5>會員</h5>
-                
-                <a href="#">
-                    <!-- $pageName的部分要打自己取的pagename -->
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
+
+                <a href="client-add.php">
+
+                    <li class="astyle <?= $pageName == ' client-add' ? 'active' : '' ?>">
                         加入會員
                     </li>
                 </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
+                <a href=" client-edit.php">
+                    <li class="astyle <?= $pageName == ' client-edit' ? 'active' : '' ?>">
                         會員資料修改
                     </li>
                 </a>
@@ -45,6 +45,16 @@
             <ul>
                 <!-- 首頁部分 -->
                 <h5>首頁/活動頁</h5>
+                <a href="activity.php">
+                    <li class="astyle <?= $pageName == 'activity' ? 'active' : '' ?>">
+                        活動項目
+                    </li>
+                </a>
+                <a href="activity_apply.php">
+                    <li class="astyle <?= $pageName == 'activity_apply' ? 'active' : '' ?>">
+                        活動報名
+                    </li>
+                </a>
                 <a href="place.php">
                     <li class="astyle <?= $pageName == 'place' ? 'active' : '' ?>">
                         縣市資料
@@ -52,136 +62,78 @@
                 </a>
                 <a href="search.php">
                     <li class="astyle <?= $pageName == 'search' ? 'active' : '' ?>">
-                    熱門搜尋
+                        熱門搜尋
                     </li>
                 </a>
-                <li class="astyle <?= $pageName == 'activity' ? 'active' : '' ?>">
-                    <a href="activity.php">活動報名</a>
-                </li>
             </ul>
             <ul>
                 <!-- 工作部分 -->
                 <h5>工作</h5>
                 <a href="Service_add.php">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                    新增服務
+                    <li class="astyle <?= $pageName == 'Service_add' ? 'active' : '' ?>">
+                        新增服務項目
+                    </li>
+                </a>
+                <a href="Service_list.php">
+                    <li class="astyle <?= $pageName == 'Service_list' ? 'active' : '' ?>">
+                        管理服務
                     </li>
                 </a>
                 <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
+                    <li class="astyle <?= $pageName == 'n' ? 'active' : '' ?>">
+                        新增案件
                     </li>
                 </a>
                 <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
+                    <li class="astyle <?= $pageName == 'n' ? 'active' : '' ?>">
+                        案件管理
                     </li>
                 </a>
             </ul>
             <ul>
                 <!-- 部落格部分 -->
                 <h5>官方部落格</h5>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
+                <a href="../blog/articleList.php">
+                    <li class="astyle <?= $pageName == 'blog' ? 'active' : '' ?>">
+                        文章列表
                     </li>
                 </a>
             </ul>
             <ul>
-                <!-- 作品集部分 -->
+                <!--作品集-->
                 <h5>作品集</h5>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
-                    </li>
-                </a>
+                    <a href="Collection_Create.php">
+                        <li class="astyle <?= $pageName == 'Collection_Create.php' ? 'active' : '' ?>">
+                            新增作品
+                        </li>
+                    </a>
+                    <a href="Collection_Read.php">
+                        <li class="astyle <?= $pageName == 'Collection_Read.php' ? 'active' : '' ?>">
+                            作品列表
+                        </li>
+                    </a>
             </ul>
             <ul>
                 <!-- 討論區 -->
                 <h5>討論區</h5>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
+                <a href="db-list.php">
+                    <li class="astyle <?= $pageName == 'db-list' ? 'active' : '' ?>">
+                        看板管理
                     </li>
                 </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
+                <a href="ac-list.php">
+                    <li class="astyle <?= $pageName == 'ac-list' ? 'active' : '' ?>">
+                        文章管理
                     </li>
                 </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
+                <a href="cm-list.php">
+                    <li class="astyle <?= $pageName == 'cm-list' ? 'active' : '' ?>">
+                        留言管理
                     </li>
                 </a>
-                <a href="#">
-                    <li class="astyle <?= $pageName == '' ? 'active' : '' ?>">
-                        會員資料修改
+                <a href="tag-list.php">
+                    <li class="astyle <?= $pageName == 'tag-list' ? 'active' : '' ?>">
+                        標籤管理
                     </li>
                 </a>
             </ul>

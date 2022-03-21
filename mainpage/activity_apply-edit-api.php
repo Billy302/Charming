@@ -11,7 +11,7 @@ $output = [
     'insertId' => 0,
     'rowCount' => 0,
 ];
-if(empty($_POST['class_name'])){
+if(empty($_POST['user_id'])){
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -20,17 +20,17 @@ $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 
 // TODO: 欄位檢查
 
-
-$sql = "INSERT INTO `activity`(
-    `class_name`, `number`, `class_time` 
-      ) VALUES (?, ?, ?)";
+$pig = $_POST['activity_id'];
+$sql =
+"UPDATE `activity_apply`SET`user_id`=?,`activity_id`=? WHERE`sid`=?;
+UPDATE`activity` SET `apply` = `apply` +1 WHERE sid = $pig";
 
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
-    $_POST['class_name'],
-    $_POST['number'],
-    $_POST['class_time'],
+    $_POST['user_id'],
+    $_POST['activity_id'],
+    $_POST['sid'],
 ]);
 
 $output['insertId'] = $pdo->lastInsertId(); // 取得最近加入資料的 PK

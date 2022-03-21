@@ -1,40 +1,33 @@
 <?php
 include '../parts/connect.php';
 $title = '新增活動報名';
-$pagename = 'addpage';
+$pagename = 'activity-addpage';
 ?>
 <?php include '../parts/html-head.php' ?>
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">新增活動報名</h5>
-                    <form name="form1" method="post" novalidate onsubmit="checkForm(); return false;">
-                        <div class="mb-3">
-                            <label for="name" class="class_name">* 課程名稱</label>
-                            <input type="text" class="form-control" id="class_name" name="class_name" required>
-                            <div class="form-text"></div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="class_time" class="form-label">課程時間</label>
-                            <input type="date" class="form-control" id="class_time" name="class_time">
-                            <div class="form-text"></div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="user_id" class="form-label">user_id</label>
-                            <input type="text" class="form-control" id="user_id" name="user_id">
-                            <div class="form-text"></div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">新增</button>
-                    </form>
-
-                </div>
+    <div class="cardstyle">
+        <h5 class="card-title">新增活動項目</h5>
+        <form class="" name="form1" method="post" novalidate onsubmit="checkForm(); return false;">
+            <div class="mb-3">
+                <label for="class_name" class="form-label">課程名稱</label>
+                <input type="text" class="form-control" id="class_name" name="class_name" required>
+                <div class="form-text"></div>
             </div>
-        </div>
-    </div>
+            <div class="mb-3">
+                <label for="number" class="form-label">名額限制</label>
+                <input type="text" class="form-control" id="number" name="number">
+                <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+                <label for="class_time" class="form-label">課程時間</label>
+                <input type="date" class="form-control" id="class_time" name="class_time">
+                <div class="form-text"></div>
+            </div>
+            <button type="submit" class="newinfo">新增</button>
+        </form>
 
+    </div>
+</div>
 
 
 

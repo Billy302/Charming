@@ -1,20 +1,20 @@
 <?php
 include '../parts/connect.php';
 // 總筆數、總頁數
-$pageName = 'activity';
+$pageName = 'activity_apply';
 $perPage = 10;
-$t_sql = "SELECT COUNT(1) FROM activity";
+$t_sql = "SELECT COUNT(1) FROM activity_apply";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 $totalPages = ceil($totalRows / $perPage);
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  // 預設頁碼
 if ($page < 1) {
-    header('location: activity.php');
+    header('location: activity_apply.php');
 }
 if ($page > $totalPages) {
-    header('location: activity.php');
+    header('location: activity_apply.php');
 }
 
-$sql = sprintf("SELECT * FROM activity LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+$sql = sprintf("SELECT * FROM activity_apply LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
 $rows = $pdo->query($sql)->fetchAll();
 ?>
 
@@ -47,8 +47,7 @@ $rows = $pdo->query($sql)->fetchAll();
                         </a>
                     </li>
                 </ul>
-
-                <input class="newinfo" type="button" value="新增資料" onclick="location.href='activity-addPage.php'">
+                <input class="newinfo" type="button" value="新增資料" onclick="location.href='activity_apply-addPage.php'">
             </nav>
 
         </div>
@@ -59,12 +58,10 @@ $rows = $pdo->query($sql)->fetchAll();
                 <thead>
                     <tr>
                         <th scope="col"><i class="fas fa-trash-alt"></i></th>
+                        <th scope="col">報名編號</th>
+                        <th scope="col">使用者ID</th>
                         <th scope="col">課程編號</th>
-                        <th scope="col">課程</th>
-                        <th scope="col">名額</th>
-                        <th scope="col">報名人數</th>
-                        <th scope="col">課程時間</th>
-                        <th scope="col">建立時間</th>
+                        <th scope="col">報名時間</th>
                         <th scope="col">
                             <i class="fas fa-edit"></i>
                         </th>
@@ -82,13 +79,11 @@ $rows = $pdo->query($sql)->fetchAll();
                                 </a>
                             </td>
                             <td><?= $r['sid'] ?></td>
-                            <td><?= $r['class_name'] ?></td>
-                            <td><?= $r['number'] ?></td>
-                            <td><?= $r['apply'] ?></td>
-                            <td><?= $r['class_time'] ?></td>
-                            <td><?= $r['create_at'] ?></td>
+                            <td><?= $r['user_id'] ?></td>
+                            <td><?= $r['activity_id'] ?></td>
+                            <td><?= $r['apply_at'] ?></td>
                             <td>
-                                <a href="activity-edit.php?sid=<?= $r['sid'] ?>">
+                                <a href="activity_apply-edit.php?sid=<?= $r['sid'] ?>">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
@@ -105,7 +100,7 @@ $rows = $pdo->query($sql)->fetchAll();
     function del_it(sid) {
         if (confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)) {
 
-            location.href = 'activity-delete.php?sid=' + sid;
+            location.href = 'activity_apply-delete.php?sid=' + sid;
         }
 
     }

@@ -1,47 +1,46 @@
 <?php
 include '../parts/connect.php';
 $title = '新增活動報名';
-$pagename = 'search-addpage';
-
-$sql = "SELECT `sid`,`city` FROM city";
+$pagename = 'activity_apply-addpage';
+?>
+<?php 
+$sql = "SELECT `sid`,`class_name` FROM activity";
 $rows = $pdo->query($sql)->fetchAll();
 ?>
 <?php include '../parts/html-head.php' ?>
 <div class="container">
     <div class="cardstyle">
-        <h5 class="card-title">新增搜尋</h5>
+        <h5 class="card-title">新增活動項目</h5>
         <form name="form1" method="post" novalidate onsubmit="checkForm(); return false;">
             <div class="mb-3">
-                <label for="city" class="form-label">位置</label>
-                <select class="form-control" id="city" name="city" required>
-                    <option>請選擇位置</option>
-                    <?php foreach($rows as $r) : ?>
-                    <option value="<?=htmlentities($r['sid']) ?>"><?= htmlentities($r['city']) ?></option>
-                    <?php endforeach ?>
-                </select>
+                <label for="user_id" class="form-label">使用者ID</label>
+                <input type="text" class="form-control" id="user_id" name="user_id" required>
             </div>
             <div class="mb-3">
-                <label for="keyword" class="form-label">關鍵字</label>
-                <input type="text" class="form-control" id="keyword" name="keyword" required>
+                <label for="activity_id" class="form-label">課程</label>
+                <select class="form-control" id="activity_id" name="activity_id" required>
+                    <option>請選擇課程</option>
+                    <?php foreach($rows as $r) : ?>
+                    <option value="<?=htmlentities($r['sid']) ?>"><?= htmlentities($r['class_name']) ?></option>
+                    <?php endforeach ?>
+                </select>
+                <!-- <input type="text" class="form-control" id="activity_id" name="activity_id" required> -->
             </div>
-            <button type="submit" class="btn btn-primary">新增</button>
+            <button type="submit" class="newinfo">新增</button>
         </form>
 
     </div>
 </div>
+
+
+
+
+</div>
 <?php include '../parts/scripts.php'; ?>
 <script>
-    // const mobile = document.form1.mobile; // DOM element
-    // const mobile_msg = mobile.closest('.mb-3').querySelector('.form-text');
-
-    // const name = document.form1.name;
-    // const name_msg = name.closest('.mb-3').querySelector('.form-text');
-
     function checkForm() {
         let isPass = true; // 有沒有通過檢查
 
-        // name_msg.innerText = '';  // 清空訊息
-        // mobile_msg.innerText = '';  // 清空訊息
 
         // TODO: 表單資料送出之前, 要做格式檢查
 
@@ -62,7 +61,7 @@ $rows = $pdo->query($sql)->fetchAll();
         if (isPass) {
             const fd = new FormData(document.form1);
 
-            fetch('search-addpage-api.php', {
+            fetch('activity_apply-addpage-api.php', {
                     method: 'POST',
                     body: fd
                 }).then(r => r.json())
@@ -70,7 +69,7 @@ $rows = $pdo->query($sql)->fetchAll();
                     console.log(obj);
                     if (obj.success) {
                         alert('新增成功');
-                        location.href = 'search.php';
+                        location.href = 'activity_apply.php';
                     } else {
                         alert('新增失敗');
                     }
@@ -78,8 +77,15 @@ $rows = $pdo->query($sql)->fetchAll();
                 })
 
 
-        }
 
+        }
+        // const class_name = document.form1.class_name; // DOM element
+        // const class_name_msg = class_name.closest('.mb-3').querySelector('.form-text');
+
+        // const class_time = document.form1.class_time;
+        // const class_time_msg = name.closest('.mb-3').querySelector('.form-text');
+        // class_name_msg.innerText = ''; // 清空訊息
+        // class_time_msg.innerText = ''; // 清空訊息
 
     }
 </script>
