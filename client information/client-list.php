@@ -74,8 +74,8 @@ if ($totalRows) {
                         <th scope="col">性別</th>
 
                         <th scope="col">專長</th>
-                        <th scope="col">工作項目</th>
-                        <th scope="col">工作時數</th>
+                        // <th scope="col">工作項目</th>
+                        // <th scope="col">工作時數</th>
                         <th scope="col">銀行帳號</th>
                         <th scope="col">地址</th>
                         <th scope="col">
@@ -102,8 +102,8 @@ if ($totalRows) {
                             <td><?= $r['Edu_level'] ?></td>
                             <td><?= $r['gender'] ?></td>
                             <td><?= $r['skill'] ?></td>
-                            <td><?= $r['Work'] ?></td>
-                            <td><?= $r['Workhours'] ?></td>
+                            // <td><?= $r['Work'] ?></td>
+                            // <td><?= $r['Workhours'] ?></td>
                             <td><?= $r['Bank_accnum'] ?></td>
 
                             <!--
