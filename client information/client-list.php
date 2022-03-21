@@ -1,5 +1,5 @@
 <?php
-require  '../parts/connect_db.php';
+require  '../parts/connect.php';
 $title = '通訊錄列表';
 $pageName = 'ab-list';
 $perPage = 5; // 每一頁有幾筆
