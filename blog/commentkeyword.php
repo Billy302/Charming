@@ -57,8 +57,7 @@ $search = $pdo->query("SELECT * from blog_comments WHERE comments_desc LIKE '%$k
 
                         <td> <a href="check.php?id=<?=$s['blog_ID'] ?>"><?= $s['blog_ID']?></a></td>
                         <td><?= $s['comments_desc']; ?></td>
-                        <td><a href="javascript:delete_it(<?= $s['comments_ID']?>)"><i
-                                    class="fa-solid fa-trash-can"></i></a></td>
+                        <td><a href="javascript:delete_it(<?= $s['comments_ID']?>)">刪除</a></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
