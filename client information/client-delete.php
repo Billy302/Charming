@@ -12,7 +12,7 @@ if(! empty($_SERVER['HTTP_REFERER'])){
     // 從哪裡來回哪裡去
     header('Location: '. $_SERVER['HTTP_REFERER']);
 } else {
-    header('Location: ab-list.php');
+    header('Location: client-list.php');
 }
 
 
