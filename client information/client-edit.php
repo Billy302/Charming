@@ -9,7 +9,7 @@ $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 $sql = "SELECT * FROM address_book WHERE sid=$sid";
 $row = $pdo->query($sql)->fetch();
 if(empty($row)){
-    header('Location: ab-list.php'); // 找不到資炓轉向列表頁
+    header('Location: client-list.php'); // 找不到資炓轉向列表頁
     exit;
 }
 ?>
@@ -154,7 +154,7 @@ if(empty($row)){
         if(isPass){
             const fd = new FormData(document.form1);
 
-            fetch('ab-edit-api.php', {
+            fetch('client-edit-api.php', {
                 method: 'POST',
                 body: fd
             }).then(r => r.json())
