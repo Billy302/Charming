@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/parts/__connect_db.php';
+require '../parts/connect.php';
 
 if(isset($_GET['id'])){
     $id = intval($_GET['id']);
