@@ -79,13 +79,13 @@ if(empty($row)){
 
                         <div class="mb-3">
                             <label for="work" class="form-label">工作項目</label>
-                            <input type="work" class="form-control" id="work" name="work" value="<?= $row['work'] ?>">
+                            <input type="work" class="form-control" id="work" name="work" value="<?= $row['Work'] ?>">
                             <div class="form-text"></div>
                         </div>
 
                         <div class="mb-3">
                             <label for="workhours" class="form-label">工作時數</label>
-                            <input type="workhours" class="form-control" id="workhours" name="workhours" value="<?= $row['workhours'] ?>">
+                            <input type="workhours" class="form-control" id="workhours" name="workhours" value="<?= $row['Workhours'] ?>">
                             <div class="form-text"></div>
                         </div>
 
