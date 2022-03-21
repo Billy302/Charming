@@ -70,13 +70,13 @@ if ($totalRows) {
                         <th scope="col">電子信箱</th>
                         <th scope="col">手機號碼</th>
                         <th scope="col">生日</th>
-                        <th scope="col">最高學歷</th>
+                        <!-- <th scope="col">最高學歷</th> -->
                         <th scope="col">性別</th>
 
                         <th scope="col">專長</th>
-                        <th scope="col">工作項目</th>
+                        <!-- <th scope="col">工作項目</th>
                         <th scope="col">工作時數</th>
-                        <th scope="col">銀行帳號</th>
+                        <th scope="col">銀行帳號</th> -->
                         <th scope="col">地址</th>
                         <th scope="col">
                             <i class="fas fa-edit"></i>
@@ -99,12 +99,12 @@ if ($totalRows) {
                             <td><?= $r['email'] ?></td>
                             <td><?= $r['mobile'] ?></td>
                             <td><?= $r['birthday'] ?></td>
-                            <td><?= $r['edu'] ?></td>
+                            <!-- <td><?= $r['edu'] ?></td> -->
                             <td><?= $r['gender'] ?></td>
                             <td><?= $r['skill'] ?></td>
-                            <td><?= $r['work'] ?></td>
+                            <!-- <td><?= $r['work'] ?></td>
                             <td><?= $r['workhours'] ?></td>
-                            <td><?= $r['bankaccount'] ?></td>
+                            <td><?= $r['bankaccount'] ?></td> -->
 
                             <!--
                             <td><?= htmlentities($r['address']) ?></td>

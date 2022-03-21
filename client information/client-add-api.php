@@ -23,7 +23,7 @@ $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 
 
 $sql = "INSERT INTO `address_book`(
-    `name`, `email`, `mobile`, `birthday`, `edu`, `gender`, `skill`, `work`, `workhours`, `bankaccount`,
+    `name`, `email`, `mobile`, `birthday`, `gender`, `skill`, 
     `address`, `created_at`
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
@@ -34,12 +34,12 @@ $stmt->execute([
     $_POST['email'] ?? '',
     $_POST['mobile'] ?? '',
     $_POST['birthday'] ?? null,
-    $_POST['Edu_level'] ?? '',
+    // $_POST['Edu_level'] ?? '',
     $_POST['gender'] ?? '',
     $_POST['skill'] ?? '',
-    $_POST['Work'] ?? '',
-    $_POST['Workhours'] ?? '',
-    $_POST['Bank_accnum'] ?? '',
+    // $_POST['Work'] ?? '',
+    // $_POST['Workhours'] ?? '',
+    // $_POST['Bank_accnum'] ?? '',
     $_POST['address'] ?? ''
 ]);
 

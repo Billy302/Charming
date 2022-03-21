@@ -3,7 +3,7 @@ $title = '新增資料';
 $pageName = 'ab-add';
 ?>
 <?php include  '../parts/html-head.php'; ?>
-<!-- <?php include  '../parts/navbar.php'; ?> -->
+
 <style>
     form .mb-3 .form-text{
         color: red;
@@ -47,11 +47,11 @@ $pageName = 'ab-add';
                             <div class="form-text"></div>
                         </div>
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="edu" class="form-label">最高學歷</label>
                             <input type="edu" class="form-control" id="edu" name="edu">
                             <div class="form-text"></div>
-                        </div>
+                        </div> -->
 
 
                         <div class="mb-3">
@@ -60,7 +60,7 @@ $pageName = 'ab-add';
                             <div class="form-text"></div>
                         </div>
 
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="work" class="form-label">工作項目</label>
                             <input type="work" class="form-control" id="work" name="work">
                             <div class="form-text"></div>
@@ -76,7 +76,7 @@ $pageName = 'ab-add';
                             <label for="bankaccount" class="form-label">銀行帳號</label>
                             <input type="bankaccount" class="form-control" id="bankaccount" name="bankaccount">
                             <div class="form-text"></div>
-                        </div>
+                        </div> -->
 
 
                         <div class="mb-3">

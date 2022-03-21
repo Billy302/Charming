@@ -1,5 +1,5 @@
 <?php
-require  '../parts/connect.php';
+require '../parts/connect.php';
 
 header('Content-Type: application/json');
 // 輸出的資料格式
@@ -28,12 +28,12 @@ $sql = "UPDATE `address_book` SET
         `email`=?,
         `mobile`=?,
         `birthday`=?,
-        `edu`=?,
+        -- `edu`=?,
         `gender`=?,
         `skill`=?,
-        `work`=?,
-        `workhours`=?,
-        `bankaccount`=?,
+        -- `work`=?,
+        -- `workhours`=?,
+        -- `bankaccount`=?,
 
         `address`=?
         WHERE `sid`=?";
@@ -45,13 +45,13 @@ $stmt->execute([
     $_POST['email'] ?? '',
     $_POST['mobile'] ?? '',
     $_POST['birthday'] ?? null,
-    $_POST['edu'] ?? '',
+    // $_POST['edu'] ?? '',
     $_POST['gender'] ?? '', 
 
     $_POST['skill'] ?? '',
-    $_POST['work'] ?? '',
-    $_POST['workhours'] ?? '',
-    $_POST['bankaccount'] ?? '',
+    // $_POST['work'] ?? '',
+    // $_POST['workhours'] ?? '',
+    // $_POST['bankaccount'] ?? '',
     $_POST['address'] ?? '',
 
     $_POST['sid'],
