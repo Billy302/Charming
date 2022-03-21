@@ -70,7 +70,7 @@ $search = $pdo->query("SELECT * from blog_comments WHERE comments_desc LIKE '%$k
         </div>
 
     </div>
-    <?php include __DIR__. '/parts/__scripts.php';?>
+    <?php require '../parts/scripts.php' ?>
     <script>
     function delete_it(commentid) {
         if (confirm(`您是否要刪除此則留言？`)) {
@@ -78,4 +78,4 @@ $search = $pdo->query("SELECT * from blog_comments WHERE comments_desc LIKE '%$k
         }
     }
     </script>
-    <?php include __DIR__. '/parts/__html_footer.php'; ?>
+    <?php require '../parts/html-foot.php' ?>

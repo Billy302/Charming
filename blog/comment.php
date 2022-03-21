@@ -76,7 +76,7 @@ $i = 1;
         </div>
 
     </div>
-    <?php include __DIR__. '/parts/__scripts.php';?>
+    <?php require '../parts/scripts.php' ?>
     <script>
     function delete_it(commentid) {
         if (confirm(`您是否要刪除此則留言？`)) {
@@ -84,4 +84,4 @@ $i = 1;
         }
     }
     </script>
-    <?php include __DIR__. '/parts/__html_footer.php'; ?>
+    <?php require '../parts/html-foot.php' ?>

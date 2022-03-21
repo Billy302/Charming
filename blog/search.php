@@ -143,5 +143,5 @@ $search = $pdo->query("SELECT * from blog WHERE blog_content LIKE '%$keyword%' O
         </div>
     </div>
 </div>
-<?php include __DIR__. '/parts/__scripts.php';?>
-<?php include __DIR__. '/parts/__html_footer.php'; ?>
+<?php require '../parts/scripts.php' ?>
+<?php require '../parts/html-foot.php' ?>

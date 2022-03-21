@@ -90,7 +90,7 @@ $tags = $pdo->query("SELECT * FROM `tags` LEFT JOIN `blog_tagtoblog` on `tags`.`
 
 
 </div>
-<?php include __DIR__. '/parts/__scripts.php';?>
+<?php require '../parts/scripts.php' ?>
 <script>
 function delete_it(id) {
     if (confirm(`您是否要刪除編號${id}的資料？`)) {
@@ -98,4 +98,4 @@ function delete_it(id) {
     }
 }
 </script>
-<?php include __DIR__. '/parts/__html_footer.php'; ?>
+<?php require '../parts/html-foot.php' ?>

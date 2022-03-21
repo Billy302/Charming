@@ -74,7 +74,7 @@ if(!isset($_GET['id'])){
         </div>
     </div>
 </div>
-<?php include __DIR__. '/parts/__scripts.php';?>
+<?php require '../parts/scripts.php' ?>
 <script>
 const title = document.querySelector('#blog_title');
 const content = document.querySelector('#blog_content');
@@ -193,4 +193,4 @@ function sendData() {
     }
 }
 </script>
-<?php include __DIR__. '/parts/__html_footer.php'; ?>
+<?php require '../parts/html-foot.php' ?>
