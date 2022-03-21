@@ -25,7 +25,7 @@ $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 $sql = "INSERT INTO `address_book`(
     `name`, `email`, `mobile`, `birthday`, `edu`, `gender`, `skill`, `work`, `workhours`, `bankaccount`,
     `address`, `created_at`
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
 $stmt = $pdo->prepare($sql);
 
