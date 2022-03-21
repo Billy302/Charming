@@ -14,7 +14,7 @@ if(empty($row)){
 }
 ?>
 <?php include  '../parts/html-head.php'; ?>
-<?php include  '../parts/navbar.php'; ?>
+
 <style>
     form .mb-3 .form-text{
         color: red;
