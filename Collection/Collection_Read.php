@@ -1,7 +1,7 @@
-<?php
-require __DIR__ . '/parts/connect_db.php';
+`<?php
+require '../parts/connect.php';
 $title = 'Read List';
-$pageName = 'ab-list';
+$pageName = 'Collection-Read';
 $perPage = 4; 
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  // 用戶要看的頁碼
 if ($page < 1) {
@@ -27,8 +27,7 @@ if ($totalRows) {
 }
 
 ?>
-<?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/navbar.php'; ?>
+<?php include "../parts/html-head.php"; ?>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -111,10 +110,10 @@ if ($totalRows) {
         </div>
     </div>
 </div>
-<?php include __DIR__ . '/parts/scripts.php'; ?>
+<?php include "../parts/scripts.php"; ?>
 <script>
     function del_it(sid){
-        if(confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)){
+        if(confirm(`確定要刪除編號 ${sid} 的資料嗎?`)){
 
             location.href = 'Collection_Delete.php?sid=' + sid;
         }
@@ -124,4 +123,4 @@ if ($totalRows) {
 
 
 </script>
-<?php include __DIR__ . '/parts/html-foot.php'; ?>
+<?php include "../parts/html-foot.php"; ?>

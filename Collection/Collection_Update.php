@@ -1,8 +1,8 @@
 <?php
-require __DIR__ . '/parts/connect_db.php';
+require "../parts/connect.php";
 
 $title = 'Collection_Update';
-$pageName = 'ab-edit';
+$pageName = 'Collection-Update';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 
@@ -13,8 +13,7 @@ if (empty($row)) {
     exit;
 }
 ?>
-<?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/navbar.php'; ?>
+<?php include "../parts/html-head.php"; ?>
 <style>
     form .mb-3 .form-text {
         color: red;
@@ -64,7 +63,7 @@ if (empty($row)) {
 
 
 </div>
-<?php include __DIR__ . '/parts/scripts.php'; ?>
+<?php include "../parts/scripts.php"; ?>
 <script>
     const mobile = document.form1.Discription; // DOM element
     const mobile_msg = mobile.closest('.mb-3').querySelector('.form-text');
@@ -113,4 +112,4 @@ if (empty($row)) {
 
     
 </script>
-<?php include __DIR__ . '/parts/html-foot.php'; ?>
+<?php include "../parts/html-foot.php"; ?>

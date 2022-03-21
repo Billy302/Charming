@@ -1,9 +1,13 @@
+
+<?php require '../parts/connect.php'; ?>
 <?php
+
 $title = 'Create';
-$pageName = 'ab-add';
+$pageName = 'Collection-Create';
 ?>
-<?php include __DIR__ . '/parts/html-head.php'; ?>
-<?php include __DIR__ . '/parts/navbar.php'; ?>
+<?php include "../parts/html-head.php"; ?>
+
+
 <style>
     form .mb-3 .form-text {
         color: red;
@@ -64,7 +68,7 @@ $pageName = 'ab-add';
 
 
 </div>
-<?php include __DIR__ . '/parts/scripts.php'; ?>
+<?php include "../parts/scripts.php"; ?>
 <script>
     const mobile = document.form1.Discription; // DOM element
     const mobile_msg = mobile.closest('.mb-3').querySelector('.form-text');
@@ -119,4 +123,4 @@ $pageName = 'ab-add';
 
     }
 </script>
-<?php include __DIR__ . '/parts/html-foot.php'; ?>
+<?php include "../parts/html-foot.php"; ?>
