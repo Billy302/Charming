@@ -3,7 +3,7 @@ $title = '新增資料';
 $pageName = 'ab-add';
 ?>
 <?php include  '../parts/html-head.php'; ?>
-// <?php include  '../parts/navbar.php'; ?>
+<?php include  '../parts/navbar.php'; ?>
 <style>
     form .mb-3 .form-text{
         color: red;
