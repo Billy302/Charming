@@ -1,4 +1,4 @@
-<?php
+`<?php
 require '../parts/connect.php';
 $title = 'Read List';
 $pageName = 'Collection-Read';
@@ -110,7 +110,7 @@ if ($totalRows) {
         </div>
     </div>
 </div>
-<?php include __DIR__ . '/parts/scripts.php'; ?>
+<?php include "../parts/scripts.php"; ?>
 <script>
     function del_it(sid){
         if(confirm(`確定要刪除編號 ${sid} 的資料嗎?`)){
