@@ -34,7 +34,7 @@ $stmt->execute([
     $_POST['email'] ?? '',
     $_POST['mobile'] ?? '',
     $_POST['birthday'] ?? null,
-    $_POST['edu'] ?? '',
+    $_POST['Edu_level'] ?? '',
     $_POST['gender'] ?? '',
     $_POST['skill'] ?? '',
     $_POST['work'] ?? '',
