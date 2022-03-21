@@ -1,8 +1,13 @@
+
+<?php require '../parts/connect.php'; ?>
 <?php
+
 $title = 'Create';
 $pageName = 'Collection-Create';
 ?>
 <?php include "../parts/html-head.php"; ?>
+
+
 <style>
     form .mb-3 .form-text {
         color: red;
@@ -118,4 +123,4 @@ $pageName = 'Collection-Create';
 
     }
 </script>
-<?php require '../parts/connect.php'; ?>
+<?php include "../parts/html-foot.php"; ?>
