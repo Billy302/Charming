@@ -12,24 +12,21 @@ $output = [
     'rowCount' => 0,
 ];
 
-if(empty($_POST['keyword'])){
-    echo json_encode($output, JSON_UNESCAPED_UNICODE);
-    exit;
-}
+// if(empty($_POST['keyword'])){
+//     echo json_encode($output, JSON_UNESCAPED_UNICODE);
+//     exit;
+// }
 $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 
 // TODO: 欄位檢查
 
 $city = $_POST['city'];
 $keyword = $_POST['keyword'];
-$sql = "INSERT INTO `search`(`city_id`,`keyword`) VALUES (?,?)"; // UPDATE`search` SET `count` = `count` +1 WHERE `city_id` = '$city' AND`keyword` = '$keyword'";\\
-$update = "UPDATE`search` SET `count` = `count` +1 WHERE `city_id` = $city AND`keyword` = $keyword";
 
-// if("`city_id` = $city AND `keyword` = $keyword"){
-//     $stmt = $pdo->prepare($update);
-// }else{
-//     $stmt = $pdo->prepare($sql);
-// }
+$sql = 
+"INSERT INTO `search`(`city_id`,`keyword`) VALUES (?, ?);
+UPDATE `search` SET `count` = `count` +1 WHERE city_id = '$city' AND keyword = '$keyword' ";
+// $update = "UPDATE`search` SET `count` = `count` +1 WHERE `city_id` = $city AND`keyword` = $keyword";
 
 $stmt = $pdo->prepare($sql);
 // $stmt = $pdo->prepare($update);
