@@ -99,12 +99,12 @@ if ($totalRows) {
                             <td><?= $r['email'] ?></td>
                             <td><?= $r['mobile'] ?></td>
                             <td><?= $r['birthday'] ?></td>
-                            <td><?= $r['edu'] ?></td>
+                            <td><?= $r['Edu_level'] ?></td>
                             <td><?= $r['gender'] ?></td>
                             <td><?= $r['skill'] ?></td>
-                            <td><?= $r['work'] ?></td>
-                            <td><?= $r['workhours'] ?></td>
-                            <td><?= $r['bankaccount'] ?></td>
+                            <td><?= $r['Work'] ?></td>
+                            <td><?= $r['Workhours'] ?></td>
+                            <td><?= $r['Bank_accnum'] ?></td>
 
                             <!--
                             <td><?= htmlentities($r['address']) ?></td>
