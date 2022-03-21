@@ -33,8 +33,8 @@ $pageName = 'ab-add';
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
-                            <label for="Project Name" class="form-label">作品名 Project Name</label>
-                            <input type="Project Name" class="form-control" id="Project Name" name="Project Name">
+                            <label for="ProjectName" class="form-label">作品名 Project Name</label>
+                            <input type="ProjectName" class="form-control" id="ProjectName" name="ProjectName">
                             <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
@@ -46,33 +46,13 @@ $pageName = 'ab-add';
 
 
                         </div>
-                        <div>
-                            <form name="p_form" onsubmit="return false;">
-                                <!-- <input type="text" id="Link" name="Link"> -->
-                                <img src="" alt="" id="myimg" width="200px">
-                                <button type="button" onclick="Link.click()">上傳作品</button>
-                            </form>
-
-                            <form name="Link_form" onsubmit="return false;" style="display: none;">
-                                <input type="file" id="Link" name="Link" accept="image/jpeg,image/png">
-                            </form>
-                        </div>
-                        <div class="mb-3">
-                            <label for="mobile" class="form-label">作品標籤 Tags</label>
-                            <select type="tel" class="form-control">
-                                <option value="" selected>請選擇作品標籤</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
-                        </div>
-
-
-
-
-                    </form>
+                        
+                            
+                            
+                            
+                            
+                        </form>
+                        
 
                 </div>
             </div>
@@ -135,24 +115,7 @@ $pageName = 'ab-add';
 
         }
 
-        function uploadImg() {
-            const fd = new FormData(document.Link_form);
-
-            fetch('Collection_Add-api.php', {
-                    method: 'POST',
-                    body: fd
-                }).then(r => r.json())
-                .then(obj => {
-                    console.log(obj);
-                    if (obj.success && obj.filename) {
-                        // myimg.src = '/' + obj.filename;
-                        pic.value = obj.filename;
-                    }
-                });
-        }
-
-        Link.onchange = uploadImg;
-
+        
 
     }
 </script>

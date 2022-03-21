@@ -22,10 +22,10 @@ $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 // TODO: 欄位檢查
 
 
-$sql = "INSERT INTO `address_book`(
-    `Nickname`, `Project Name`, `Discription`, `Tags`,
-    `Link`, `created_at`
-      ) VALUES (?, ?, ?, ?, ?, NOW())";
+$sql = "INSERT INTO `Fake_data`(
+    `Nickname`, `Project Name`, `Discription`,
+     `created_at`
+      ) VALUES (?, ?, ?, NOW())";
 
 $stmt = $pdo->prepare($sql);
 
@@ -33,8 +33,8 @@ $stmt->execute([
     $_POST['Nickname'],
     $_POST['ProjectName'] ?? '',
     $_POST['Discription'] ?? '',
-    $_POST['Tags'] ?? '',
-    $_POST['Link'] ?? '',
+    // $_POST['Tags'] ?? '',
+    // $_POST['Link'] ?? '',
     // $_POST['sid'],
 ]);
 

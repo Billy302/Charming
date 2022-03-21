@@ -2,27 +2,27 @@
 require __DIR__ . '/parts/connect_db.php';
 $title = 'Read List';
 $pageName = 'ab-list';
-$perPage = 5; // 每一頁有幾筆
+$perPage = 4; 
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  // 用戶要看的頁碼
 if ($page < 1) {
-    header('Location: 2.Read.php?page=1');
+    header('Location: Collection_Read.php?page=1');
     exit;
 }
 
-$t_sql = "SELECT COUNT(1) FROM address_book";
+$t_sql = "SELECT COUNT(1) FROM Fake_data";
 // 取得總筆數
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
-$rows = []; // 預設沒有資料
+$rows = []; 
 $totalPages = 0;
 if ($totalRows) {
     // 總頁數
     $totalPages = ceil($totalRows / $perPage);
     if ($page > $totalPages) {
-        header("Location: 2.Read.php?page=$totalPages");
+        header("Location: Collection_Read.php?page=$totalPages");
         exit;
     }
 
-    $sql = sprintf("SELECT * FROM address_book ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
+    $sql = sprintf("SELECT * FROM Fake_data ORDER BY sid DESC LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
     $rows = $pdo->query($sql)->fetchAll(); // 拿到分頁資料
 }
 
@@ -71,8 +71,7 @@ if ($totalRows) {
                         <th scope="col">暱稱 Nickname</th>
                         <th scope="col">作品名 Project Name</th>
                         <th scope="col">內容介紹 Discription</th>
-                        <th scope="col">作品連結 Link</th>
-                        <th scope="col">作品標籤 Tags</th>
+                        
                         
                         <th scope="col">
                             <i class="fas fa-edit"></i>
@@ -94,14 +93,13 @@ if ($totalRows) {
                             <td><?= $r['Nickname'] ?></td>
                             <td><?= $r['Project Name'] ?></td>
                             <td><?= $r['Discription'] ?></td>
-                            <td><?= $r['Link'] ?></td>
-                            <td><?= $r['Tags'] ?></td>
+                           
                             <!--
                             <td><?= htmlentities($r['Link']) ?></td>
                             -->
                             <!-- <td><?= strip_tags($r['Link']) ?></td> -->
                             <td>
-                                <a href="3.Update.php?sid=<?= $r['sid'] ?>">
+                                <a href="Collection_Update.php?sid=<?= $r['sid'] ?>">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
@@ -118,7 +116,7 @@ if ($totalRows) {
     function del_it(sid){
         if(confirm(`確定要刪除編號為 ${sid} 的資料嗎?`)){
 
-            location.href = '5.Delete.php?sid=' + sid;
+            location.href = 'Collection_Delete.php?sid=' + sid;
         }
 
     }

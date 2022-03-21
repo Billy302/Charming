@@ -23,12 +23,12 @@ if(empty($_POST['sid']) or empty($_POST['Nickname'])){
 // TODO: 欄位檢查
 
 
-$sql = "UPDATE `address_book` SET  
+$sql = "UPDATE `Fake_data` SET  
         `Nickname`=?,
         `Project Name`=?,
-        `Discription`=?,
-        `Tags`=?,
-        `Link`=?
+        `Discription`=?
+        -- `Tags`=?,
+        -- `Link`=?
         WHERE `sid`=?";
 
 $stmt = $pdo->prepare($sql);
@@ -37,8 +37,8 @@ $stmt->execute([
     $_POST['Nickname'],
     $_POST['ProjectName'] ?? '',
     $_POST['Discription'] ?? '',
-    $_POST['Tags'] ?? '',
-    $_POST['Link'] ?? '',
+    // $_POST['Tags'] ?? '',
+    // $_POST['Link'] ?? '',
     $_POST['sid'],
 ]);
 
