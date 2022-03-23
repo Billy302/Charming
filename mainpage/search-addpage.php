@@ -76,11 +76,7 @@ $rows = $pdo->query($sql)->fetchAll();
                     }
 
                 })
-
-
         }
-
-
     }
 </script>
 <?php include '../parts/html-foot.php'; ?>

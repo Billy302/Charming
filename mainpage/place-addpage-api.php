@@ -25,6 +25,8 @@ $output['postData'] = $_POST;  // 讓前端做資料查看,資料是否一致
 $sql = "INSERT INTO `place`(
     `place`) VALUES (?)";
 
+
+
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([

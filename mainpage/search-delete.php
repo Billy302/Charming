@@ -4,10 +4,13 @@ require '../parts/connect.php';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 
-$sql = "DELETE FROM `search` WHERE sid=$sid";
+$city = $_GET['city'];
+$keyword = $_GET['keyword'];
+
+$sql = "DELETE FROM `search` WHERE sid=$sid;
+UPDATE `search` SET `count` = `count` -1 WHERE city_id = '$city' AND keyword = '$keyword' ";
 
 $stmt = $pdo->query($sql);
-
 // echo $stmt->rowCount(); // 刪除幾筆
 if(! empty($_SERVER['HTTP_REFERER'])){
     // 從哪裡來回哪裡去
