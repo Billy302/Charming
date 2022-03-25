@@ -1,7 +1,7 @@
 <?php require "../parts/connect.php"; ?>
 <?php
 $title = '新增服務項目';
-$pageName = 'Service_list';  
+$pageName = 'Service_add';  
 ?>
 <?php include "../parts/html-head.php"; ?>
 <?php
