@@ -1,3 +1,9 @@
+<!-- 跳出視窗使用 -->
+<!-- <script>
+    function pop_up(url) {
+        window.open(url, 'win2', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=1076,height=768,directories=no,location=no')
+    }
+</script> -->
 <?php
 include '../parts/connect.php';
 // 總筆數、總頁數
@@ -22,12 +28,11 @@ JOIN `city` as `c`
 ON `c`.`sid` = `s` . `city_id` LIMIT %s, %s", ($page - 1) * $perPage, $perPage);
 $rows = $pdo->query($sql)->fetchAll();
 ?>
-
 <?php include '../parts/html-head.php' ?>
 <div class="container liststyle">
     <div class="row">
         <div class="col">
-        <nav class="navstyle">
+            <nav class="navstyle">
                 <ul class="d-flex pagination">
                     <li>
                         <a href="?page=<?= $page - 1 ?>">
@@ -37,11 +42,11 @@ $rows = $pdo->query($sql)->fetchAll();
 
                     <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                         <a class="pagestyle <?= $i == $page ?  'active' : '' ?>" href="?page=<?= $i ?>">
-                        <li>
-                            
+                            <li>
+
                                 <?= $i ?>
-                            
-                        </li>
+
+                            </li>
                         </a>
 
                     <?php endfor ?>
@@ -90,11 +95,25 @@ $rows = $pdo->query($sql)->fetchAll();
                             <td><?= $r['keyword'] ?></td>
                             <td><?= $r['count'] ?></td>
                             <td><?= $r['create_at'] ?></td>
+
+
+
                             <td>
                                 <a href="search-edit.php?sid=<?= $r['sid'] ?>">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
+
+                            <!-- <input class='prompttest' type="button" value="按我"> -->
+                            <!-- <p class='show'></p> -->
+
+                            <?php /*<!-- 跳出視窗使用 -->
+                            <td>
+                                <a href="search-edit.php?sid=<?= $r['sid'] ?>"onclick="pop_up(this);">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                            */ ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

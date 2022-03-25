@@ -1,23 +1,27 @@
-
-<?php
-include '../parts/connect.php';
-// $city = $_POST['city'];
-// $keyword = $_POST['keyword'];
-
-// $sqlSelect = "SELECT count(*) FROM search where city_id = $city AND keyword = '$keyword'";
-// $total =$pdo->query($sqlSelect);
-
-$totalBlog = $pdo->query("SELECT COUNT(*) FROM `search`where city_id = ? AND keyword = '?'")->fetch(PDO::FETCH_NUM)[0];
-$newestBlog = intval($totalBlog) + 1;
-
-
-// $t_sql = "SELECT COUNT(1) FROM search";
-// $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
-
-// $sqlSelect = "SELECT count(*) FROM search where city_id = $city AND keyword = '$keyword'";
-// $total = $pdo->query($sqlSelect)->fetch(PDO::FETCH_NUM)[0];
-    $total->execute([
-        $_POST['city'],
-        $_POST['keyword'],
-    ]);
-?>
+<!DOCTYPE html> 
+<html> 
+  
+<head> 
+    <title> 
+        Window prompt() Method 
+    </title> 
+</head> 
+  
+<body> 
+    <button onclick="geek()"> 
+        Click me! 
+    </button> 
+    <p id="g"></p> 
+    <script> 
+        function geek() { 
+            let doc = prompt("Please enter some text", 
+                "GeeksforGeeks"); 
+            if (doc != null) { 
+                document.getElementById("g").innerHTML = 
+                    "Welcome to " + doc; 
+            } 
+        } 
+    </script> 
+</body> 
+  
+</html>
