@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            background-color: #e78b8b;
+            border: 1px solid black;
+            width: 300px;
+            height: 800px;
+        }
+        #menu {
+            position: fixed;
+            top: 0px;
+            left: 50%
+        }
+    </style>
+</head>
+<body>
+<div id="menu">
+    <a href="#a">a</a>, <a href="#b">b</a>, <a href="#c">c</a>
+</div>
+<div id="a" class="box"></div>
+<div id="b" class="box" style="background-color: #dfb56f;"></div>
+<div id="c" class="box" style="background-color: #4d91ac;"></div>
+
+<script>
+    window.addEventListener('hashchange', function(){
+       console.log(location.hash);  // 包含 #
+       console.log(location.search);  // query string
+    });
+
+
+</script>
+</body>
+</html>

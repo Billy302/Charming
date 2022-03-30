@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .box {
+            width: 300px;
+            height: 800px;
+            background-color: #8fe1ee;
+            margin: 20px;
+        }
+        .fix {
+            position: fixed;
+            top: 0;
+            right: 50%;
+        }
+    </style>
+
+</head>
+<body>
+<div class="fix">
+    <a href="#a">a</a>
+    <a href="#b">b</a>
+    <a href="#c">c</a>
+</div>
+<div class="box" id="a">a</div>
+<div class="box" id="b" style="background-color: #86cfda">b</div>
+<div class="box" id="c" style="background-color: #ee8fc8">c</div>
+
+<script>
+    window.addEventListener('hashchange', function(){
+        console.log(location.hash);
+    });
+</script>
+</body>
+</html>

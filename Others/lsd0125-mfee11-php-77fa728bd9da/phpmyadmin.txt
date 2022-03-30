@@ -1,0 +1,14 @@
+    Alias /phpmyadmin "C:/xampp/phpMyAdmin/"
+    <Directory "C:/xampp/phpMyAdmin">
+        # AllowOverride AuthConfig
+        # Require local
+        # ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
+
+        Options Indexes FollowSymLinks Includes ExecCGI
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+
+# https://phpspreadsheet.readthedocs.io/en/latest/
+# composer require phpoffice/phpspreadsheet

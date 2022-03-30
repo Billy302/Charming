@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+<div class="cont">
+    <button id="aa">aa</button>
+    <button id="bb">bb</button>
+    <button id="cc">cc</button>
+</div>
+
+
+<script>
+document.querySelector('.cont').addEventListener('click', event=>{
+
+    switch(event.target.id){
+        case 'aa':
+            history.pushState({a:1}, '', '/aa');
+            break;
+        case 'bb':
+            history.pushState({b:2}, '', '/bb?b=10');
+
+            break;
+        case 'cc':
+            history.pushState({c:3}, '', '/cc/cc');
+
+            break;
+    }
+});
+
+window.addEventListener('popstate', event=>{
+    console.log(event.state);
+    console.log(location.href);
+});
+
+</script>
+</body>
+</html>

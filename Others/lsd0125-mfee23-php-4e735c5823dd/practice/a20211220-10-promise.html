@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    new Promise((resolve, reject) => {
+        setTimeout(function(){
+            resolve('abc'); // 正常結束
+            // reject('eeeeerrr'); // 發生例外
+        }, 500)
+    }).then( result => {
+
+        console.log(result);
+        return 123;
+    })
+    .then(r=>{
+        console.log(r)
+    })
+
+
+
+
+
+
+</script>
+</body>
+</html>

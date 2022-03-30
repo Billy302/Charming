@@ -1,0 +1,9 @@
+$primary-color:blue;
+$secondary-color:grey;
+h1 {
+    color: $primary-color
+}
+
+div {
+    background-color: $secondary-color;
+}
