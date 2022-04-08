@@ -78,6 +78,16 @@
                         管理服務
                     </li>
                 </a>
+                <a href="#">
+                    <li class="astyle <?= $pageName == 'n' ? 'active' : '' ?>">
+                        新增案件(x)
+                    </li>
+                </a>
+                <a href="#">
+                    <li class="astyle <?= $pageName == 'n' ? 'active' : '' ?>">
+                        案件管理(x)
+                    </li>
+                </a>
             </ul>
             <ul>
                 <!-- 部落格部分 -->

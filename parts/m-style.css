@@ -1,0 +1,141 @@
+    /*----共通項目開始----*/
+    *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    }
+    :root{
+        --maincolor: rgb(151, 102, 102);
+        --maincolordark: rgb(71, 41, 41);
+        --bordercolor:rgb(214, 197, 197);
+        --hovercolor:rgb(212, 212, 212);
+        
+    }
+    a{
+        text-decoration: none;
+        color: var(--maincolor);
+    }
+    a:hover{
+        color: var(--maincolordark);
+    }
+    li{
+        list-style: none;
+    }
+    ul h5{
+        color: var(--maincolordark);
+    }
+    tr th{
+        color: var(--maincolor);
+    }
+    td a{
+        color: var(--maincolor);
+
+    }
+    /*----共通項目結束----*/
+
+    /*----html-head部分開始----*/
+    /* html-head > nav */
+    .navbar{
+        background-color: rgb(255, 255, 255);
+        padding:15px 40px;
+        box-shadow: 0 0 10px 0 rgb(119, 119, 119);
+    }
+    /* html-head > nav > div > a */
+    .m-logo{
+        display: flex;
+        color:var(--maincolor) ;
+        text-decoration: none;
+        align-items: center;
+        padding-left: 10px;
+    }
+    /*html-head裡的左側選單 */
+    .asidestyle{
+        width: 220px;
+        height: 690px;
+        padding-top: 30px;
+        overflow: auto;
+    }
+    /*html-head裡的左側選單欄位間距*/
+    .asidestyle li{
+        padding: 2px 8px;
+    }
+    /* 側邊表單按下後 */
+    .astyle.active{
+        background-color: var(--bordercolor);
+        border-radius: 5px;
+        color: var(--maincolordark);
+    }
+    .astyle:hover{
+        background-color: var(--hovercolor);
+        border-radius: 5px;
+    }
+    .astyle.active a{
+        color: var(--maincolordark);
+    }
+    /*----html-head部分結束----*/
+
+    /*----個人主頁面部分開始----*/
+    /* 個人頁面全 放在最外層div */
+    .liststyle{
+        margin: 30px;
+    }
+    /* nav */
+    .navstyle{
+        display: flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+    .navstyle a{
+        padding:0 4px;
+        font-size:20px;
+        vertical-align: middle;
+    }
+    /* 頁碼 放在[主頁面] > 頁面迴圈的<a>裡*/
+    .pagestyle{
+        margin: 0 2px;
+        font-size:20px;
+    }
+    /* 頁碼按了之後 */
+    .pagestyle.active{
+        background-color: var(--bordercolor);
+        border-radius: 3px;
+        color: var(--maincolordark);
+    }
+    /* 新增按鈕 */
+    .newinfo{
+        border-radius:10px;
+        color: var(--maincolor);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid var(--bordercolor);
+        margin-bottom: 20px;
+        padding:10px;
+        font-size: 16px;
+        display: inline-block;
+
+    }
+    .newinfo:hover{
+        background-color: var(--bordercolor);
+        color: var(--maincolordark);
+    }
+    /* 表單 */
+    .tablestyle{
+        width: 100%;
+        border:1px solid var(--bordercolor);
+        border-collapse:separate;
+        border-spacing:0;
+        border-radius:10px;
+        overflow: hidden;
+    }
+
+    /*----新增/編輯頁面部分----*/
+    .cardstyle{
+        width: 50%;
+        margin: 50px auto;
+        padding: 30px;
+        border:1px solid var(--bordercolor);
+        border-collapse:separate;
+        border-spacing:0;
+        border-radius:10px;
+        overflow: scroll;
+    }
+
