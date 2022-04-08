@@ -9,6 +9,7 @@
    ##### - [網站介紹](introduction)
    ##### - [使用軟體/技術](tech)
    ##### - [功能介紹](func)
+   ##### - [即將推出之功能](ffunc)
    ##### - [作品集分支數據](stats)
    ##### - [其他資訊](others)
     
@@ -54,6 +55,11 @@
  
  - 貼出新專案與你所愛的設計作品 
  - 修改與刪除你的貼文 
+ - 瀏覽他人作品
+ - 對喜愛的作品留言
+
+ ## [即將推出之功能](#ffunc)
+ 
  - 對他人的貼文案讚 
  - 使用標籤功能分類你的作品貼文
  - 快速搜尋尋找中的作品
@@ -62,7 +68,7 @@
  ## [作品集分支數據](#stats)
 
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Sting402&show_icons=true&theme=onedark)
+![Steven's GitHub stats](https://github-readme-stats.vercel.app/api?username=Sting402&show_icons=true&theme=onedark)
 
 
     
