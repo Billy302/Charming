@@ -3,9 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// 引入各自的路由
+var SalesRouter = require('./routes/Sales/index');
+
 
 var app = express();
 
@@ -19,8 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// 引用各自路由，記得加自己的代號
+app.use('/Sales', SalesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
