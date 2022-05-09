@@ -1,0 +1,15 @@
+愛心
+
+//要再想想
+1. 功能：取得全部Like資料。Method: GET。URL: /api/like ???
+
+
+
+2. 功能：新增Like。Method: POST。URL: /api/like 
+
+INSERT INTO `product_love`(`product_id`, `user_name`, `create_time`) 
+VALUES ('[value-1]','[value-2]','[value-3]')
+
+3. 功能：刪除Like。Method: DELETE。URL: /api/like /:id
+
+DELETE FROM `product_love` WHERE product_id =?

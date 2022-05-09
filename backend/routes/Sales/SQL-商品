@@ -1,0 +1,35 @@
+商品 
+1. 功能：取得全部商品資料。Method: GET。URL: /api/product
+
+SELECT product_main.* , all_type.type 
+FROM `product_main` 
+INNER JOIN all_type
+on product_main.type_id = all_type.sid
+INNER JOIN product_love  
+ON product_main.ID=product_love.product_id
+INNER JOIN product_track  
+ON product_main.ID=product_track.product_id
+
+2. 功能：取得單筆商品資料。Method: GET。URL: /api/product/:id
+
+SELECT product_main.* , all_type.* 
+FROM `product_main` 
+INNER JOIN all_type
+on product_main.type_id = all_type.id
+WHERE ID = ?
+
+3. 功能：新增商品。Method: POST。URL: /api/product
+
+INSERT INTO `product_main`(`ID`, `author_name`, `product_copy`, `price`, `state`, `pic_path`, `create_time`, `type_id`) 
+VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+4. 功能：修改商品。Method: PUT。URL: /api/product/:id
+
+UPDATE `product_main` SET `ID`='[value-1]',`author_name`='[value-2]',
+`product_copy`='[value-3]',`price`='[value-4]',`state`='[value-5]',
+`pic_path`='[value-6]',`create_time`='[value-7]',`type_id`='[value-8]' WHERE ID=?
+
+5. 功能：刪除商品。Method: DELETE。URL: /api/product/:id 
+
+DELETE FROM `product_main` WHERE ID=?
+

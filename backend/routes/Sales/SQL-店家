@@ -1,0 +1,12 @@
+店家
+1. 功能：取得店家資料。Method: GET。URL: /api/shop/:id
+
+2. 功能：新增店家。Method: POST。URL: /api/shop
+
+INSERT INTO `product_shop`(`user_ID`, `shop_copy`, `precautions`) 
+VALUES ('[value-1]','[value-2]','[value-3]')
+
+3. 功能：修改店家。Method: PUT。URL: /api/shop/:id
+
+UPDATE `product_shop` SET `user_ID`='[value-1]',
+`shop_copy`='[value-2]',`precautions`='[value-3]' WHERE user_ID = ?

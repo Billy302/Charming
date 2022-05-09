@@ -1,0 +1,15 @@
+聊天室
+1. 功能：取得全部對話資料。Method: GET。URL: /api/talk 
+
+SELECT `author_name`, `user_name`, `content`, `create_time`, `show_time` FROM `product_talk` 
+
+2. 功能：取得單人對話資料。Method: GET。URL: /api/talk/:id
+2-1
+SELECT `author_name`, `user_name`, `content`, `create_time`, `show_time` FROM `product_talk` WHERE author_name = ?
+2-2
+SELECT `author_name`, `user_name`, `content`, `create_time`, `show_time` FROM `product_talk` WHERE user_name = ?
+
+3. 功能：新增對話紀錄。Method: POST。URL: /api/talk 
+
+INSERT INTO `product_talk`(`author_name`, `user_name`, `content`, `create_time`, `show_time`) 
+VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')

@@ -1,0 +1,26 @@
+
+訂單 product_case 訂單
+1. 功能：取得全部訂單資料。Method: GET。URL: /api/order
+
+SELECT product_case.* , us_user.* , product_main.* 
+FROM product_case 
+INNER JOIN us_user 
+ON product_case.user_ID=us_user.ID
+INNER JOIN product_main  
+ON product_case.product_id=product_main.ID
+
+
+2. 功能：取得單筆訂單資料。Method: GET。URL: /api/order/:id
+
+SELECT product_case.* , us_user.* , product_main.* 
+FROM product_case 
+INNER JOIN us_user 
+ON product_case.user_ID=us_user.ID
+INNER JOIN product_main  
+ON product_case.product_id=product_main.ID
+WHERE us_user.id = ?
+
+3. 功能：新增訂單。Method: POST。URL: /api/order
+
+INSERT INTO `product_case`(`ID`, `product_id`, `user_ID`, `total_price`, `create_time`) 
+VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')

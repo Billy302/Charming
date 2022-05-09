@@ -1,0 +1,15 @@
+追蹤
+
+//要再想想
+1. 功能：取得全部track資料。Method: GET。URL: /api/track
+
+
+
+2. 功能：新增track。Method: POST。URL: /api/track
+
+INSERT INTO `product_track`(`product_id`, `user_name`, `create_time`) 
+VALUES ('[value-1]','[value-2]','[value-3]')
+
+3. 功能：刪除track。Method: DELETE。URL: /api/track/:id
+
+DELETE FROM `product_track` WHERE product_id = ?
