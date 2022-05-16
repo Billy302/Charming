@@ -8,6 +8,7 @@ INNER JOIN us_user
 ON product_case.user_ID=us_user.ID
 INNER JOIN product_main  
 ON product_case.product_id=product_main.ID
+WHERE product_case.product_id = ?  OR product_case.user_ID = ?
 
 
 2. 功能：取得單筆訂單資料。Method: GET。URL: /api/order/:id

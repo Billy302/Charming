@@ -1,4 +1,4 @@
-商品 
+商品  
 1. 功能：取得全部商品資料。Method: GET。URL: /api/product
 
 SELECT product_main.* , all_type.type 
@@ -9,6 +9,9 @@ INNER JOIN product_love
 ON product_main.ID=product_love.product_id
 INNER JOIN product_track  
 ON product_main.ID=product_track.product_id
+order by product_main.price [DESC/ASC] , 
+order by product_main.product_name [DESC/ASC] ,
+WHERE product_main.type_id = ? or product_main.type_id = ?
 
 2. 功能：取得單筆商品資料。Method: GET。URL: /api/product/:id
 

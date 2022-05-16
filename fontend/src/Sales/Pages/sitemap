@@ -18,17 +18,9 @@ To B - 個人銷售紀錄 BtobPage/MySale
 =>MySale
 To B - 新增/修改商品 BtobPage/EditProduct
 =>EditProduct
-To B - 對話列表 BtobPage/ShopTalk
-=>ShopTalkList
-To B - 對話視窗 BtobPage/ShopTalk?id=
-=>ShopTalk
 
 
 To C -購買清單-總攬  BtocPage/Order
 =>OrderList
 To C -購買清單-詳細 BtocPage/Order?id=
 =>Order
-To C - 對話列表 BtocPage/Talk
-=>TalkList
-To C - 對話視窗 BtocPage/Talk?id=
-=>Talk

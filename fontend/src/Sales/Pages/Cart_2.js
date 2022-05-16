@@ -1,3 +1,5 @@
+// 功能：取得會員個人資料 Method: ? URL: ?
+// 功能：加入購物車，order(key) 基本資料(姓名/聯絡方式/總價)
 import React from "react";
 
 function cart2(){
