@@ -39,47 +39,212 @@
 
 /* ============================= */
 
-header{
+:root {
+ /* 顏色、邊框圓角度、 */
+  --maincolor: rgb(151, 102, 102);
+  --maincolordark: rgb(71, 41, 41);
+  --bordercolor: rgb(214, 197, 197);
+  --hovercolor: rgb(212, 212, 212);
+  --f0: 4rem;
+  --f1: 2.5rem;
+  --f2: 2rem;
+}
+
+/* 共通項目 */
+* {
+  margin: 0px;
+  box-sizing: border-box;
+  position: relative;
+}
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+hr {
+  border: 1px solid var(--brown3);
+}
+:root {
+  /* 色票 */
+  --white: #ffffff;
+  --brown1: #472929;
+  --brown2: #795252;
+  --brown3: #d6c5c5;
+  --brown4: #f4efef;
+  --gray1: #333333;
+  --gray2: #4f4f4f;
+  --gray3: #bdbdbd;
+  --gray4: #e0e0e0;
+  --yellow1: #ffd247;
+  --yellow2: #ffebaf;
+  --green1: #355f1c;
+  --green2: #72925f;
+  --green3: #b8d1a9;
+  /* 字體大小 */
+  --heading1: 56px;
+  --heading2: 48px;
+  --heading3: 32px;
+  --heading4: 20px;
+  --heading5: 16px;
+  --heading6: 12px;
+  /* 圓角 */
+  --desk-border-radius: 15px;
+  /* 網頁版border寬度 */
+  --desk-border: 2px;
+}
+
+/* 字體 */
+.heading1 {
+  font-size: var(--heading1);
+  color: var(--brown2);
+  font-weight: bold;
+}
+.heading2 {
+  font-size: var(--heading2);
+  color: var(--brown2);
+  font-weight: bold;
+}
+.heading3 {
+  font-size: var(--heading3);
+  color: var(--brown2);
+  font-weight: bold;
+}
+.heading4 {
+  font-size: var(--heading4);
+  color: var(--brown2);
+  font-weight: bold;
+}
+.heading5 {
+  font-size: var(--heading5);
+  color: var(--brown2);
+  font-weight: bold;
+}
+.heading6 {
+  font-size: var(--heading6);
+  color: var(--brown2);
+  font-weight: bold;
+}
+.MiddleText {
+  font-size: var(--heading4);
+}
+/* 全網頁的grid style */
+.pageMargin {
+  margin: 20px 100px;
+}
+
+/* display樣式 */
+.displayFlex {
+  display: flex;
+  align-items: center;
+}
+.displayNone {
+  display: none;
+}
+/* 給icon套用的邊距 */
+.padding5px {
+  padding: 0px 5px;
+}
+
+/* --------------------------------- */
+
+/* header (Header.js) */
+header {
   width: 1243px;
   height: 60px;
   margin: 10px auto;
-
 }
 
-.logo{
+.logo {
   float: left;
   width: 80px;
   padding: 5px 10px;
 }
 
-.navLeft{
+.navLeft {
   float: left;
   padding: 10px 0px;
   font-size: 24px;
 }
 
-
-.navRight{
+.navRight {
   float: right;
   padding: 15px 25px;
 }
 
-nav a{
+nav a {
   font-weight: 700;
   text-decoration: none;
-  color: #795252;
+  color: var(--brown2);
 }
 
-main{
+/* Pages */
+
+main {
   width: 1243px;
   height: 737px;
   margin: 10px auto;
   padding: 20px;
-  border: 2px solid #795252 ;
-  border-radius: 15px;
+  border-radius: var(--desk-border-radius);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  color: var(--brown2);
+  font-weight: 700;
 }
 
-h1{
+h1 {
   text-align: center;
-  color: #795252;
+  color: var(--brown2);
+  padding: 30px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+hr {
+  width: 300px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  color: var(--main-color);
+}
+
+label {
+  margin: 5px;
+}
+
+input {
+  border-radius: var(--f2);
+  border: 2px solid var(--brown3);
+  color: var(--brown2);
+  width: 250px;
+}
+
+input:focus { 
+  outline: none;
+  border-color: var(--brown2);
+}
+
+input::placeholder {
+  color: var(--brown3);
+  font-size: var(--heading6);
+  padding: 10px;
+}
+
+.google {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--brown2);
+  border-radius: var(--desk-border-radius);
+  padding: 10px 20px;
+}
+
+.gender{
+  width: 50px;
 }
