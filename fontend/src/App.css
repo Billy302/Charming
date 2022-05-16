@@ -36,3 +36,50 @@
     transform: rotate(360deg);
   }
 }
+
+/* ============================= */
+
+header{
+  width: 1243px;
+  height: 60px;
+  margin: 10px auto;
+
+}
+
+.logo{
+  float: left;
+  width: 80px;
+  padding: 5px 10px;
+}
+
+.navLeft{
+  float: left;
+  padding: 10px 0px;
+  font-size: 24px;
+}
+
+
+.navRight{
+  float: right;
+  padding: 15px 25px;
+}
+
+nav a{
+  font-weight: 700;
+  text-decoration: none;
+  color: #795252;
+}
+
+main{
+  width: 1243px;
+  height: 737px;
+  margin: 10px auto;
+  padding: 20px;
+  border: 2px solid #795252 ;
+  border-radius: 15px;
+}
+
+h1{
+  text-align: center;
+  color: #795252;
+}
