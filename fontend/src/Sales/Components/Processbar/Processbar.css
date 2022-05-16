@@ -1,0 +1,29 @@
+*{
+    --bar-main-brown : #795252;
+    --bar-main-yellow : #FFD247;
+}
+.progressBar{
+    display: flex;
+    width: 980px;
+    height: 120px;
+    align-items: center;
+    text-align: center;
+}
+.progressRound {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--bar-main-yellow);
+}
+.progressLine {
+    width: 450px;
+    height: 20px;
+    margin: -20px;
+    margin-bottom: 25px;
+    background-color: var(--bar-main-yellow);
+    z-index: -1;
+}
+.progressActive{
+    background-color: var(--bar-main-brown);
+    z-index: 0;
+};

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .progressBar {
+            display: flex;
+            width: 980px;
+            height: 100px;
+            align-items: center;
+            text-align: center;
+        }
+        .progressRound {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: yellow;
+        }
+
+        .progressLine {
+            width: 450px;
+            height: 20px;
+            margin: -10px;
+            margin-bottom: 25px;
+            background-color: yellow;
+        }
+
+        .progressActive {
+            background-color: goldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progressBar">
+        <div>
+            <div class="progressRound progressActive"></div>
+            <div>步驟一</div>
+            <div>購物車</div>
+        </div>
+        <div class="progressLine progressActive"></div>
+        <div>
+            <div class="progressRound progressActive"></div>
+            <div>步驟二</div>
+            <div>填寫資料</div>
+        </div>
+        <div class="progressLine progressActive"></div>
+        <div>
+            <div class="progressRound progressActive"></div>
+            <div>步驟三</div>
+            <div>付款</div>
+        </div>
+    </div>
+    <script>
+        console.log(document.querySelectorAll('div'))
+    </script>
+</body>
+
+</html>
