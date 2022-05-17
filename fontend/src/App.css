@@ -37,19 +37,6 @@
   }
 }
 
-/* ============================= */
-
-:root {
- /* 顏色、邊框圓角度、 */
-  --maincolor: rgb(151, 102, 102);
-  --maincolordark: rgb(71, 41, 41);
-  --bordercolor: rgb(214, 197, 197);
-  --hovercolor: rgb(212, 212, 212);
-  --f0: 4rem;
-  --f1: 2.5rem;
-  --f2: 2rem;
-}
-
 /* 共通項目 */
 * {
   margin: 0px;
@@ -183,7 +170,7 @@ nav a {
 
 main {
   width: 1243px;
-  height: 737px;
+  /* height: 737px; */
   margin: 10px auto;
   padding: 20px;
   border-radius: var(--desk-border-radius);
@@ -220,13 +207,13 @@ label {
 }
 
 input {
-  border-radius: var(--f2);
+  border-radius: 15px;
   border: 2px solid var(--brown3);
   color: var(--brown2);
   width: 250px;
 }
 
-input:focus { 
+input:focus {
   outline: none;
   border-color: var(--brown2);
 }
@@ -245,6 +232,15 @@ input::placeholder {
   padding: 10px 20px;
 }
 
-.gender{
+/* .gender {
   width: 50px;
+} */
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.row img{
+  width: 90px;
 }

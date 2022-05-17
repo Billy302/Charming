@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MyButton from '../Components/MyButton'
 
 function SignUp() {
+  const [account, setAccount] = useState('')
+  const [accountMessage, setAccountMessage] = useState('')
+  const handleValueChange = (e) => {
+    setAccount(e.target.value)
+  }
+
+  const handleCheckAccount = async () => {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/users/checkAccount?account=${account}`
+    )
+    const results = await response.json()
+    if (results.total === 0) {
+      setAccountMessage('此帳號可以使用')
+    } else {
+      setAccountMessage('帳號已存在')
+    }
+  }
+
   return (
     <main>
       <h1>會員註冊</h1>
@@ -9,7 +27,7 @@ function SignUp() {
         <p>用以下帳號快速註冊</p>
         <div className="google">
           <a href="#">
-            <img src={require('../images/google.png')} />
+            <img src={require('../images/google.png')} alt="google" />
           </a>
         </div>
         {/* <div className="google">
@@ -22,7 +40,13 @@ function SignUp() {
         <p>或建立柴米帳號</p>
         <form>
           <label>帳號</label>
-          <input type="text" placeholder="帳號只能是英文、數字" />
+          <input
+            type="text"
+            placeholder="帳號只能是英文、數字"
+            value={account}
+            onChange={handleValueChange}
+            onBlur={handleCheckAccount}
+          />
           <label>密碼</label>
           <input
             type="password"

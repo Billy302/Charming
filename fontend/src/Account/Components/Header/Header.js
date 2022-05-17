@@ -1,4 +1,5 @@
 import React from 'react'
+import { RiEarthFill } from 'react-icons/ri'
 // import { Link } from "react-router-dom";
 
 function Header() {
@@ -7,7 +8,7 @@ function Header() {
       <nav>
         <img
           className="logo"
-          src={require('../images/charming_logo.png')}
+          src={require('../../images/charming_logo.png')}
           alt="logo"
         />
         <a className="navLeft" href="/">
@@ -27,6 +28,10 @@ function Header() {
         </a>
         <a className="navRight" href="/signin/identify">
           柴米人
+        </a>
+        <a className="navRight" href="/singup/info">
+          <RiEarthFill />
+          語言
         </a>
       </nav>
     </header>
