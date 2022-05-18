@@ -1,11 +1,11 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 function MyCollection() {
   return (
     <>
+      {/* 上方選單 */}
       <nav>
-        <ul className="row">
+        <ul>
           <li>
             <Link to="/account">會員中心</Link>
           </li>
@@ -20,6 +20,7 @@ function MyCollection() {
           </li>
         </ul>
       </nav>
+      {/* 內文 */}
       <main>
         <h1>我的收藏</h1>
       </main>

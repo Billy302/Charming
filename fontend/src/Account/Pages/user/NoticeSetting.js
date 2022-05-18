@@ -1,12 +1,11 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import MyButton from '../../Components/MyButton'
 
 function NoticeSetting() {
   return (
     <>
+      {/* 上方選單 */}
       <nav>
-        <ul className="row">
+        <ul>
           <li>
             <Link to="/account">會員中心</Link>
           </li>
@@ -21,19 +20,45 @@ function NoticeSetting() {
           </li>
         </ul>
       </nav>
-      <div className=".navLeft">
-        <ul>
-          <li>
-            <Link to="/account">會員中心</Link>
-          </li>
-          <li>
-            <Link to="/notice/setting">通知設定</Link>
-          </li>
-        </ul>
-      </div>
-      <main className=".navRight">
-        <h1>通知設定</h1>
-        <MyButton />
+
+      {/* 左側選單 */}
+      <aside>
+        <div className=".navLeft">
+          <ul>
+            <li>
+              <Link to="/account">會員中心</Link>
+            </li>
+            <li>
+              <Link to="/notice/setting">通知設定</Link>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      {/* 右側內文 */}
+      <main>
+        <section >
+          <h1>通知設定</h1>
+          <button>a</button>
+          <p>訂單更新通知</p>
+          <button>a</button>
+          <p>評論通知</p>
+          <button>a</button>
+          <p>追蹤的文章</p>
+          <button>a</button>
+          <p>追蹤柴米人</p>
+          <button>a</button>
+          <p>柴米主題活動</p>
+          <button>a</button>
+          <p>柴訊報報</p>
+          <button>a</button>
+          <p>柴社熱門文章</p>
+          <button>a</button>
+          <br />
+          <p>買家設定</p>
+          <p>訂單更新通知</p>
+          <button>a</button>
+        </section>
       </main>
     </>
   )

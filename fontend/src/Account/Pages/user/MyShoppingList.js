@@ -1,11 +1,11 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 function MyShoppingList() {
   return (
     <>
+      {/* 上方選單 */}
       <nav>
-        <ul className="row">
+        <ul>
           <li>
             <Link to="/account">會員中心</Link>
           </li>
@@ -20,6 +20,7 @@ function MyShoppingList() {
           </li>
         </ul>
       </nav>
+      {/* 內文 */}
       <main>
         <div className="memberCentre">
           <h1>購買清單</h1>

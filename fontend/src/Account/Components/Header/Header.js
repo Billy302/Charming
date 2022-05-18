@@ -1,38 +1,39 @@
+import style from './Header.module.css'
 import React from 'react'
-import { RiEarthFill } from 'react-icons/ri'
-// import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import { RiEarthFill } from 'react-icons/ri' //語言 icon
 
 function Header() {
   return (
-    <header>
-      <nav>
+    <header className={style.header}>
+      <nav className={style.nav}>
         <img
-          className="logo"
-          src={require('../../images/charming_logo.png')}
+          className={style.logo}
+          src={require('../../Images/charming_logo.png')}
           alt="logo"
         />
-        <a className="navLeft" href="/">
+        <Link to="/" className={style.navLeft}>
           柴米 Charming
-        </a>
-        <a className="navRight" href="/signup">
+        </Link>
+        <Link to="/signup" className={style.navRight}>
           註冊
-        </a>
-        <a className="navRight" href="/signin">
+        </Link>
+        <Link to="/signin" className={style.navRight}>
           登入
-        </a>
-        <a className="navRight" href="/signup/info">
+        </Link>
+        <Link to="/signup/info" className={style.navRight}>
           柴社
-        </a>
-        <a className="navRight" href="/signin/recover">
+        </Link>
+        <Link to="/signin/recover" className={style.navRight}>
           柴訊
-        </a>
-        <a className="navRight" href="/signin/identify">
+        </Link>
+        <Link to="/signin/identify" className={style.navRight}>
           柴米人
-        </a>
-        <a className="navRight" href="/singup/info">
+        </Link>
+        <Link to="/singup/info" className={style.navRight}>
           <RiEarthFill />
           語言
-        </a>
+        </Link>
       </nav>
     </header>
   )
