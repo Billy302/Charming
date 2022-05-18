@@ -6,7 +6,8 @@ import Communication from "./Home/pages/Communication";
 import Users from "./Home/pages/Users";
 import LoginHome from "./Home/pages/loginHome/LoginHome";
 import Portfolio from "./Home/pages/Portfolio";
-import Product from "./Home/pages/Product"
+// import Product from "./Home/pages/Product"
+import Product from "./Sales/Pages/Product";
 import ShoppingCar from "./Home/pages/ShoppingCar"
 import UnloginHome from "./Home/pages/unloginHome/UnloginHome"
 import { BrowserRouter as Router, Route,  Switch} from "react-router-dom"
