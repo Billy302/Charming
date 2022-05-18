@@ -1,17 +1,15 @@
 import React from "react";
 import './App.css';
-import Footer from './components/footer/Footer';
-import Blog from "./pages/Blog";
-import Communication from "./pages/Communication";
-import Login from "./pages/Login";
-import Users from "./pages/Users";
-import LoginHome from "./pages/loginHome/LoginHome";
-import Portfolio from "./pages/Portfolio";
-import Product from "./pages/Product"
-import ProductDetail from "./pages/ProductDetail"
-import ShoppingCar from "./pages/ShoppingCar"
-import UnloginHome from "./pages/unloginHome/UnloginHome"
-import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom"
+import Footer from './Home/components/footer/Footer';
+import Blog from "./Home/pages/Blog";
+import Communication from "./Home/pages/Communication";
+import Users from "./Home/pages/Users";
+import LoginHome from "./Home/pages/loginHome/LoginHome";
+import Portfolio from "./Home/pages/Portfolio";
+import Product from "./Home/pages/Product"
+import ShoppingCar from "./Home/pages/ShoppingCar"
+import UnloginHome from "./Home/pages/unloginHome/UnloginHome"
+import { BrowserRouter as Router, Route,  Switch} from "react-router-dom"
 
 function App() {
   return (
