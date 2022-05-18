@@ -1,4 +1,8 @@
 /* 共通項目 */
+*{
+  padding: 0;
+  margin: 0;
+}
 :root{
   /* 色票 */
   --white: #FFFFFF;
@@ -15,6 +19,7 @@
   --green1: #355F1C;
   --green2: #72925F;
   --green3: #B8D1A9;
+  --red:rgb(183, 32, 32);
   /* 字體大小 */
   --heading1: 7vmin;
   --heading2: 6vmin;
@@ -51,14 +56,14 @@ body {
   -webkit-font-smoothing: antialiased;
   /* -moz-osx-font-smoothing: grayscale; */
 }
-nav, hgroup{
+nav, hgroup, section{
   margin: 30px 100px;
 }
 img{
   width: 100%;
 }
 @media screen and (max-width:950px) {
-  nav, hgroup{
+  nav, hgroup, section{
     margin: 20px 30px;
   }
 }
