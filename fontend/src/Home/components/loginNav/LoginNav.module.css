@@ -1,0 +1,212 @@
+/* ————————————————通用————————————————— */
+  .heading1{
+    font-size:var(--heading1);
+    color: var(--brown2);
+    font-weight:bold;
+  }
+  .heading2{
+    font-size:var(--heading2);
+    color: var(--brown2);
+    font-weight:bold;
+  }
+  .heading3{
+    font-size:var(--heading3);
+    color: var(--brown2);
+    font-weight:bold;
+  }
+  .heading4{
+    font-size:var(--heading4);
+    color: var(--brown2);
+    font-weight:bold;
+  }
+  .heading5{
+    font-size:var(--heading5);
+    color: var(--brown2);
+    font-weight:bold;
+  }
+  .heading6{
+    font-size:var(--heading6);
+    color: var(--brown2);
+    font-weight:bold;
+  }
+  /* display樣式 */
+  .displayFlex{
+    display: flex;
+    align-items: center;
+  }
+  .displayNone{
+    display: none;
+  }
+  /* 給icon套用的邊距 */
+  .padding5px{
+    padding:0px 5px;
+  }
+/* ——————————————————————————————————————— */
+
+/* ———————————————登入後nav—————————————— */
+  .mainPage-header{
+      display: flex;
+      justify-content:space-between;
+      position: sticky;
+      top: 0;
+    }
+    /* 固定在最上層 */
+    .sticky{
+      position: sticky;
+      top: 0;
+      z-index:999;
+      background-color: white;
+      opacity: 0.8;
+    }
+    
+    .mainPage-logo{
+      width: 50px;
+    }
+    .mainPage-nav{
+      display: flex;
+      /* padding: 10px 0px; */
+      align-items: center;
+    }
+    .mainPage-nav li{
+      display: flex;
+      padding:0px 15px;
+      padding-bottom: 10px;
+      left: 10px;
+      color: var(--brown2);
+      font-size: var(--heading5);
+      font-weight:bold;
+      align-items: center;
+    }
+    .mainPage-nav a li:hover{
+      color: var(--brown3);
+    }
+
+    /* hover頭像顯示清單的參照物 */
+    .userButton{
+      position: relative;
+      width: 50px;
+      height: 50px;
+      border: 2px solid var(--brown2);
+      border-radius: 50px;
+      overflow: hidden;
+      background-color: var(--brown4);
+    }
+/* ——————————————————————————————————————— */
+/* hover頭像時出現時才出現的會員表單 */
+.showList{
+  padding-bottom: 10px;
+}
+.showList:hover .navList{
+  display: block;
+}
+ .navList{
+  width: 150px;
+  position: absolute;
+  right: -40px;
+  top: 60px;
+  z-index: 1;
+  display: none;
+  border: 1px solid var(--gray3);
+  border-radius:15px;
+ }
+ .navList::before{
+   position: absolute;
+   top: -10px;
+   left: 60px;
+   content: '';
+   height: 0;
+   width: 0;
+   border-bottom: 10px solid var(--brown3);
+   border-right: 10px solid transparent;
+   border-left: 10px solid transparent;
+ }
+ .navList a{
+   width: 100%;
+   padding:10px;
+   display: block;
+   background-color: var(--white);
+   border: none;
+   border-bottom:1px solid var(--gray3);
+   border-radius: 15px;
+   color: var(--brown1);
+   font-size: var(--heading4);
+   white-space:nowrap;
+   text-align: center;
+ }
+ .navList a:last-child{
+   background-color: var(--brown2);
+   color: var(--white);
+  }
+  .navList a:hover{
+    background-color: var(--brown3);
+    color: var(--brown2);
+  }
+/* ——————————————————————————————————————— */
+
+/* ——————————————搜尋條————————————————— */
+    .searchBar{
+      display: flex;
+      align-items: center;
+    }
+    .searchInput{
+      max-width: 60%;
+      min-width: 30%;
+      height: 35px;
+      border: 2px solid var(--brown2);
+      border-radius: 15px 0px 0px 15px;
+      padding:0px 15px;
+      font-size: var(--heading5);
+      outline: none;
+    }
+    .searchButton{
+      color: var(--white);
+      font-size: var(--heading5);
+      align-items: center;
+      width: 30%;
+      height: 35px;
+      border: 2px solid var(--brown2);
+      border-left: none;
+      border-radius: 0px 15px 15px 0px;
+      background-color: var(--brown2);
+    }
+  .searchButton:hover{
+    background-color: var(--brown1);
+  }
+/* ——————————————————————————————————————— */
+
+/* —————————往下滾動時滑時出現的種類選項———————— */
+  .itemLine{
+    display: none;
+  }
+  .itemList{
+    display: none;
+    justify-content: space-evenly;
+  }
+  .itemList li{
+    color: var(--brown2);
+    padding: 5px 30px;
+    margin:5px;
+    border-radius: 50px;
+  }
+  .itemList li:hover{
+    background-color: var(--brown3);
+  }
+  .mainPage-nav select {
+    background: transparent;
+    width: 75px;
+    font-size: var(--heading5);
+    border: none;
+    height: 35px; 
+    /* overflow: hidden; */
+    outline: none;
+    appearance: none;
+    color: var(--brown2);
+    object-fit: contain;
+  padding: 0px 5px;
+  font-weight:bold;
+ } 
+/* ——————————————————————————————————————— */
+
+ .menuShowUp:hover{
+   display: block;
+ }
