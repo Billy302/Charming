@@ -6,8 +6,8 @@ function Cart4() {
   return (
     //JSX
     <>
-      <Processbar step="3" />
       <h3>購物車-訂單 Page</h3>
+      <Processbar step="3" />
     </>
   )
 }

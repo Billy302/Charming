@@ -10,10 +10,10 @@ import Cart4 from './Sales/Pages/Cart_4';
 
 function App() {
   return <>
-    <Cart1 />
-    {/* <Cart2 />
-    <Cart3 />
-    <Cart4 /> */}
+    {/* <Cart1 /> */}
+    {/* <Cart2 /> */}
+    {/* <Cart3 /> */}
+    <Cart4 /> 
   </>
 }
 
