@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+
+
+<script>
+    const qs1 = '?a=12&b=34';
+    const qs2 = 'c=56&d=hello';
+
+    const u1 = new URLSearchParams(qs1);
+    const u2 = new URLSearchParams(qs2);
+
+    for(let i of u1){
+        console.log(i);  // ['a', '12']
+    }
+    console.log('------------------');
+    console.log(u2.get('d'));
+    console.log(u1.toString());
+    console.log(u2.toString());
+    console.log('------------------');
+
+    const u3 = new URLSearchParams({name:'mike', age:23});
+    console.log(u3.toString());
+    const u4 = new URLSearchParams();
+    u4.set('hi', 'hello');
+    u4.set('id', 123);
+    console.log(u4.toString());
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

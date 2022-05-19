@@ -1,7 +1,2 @@
-# Charming
-## Index
-## About Charming/Collection
-## Tech Applied
-## Features
-## Source
-## Others
+# Charming_InterimReport
+iSpan 's  first group project

@@ -1,0 +1,18 @@
+
+GET http://localhost/proj/practice/a20211222-01-session.php
+Cookie: PHPSESSID=sd9sdr8l2dchhupbn8a14pbkiq;
+
+###
+
+
+GET http://localhost/proj/practice/a20211222-01-session.php
+
+
+###
+
+
+
+
+
+
+
