@@ -4,8 +4,8 @@
 // 先用JSON假資料取代
 
 import React from 'react'
-import Processbar from '../Components/Processbar/Processbar'
-import data from '../Json/Cart.json'
+import Processbar from '../../Components/Processbar/Processbar'
+import data from '../../Json/Cart.json'
 import './Cart.css'
 // import { useHistory } from 'react-router-dom'
 
@@ -39,13 +39,13 @@ function Cart1() {
         <tbody>
           {data.map((v, i) => {
             return (
-              <tr key={v.id} className="blockPicture">
-                <th scope="row">{v.id}</th>
+              <tr key={i} className="blockPicture">
+                <th scope="row">{i + 1}</th>
                 <td>
-                  <img src={require(`../Picture/${v.pic}`)} alt="a" />
+                  <img src={require(`../../Picture/${v.pic_path}`)} alt="a" />
                 </td>
-                <td>{v.username}</td>
-                <td>{v.itemname}</td>
+                <td>{v.author_name}</td>
+                <td>{v.product_name}</td>
                 <td>{v.price}</td>
                 <td>
                   <button className="blockButton">刪除</button>

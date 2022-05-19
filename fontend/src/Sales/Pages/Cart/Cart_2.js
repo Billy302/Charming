@@ -3,9 +3,9 @@
 // 輸入框的value要改
 import React from 'react'
 import { useState } from 'react'
-import Processbar from '../Components/Processbar/Processbar'
-import data from '../Json/Cart.json'
-import number from '../Json/number.json'
+import Processbar from '../../Components/Processbar/Processbar'
+import data from '../../Json/Cart.json'
+import number from '../../Json/number.json'
 import './Cart.css'
 // import { useHistory } from 'react-router-dom'
 
@@ -21,7 +21,6 @@ function Cart2() {
   for (let i = 0; i < data.length; i++) {
     totalPrice += parseInt(data[i].price)
   }
-
 
   return (
     <>
@@ -43,7 +42,7 @@ function Cart2() {
         <div>聯絡方式</div>
         <input
           type="text"
-          value={number[0].telephone}
+          value={number[0].mobile}
           onChange={(e) => {
             setInputText(e.target.value)
           }}
@@ -80,10 +79,10 @@ function Cart2() {
         <tbody>
           {data.map((v, i) => {
             return (
-              <tr key={v.id} className="blockNoPicture">
-                <th scope="row">{v.id}</th>
-                <td>{v.username}</td>
-                <td>{v.itemname}</td>
+              <tr key={i} className="blockNoPicture">
+                <th scope="row">{i + 1}</th>
+                <td>{v.author_name}</td>
+                <td>{v.product_name}</td>
                 <td>{v.price}</td>
               </tr>
             )
