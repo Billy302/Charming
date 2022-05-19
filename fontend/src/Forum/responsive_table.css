@@ -1,0 +1,177 @@
+
+
+.first-table {
+    margin-top: 0px;
+    margin-left: 50px;
+    width: 1243px;
+    
+}
+.nav-link{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.tn-warning{
+    border: 50%;
+}
+.artActivitythree, .artActivityone {
+    width: 350px;
+    height: 230px;
+    background-color: #F4EFEF;
+    border-radius: 15px;
+    
+}
+
+.artActivitytwo {
+    width: 350px;
+    height: 230px;
+    background-color: #D6C5C5;
+    border-radius: 15px;
+    
+}
+
+
+.mr-3{
+    width: 320px;
+    height: 200px;
+    border-radius: 5%;
+    margin: 15px;
+}
+
+.artCat{
+    border: 10px;
+}
+
+.addartForm{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #795252;
+    background-color: whitesmoke;
+    /* border: 0.1px solid #472929; */
+    border-radius: 15px;
+    padding: 50px;
+}
+
+
+
+.btn-success{
+    background-color: #795252 !important;
+    border: #D6C5C5;
+    border-radius: 5% 5% 5% 5%;
+    
+} 
+
+.btn-primary{
+    background-color: #D6C5C5 !important;
+    color: #795252;
+    border: #D6C5C5;
+    border-radius: 5% 5% 5% 5%;
+}
+
+.btn-secondary{
+    background-color: #D6C5C5 !important;
+    color: #795252;
+    border: #D6C5C5;
+    border-radius: 5% 5% 5% 5%;
+}
+
+.allartPage{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.media-body{
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #472929;
+    background-color: #D6C5C5;
+    padding: 20px ;
+    margin: 10px 10px 5px;
+    border-radius: 15px;
+}
+
+.media-bodytwo{
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #472929;
+    background-color: #F4EFEF;
+    padding: 20px ;
+    width: 1000px;
+    margin: 10px 10px 5px;
+    border-radius: 15px;
+}
+
+.table-striped{
+   
+}
+
+.table-striped>tbody>tr:nth-child(odd) {
+    background-color: #F4EFEF;
+}
+
+
+/* 彈跳視窗開始 */
+/* Button used to open the contact form - fixed at the bottom of the page */
+
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: fixed;
+    bottom: 270px;
+
+    left: 50px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    width: 1243px;  
+    
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  
+ 
+
+/* 彈跳視窗結束 */
