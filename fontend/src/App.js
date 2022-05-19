@@ -28,7 +28,6 @@ import Cart1 from "./Sales/Pages/Cart_1";
 import Cart2 from "./Sales/Pages/Cart_2";
 import Cart3 from "./Sales/Pages/Cart_3";
 import Cart4 from "./Sales/Pages/Cart_4";
-import EditProduct from "./Sales/Pages/EditProduct";
 import MySale from "./Sales/Pages/MySale";
 import Order from "./Sales/Pages/Order";
 import OrderList from "./Sales/Pages/OrderList";
