@@ -16,19 +16,13 @@ function Cart2() {
 
   const [inputText, setInputText] = useState('')
   // 計算購物車，價格總數
-  // 已取得購物車資料，建一個空陣列，裡面存放每一筆商品價格
-  // const totalPrice = []
+  // 已取得購物車資料，用迴圈重複加總
   let totalPrice = 0
   for (let i = 0; i < data.length; i++) {
-    // totalPriceArray.push(parseInt(data[i].price))
     totalPrice += parseInt(data[i].price)
   }
-  // 使用reduce計算，a + b => 一直加下去
 
-  // const totalPriceCount = totalPriceArray.reduce(
-  //   (v1, v2) => v1 + v2,
-  //   totalPrice
-  // )
+
   return (
     <>
       <h3>購物車-基本資料 Page</h3>
