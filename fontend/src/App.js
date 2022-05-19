@@ -1,58 +1,32 @@
 import React from "react";
-import './App.css';
-import Footer from './Home/components/footer/Footer';
-import Blog from "./Home/pages/Blog";
-import Communication from "./Home/pages/Communication";
-import Users from "./Home/pages/Users";
-import LoginHome from "./Home/pages/loginHome/LoginHome";
-import Portfolio from "./Home/pages/Portfolio";
-// import Product from "./Home/pages/Product"
-import Product from "./Sales/Pages/Product";
-import ShoppingCar from "./Home/pages/ShoppingCar"
-import UnloginHome from "./Home/pages/unloginHome/UnloginHome"
-import { BrowserRouter as Router, Route,  Switch} from "react-router-dom"
+import "./App.css";
+import Footer from "./Home/Components/Footer/Footer";
+import Blog from "./Blog/Pages/Blog";
+import Communication from "./Home/Pages/Communication";
+import Users from "./Home/Pages/Users";
+import LoginHome from "./Home/Pages/LoginHome/LoginHome";
+import Portfolio from "./Home/Pages/Portfolio";
+import Product from "./Home/Pages/Product/Product";
+import ShoppingCar from "./Home/Pages/ShoppingCar";
+import UnloginHome from "./Home/Pages/UnloginHome/UnloginHome";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className={App}>
-      <Router>
-        <Switch>
-          <Route path="/Blog">
-            <Blog />
-          </Route>
-          
-          <Route path="/LoginHome">
-            <LoginHome />
-          </Route>
-          <Route path="/Communication">
-            <Communication />
-          </Route>
-          <Route path="/Product">
-            <Product />
-          </Route>
-          <Route path="/UnloginHome">
-            <UnloginHome />
-          </Route>
-          <Route path="/Portfolio">
-            <Portfolio />
-          </Route>
-          <Route path="/Login">
-            <LoginHome />
-          </Route>
-          <Route path="/LoginHome">
-            <LoginHome />
-          </Route>
-          <Route path="/ShoppingCar">
-            <ShoppingCar />
-          </Route>
-          <Route path="/Users">
-            <Users />
-          </Route>
-          <Route exact path="/">
-            <UnloginHome />
-          </Route>
-        </Switch>
-      </Router>
+    <div>
+      <Routes>
+        <Route path="/Blog" element={<Blog />} />
+        <Route path="/LoginHome" element={<LoginHome />} />
+        <Route path="/Communication" element={<Communication />} />
+        <Route path="/Product" element={<Product />} />
+        <Route path="/UnloginHome" element={<UnloginHome />} />
+        <Route path="/Login" element={<LoginHome />} />
+        <Route path="/Portfolio" element={<Portfolio />} />
+        <Route path="/LoginHome" element={<LoginHome />} />
+        <Route path="/ShoppingCar" element={<ShoppingCar />} />
+        <Route path="/Users" element={<Users />} />
+        <Route path="/" element={<UnloginHome />} />
+      </Routes>
       <Footer />
     </div>
   );
