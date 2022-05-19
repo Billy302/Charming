@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Processbar.css'
 function Processbar(props) {
   const { step } = props
@@ -24,7 +24,7 @@ function Processbar(props) {
             <div className="progressRound"></div>
           )}
           <div>步驟二</div>
-          <div>填寫資料</div>
+          <div>填資料</div>
         </div>
         {start > 2 ? (
           <div className="progressLine progressActive"></div>

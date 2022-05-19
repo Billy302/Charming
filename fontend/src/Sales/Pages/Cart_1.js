@@ -1,11 +1,11 @@
 // 未完成 功能：讀取購物車，Session productList(key)  / productID(key)
 // 未完成 功能：刪除購物車，Session productList(key)  / productID(key)
-// 整體未置中
 // useHistory故障
+// 先用JSON假資料取代
 
 import React from 'react'
 import Processbar from '../Components/Processbar/Processbar'
-import data from '../Json/test.json'
+import data from '../Json/Cart.json'
 import './Cart.css'
 // import { useHistory } from 'react-router-dom'
 
@@ -59,7 +59,7 @@ function Cart1() {
         <button
           className="button"
           onClick={() => {
-            // 回首頁 push 尚未填寫
+            // 到下一頁
             // history.push('路徑')
           }}
         >

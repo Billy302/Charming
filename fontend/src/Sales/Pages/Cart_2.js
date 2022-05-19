@@ -4,43 +4,62 @@
 import React from 'react'
 import { useState } from 'react'
 import Processbar from '../Components/Processbar/Processbar'
-import data from '../Json/test.json'
+import data from '../Json/Cart.json'
+import number from '../Json/number.json'
 import './Cart.css'
+// import { useHistory } from 'react-router-dom'
 
 function Cart2() {
+  // useEffect 取會員個人資料 + 讀取購物車
+
+  // let history = useHistory()
+
   const [inputText, setInputText] = useState('')
+  // 計算購物車，價格總數
+  // 已取得購物車資料，建一個空陣列，裡面存放每一筆商品價格
+  // const totalPrice = []
+  let totalPrice = 0
+  for (let i = 0; i < data.length; i++) {
+    // totalPriceArray.push(parseInt(data[i].price))
+    totalPrice += parseInt(data[i].price)
+  }
+  // 使用reduce計算，a + b => 一直加下去
+
+  // const totalPriceCount = totalPriceArray.reduce(
+  //   (v1, v2) => v1 + v2,
+  //   totalPrice
+  // )
   return (
-    //JSX
     <>
       <h3>購物車-基本資料 Page</h3>
       {/* 進度條 */}
       <Processbar step="2" />
       {/* 輸入框 */}
-      <section id="inputName" className='blockText'>
+      <section id="inputName" className="blockText">
         <div>姓名</div>
         <input
           type="text"
-          value={inputText}
+          value={number[0].username}
           onChange={(e) => {
             setInputText(e.target.value)
           }}
         />
       </section>
-      <section id="inputTel" className='blockText'>
+      <section id="inputTel" className="blockText">
         <div>聯絡方式</div>
         <input
           type="text"
-          value={inputText}
+          value={number[0].telephone}
           onChange={(e) => {
             setInputText(e.target.value)
           }}
         />
       </section>
-      <section id="inputPrice" className='blockText'>
+      <section id="inputPrice" className="blockText">
         <div>總價</div>
         <input
           type="text"
-          value={inputText}
+          value={totalPrice}
           onChange={(e) => {
             setInputText(e.target.value)
           }}
@@ -82,8 +101,9 @@ function Cart2() {
         <button
           className="button"
           onClick={() => {
-            // 回首頁 push 尚未填寫
+            // 到下一頁
             // history.push('路徑')
+            // 將個人資料存入Session
           }}
         >
           下一步
@@ -91,7 +111,8 @@ function Cart2() {
         <button
           className="button"
           onClick={() => {
-            // history.goback()
+            // 回首頁
+            // history.push('路徑')
           }}
         >
           回上頁
