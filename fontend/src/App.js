@@ -1,30 +1,35 @@
 import React from "react";
 import "./App.css";
-import Footer from "./Home/Components/Footer/Footer";
-import Blog from "./Blog/Pages/Blog";
-import Communication from "./Home/Pages/Communication";
-import Users from "./Home/Pages/Users";
-import LoginHome from "./Home/Pages/LoginHome/LoginHome";
-import Portfolio from "./Home/Pages/Portfolio";
-import Product from "./Home/Pages/Product/Product";
-import ShoppingCar from "./Home/Pages/ShoppingCar";
-import UnloginHome from "./Home/Pages/UnloginHome/UnloginHome";
 import { Route, Routes } from "react-router-dom";
+
+//component
+import Footer from "./Home/Components/Footer/Footer";
+
+//首頁
+import LoginHome from "./Home/Pages/LoginHome/LoginHome";
+import UnloginHome from "./Home/Pages/UnloginHome/UnloginHome";
+
+//購物車頁
+import Cart1 from "./Sales/Pages/Cart_1";
+import Cart2 from "./Sales/Pages/Cart_2";
+import Cart3 from "./Sales/Pages/Cart_3";
+import Cart4 from "./Sales/Pages/Cart_4";
+import EditProduct from "./Sales/Pages/EditProduct";
+import MySale from "./Sales/Pages/MySale";
+import Order from "./Sales/Pages/Order";
+import OrderList from "./Sales/Pages/OrderList";
+
+//討論區
+
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/Blog" element={<Blog />} />
         <Route path="/LoginHome" element={<LoginHome />} />
-        <Route path="/Communication" element={<Communication />} />
-        <Route path="/Product" element={<Product />} />
         <Route path="/UnloginHome" element={<UnloginHome />} />
         <Route path="/Login" element={<LoginHome />} />
-        <Route path="/Portfolio" element={<Portfolio />} />
         <Route path="/LoginHome" element={<LoginHome />} />
-        <Route path="/ShoppingCar" element={<ShoppingCar />} />
-        <Route path="/Users" element={<Users />} />
         <Route path="/" element={<UnloginHome />} />
       </Routes>
       <Footer />
