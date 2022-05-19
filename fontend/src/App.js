@@ -53,14 +53,14 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route
           path="/signin"
-          element={<SignIn setAuth={setAuth} auth={auth} />}
+          // element={<SignIn setAuth={setAuth} auth={auth} />}
         />
 
         {/* -------user 登入後頁面------- */}
         <Route path="/shoppinglist" element={<MyShoppingList />} />
         <Route path="/notice/setting" element={<NoticeSetting />} />
         <Route path="/collection" element={<MyCollection />} />
-        <Route path="/account" element={<MyAccount auth={auth} />} />
+        {/* <Route path="/account" element={<MyAccount auth={auth} />} /> */}
         <Route path="/notice" element={<MyNotice />} />
 
         {/* --------商品頁面-------- */}
