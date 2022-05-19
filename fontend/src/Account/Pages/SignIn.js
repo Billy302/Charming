@@ -8,10 +8,10 @@ function SignIn(props) {
   const { auth, setAuth } = props
 
   // useHistory版本已被useNavigate取代
-  const history = useHistory()
+  const navigate = useNavigate()
   return (
     <>
-      <Header />
+    <Header />
       <main className={style.main}>
         <h1 className={style.h1}>登入</h1>
         <p>用以下帳號繼續</p>
@@ -39,9 +39,9 @@ function SignIn(props) {
           className={style.button}
           onClick={() => {
             setAuth(!auth)
-
+            
             alert('登入成功')
-
+            
             navigate('/account')
           }}
         >
@@ -52,7 +52,7 @@ function SignIn(props) {
           還不是會員嗎? <Link to="/signup">立即註冊</Link>
         </p>
       </main>
-    </>
+          </>
   )
 }
 
