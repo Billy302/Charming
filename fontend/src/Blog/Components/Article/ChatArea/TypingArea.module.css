@@ -1,0 +1,65 @@
+.typing-area {
+    /* width: 70%; */
+    margin-left: 9rem;
+    /* display: flex; */
+    /* justify-content: space-between; */
+}
+
+.typing-area label {
+    font-size: 2rem;
+}
+
+.typing-area input {
+    border: none;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    /* background-color: rgba($color-white, 0.5); */
+    border-bottom: 3px solid transparent;
+    width: 50%;
+    /* display: inline; */
+}
+
+.typing-area input:focus {
+    outline: none;
+    box-shadow: 2rem 2rem 3rem rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid var(--maincolor);
+}
+
+.typing-area button {
+    margin-left: 3rem;
+}
+
+/* CSS */
+.typing-area button {
+    background-color: #fff;
+    border: 1px solid #d5d9d9;
+    border-radius: 8px;
+    box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+    box-sizing: border-box;
+    color: #0f1111;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Amazon Ember', sans-serif;
+    font-size: 13px;
+    line-height: 29px;
+    padding: 0 10px 0 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    width: 100px;
+}
+
+.typing-area button:hover {
+    background-color: #f7fafa;
+}
+
+.typing-area button:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+    outline: 0;
+}
