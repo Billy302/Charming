@@ -1,0 +1,32 @@
+.wrap {
+  padding: 5px 0;
+}
+
+.breadcrumb {
+  margin: auto;
+  display: flex;
+}
+
+.breadcrumb li {
+  padding: 0 20px;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: var(--brown3);
+}
+
+.breadcrumb a:hover,
+.breadcrumb li:last-child a {
+  color: var(--brown2);
+}
+
+.breadcrumb li + li {
+  padding-left: 0;
+}
+
+.breadcrumb li + li:before {
+  content: '>';
+  color: var(--brown2);
+  margin-right: 20px;
+}

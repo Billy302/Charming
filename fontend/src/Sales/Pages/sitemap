@@ -1,0 +1,26 @@
+商品總攬 sale/product
+=> product
+商品詳細 sale/product?id=
+=>productList
+
+購物車-總攬 sale/cart/1
+=>Cart_1
+購物車-基本資料 sale/cart/2
+=>Cart_2
+購物車-結帳 sale/cart/3
+=>Cart_3
+購物車-訂單 sale/cart/4
+=>Cart_4
+
+To B - 個人商品總攬 BtobPage/MyProduct
+=>MyProduct
+To B - 個人銷售紀錄 BtobPage/MySale
+=>MySale
+To B - 新增/修改商品 BtobPage/EditProduct
+=>EditProduct
+
+
+To C -購買清單-總攬  BtocPage/Order
+=>OrderList
+To C -購買清單-詳細 BtocPage/Order?id=
+=>Order
