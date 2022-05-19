@@ -1,14 +1,14 @@
 import style from './Pages.module.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import MyButton from '../Components/MyButton/MyButton'
 
 function SignIn(props) {
   const { auth, setAuth } = props
 
   // useHistory版本已被useNavigate取代
-  const navigate = useNavigate()
+  const history = useHistory()
   return (
     <main className={style.main}>
       <h1 className={style.h1}>登入</h1>
@@ -39,7 +39,7 @@ function SignIn(props) {
 
           alert('登入成功')
 
-          navigate('/account')
+          history.push('/account')
         }}
       >
         {auth ? '登出' : '會員登入'}

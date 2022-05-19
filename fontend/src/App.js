@@ -1,8 +1,9 @@
 import './App.css'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import React from 'react'
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Container } from 'react-bootstrap'
-import { Routes, Route } from 'react-router-dom'
-// import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom'
+// import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 //Pages
 import Home from './Account/Pages/Home'
@@ -25,45 +26,68 @@ import Footer from './Account/Components/Footer/Footer'
 import '../src/Account/Components/MyButton/MyButton'
 import { useState } from 'react'
 import NoticeSetting from './Account/Pages/User/NoticeSetting'
+import { Switch } from 'react-router-dom'
 
 function App() {
   const [auth, setAuth] = useState(false)
 
   return (
     // 連結要從長排到短
-    <Container>
-      {/* <UserHeader /> */}
+    <>
       <Header />
-      <Routes>
-        {/* --------註冊及登入----- */}
-        {/* http://localhost:3000/signin/identify */}
-        <Route path="/signin/identify" element={<SignInIdentify />} />
-        {/* http://localhost:3000/signin/recover */}
-        <Route path="/signin/recover" element={<SignInRecover />} />
-        {/* http://localhost:3000/signup/info */}
-        <Route path="/signup/info" element={<SignUpInfo />} />
-        {/* http://localhost:3000/signup */}
-        <Route path="/signup" element={<SignUp />} />
-        {/* http://localhost:3000/signin */}
-        <Route path="/signin"
-          element={<SignIn setAuth={setAuth} auth={auth} />} />
-        {/* http://localhost:3000 */}
-        <Route path="/" element={<Home auth={auth} />} />
+      <Router>
+        <Switch>
+          {/* --------註冊及登入----- */}
+          {/* http://localhost:3000/signin/identify */}
+          <Route path="/signin/identify">
+            <SignInIdentify />
+          </Route>
+          {/* http://localhost:3000/signin/recover */}
+          <Route path="/signin/recover">
+            <SignInRecover />
+          </Route>
+          {/* http://localhost:3000/signup/info */}
+          <Route path="/signup/info">
+            <SignUpInfo />
+          </Route>
+          {/* http://localhost:3000/signup */}
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          {/* http://localhost:3000/signin */}
+          <Route path="/signin">
+            <SignIn setAuth={setAuth} auth={auth} />
+          </Route>
+          {/* http://localhost:3000 */}
+          <Route path="/">
+            <Home auth={auth} />
+          </Route>
 
-        {/* -------user------- */}
-        {/* http://localhost:3000/shoppinglist */}
-        <Route path="/shoppinglist" element={<MyShoppingList />} />
-        {/* http://localhost:3000/notice/setting */}
-        <Route path="/notice/setting" element={<NoticeSetting />} />
-        {/* http://localhost:3000/collection */}
-        <Route path="/collection" element={<MyCollection />} />
-        {/* http://localhost:3000/account */}
-        <Route path="/account" element={<MyAccount auth={auth} />} />
-        {/* http://localhost:3000/notice */}
-        <Route path="/notice" element={<MyNotice />} />
-      </Routes>
-      {/* <Footer /> */}
-    </Container>
+          {/* -------user------- */}
+          {/* http://localhost:3000/shoppinglist */}
+          <Route path="/shoppinglist">
+            <MyShoppingList />
+          </Route>
+          {/* http://localhost:3000/notice/setting */}
+          <Route path="/notice/setting">
+            <NoticeSetting />
+          </Route>
+          {/* http://localhost:3000/collection */}
+          <Route path="/collection">
+            <MyCollection />
+          </Route>
+          {/* http://localhost:3000/account */}
+          <Route path="/account">
+            <MyAccount auth={auth} />
+          </Route>
+          {/* http://localhost:3000/notice */}
+          <Route path="/notice">
+            <MyNotice />
+          </Route>
+        </Switch>
+      </Router>
+      <Footer />
+    </>
   )
 }
 
