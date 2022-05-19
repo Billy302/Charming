@@ -1,15 +1,15 @@
 import React from "react";
 import './App.css';
-import Footer from './Home/components/footer/Footer';
+import Footer from './Home/Components/Footer/Footer';
 import Blog from "./Home/pages/Blog";
 import Communication from "./Home/pages/Communication";
 import Users from "./Home/pages/Users";
-import LoginHome from "./Home/pages/loginHome/LoginHome";
+import LoginHome from "./Home/Pages/LoginHome/LoginHome";
 import Portfolio from "./Home/pages/Portfolio";
 // import Product from "./Home/pages/Product"
 import Product from "./Sales/Pages/Product";
 import ShoppingCar from "./Home/pages/ShoppingCar"
-import UnloginHome from "./Home/pages/unloginHome/UnloginHome"
+import UnloginHome from "./Home/Pages/UnloginHome/UnloginHome"
 import { BrowserRouter as Router, Route,  Switch} from "react-router-dom"
 
 function App() {
