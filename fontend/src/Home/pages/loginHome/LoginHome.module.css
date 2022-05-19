@@ -24,7 +24,8 @@
 
 .cardFlex {
     display: flex;
-    overflow: scroll;
+    /* overflow: scroll; */
+    flex-wrap: wrap;
 }
 .cardFlex::-webkit-scrollbar {
     display: none; /* Chrome Safari */
