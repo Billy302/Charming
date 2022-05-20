@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
-import UserHeader from '../../Components/UserHeader/UserHeader'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb'
 import Footer from '../../Components/Footer/Footer'
 
 function MyCollection() {
   return (
     <>
-      <UserHeader />
+      <LoginNav />
       <BreadCrumb />
       {/* 上方選單 */}
       <nav>

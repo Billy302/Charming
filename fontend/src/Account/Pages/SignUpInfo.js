@@ -1,12 +1,12 @@
 import style from './SignUpInfo.module.css'
 import React from 'react'
-import Header from '../Components/Header/Header'
+import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
 import MyButton from '../Components/MyButton/MyButton'
 
 function SignUpInfo() {
   return (
     <>
-      <Header />
+      <UnloginNav />
       <main className={style.auto}>
         <h1 className={style.h1}>基本資料</h1>
         <form className={style.form}>

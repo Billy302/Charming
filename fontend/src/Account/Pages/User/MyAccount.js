@@ -2,9 +2,8 @@ import React from 'react'
 import style from './User.module.css'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import UserHeader from '../../Components/UserHeader/UserHeader'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb'
-import Footer from '../../Components/Footer/Footer'
 
 function MyAccount(props) {
   const location = useLocation()
@@ -14,7 +13,7 @@ function MyAccount(props) {
 
   return (
     <>
-      <UserHeader />
+      <LoginNav />
       <BreadCrumb />
       {/* 上方選單 */}
       <nav className={style.navLeft}>
