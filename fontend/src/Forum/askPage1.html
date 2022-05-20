@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./responsive_table.css">
+
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                aria-controls="nav-home" aria-selected="true">討 論 區</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                aria-controls="nav-profile" aria-selected="false">活 動 與 展 覽</a>
+
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                aria-controls="nav-contact" aria-selected="false"></a>
+
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                aria-controls="nav-contact" aria-selected="false"></a>
+
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                aria-controls="nav-contact" aria-selected="false"></a>
+
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                aria-controls="nav-contact" aria-selected="false"></a>
+
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                aria-controls="nav-contact" aria-selected="false"></a>
+
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                aria-controls="nav-contact" aria-selected="false"></a>
+
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                aria-controls="nav-contact" aria-selected="false"></a>
+
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                aria-controls="nav-contact" aria-selected="false"></a>
+
+
+            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                aria-controls="nav-contact" aria-selected="false"></a>
+
+
+            <a class="nav-item nav-link" id="nav-addart-tab" data-toggle="tab" href="#nav-addart" role="tab"
+                aria-controls="nav-addart" aria-selected="false">
+                <button type="button" class="btn btn-secondary" href="#nav-addart">+ 新增活動與展覽</button>
+            </a>
+
+
+
+        </div>
+    </nav>
+
+    <div class="first-table">
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">問題</th>
+                            <th scope="col">類別</th>
+                            <th scope="col">發表者</th>
+                            <th scope="col">發表日期</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>沒有作品集,如何開始接案 ?</td>
+                            <td>接案前</td>
+                            <td>歐芷晴</td>
+                            <td>2022/4/15</td>
+                            <td><button type="button" class="btn btn-warning" value="q1web" onclick="location.href='q1.html'">回應</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>如何和強勢的客戶溝通 ?</td>
+                            <td>接案中</td>
+                            <td>費鵬旭</td>
+                            <td>2022/4/15</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>客戶因不明因素給負評,如何挽救 ?</td>
+                            <td>接案後</td>
+                            <td>卓逸朗</td>
+                            <td>2022/4/15</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>如何評估接案預算 ?</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>Otto</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>作品困難度比預期中的高,是否該放棄?</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>Otto</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <!-- <tr>
+                            <th scope="row">6</th>
+                            <td>客戶消失且沒有付款,如何保障自己的權益 ?</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>Otto</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>如何兼顧進修與接案工作?</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>Otto</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>自由接案者的平均時薪?</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>Otto</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>如何開拓國外客戶市場?</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>Otto</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>什麼樣特質的人適合長久接案?</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            <td>Otto</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr> -->
+
+
+
+                        <!-- <tr>
+                <th scope="row">11</th>
+                <td>接案工作容易面臨受騙的幾件事?</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>Otto</td>
+                <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+            </tr>
+
+            <tr>
+                <th scope="row">12</th>
+                <td>如何保持創作靈感和動力?</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>Otto</td>
+                <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+            </tr>
+
+            <tr>
+                <th scope="row">13</th>
+                <td>顧客的想法相當落伍,如何委婉地告訴他?</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>Otto</td>
+                <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+            </tr>
+
+            <tr>
+                <th scope="row">14</th>
+                <td>快三十歲了回歸職場,該注意些什麼?</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>Otto</td>
+                <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+            </tr>
+
+            <tr>
+                <th scope="row">15</th>
+                <td>自由接案者的夢想是否不切實際?</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>Otto</td>
+                <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+            </tr>  -->
+                    </tbody>
+                </table>
+
+                <!-- 頁碼顯示 -->
+
+                <div class="firstPagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="askPage1.html">1</a></li>
+                            <li class="page-item"><a class="page-link" href="askPage2.html">2</a></li>
+                            <li class="page-item"><a class="page-link" href="askPage3.html">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="askPage2.html" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+
+
+            </div>
+
+            <!-- 第二頁籤 -->
+
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <br>
+                <div class="allartPage">
+                <!-- 第一個藝術展覽 -->
+                <div class="media">
+                    <div class="artActivityone">
+                        <img class="mr-3" src="./image/01.jpg" alt="Generic placeholder image">
+                        </div>
+                    
+                    <div class="media-body">
+                        <h5 class="mt-0"></h5>
+                        <div>
+                            活動名稱 &emsp;&emsp;
+                            2022「世間都是貓」台日交流藝術聯展台中展
+                            <br>
+                            <br>
+                            活動時間 &emsp;&emsp;
+                            2022-08-06~2022-09-04 10:00:00至18:00:00
+                            <br>
+                            <br>
+                            活動地點 &emsp;&emsp;
+                            Smohouse思默好時 好睞空間-littleMOCA微當代文創
+                            <br>
+                            <br>
+                            費用資訊 &emsp;&emsp;免費參觀
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- 第二個藝術展覽 -->
+                <div class="media">
+                    <div class="artActivitytwo">
+                        <img class="mr-3" src="./image/02.jpg" alt="Generic placeholder image">
+                        </div>
+                    
+                    <div class="media-body">
+                        <h5 class="mt-0"></h5>
+                        <div>
+                            活動名稱 &emsp;&emsp;
+                            2022「世間都是貓」台日交流藝術聯展台中展
+                            <br>
+                            <br>
+                            活動時間 &emsp;&emsp;
+                            2022-08-06~2022-09-04 10:00:00至18:00:00
+                            <br>
+                            <br>
+                            活動地點 &emsp;&emsp;
+                            Smohouse思默好時 好睞空間-littleMOCA微當代文創
+                            <br>
+                            <br>
+                            費用資訊 &emsp;&emsp;免費參觀
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- 第三個藝術展覽 -->
+                <div class="media">
+                    <div class="artActivitythree">
+                        <img class="mr-3" src="./image/03.jpg" alt="Generic placeholder image">
+                        </div>
+
+                    <div class="media-body">
+                        <h5 class="mt-0"></h5>
+                        <div class="artCat">
+                            
+                            活動名稱 &emsp;&emsp;
+                            2022「世間都是貓」台日交流藝術聯展台中展
+                            <br>
+                            <br>
+                            活動時間 &emsp;&emsp;
+                            2022-08-06~2022-09-04 10:00:00至18:00:00
+                            <br>
+                            <br>
+                            活動地點 &emsp;&emsp;
+                            Smohouse思默好時 好睞空間-littleMOCA微當代文創
+                            <br>
+                            <br>
+                            費用資訊 &emsp;&emsp;免費參觀
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+
+
+            <!-- 新增活動與展覽 -->
+
+            <div class="tab-pane fade" id="nav-addart" role="tabpanel" aria-labelledby="nav-addart-tab">
+
+                <br>
+            <form class="addartForm">
+                <h2>新增活動與展覽</h2>
+                <br>
+                <div class="form-group addartFormone">
+                    <label for="">
+                            活動名稱
+                        </label>
+                        <input class="form-control" id="" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">
+                            活動時間
+                        </label>
+                        <input class="form-control" id="" placeholder="">
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <label for="">
+                            活動地點
+                        </label>
+                        <input class="form-control" id="" placeholder="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">費用訊息</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>免費</option>
+                            <option>100 元</option>
+                            <option>200 元</option>
+                            <option>300 元</option>
+                            <option>400 元</option>
+                        </select>
+                    </div>
+
+
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">活動照片</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+
+                        <button type="button" class="btn btn-success float-right">送&emsp;出</button>
+                    </form>
+
+                    
+                </form>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>
+<!-- 
+待會用得到 -->
