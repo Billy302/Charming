@@ -32,7 +32,7 @@ function SignUp() {
         {/* 第三方登入 Google/Facebook */}
         <div className={style.google}>
           <a href="#">
-            <img src={require('../Images/google.png')} alt="google" />
+            <img src={require('../images/google.png')} alt="google" />
           </a>
         </div>
         {/* <div className="google">

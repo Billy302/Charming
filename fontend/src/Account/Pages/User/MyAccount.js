@@ -38,7 +38,7 @@ function MyAccount(props) {
         <h1 className={style.h1}>基本資料</h1>
         <div className={style.form}>
           <div className={style.item1}>
-            <img src={require('../../Images/Avatar3.png')} alt="male" />
+            <img src={require('../../images/Avatar3.png')} alt="male" />
             <label>Jacky Chen</label>
             {auth ? '已登入' : '尚未登入'}
             <label>會員稱號：</label>

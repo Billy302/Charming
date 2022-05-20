@@ -16,7 +16,7 @@ function SignUpInfo() {
             <input id="Male" type="radio" name="myGender" value="male" />
             <label for="Male">
               <img
-                src={require('../Images/Avatar3.png')}
+                src={require('../images/Avatar3.png')}
                 className="gender"
                 alt="male"
               />
@@ -25,7 +25,7 @@ function SignUpInfo() {
             <input id="Female" type="radio" name="myGender" value="Female" />
             <label for="Female">
               <img
-                src={require('../Images/Avatar2.png')}
+                src={require('../images/Avatar2.png')}
                 className="gender"
                 alt="female"
               />
@@ -34,7 +34,7 @@ function SignUpInfo() {
             <input id="Other" type="radio" name="myGender" value="Other" />
             <label for="Other">
               <img
-                src={require('../Images/Avatar1.png')}
+                src={require('../images/Avatar1.png')}
                 className="gender"
                 alt="other"
               />

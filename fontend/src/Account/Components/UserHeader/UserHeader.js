@@ -10,7 +10,7 @@ function UserHeader() {
       <nav className={style.nav}>
         <img
           className={style.logo}
-          src={require('../../Images/charming_logo.png')}
+          src={require('../../images/charming_logo.png')}
           alt="logo"
         />
         <Link to="/" className={style.navLeft}>
@@ -20,7 +20,7 @@ function UserHeader() {
         <Link to="/account">
           <img
             className={style.img}
-            src={require('../../Images/Avatar3.png')}
+            src={require('../../images/Avatar3.png')}
             alt="avatar"
           />
         </Link>

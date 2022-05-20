@@ -17,7 +17,7 @@ function SignIn(props) {
         <p>用以下帳號繼續</p>
         <div className={style.google}>
           <a href="#">
-            <img src={require('../Images/google.png')} alt="google" />
+            <img src={require('../images/google.png')} alt="google" />
           </a>
         </div>
         {/* <div className="google">

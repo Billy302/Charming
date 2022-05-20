@@ -77,7 +77,8 @@
   margin-right: 10px;
   display: flex;
   flex-direction: column;
-  padding: 10px 0px 0px 100px;
+  padding: 10px 0px 0px 100px
+  ;
 }
 
 .item2 label{
