@@ -2,7 +2,7 @@ import style from './Pages.module.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import Header from '../Components/Header/Header'
+import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
 
 function SignIn(props) {
   const { auth, setAuth } = props
@@ -11,7 +11,7 @@ function SignIn(props) {
   const navigate = useNavigate()
   return (
     <>
-    <Header />
+    <UnloginNav />
       <main className={style.main}>
         <h1 className={style.h1}>登入</h1>
         <p>用以下帳號繼續</p>
