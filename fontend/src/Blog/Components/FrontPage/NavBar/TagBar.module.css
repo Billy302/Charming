@@ -1,0 +1,23 @@
+.tagbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.tagbar--title {
+    color: #795252;
+    margin: 0;
+    font-size: 2rem;
+    transition: 2s;
+}
+
+.active--title {
+    color: white;
+}
+
+.active--btn {
+    transition: 5s;
+    color: white;
+    border: 1px solid white;
+}

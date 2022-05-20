@@ -1,0 +1,166 @@
+.selected-card {
+    margin: 2rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-card--title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 0.2rem solid black;
+    margin-bottom: 10px;
+    transition: 10s;
+}
+
+.test {
+    color: var(--brown2);
+    transition: 10s;
+}
+
+.active--title {
+    color: white;
+    transition: 10s;
+}
+
+.selected-card--title__rightbtn {
+    font-size: 3rem;
+    display: block;
+}
+
+.selected-card h3 {
+    font-size: 2rem;
+    align-items: stretch;
+    margin-bottom: 1rem;
+}
+
+.selected-card--context {
+    display: flex;
+    flex-direction: column;
+}
+
+.selected-card--context img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1rem;
+    border-radius: 3%;
+}
+
+.selected-card--context h4 {
+    border-bottom: 0.1rem solid black;
+    padding-bottom: 1rem;
+}
+
+.selected-card--context p {
+    border-bottom: 0.1rem solid black;
+    padding: 1rem 0;
+}
+
+@media (max-width: 1200px) {
+    .selected-card {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 3rem;
+    }
+
+    .selected-card--title {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        border-bottom: 0.2rem solid black;
+        margin-bottom: 1rem;
+    }
+
+    .selected-card--title__rightbtn {
+        font-size: 3rem;
+        display: block;
+    }
+
+    .selected-card h3 {
+        font-size: 2rem;
+        align-items: stretch;
+        margin-bottom: 1rem;
+    }
+
+    .selected-card--context {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .selected-card--context img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
+        border-radius: 3%;
+    }
+
+    .selected-card--context h4 {
+        border-bottom: 0.1rem solid black;
+        padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .selected-card--title__rightbtn {
+        font-size: 2.3rem;
+        display: block;
+        margin-top: 0.2rem;
+    }
+
+    .selected-card h3 {
+        font-size: 1.5rem;
+        align-items: stretch;
+        margin-bottom: 0.8rem;
+    }
+
+    .selected-card--context img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
+        border-radius: 3%;
+    }
+
+    .selected-card--context h4 {
+        border-bottom: 0.1rem solid black;
+        padding-bottom: 1rem;
+        font-size: 0.5rem;
+    }
+}
+
+/* 目前 */
+
+@media (max-width: 768px) {
+    .selected-card--title__rightbtn {
+        font-size: 1.8rem;
+        display: block;
+    }
+
+    .selected-card--context img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
+        border-radius: 3%;
+    }
+
+    .selected-card--context h4 {
+        border-bottom: 0.1rem solid black;
+        padding-bottom: 1rem;
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+}
+
+@media (max-width: 480px) {
+}
+
+/* @media (max-width: 375px) {
+} */
