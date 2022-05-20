@@ -24,13 +24,13 @@ import MyAccount from "./Account/Pages/User/MyAccount";
 import MyNotice from "./Account/Pages/User/MyNotice";
 
 //購物車頁
-import Cart1 from "./Sales/Pages/Cart_1";
-import Cart2 from "./Sales/Pages/Cart_2";
-import Cart3 from "./Sales/Pages/Cart_3";
-import Cart4 from "./Sales/Pages/Cart_4";
-import MySale from "./Sales/Pages/MySale";
-import Order from "./Sales/Pages/Order";
-import OrderList from "./Sales/Pages/OrderList";
+import Cart1 from "./Sales/Pages/Cart/Cart1";
+import Cart2 from "./Sales/Pages/Cart/Cart2";
+import Cart3 from "./Sales/Pages/Cart/Cart3";
+import Cart4 from "./Sales/Pages/Cart/Cart4";
+import MySale from "./Sales/Pages/Order/MySale";
+import Order from "./Sales/Pages/Order/Order";
+import OrderList from "./Sales/Pages/Order/OrderList";
 
 //討論區
 
