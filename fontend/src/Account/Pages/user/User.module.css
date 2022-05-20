@@ -1,0 +1,69 @@
+/* Pages */
+.navLeft {
+  padding: 10px px;
+  font-size: 24px;
+  display: flex;
+}
+
+.navLeft a {
+  margin: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--brown2);
+}
+
+.navLeft a hr {
+  width: 100px;
+  border-top: 5px solid;
+}
+
+.navLeft a:hover {
+  color: var(--brown1);
+}
+
+/* 側邊選單 */
+.aside{
+    float: left;
+}
+.ul li a{
+    font-size: 24px;
+    text-decoration: none;
+    color: var(--brown2);
+    /* margin: auto; */
+    border-radius: 5px;
+    border: 2px solid var(--brown3);
+    background-color: var(--brown3);
+    width: 550px;
+    color: var(--brown2)
+}
+
+
+/* 右邊內文 */
+.main {
+  float: right;
+  width: 1100px;
+  /* height: 737px; */
+  border-radius: var(--desk-border-radius);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  color: var(--brown2);
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h1 {
+  text-align: center;
+  color: var(--brown2);
+  padding: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  color: var(--main-color);
+}
+
+.form label {
+  margin: 5px;
+}
