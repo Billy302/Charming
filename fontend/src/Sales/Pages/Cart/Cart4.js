@@ -1,18 +1,43 @@
 // 功能：讀取購物車，Session productList(key)  / productID(key) / order(key)
-
+// 跳頁路徑未填
 import React from 'react'
-import Processbar from '../../Components/Processbar/Processbar'
+import Processbar from '../../Components/ProcessBar/ProcessBar'
 import data from '../../Json/Order.json'
 import './Cart.css'
-
+import { useHistory } from 'react-router-dom'
 function Cart4() {
+  let history = useHistory()
   const productData = data[1]
   console.log(data)
-  console.log(productData)
+  // console.log(data[0][0].ID)
+  // console.log(productData)
   return (
     <>
-      <h3>購物車-訂單 Page</h3>
+      <h3>購物車-訂單 Page(cart4)</h3>
       <Processbar step="3" />
+      <div className="">
+        <h2 className="success">付款成功</h2>
+        <div className="block">
+          <p className="blockText">訂單ID</p>
+          <p className="blockTextInput">{data[0][0].ID}</p>
+        </div>
+        <div className="block">
+          <p className="blockText">成立日期</p>
+          <p className="blockTextInput">{data[0][0].create_time}</p>
+        </div>
+        <div className="block">
+          <p className="blockText">姓名</p>
+          <p className="blockTextInput">{data[0][0].username}</p>
+        </div>
+        <div className="block">
+          <p className="blockText">聯絡方式</p>
+          <p className="blockTextInput">{data[0][0].mobile}</p>
+        </div>
+        <div className="block">
+          <p className="blockText">總價</p>
+          <p className="blockTextInput">{data[0][0].total_price}</p>
+        </div>
+      </div>
       <div className="tableScroll">
         <table>
           <thead>
@@ -39,7 +64,7 @@ function Cart4() {
             {productData.map((v, i) => {
               return (
                 <tr key={i} className="blockPicture">
-                  <th scope="row">{i}</th>
+                  <th scope="row">{i+1}</th>
                   <td>
                     <img src={require(`../../Picture/${v.pic_path}`)} alt="a" />
                   </td>
@@ -59,7 +84,7 @@ function Cart4() {
         className="button"
         onClick={() => {
           // 回首頁
-          // history.push('路徑')
+          history.push('路徑')
         }}
       >
         完成

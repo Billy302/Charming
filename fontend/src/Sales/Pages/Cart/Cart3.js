@@ -1,12 +1,16 @@
 // reactjs-credit-card 引入失敗
 // 功能：新增訂單。Method: POST。URL: /api/order
+// 跳頁路徑未填
+
 import React from 'react'
-import Processbar from '../../Components/Processbar/Processbar'
-import CreditCard from '../../Components/creditCard/creditCard'
+import Processbar from '../../Components/ProcessBar/ProcessBar'
+import CreditCard from '../../Components/CreditCard/CreditCard'
 import { HunelProvider, HunelCreditCard } from 'reactjs-credit-card'
+import { useHistory } from 'react-router-dom'
 
 const hunel = new HunelCreditCard()
 function Cart3() {
+  let history = useHistory()
   return (
     <>
       <Processbar step="3" />

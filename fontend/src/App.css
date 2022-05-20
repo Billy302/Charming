@@ -3,13 +3,15 @@
   /* 色票 */
   --white: #FFFFFF;
   --brown1: #472929;
-  --brown2: #795252;
+  /* 主要棕色 */
+  --brown2: #795252; 
   --brown3: #D6C5C5;
   --brown4: #F4EFEF;
   --gray1: #333333;
   --gray2: #4F4F4F;
   --gray3: #BDBDBD;
   --gray4: #E0E0E0;
+  /* 主要黃色 */
   --yellow1: #FFD247;
   --yellow2: #FFEBAF;
   --green1: #355F1C;

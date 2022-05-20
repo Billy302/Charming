@@ -1,4 +1,4 @@
-import './creditCard.css'
+import './CreditCard.css'
 import {
   CardHolder,
   CardNumber,

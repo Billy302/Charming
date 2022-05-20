@@ -1,7 +1,4 @@
 * {
-  --main-brown: #795252;
-  --main-yellow: #ffd247;
-  --sub-brown: #f4efef;
   --table-block-size_s: 100px;
   --table-block-size_m: 150px;
   --table-block-size_l: 200px;
@@ -15,8 +12,8 @@ table {
 }
 thead {
   height: 64px;
-  background-color: var(--main-brown);
-  color: white;
+  background-color: var(--brown2);
+  color: var(--white);
 }
 .blockPicture{
   word-break: break-all;
@@ -31,7 +28,7 @@ tr img {
   height: 160px;
 }
 tr:nth-child(2n) {
-  background-color: var(--sub-brown);
+  background-color: var(--brown4);
 }
 /* 表格-固定尺寸 */
 .blockSizeS {
@@ -50,15 +47,15 @@ tr:nth-child(2n) {
 .blockButton {
   width: 90px;
   height: 40px;
-  color: var(--main-brown);
-  background-color: var(--main-yellow);
+  color: var(--brown2);
+  background-color: var(--yellow1);
   font-weight: bold;
   border: 0px;
   border-radius: 20px;
 }
 .blockButton:hover {
-  color: var(--main-yellow);
-  background-color: var(--main-brown);
+  color: var(--yellow1);
+  background-color: var(--brown2);
 }
 .tableScroll{
   margin: 50px 0;
@@ -70,15 +67,25 @@ tr:nth-child(2n) {
 .button {
     width: 90px;
     height: 40px;
-    color: white;
-    background-color: var(--main-brown);
+    color: var(--white);
+    background-color: var(--brown2);
     font-weight: bold;
     border: 0px;
-    border-radius: 20px;
+    border-radius: var(--desk-border-radius);
+}
+/* 文字方塊 */
+.block{
+  display: flex;
 }
 .blockText{
-  display: flex;
-  color: var(--main-brown);
+  color: var(--brown2);
   margin: 20px;
   font-weight: bold;
+}
+.blockTextInput{
+  margin: 20px;
+  font-weight: bold;
+}
+.success{
+  color: var(--green3);
 }

@@ -3,16 +3,16 @@
 // 輸入框的value要改
 import React from 'react'
 import { useState } from 'react'
-import Processbar from '../../Components/Processbar/Processbar'
+import Processbar from '../../Components/ProcessBar/ProcessBar'
 import data from '../../Json/Cart.json'
 import number from '../../Json/number.json'
 import './Cart.css'
-// import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function Cart2() {
   // useEffect 取會員個人資料 + 讀取購物車
 
-  // let history = useHistory()
+  let history = useHistory()
 
   const [inputText, setInputText] = useState('')
   // 計算購物車，價格總數
@@ -95,7 +95,7 @@ function Cart2() {
           className="button"
           onClick={() => {
             // 到下一頁
-            // history.push('路徑')
+            history.push('路徑')
             // 將個人資料存入Session
           }}
         >
@@ -105,7 +105,7 @@ function Cart2() {
           className="button"
           onClick={() => {
             // 回首頁
-            // history.push('路徑')
+            history.push('路徑')
           }}
         >
           回上頁

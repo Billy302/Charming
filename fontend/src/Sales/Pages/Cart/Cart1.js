@@ -4,13 +4,13 @@
 // 先用JSON假資料取代
 
 import React from 'react'
-import Processbar from '../../Components/Processbar/Processbar'
+import Processbar from '../../Components/ProcessBar/ProcessBar'
 import data from '../../Json/Cart.json'
 import './Cart.css'
-// import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function Cart1() {
-  // let history = useHistory()
+  let history = useHistory()
   return (
     <>
       <h3>購物車-總攬 Page</h3>
@@ -60,7 +60,7 @@ function Cart1() {
           className="button"
           onClick={() => {
             // 到下一頁
-            // history.push('路徑')
+            history.push('路徑')
           }}
         >
           下一步
@@ -68,7 +68,7 @@ function Cart1() {
         <button
           className="button"
           onClick={() => {
-            // history.goback()
+            history.goBack()
           }}
         >
           回上頁
