@@ -1,0 +1,4 @@
+.chat-area {
+    display: flex;
+    flex-direction: column;
+}
