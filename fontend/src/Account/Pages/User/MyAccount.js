@@ -1,15 +1,15 @@
-import React from 'react'
-import style from './User.module.css'
-import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
-import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
-import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb'
+import React from "react";
+import style from "./User.module.css";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
+import BreadCrumb from "../../Components/BreadCrumb/BreadCrumb";
 
 function MyAccount(props) {
-  const location = useLocation()
-  console.log(location)
+  const location = useLocation();
+  console.log(location);
 
-  const { auth } = props
+  const { auth } = props;
 
   return (
     <>
@@ -37,9 +37,9 @@ function MyAccount(props) {
         <h1 className={style.h1}>基本資料</h1>
         <div className={style.form}>
           <div className={style.item1}>
-            <img src={require('../../images/Avatar3.png')} alt="male" />
+            <img src={require("../../images/Avatar3.png")} alt="male" />
             <label>Jacky Chen</label>
-            {auth ? '已登入' : '尚未登入'}
+            {auth ? "已登入" : "尚未登入"}
             <label>會員稱號：</label>
           </div>
           <div className={style.item2}>
@@ -67,8 +67,9 @@ function MyAccount(props) {
           </li>
         </ul>
       </aside>
+      <div className={style.clear}></div>
     </>
-  )
+  );
 }
 
-export default MyAccount
+export default MyAccount;

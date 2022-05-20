@@ -10,7 +10,7 @@ function SignInRecover() {
         <h1 className={style.h1}>重設密碼</h1>
         <form className={style.form}>
           <label>你的帳號</label>
-          <input type="text" disabled />
+          <input type="text" disabled placeholder='jackychen0706'/>
           <label>密碼</label>
           <input
             type="password"

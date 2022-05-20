@@ -1,22 +1,26 @@
-import style from './SignUpInfo.module.css'
-import React from 'react'
-import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
-import MyButton from '../Components/MyButton/MyButton'
+import style from "./SignUpInfo.module.css";
+import React from "react";
+import UnloginNav from "../../Home/Components/UnloginNav/UnloginNav";
+import MyButton from "../Components/MyButton/MyButton";
 
 function SignUpInfo() {
   return (
     <>
+      {/* 登入navbar */}
       <UnloginNav />
+      {/* 主框線 */}
       <main className={style.auto}>
         <h1 className={style.h1}>基本資料</h1>
+        {/* 基本資料表單 */}
         <form className={style.form}>
           <label>姓名</label>
           <input type="text" placeholder="請輸入真實姓名" />
+          {/* 性別 */}
           <section>
             <input id="Male" type="radio" name="myGender" value="male" />
             <label for="Male">
               <img
-                src={require('../images/Avatar3.png')}
+                src={require("../images/Avatar3.png")}
                 className="gender"
                 alt="male"
               />
@@ -25,7 +29,7 @@ function SignUpInfo() {
             <input id="Female" type="radio" name="myGender" value="Female" />
             <label for="Female">
               <img
-                src={require('../images/Avatar2.png')}
+                src={require("../images/Avatar2.png")}
                 className="gender"
                 alt="female"
               />
@@ -34,13 +38,14 @@ function SignUpInfo() {
             <input id="Other" type="radio" name="myGender" value="Other" />
             <label for="Other">
               <img
-                src={require('../images/Avatar1.png')}
+                src={require("../images/Avatar1.png")}
                 className="gender"
                 alt="other"
               />
               其他
             </label>
           </section>
+          {/* 生日及其他 */}
           <label>生日</label>
           <input type="date" />
           <label>E-mail</label>
@@ -54,7 +59,7 @@ function SignUpInfo() {
             <option>台北</option>
             <option>台中</option>
           </select>
-
+          {/* 興趣選單 */}
           <label>我感興趣的商品：</label>
           <section>
             <input
@@ -169,8 +174,8 @@ function SignUpInfo() {
               value="designInterview"
             />
             <label for="designInterview">設計師專訪</label>
-            </section>
-            <section>
+          </section>
+          <section>
             <input
               id="technologyNews"
               type="radio"
@@ -202,12 +207,14 @@ function SignUpInfo() {
             />
             <label for="overseasNews">海外知識</label>
           </section>
+          <div>
 
-          <button className={style.button}>完成</button>
+          <button>完成</button>
+          </div>
         </form>
       </main>
     </>
-  )
+  );
 }
 
-export default SignUpInfo
+export default SignUpInfo;
