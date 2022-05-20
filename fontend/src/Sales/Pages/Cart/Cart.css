@@ -1,0 +1,84 @@
+* {
+  --main-brown: #795252;
+  --main-yellow: #ffd247;
+  --sub-brown: #f4efef;
+  --table-block-size_s: 100px;
+  --table-block-size_m: 150px;
+  --table-block-size_l: 200px;
+  --table-block-size_ll: 350px;
+}
+/* 表格-本體 */
+table {
+  vertical-align: top;
+  border-collapse: collapse;
+  text-align: center;
+}
+thead {
+  height: 64px;
+  background-color: var(--main-brown);
+  color: white;
+}
+.blockPicture{
+  word-break: break-all;
+  height: 180px;
+}
+.blockNoPicture{
+  word-break: break-all;
+  height: 64px;
+}
+tr img {
+  width: 160px;
+  height: 160px;
+}
+tr:nth-child(2n) {
+  background-color: var(--sub-brown);
+}
+/* 表格-固定尺寸 */
+.blockSizeS {
+  width: var(--table-block-size_s);
+}
+.blockSizeM {
+  width: var(--table-block-size_m);
+}
+.blockSizeL {
+  width: var(--table-block-size_l);
+}
+.blockSizeLL {
+  width: var(--table-block-size_ll);
+}
+/* 表格-按鈕 */
+.blockButton {
+  width: 90px;
+  height: 40px;
+  color: var(--main-brown);
+  background-color: var(--main-yellow);
+  font-weight: bold;
+  border: 0px;
+  border-radius: 20px;
+}
+.blockButton:hover {
+  color: var(--main-yellow);
+  background-color: var(--main-brown);
+}
+.tableScroll{
+  margin: 50px 0;
+  width: 1090px;
+  height: 500px;
+  overflow-y:scroll;
+}
+/* 按鈕 */
+.button {
+    width: 90px;
+    height: 40px;
+    color: white;
+    background-color: var(--main-brown);
+    font-weight: bold;
+    border: 0px;
+    border-radius: 20px;
+}
+.blockText{
+  display: flex;
+  color: var(--main-brown);
+  margin: 20px;
+  font-weight: bold;
+}
