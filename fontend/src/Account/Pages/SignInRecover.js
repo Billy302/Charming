@@ -1,16 +1,16 @@
 import style from './Pages.module.css'
 import React from 'react'
-import Header from '../Components/Header/Header'
+import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
 
 function SignInRecover() {
   return (
     <>
-      <Header />
+      <UnloginNav />
       <main className={style.main}>
         <h1 className={style.h1}>重設密碼</h1>
         <form className={style.form}>
           <label>你的帳號</label>
-          <input type="text" disabled />
+          <input type="text" disabled placeholder='jackychen0706'/>
           <label>密碼</label>
           <input
             type="password"

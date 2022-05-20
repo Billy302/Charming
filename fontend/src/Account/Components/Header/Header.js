@@ -9,7 +9,7 @@ function Header() {
       <nav className={style.nav}>
         <img
           className={style.logo}
-          src={require('../../Images/charming_logo.png')}
+          src={require('../../images/charming_logo.png')}
           alt="logo"
         />
         <Link to="/" className={style.navLeft}>

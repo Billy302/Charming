@@ -1,0 +1,34 @@
+/* .pillbtn:link,
+.pillbtn:visited {
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all 0.2s;
+    position: relative;
+    font-size: 16px;
+}
+
+.pillbtn {
+    background-color: #fff;
+    color: #777;
+    border: 1px solid red;
+} */
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.pillbtn {
+    color: #795252;
+    border: 1px solid #795252;
+    border-radius: 20px;
+    background-color: transparent;
+    width: 106px;
+    height: 30px;
+}
+
+.pillbtn:hover {
+    border-radius: 5px;
+}

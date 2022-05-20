@@ -3,7 +3,7 @@ import style from './BreadCrumb.module.css'
 
 function BreadCrumb() {
   return (
-    <div className={style.wrap}>
+    <div>
       <ol className={style.breadcrumb}>
         <li>
           <Link to="/">首頁</Link>

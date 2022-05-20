@@ -1,7 +1,7 @@
 import style from './Pages.module.css'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Header from '../Components/Header/Header'
+import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
 
 function SignUp() {
   const [account, setAccount] = useState('')
@@ -24,7 +24,7 @@ function SignUp() {
 
   return (
     <>
-      <Header />
+      <UnloginNav />
       <main className={style.auto}>
         <h1 className={style.h1}>會員註冊</h1>
         <p>用以下帳號快速註冊</p>
@@ -32,7 +32,7 @@ function SignUp() {
         {/* 第三方登入 Google/Facebook */}
         <div className={style.google}>
           <a href="#">
-            <img src={require('../Images/google.png')} alt="google" />
+            <img src={require('../images/google.png')} alt="google" />
           </a>
         </div>
         {/* <div className="google">

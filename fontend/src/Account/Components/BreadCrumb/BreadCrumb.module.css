@@ -1,9 +1,6 @@
-.wrap {
-  padding: 5px 0;
-}
-
 .breadcrumb {
   margin: auto;
+  padding: 0px 50px;
   display: flex;
 }
 
