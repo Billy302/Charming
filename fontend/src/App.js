@@ -1,57 +1,78 @@
 import React from "react";
-import './App.css';
-import Footer from './Home/components/footer/Footer';
-import Blog from "./Home/pages/Blog";
-import Communication from "./Home/pages/Communication";
-import Users from "./Home/pages/Users";
-import LoginHome from "./Home/pages/loginHome/LoginHome";
-import Portfolio from "./Home/pages/Portfolio";
-// import Product from "./Home/pages/Product"
-import Product from "./Sales/Pages/Product";
-import ShoppingCar from "./Home/pages/ShoppingCar"
-import UnloginHome from "./Home/pages/unloginHome/UnloginHome"
-import { BrowserRouter as Router, Route,  Switch} from "react-router-dom"
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+
+//component
+import Footer from "./Home/Components/Footer/Footer";
+
+//首頁
+import LoginHome from "./Home/Pages/LoginHome/LoginHome";
+import UnloginHome from "./Home/Pages/UnloginHome/UnloginHome";
+//會員
+//Pages
+import SignInIdentify from "./Account/Pages/SignInIdentify";
+import SignInRecover from "./Account/Pages/SignInRecover";
+import SignUpInfo from "./Account/Pages/SignUpInfo";
+import SignUp from "./Account/Pages/SignUp";
+import SignIn from "./Account/Pages/SignIn";
+
+//Pages user
+import MyShoppingList from "./Account/Pages/User/MyShoppingList";
+import NoticeSetting from "./Account/Pages/User/NoticeSetting";
+import MyCollection from "./Account/Pages/User/MyCollection";
+import MyAccount from "./Account/Pages/User/MyAccount";
+import MyNotice from "./Account/Pages/User/MyNotice";
+
+//購物車頁
+import Cart1 from "./Sales/Pages/Cart/Cart1";
+import Cart2 from "./Sales/Pages/Cart/Cart2";
+import Cart3 from "./Sales/Pages/Cart/Cart3";
+import Cart4 from "./Sales/Pages/Cart/Cart4";
+import MySale from "./Sales/Pages/Order/MySale";
+import Order from "./Sales/Pages/Order/Order";
+import OrderList from "./Sales/Pages/Order/OrderList";
+
+//討論區
 
 function App() {
   return (
-    <div className={App}>
-      <Router>
-        <Switch>
-          <Route path="/Blog">
-            <Blog />
-          </Route>
-          <Route path="/LoginHome">
-            <LoginHome />
-          </Route>
-          <Route path="/Communication">
-            <Communication />
-          </Route>
-          <Route path="/Product">
-            <Product />
-          </Route>
-          <Route path="/UnloginHome">
-            <UnloginHome />
-          </Route>
-          <Route path="/Portfolio">
-            <Portfolio />
-          </Route>
-          <Route path="/Login">
-            <LoginHome />
-          </Route>
-          <Route path="/LoginHome">
-            <LoginHome />
-          </Route>
-          <Route path="/ShoppingCar">
-            <ShoppingCar />
-          </Route>
-          <Route path="/Users">
-            <Users />
-          </Route>
-          <Route exact path="/">
-            <UnloginHome />
-          </Route>
-        </Switch>
-      </Router>
+    <div>
+      <Routes>
+      {/* --------首頁------- */}
+        <Route path="/LoginHome" element={<LoginHome />} />
+        <Route path="/UnloginHome" element={<UnloginHome />} />
+        <Route path="/Login" element={<LoginHome />} />
+        <Route path="/LoginHome" element={<LoginHome />} />
+        <Route path="/" element={<UnloginHome />} />
+
+        {/* --------註冊及登入----- */}
+        <Route path="/signin/identify" element={<SignInIdentify />} />
+        <Route path="/signin/recover" element={<SignInRecover />} />
+        <Route path="/signup/info" element={<SignUpInfo />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route
+          path="/signin"
+          // element={<SignIn setAuth={setAuth} auth={auth} />}
+        />
+
+        {/* -------user 登入後頁面------- */}
+        <Route path="/shoppinglist" element={<MyShoppingList />} />
+        <Route path="/notice/setting" element={<NoticeSetting />} />
+        <Route path="/collection" element={<MyCollection />} />
+        {/* <Route path="/account" element={<MyAccount auth={auth} />} /> */}
+        <Route path="/notice" element={<MyNotice />} />
+
+        {/* --------商品頁面-------- */}
+        <Route path="/Cart1" element={<Cart1 />} />
+        <Route path="/Cart2" element={<Cart2 />} />
+        <Route path="/Cart3" element={<Cart3 />} />
+        <Route path="/Cart4" element={<Cart4 />} />
+        <Route path="/EditProduct" element={<EditProduct />} />
+        <Route path="/MySale" element={<MySale />} />
+        <Route path="/Order" element={<Order />} />
+        <Route path="/OrderList" element={<OrderList />} />
+
+      </Routes>
       <Footer />
     </div>
   );
