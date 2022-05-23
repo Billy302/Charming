@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 
 //component
 import Footer from "./Home/Components/Footer/Footer";
-
+import PhoneFooter from "./Home/Components/PhoneFooter/PhoneFooter";
 //首頁
 import LoginHome from "./Home/Pages/LoginHome/LoginHome";
 import UnloginHome from "./Home/Pages/UnloginHome/UnloginHome";
@@ -74,6 +74,7 @@ function App() {
 
       </Routes>
       <Footer />
+      <PhoneFooter />
     </div>
   );
 }
