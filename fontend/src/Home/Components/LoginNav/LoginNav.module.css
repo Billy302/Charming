@@ -3,7 +3,7 @@
     .mainPage{
       position: sticky;
       top: 0;
-      z-index:1;
+      z-index:999;
       background-color: rgba(255,255,255,.8);
       --allNavText:var(--heading4);
       --allSearchText:var(--heading5);
@@ -101,7 +101,7 @@
     position: absolute;
     right: 10%;
     top: 45px;
-    z-index: 1;
+    z-index: 999;
     display: none;
     border: 1px solid var(--gray3);
     border-radius:15px;
