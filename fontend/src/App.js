@@ -9,6 +9,7 @@ import PhoneFooter from "./Home/Components/PhoneFooter/PhoneFooter";
 //首頁
 import LoginHome from "./Home/Pages/LoginHome/LoginHome";
 import UnloginHome from "./Home/Pages/UnloginHome/UnloginHome";
+import MyProduct from "./Home/Pages/MyProduct/MyProduct";
 
 //會員
 //Pages
@@ -45,6 +46,7 @@ function App() {
         <Route path="/UnloginHome" element={<UnloginHome />} />
         <Route path="/Login" element={<LoginHome />} />
         <Route path="/LoginHome" element={<LoginHome />} />
+        <Route path="/MyProduct" element={<MyProduct />} />
         <Route path="/" element={<UnloginHome />} />
 
         {/* --------註冊及登入----- */}
