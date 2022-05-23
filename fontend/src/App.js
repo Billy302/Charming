@@ -40,7 +40,7 @@ function App() {
   return (
     <div>
       <Routes>
-      {/* --------首頁------- */}
+        {/* --------首頁------- */}
         <Route path="/LoginHome" element={<LoginHome />} />
         <Route path="/UnloginHome" element={<UnloginHome />} />
         <Route path="/Login" element={<LoginHome />} />
@@ -48,20 +48,22 @@ function App() {
         <Route path="/" element={<UnloginHome />} />
 
         {/* --------註冊及登入----- */}
+        {/* 忘記密碼 */}
         <Route path="/signin/identify" element={<SignInIdentify />} />
         <Route path="/signin/recover" element={<SignInRecover />} />
+        {/* 基本資料 */}
         <Route path="/signup/info" element={<SignUpInfo />} />
+
+        {/* 註冊 */}
         <Route path="/signup" element={<SignUp />} />
-        <Route
-          path="/signin"
-          element={<SignIn/>}
-        />
+        {/* 登入 */}
+        <Route path="/signin" element={<SignIn />} />
 
         {/* -------user 登入後頁面------- */}
         <Route path="/shoppinglist" element={<MyShoppingList />} />
         <Route path="/notice/setting" element={<NoticeSetting />} />
         <Route path="/collection" element={<MyCollection />} />
-        <Route path="/account" element={<MyAccount/>} />
+        <Route path="/account" element={<MyAccount />} />
         <Route path="/notice" element={<MyNotice />} />
 
         {/* --------商品頁面-------- */}
@@ -73,7 +75,6 @@ function App() {
         <Route path="/MySale" element={<MySale />} />
         <Route path="/Order" element={<Order />} />
         <Route path="/OrderList" element={<OrderList />} />
-
       </Routes>
       <Footer />
       <PhoneFooter />

@@ -21,7 +21,7 @@ function UnloginNav(props){
       <nav className={style.navBar}>
         {/* logo 與charming文字 */}
         <div className={style.charmingLogo}>
-          <a href="loginHome" className={style.logoIcon}>
+          <a href="/UnloginHome" className={style.logoIcon}>
             <img src={logo} alt="logo" />
             <p>柴米Charming</p>
           </a>
@@ -59,20 +59,20 @@ function UnloginNav(props){
                 </select>
                 <FaAngleDown />
               </li>
-              <a href="Portfolio" className={style.phoneDisplayNone}>
+              <a href="/Portfolio" className={style.phoneDisplayNone}>
                 <li>柴米人</li>
               </a>
-              <a href="Blog" className={style.phoneDisplayNone}>
+              <a href="/Blog" className={style.phoneDisplayNone}>
                 <li>柴訊</li>
               </a>
-              <a href="Communication" className={style.phoneDisplayNone}>
+              <a href="/Communication" className={style.phoneDisplayNone}>
                 <li>柴社</li>
               </a>
             </div>
-            <a href="Login">
+            <a href="/signin">
               <li className={style.loginButton}>登入</li>
             </a>
-            <a href="signup/info">
+            <a href="/signup">
               <li className={style.loginButton}>註冊</li>
             </a>
           </ul>
