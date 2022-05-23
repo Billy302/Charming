@@ -72,7 +72,7 @@ function UnloginNav(props){
             <a href="Login">
               <li className={style.loginButton}>登入</li>
             </a>
-            <a href="">
+            <a href="signup/info">
               <li className={style.loginButton}>註冊</li>
             </a>
           </ul>
