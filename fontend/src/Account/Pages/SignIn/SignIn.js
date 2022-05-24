@@ -42,6 +42,7 @@ function SignIn(props) {
           <input type="text" />
            <label for='password'>密碼</label>
           <div className={style.password}>
+            {/* 顯示/隱藏 密碼眼睛切換 text/password input type切換 */}
           {invisible &&  <FaEyeSlash onClick={invisibleHandler} />}
            {!invisible &&  <FaEye onClick={invisibleHandler} />}
           </div>
