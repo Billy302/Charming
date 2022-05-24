@@ -28,36 +28,38 @@ function Cart2() {
       {/* 進度條 */}
       <Processbar step="2" />
       {/* 輸入框 */}
-      <section id="inputName" className="blockText">
-        <div>姓名</div>
-        <input
-          type="text"
-          value={number[0].username}
-          onChange={(e) => {
-            setInputText(e.target.value)
-          }}
-        />
-      </section>
-      <section id="inputTel" className="blockText">
-        <div>聯絡方式</div>
-        <input
-          type="text"
-          value={number[0].mobile}
-          onChange={(e) => {
-            setInputText(e.target.value)
-          }}
-        />
-      </section>
-      <section id="inputPrice" className="blockText">
-        <div>總價</div>
-        <input
-          type="text"
-          value={totalPrice}
-          onChange={(e) => {
-            setInputText(e.target.value)
-          }}
-        />
-      </section>
+      <form>
+        <section id="inputName" className="blockText">
+          <div>姓名</div>
+          <input
+            type="text"
+            value={number[0].username}
+            onChange={(e) => {
+              setInputText(e.target.value)
+            }}
+          />
+        </section>
+        <section id="inputTel" className="blockText">
+          <div>聯絡方式</div>
+          <input
+            type="text"
+            value={number[0].mobile}
+            onChange={(e) => {
+              setInputText(e.target.value)
+            }}
+          />
+        </section>
+        <section id="inputPrice" className="blockText">
+          <div>總價</div>
+          <input
+            type="text"
+            value={totalPrice}
+            onChange={(e) => {
+              setInputText(e.target.value)
+            }}
+          />
+        </section>
+      </form>
       {/* 表格 */}
       <table>
         <thead>

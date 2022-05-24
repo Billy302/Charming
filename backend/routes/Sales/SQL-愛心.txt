@@ -1,8 +1,7 @@
 愛心
 
-//要再想想
 1. 功能：取得全部Like資料。Method: GET。URL: /api/like ???
-
+SELECT * from product_love
 
 
 2. 功能：新增Like。Method: POST。URL: /api/like 

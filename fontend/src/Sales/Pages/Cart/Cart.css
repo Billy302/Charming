@@ -1,4 +1,4 @@
-* {
+:root {
   --table-block-size_s: 100px;
   --table-block-size_m: 150px;
   --table-block-size_l: 200px;
@@ -86,6 +86,7 @@ tr:nth-child(2n) {
   margin: 20px;
   font-weight: bold;
 }
-.success{
+.successText{
   color: var(--green3);
 }
+/* 信用卡Form */

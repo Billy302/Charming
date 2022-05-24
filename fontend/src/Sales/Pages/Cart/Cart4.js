@@ -1,10 +1,13 @@
 // 功能：讀取購物車，Session productList(key)  / productID(key) / order(key)
 // 跳頁路徑未填
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+
 import Processbar from '../../Components/ProcessBar/ProcessBar'
 import data from '../../Json/Order.json'
+
 import './Cart.css'
-import { useHistory } from 'react-router-dom'
+
 function Cart4() {
   let history = useHistory()
   const productData = data[1]
@@ -16,7 +19,7 @@ function Cart4() {
       <h3>購物車-訂單 Page(cart4)</h3>
       <Processbar step="3" />
       <div className="">
-        <h2 className="success">付款成功</h2>
+        <h2 className="successText">付款成功</h2>
         <div className="block">
           <p className="blockText">訂單ID</p>
           <p className="blockTextInput">{data[0][0].ID}</p>
@@ -64,7 +67,7 @@ function Cart4() {
             {productData.map((v, i) => {
               return (
                 <tr key={i} className="blockPicture">
-                  <th scope="row">{i+1}</th>
+                  <th scope="row">{i + 1}</th>
                   <td>
                     <img src={require(`../../Picture/${v.pic_path}`)} alt="a" />
                   </td>

@@ -23,6 +23,9 @@ ON product_case.product_id=product_main.ID
 WHERE product_case_items.case_id = ?
 
 
+
+SELECT count(*) FROM product_case_items WHERE product_id = ?
+
 3. 功能：新增訂單。Method: POST。URL: /api/order
 INSERT INTO `product_case`(`ID`, `product_id`, `user_ID`, `total_price`, `create_time`) 
 VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')

@@ -1,0 +1,94 @@
+商品總攬 productList
+功能
+1. Select 商品ID / 商品名稱 / 店家名稱 / 上架日期 / 銷出數量 / 價格 / 圖片位置 / 對應分類 / 商品文案 / love
+    => 先求出使用者所有Love 再與 當前頁面的商品 比對
+    => 須注意 limit / order by / where
+2. 跳轉商品詳細頁面
+
+商品詳細 product
+功能
+1. Select 商品ID / 商品名稱 / 店家名稱 / 上架日期 / 銷出數量 / 價格 / 圖片位置 / 對應分類 / 商品文案 / love
+    => 先求出使用者所有Love 再與 當前頁面的商品 比對
+2. 加入購物車 Session 
+    => KEY        ，     value 
+    CartItemsName ， ItemsName1 | ItemsName2 | ItemsName3 …
+    ItemsName1    ， ID | pic_path | author_name | product_name | price:price 
+3. 跳轉商品清單頁面
+
+To B - 個人商品總攬 MyProduct
+功能
+1. Select 商品ID / 商品名稱 / 店家名稱 / 上架日期 / 銷出數量 / 價格 / 圖片位置 / 對應分類 / 商品文案
+    => 須注意 limit / order by / where
+2. 跳轉商品修改/新增頁面
+
+
+To B - 新增/修改商品 EditProduct
+功能
+1. 新增 : Insert 商品名稱 / 店家名稱 / 價格 / 圖片位置 / 對應分類 / 商品文案
+    => 圖片用date.now()
+2. 修改 : Select 商品ID / 商品名稱 / 店家名稱 / 上架日期 / 銷出數量 / 價格 / 圖片位置 / 對應分類
+3. 修改 : Updata  商品名稱 / 店家名稱 / 價格 / 圖片位置 / 對應分類 / 商品文案
+4. 跳轉個人商品頁面
+
+
+-------------------------------------------------
+購物車-總攬 Cart1
+功能
+1. 取購物車資料 Session
+    => KEY        ，     value 
+    CartItemsName ， ItemsName1 | ItemsName2 | ItemsName3 …
+    ItemsName1    ， ID | pic_path | author_name | product_name | price:price 
+2. 刪除購物車
+3. 清空購物車
+3. 跳轉購物車Cart2 or 跳回上一頁
+
+購物車-基本資料 Cart2
+功能
+1. 取購物車資料 Session
+    => KEY        ，     value 
+    CartItems     ， ItemsName1 | ItemsName2 | ItemsName3 …
+    ItemsName1    ， ID | pic_path | author_name | product_name | price:price 
+2. Select 使用者姓名 / 聯絡方式
+3. 計算總價 total_price
+4. 修改使用者姓名 / 聯絡方式 (需驗證)
+5. 跳轉購物車Cart3 
+   新增購物車資料 Session
+    => KEY        ，     value 
+    CartUser      ， username | mobile | total_price
+6. 跳回上一頁
+   刪除購物車資料 Session
+    => KEY        ，     value 
+    CartUser      ， username | mobile | total_price
+
+購物車-結帳 Cart3
+功能
+1. 輸入信用卡資料 (需驗證)
+2. 跳轉購物車Cart4
+   Insert 訂單ID / 購買者ID / 訂單總價 / 創立時間
+   Insert 訂單ID / 產品ID
+3. 挑回上一頁
+
+購物車-訂單 Cart4
+功能
+1. 取購物車資料 Session
+    => KEY        ，     value 
+    CartItems     ， ItemsName1 | ItemsName2 | ItemsName3 …
+    ItemsName1    ， ID | pic_path | author_name | product_name | price:price 
+    CartUser      ， username | mobile | total_price
+2. 跳回首頁
+
+To B - 個人銷售紀錄 MySale
+功能
+1. Select 訂單ID / 購買者名稱 / 訂單總價 / 訂單成立時間
+2. Select 產品名稱 / 產品價格 / 產品價格
+    => 先求得訂單編號 再求 訂單中與商家有關的產品
+
+
+To C -購買清單-總攬 OrderList
+功能
+1. Select 訂單ID / 購買者名稱 / 訂單總價 / 訂單成立時間
+
+To C -購買清單-詳細 Order
+功能
+1. Select 訂單ID / 購買者名稱 / 訂單總價 / 訂單成立時間
+2. Select 商品ID / 商品名稱 / 店家名稱 / 上架日期 / 銷出數量 / 價格 / 圖片位置 / 對應分類 / 商品文案 

@@ -1,6 +1,5 @@
 // 未完成 功能：讀取購物車，Session productList(key)  / productID(key)
 // 未完成 功能：刪除購物車，Session productList(key)  / productID(key)
-// useHistory故障
 // 先用JSON假資料取代
 
 import React from 'react'
