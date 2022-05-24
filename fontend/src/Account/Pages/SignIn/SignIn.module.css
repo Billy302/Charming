@@ -15,7 +15,7 @@
 }
 
 /* 給較長的page使用 */
-.auto{
+.auto {
   margin: auto;
   width: 80%;
   height: auto;
@@ -75,7 +75,7 @@
   padding: 10px 20px;
 }
 
-.p{
+.p {
   padding: 10px;
   font-size: var(--heading6);
 }
@@ -88,5 +88,15 @@
   border: 2px solid var(--brown2);
   background-color: var(--brown2);
   color: #ffffff;
+}
 
+.passwordShow {
+  position: relative;
+}
+
+.password {
+  position: absolute;
+  right: 13px;
+  bottom: 23px;
+  z-index: 2;
 }

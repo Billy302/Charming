@@ -17,16 +17,16 @@ function MyAccount(props) {
       <BreadCrumb />
       {/* 上方選單 */}
       <nav className={style.navLeft}>
-        <Link to="/account">
+        <Link to="/account" className={style.active}>
           會員中心 <hr />
         </Link>
-        <Link to="/shoppinglist">
+        <Link to="/shoppinglist" className={style.unactive}>
           購買清單 <hr />
         </Link>
-        <Link to="/collection">
+        <Link to="/collection" className={style.unactive}>
           我的收藏 <hr />
         </Link>
-        <Link to="/notice">
+        <Link to="/notice" className={style.unactive}>
           我的通知 <hr />
         </Link>
       </nav>

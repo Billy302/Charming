@@ -1,7 +1,7 @@
-import style from './Pages.module.css'
+import style from './SignInIdentify.module.css'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
+import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
 
 function SignInIdentify() {
   return (

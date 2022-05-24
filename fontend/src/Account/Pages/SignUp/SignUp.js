@@ -1,7 +1,7 @@
-import style from './Pages.module.css'
+import style from './SignUp.module.css'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
+import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
 
 function SignUp() {
   const [account, setAccount] = useState('')
@@ -32,7 +32,7 @@ function SignUp() {
         {/* 第三方登入 Google/Facebook */}
         <div className={style.google}>
           <a href="#">
-            <img src={require('../images/google.png')} alt="google" />
+            <img src={require('../../images/google.png')} alt="google" />
           </a>
         </div>
         {/* <div className="google">
