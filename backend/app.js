@@ -6,15 +6,13 @@ var logger = require('morgan');
 require('dotenv').config();
 const cors = require('cors')
 
+
 // 引入各自的路由
 var SalesRouter = require('./routes/Sales/index');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -23,6 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 引用各自路由，記得加自己的代號
 app.use('/Sales', SalesRouter);
+app.use(cors())
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
