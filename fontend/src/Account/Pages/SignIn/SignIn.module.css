@@ -1,8 +1,6 @@
-/* Pages */
-
-/* 給統一長度的page使用 */
+/* 外框線 */
 .main {
-  margin: auto;
+  margin: 20px auto;
   width: 80%;
   height: 80vh;
   border-radius: var(--desk-border-radius);
