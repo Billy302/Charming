@@ -1,7 +1,6 @@
-/* Pages */
-
+/* 外框線 */
 .auto {
-  margin: auto;
+  margin: 20px auto;
   width: 80%;
   height: auto;
   border-radius: var(--desk-border-radius);

@@ -12,7 +12,7 @@ function BreadCrumb() {
           <Link to="/account">會員中心</Link>
         </li>
         <li>
-          <Link to="/notice/setting">通知設定</Link>
+          <Link to="/notice/setting">基本資料</Link>
         </li>
       </ol>
     </div>

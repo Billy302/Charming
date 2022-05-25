@@ -15,6 +15,7 @@ function SignUpInfo() {
           <label>姓名</label>
           <input type="text" placeholder="請輸入真實姓名" />
           {/* 性別 */}
+          <label>性別</label>
           <section>
             <input id="Male" type="radio" name="myGender" value="male" />
             <label for="Male">

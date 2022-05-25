@@ -1,24 +1,8 @@
-/* Pages */
-
-/* 給統一長度的page使用 */
-.main {
-  margin: auto;
-  width: 80%;
-  height: 80vh;
-  border-radius: var(--desk-border-radius);
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-  color: var(--brown2);
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* 給較長的page使用 */
+/* 外框線 */
 .auto {
-  margin: auto;
+  margin: 20px auto;
   width: 80%;
-  height: auto;
+  height: 70vh;
   border-radius: var(--desk-border-radius);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   color: var(--brown2);
@@ -96,7 +80,8 @@
 
 .password {
   position: absolute;
-  right: 13px;
-  bottom: 23px;
+  right: 20px;
+  top: 97px;
   z-index: 2;
 }
+
