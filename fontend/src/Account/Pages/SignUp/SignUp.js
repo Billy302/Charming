@@ -5,6 +5,8 @@ import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 function SignUp() {
+
+  // 檢查帳號是否存在
   const [account, setAccount] = useState('')
   const [accountMessage, setAccountMessage] = useState('')
   const handleValueChange = (e) => {
@@ -23,7 +25,7 @@ function SignUp() {
     }
   }
 
-     // 密碼顯示or隱藏
+     // 密碼顯示or隱藏(眼睛)
      const [invisible, setInvisible] = useState(true);
      const invisibleHandler = () => {
        setInvisible(!invisible);
@@ -50,7 +52,7 @@ function SignUp() {
 
         <hr className={style.hr} />
         <p>或建立柴米帳號</p>
-        <form className={style.form}>
+        <div className={style.form}>
           <label>帳號</label>
           <input
             type="text"
@@ -71,7 +73,7 @@ function SignUp() {
           <label for='passwordCheck'>確認密碼</label>
           <input type={invisible? 'password' : 'text'} id="passwordCheck"/>
           <button className={style.button}>註冊</button>
-        </form>
+        </div>
         <p>
           點擊「註冊」即表示你同意我們的<a href="#">使用條款</a>及
           <a href="#">隱私政策</a>
