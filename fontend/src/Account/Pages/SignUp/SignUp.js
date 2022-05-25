@@ -1,9 +1,12 @@
 import style from './SignUp.module.css'
-import React, { useState } from 'react'
+import { React, useState } from 'react'
 import { Link } from 'react-router-dom'
 import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 function SignUp() {
+
+  // 檢查帳號是否存在
   const [account, setAccount] = useState('')
   const [accountMessage, setAccountMessage] = useState('')
   const handleValueChange = (e) => {
@@ -21,6 +24,12 @@ function SignUp() {
       setAccountMessage('帳號已存在')
     }
   }
+
+     // 密碼顯示or隱藏(眼睛)
+     const [invisible, setInvisible] = useState(true);
+     const invisibleHandler = () => {
+       setInvisible(!invisible);
+     };
 
   return (
     <>
@@ -43,7 +52,7 @@ function SignUp() {
 
         <hr className={style.hr} />
         <p>或建立柴米帳號</p>
-        <form className={style.form}>
+        <div className={style.form}>
           <label>帳號</label>
           <input
             type="text"
@@ -52,19 +61,24 @@ function SignUp() {
             onChange={handleValueChange}
             onBlur={handleCheckAccount}
           />
-          <label>密碼</label>
-          <input
-            type="password"
-            placeholder="密碼須為8碼以上英文、數字或符號"
-          />
-          <label>確認密碼</label>
-          <input type="password" />
+          {/* 初次輸入密碼 */}
+          <label for='password'>密碼</label>
+          <div className={style.password}>
+          {invisible &&  <FaEyeSlash onClick={invisibleHandler} />}
+           {!invisible &&  <FaEye onClick={invisibleHandler} />}
+          </div>
+          <input type={invisible? 'password' : 'text'} id="password" className={style.passwordShow}  placeholder="密碼須為8碼以上英文、數字或符號"/>
+
+          {/* 確認密碼 */}
+          <label for='passwordCheck'>確認密碼</label>
+          <input type={invisible? 'password' : 'text'} id="passwordCheck"/>
           <button className={style.button}>註冊</button>
-        </form>
+        </div>
         <p>
           點擊「註冊」即表示你同意我們的<a href="#">使用條款</a>及
           <a href="#">隱私政策</a>
         </p>
+        <br/>
         <p>
           已經是會員? <Link to="/signin">點此登入</Link>
         </p>
