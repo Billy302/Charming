@@ -81,7 +81,7 @@
     }
     /* hover頭像顯示清單的參照物 */
     .showList img{
-     object-fit: contain;
+     object-fit:cover;
     }
     .showList > :first-child{
       display: inline-block;

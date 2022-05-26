@@ -8,7 +8,7 @@ import logo from "../../Assets/charming_logo.png";
 function UnloginNav(props){
   const [typebar,setNavbar] = useState(false);
   const displayItemType = () =>{
-    if(window.scrollY >= 80){
+    if(window.scrollY >= 400){
       setNavbar(true);
     }else{
       setNavbar(false);
@@ -27,7 +27,7 @@ function UnloginNav(props){
           </a>
         </div>
 
-       <div className={style.searchBar}>
+       <div className={typebar ? `${style.searchBar}` :`${style.displayNone}`}>
           <input
             type="search"
             placeholder="Search.."
@@ -43,7 +43,8 @@ function UnloginNav(props){
         </div>
 
         {/* 平版版搜尋 */}
-        <div className={style.padSearch}>
+        {/* <div className={style.padSearch}> */}
+        <div className={typebar ? `${style.padSearch}` :`${style.displayNone}`}>
           <ImSearch className={style.padSearchIcon} />
           <input type="search" className={style.padSearchBar}></input>
         </div>
