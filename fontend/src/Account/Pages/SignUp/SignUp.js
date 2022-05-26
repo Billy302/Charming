@@ -1,15 +1,29 @@
 import style from "./SignUp.module.css";
 import { React, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import AuthService from "../../Services/auth.service";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 function SignUp() {
+  const navigate = useNavigate();
+
   let [account, setAccount] = useState("");
   let [password, setPassword] = useState("");
 
   const handleChangeAccount = (e) => {setAccount(e.target.value);}
+  const handleChangePassword = (e) => {setPassword(e.target.value);}
+
+  // AuthService.register(user_account, user_password)
+  const handelSignup = () =>{
+    AuthService.register(account, password).then(() => {
+      window.alert("註冊成功! 現在將導向登入頁面");
+      navigate('/signin');
+    }).catch(error => {
+      console.log(error.response)
+    })
+  }
 
 
   // // 檢查帳號是否存在
@@ -74,7 +88,7 @@ function SignUp() {
             {invisible && <FaEyeSlash onClick={invisibleHandler} />}
             {!invisible && <FaEye onClick={invisibleHandler} />}
           </div>
-          <input
+          <input onChange={handleChangePassword}
             type={invisible ? "password" : "text"}
             id="password"
             className={style.passwordShow}
@@ -82,9 +96,11 @@ function SignUp() {
           />
 
           {/* 確認密碼 */}
-          <label for="passwordCheck">確認密碼</label>
+          <label htmlFor="passwordCheck">確認密碼</label>
           <input type={invisible ? "password" : "text"} id="passwordCheck" />
-          <button className={style.button}>註冊</button>
+
+          {/* 註冊按鈕 */}
+          <button onClick={handelSignup} className={style.button}>註冊</button>
         </div>
         <p>
           點擊「註冊」即表示你同意我們的<a href="#">使用條款</a>及
