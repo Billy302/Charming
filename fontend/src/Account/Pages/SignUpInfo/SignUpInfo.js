@@ -1,7 +1,6 @@
 import style from "./SignUpInfo.module.css";
 import React from "react";
-import UnloginNav from "../../Home/Components/UnloginNav/UnloginNav";
-import MyButton from "../Components/MyButton/MyButton";
+import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 
 function SignUpInfo() {
   return (
@@ -16,11 +15,12 @@ function SignUpInfo() {
           <label>姓名</label>
           <input type="text" placeholder="請輸入真實姓名" />
           {/* 性別 */}
+          <label>性別</label>
           <section>
             <input id="Male" type="radio" name="myGender" value="male" />
             <label for="Male">
               <img
-                src={require("../images/Avatar3.png")}
+                src={require("../../images/Avatar3.png")}
                 className="gender"
                 alt="male"
               />
@@ -29,7 +29,7 @@ function SignUpInfo() {
             <input id="Female" type="radio" name="myGender" value="Female" />
             <label for="Female">
               <img
-                src={require("../images/Avatar2.png")}
+                src={require("../../images/Avatar2.png")}
                 className="gender"
                 alt="female"
               />
@@ -38,7 +38,7 @@ function SignUpInfo() {
             <input id="Other" type="radio" name="myGender" value="Other" />
             <label for="Other">
               <img
-                src={require("../images/Avatar1.png")}
+                src={require("../../images/Avatar1.png")}
                 className="gender"
                 alt="other"
               />
@@ -88,7 +88,7 @@ function SignUpInfo() {
           </section>
           <section>
             <input id="UIUX_P" type="radio" name="myProduct" value="UIUX_P" />
-            <label for="UIUX_P">UI/UX</label>
+            <label for="UIUX_P"> UI / UX </label>
 
             <input
               id="graphicDesign_P"
@@ -130,7 +130,7 @@ function SignUpInfo() {
               name="myCollection"
               value="UIUX_C"
             />
-            <label for="UIUX_C">UI/UX</label>
+            <label for="UIUX_C"> UI / UX </label>
             <input
               id="graphicDesign_C"
               type="radio"
@@ -189,7 +189,7 @@ function SignUpInfo() {
               name="myArticle"
               value="designExhibition"
             />
-            <label for="designExhibition">設計展覽</label>
+            <label for="designExhibition">設計展覽 </label>
             <input
               id="domesticNews"
               type="radio"

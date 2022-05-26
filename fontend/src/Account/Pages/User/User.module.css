@@ -3,27 +3,44 @@
   clear: both;
 }
 
-/* Pages */
+/* 上方nav */
 .navLeft {
-  padding: 10px px;
+  padding: 0px 0px 10px 20px;
   font-size: 24px;
   display: flex;
+  position: relative;
+  transition: .5s 0.2s;
 }
 
-.navLeft a {
+.navLeft a{
+  transition: .3s 0.1s;
+}
+
+.unactive{
+  padding: 0px 50px 0px 0px;
   margin: 15px;
   font-weight: 700;
+  text-decoration: none;
+  color: var(--brown3);
+}
+.navLeft a:nth-child(1){
+  padding: 0px 50px 0px 0px;
+  margin: 15px;
+  font-weight: 700;
+  font-size: 28px;
   text-decoration: none;
   color: var(--brown2);
 }
 
 .navLeft a hr {
-  width: 100px;
+  width: 150px;
   border-top: 5px solid;
+  position: absolute;
+  left: -20px;
 }
 
 .navLeft a:hover {
-  color: var(--brown1);
+  color: var(--brown2);
 }
 
 /* 左側邊選單 */

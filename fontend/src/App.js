@@ -13,11 +13,11 @@ import MyProduct from "./Home/Pages/MyProduct/MyProduct";
 
 //會員
 //Pages
-import SignInIdentify from "./Account/Pages/SignInIdentify";
-import SignInRecover from "./Account/Pages/SignInRecover";
-import SignUpInfo from "./Account/Pages/SignUpInfo";
-import SignUp from "./Account/Pages/SignUp";
-import SignIn from "./Account/Pages/SignIn";
+import SignInIdentify from "./Account/Pages/SignInIdentify/SignInIdentify";
+import SignInRecover from "./Account/Pages/SignInRecover/SignInRecover";
+import SignUpInfo from "./Account/Pages/SignUpInfo/SignUpInfo";
+import SignUp from "./Account/Pages/SignUp/SignUp";
+import SignIn from "./Account/Pages/SignIn/SignIn";
 
 //Pages user
 import MyShoppingList from "./Account/Pages/User/MyShoppingList";
