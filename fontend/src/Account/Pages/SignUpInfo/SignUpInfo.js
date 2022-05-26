@@ -1,8 +1,20 @@
 import style from "./SignUpInfo.module.css";
-import React from "react";
+import {React, useState} from "react";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 
 function SignUpInfo() {
+
+  let [name, setName] = useState("");
+  let [gender, setGender] = useState("");
+  let [birthday, setBirthday] = useState("");
+  let [email, setEmail] = useState("");
+  let [mobile, setMobile] = useState("");
+  let [city, setCity] = useState("");
+  let [interestProduct, setInterestProduct] = useState("");
+  let [interestCollection, setInterestCollection] = useState("");
+  let [interestArticle, setInterestArticle] = useState("");
+
+  
   return (
     <>
       {/* 登入navbar */}
