@@ -16,7 +16,7 @@ const ChatArea = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:7000/comment/${currentArticle}`)
+        fetch(`http://localhost:3001/blog/comment/${currentArticle}`)
             .then((res) => res.json())
             .then((data) => setChatContext([...data]));
     }, []);

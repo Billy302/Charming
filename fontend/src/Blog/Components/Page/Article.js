@@ -12,9 +12,12 @@ const Article = (props) => {
     const articleID = params.id;
 
     useEffect(() => {
-        fetch(`http://localhost:7000/article/${articleID}`)
+        fetch(`http://localhost:3001/blog/article/${articleID}`)
             .then((res) => res.json())
-            .then((data) => setTrendingArticle(data[0]));
+            .then((data) => {
+                console.log(data[0][0]);
+                setTrendingArticle(data[0][0]);
+            });
         // 如果這樣設定的話下面的component讀不到
         // 下面的component props.trendingArticle[0].article_title 這樣讀不到
     }, []);

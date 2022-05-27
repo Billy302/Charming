@@ -22,7 +22,7 @@ const Blog = (props) => {
     // 為什麼props資料讀不到，但是可以render?
 
     useEffect(() => {
-        fetch('http://localhost:7000/article')
+        fetch('http://localhost:3001/blog/article')
             .then((res) => res.json())
             .then((data) => setTrendingArticle([...data]));
     }, []);
