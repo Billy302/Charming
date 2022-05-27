@@ -4,10 +4,36 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import axios from "axios";
 
 
 function SignIn(props) {
+  const [user_account, setUserAccount] = useState("");
+  const [user_password, setUserPassword] = useState("");
   const { auth, setAuth } = props;
+
+  const login = (e) => {
+    if (user_account !== "" && user_password !== "") {
+      axios
+        .post("http://localhost:3001/signin", {
+          user_account: user_account,
+          user_password: user_password,
+        })
+        .then((res) => {
+          alert("登入成功!");
+          navigate("/home");
+        })
+        .catch((e) => {
+          if (e.response.error) {
+            alert("帳號或密碼錯誤！");
+          }
+        });
+    } else if (user_account === "") {
+      alert("請輸入帳號!");
+    } else {
+      alert("請輸入密碼!");
+    }
+  };
   
   // useHistory版本已被useNavigate取代
   const navigate = useNavigate();
