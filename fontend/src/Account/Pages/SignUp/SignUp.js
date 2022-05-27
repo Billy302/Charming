@@ -77,7 +77,7 @@ function SignUp() {
           <label htmlFor="account">帳號</label>
           <input onChange={handleChangeAccount}
             type="text" id="account" name="account"
-            placeholder="帳號只能是英文、數字"
+            placeholder="帳號只能是英文、數字" required
             // value={account}
             // onChange={handleValueChange}
             // onBlur={handleCheckAccount}
@@ -93,11 +93,11 @@ function SignUp() {
             id="password"
             className={style.passwordShow}
             placeholder="密碼須為8碼以上英文、數字或符號"
-          />
+            required/>
 
           {/* 確認密碼 */}
           <label htmlFor="passwordCheck">確認密碼</label>
-          <input type={invisible ? "password" : "text"} id="passwordCheck" />
+          <input type={invisible ? "password" : "text"} id="passwordCheck" required/>
 
           {/* 註冊按鈕 */}
           <button onClick={handelSignup} className={style.button}>註冊</button>
