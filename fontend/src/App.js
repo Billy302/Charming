@@ -89,10 +89,10 @@ function App() {
                 {/* 討論區結束 */}
 
                 {/* 部落格開始 */}
-                <Route path="/blog" element={<Blog />} />
+                {/* <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/article/:id" element={<Article />} />
                 <Route path="/blog/search/:desc" element={<Search />} />
-                <Route path="/blog" element={<Footer />} />
+                <Route path="/blog" element={<Footer />} /> */}
                 {/* 部落格結束 */}
             </Routes>
             <Footer />
