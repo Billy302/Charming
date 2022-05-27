@@ -32,8 +32,9 @@
   /* 圓角 */
   --desk-border-radius:15px;
   /* 網頁版border寬度 */
-  --desk-border:2px;
+  --border:2px solid var(--brown2);
   --pageBorder:40px;
+  --holdpadding:50px;
 }
 
 *{
@@ -60,26 +61,23 @@ body {
   /* -moz-osx-font-smoothing: grayscale; */
 }
 nav, hgroup, section{
-  margin: 30px 50px;
+  margin: 0px var(--holdpadding);
 }
-img{
-  width: 100%;
+nav{
+  z-index: 1;
+  padding-top: 10px;
 }
 
-@media screen and (max-width:950px) {
 
-}
 @media screen and (max-width:1024px){
-  nav, hgroup, section{
-    margin: 20px;
+  :root{
+    --holdpadding:20px;
   }
 }
-@media screen and (max-width:780px) {
-    
-}
+
 @media screen and (max-width:441px){
-  nav, hgroup, section{
-    margin: 10px;
+  :root{
+    --holdpadding:10px;
   }
   
 }

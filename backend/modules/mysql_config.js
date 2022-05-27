@@ -1,6 +1,7 @@
 require('dotenv').config();
 const mysql = require('mysql2');
 
+// 連結MySQL
 const pool = mysql.createPool({
     host:process.env.MYSQL_HOST,
     user:process.env.MYSQL_USER,

@@ -12,6 +12,9 @@
 	height: 400px;
 	position: relative;
 }
+.cardSize img{
+	width: 100%;
+}
 
 /* 點讚愛心 */
 .like {

@@ -1,43 +1,51 @@
-.footer{
-    width: 100%;
-    background-color: none;
-    box-shadow: 0px 2px 5px var(--gray2) inset;
+body{
+    height: 100%;
+}
+.charmingFooter{
+    padding: 10px;
+    box-shadow:0px 1px 10px gray inset;
+    --circleSize:100px;
+}
+.charmingFooter > p{
+    margin: 10px var(--holdpadding); 
 }
 
-.developertext{
-    padding: 30px 0px 20px 100px;
-    /* margin:10px 100px; */
-    color: var(--brown2);
-    font-weight: bold;
-}
-
-/* 照片群組 */
-.developer{
-    margin: 0px 100px;
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    color: var(--brown2);
-    font-weight: bold;
-}
 .picture{
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.picture div{
+    text-align: center;
+}
+.charmingFooter img{
+    width: var(--circleSize);
+    height: var(--circleSize);
+    object-fit: fill;
+    border-radius: 99px;
+}
+.footerText{
+    margin: 10px var(--holdpadding);
+    text-align:end;
+    font-size: var(--heading5);
+    font-weight: lighter;
+    color: var(--gray1);
 }
 
-.footerText{
-    margin: 30px 100px 0px 0px;
-    padding:0px 0px 20px 0px;
-    text-align: end;
-    color: var(--gray3);
-}
-@media screen and (max-width:950px) {
-    .developertext{
-        padding: 30px 0px 20px 30px;
-    }
-    .developer{
-        margin: 0px 30px;
+@media screen and (max-width:1024px){
+    .charmingFooter{
+        --circleSize:70px;
     }
 }
+@media screen and (max-width:780px) {
+    .footerText{
+        text-align:center
+    }
+}
+@media screen and (max-width:441px){
+  .charmingFooter{
+      display: none;
+  }
+}
+
+
+

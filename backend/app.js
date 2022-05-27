@@ -3,10 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config();
 const cors = require('cors')
 
 // 引入各自的路由
-var SalesRouter = require('./routes/Sales/index');
+var SalesRouter = require('./routes/Sales/index')
+var AccountRouter = require('./routes/Account/users')
 
 
 var app = express();
@@ -20,9 +22,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 // 引用各自路由，記得加自己的代號
 app.use('/Sales', SalesRouter);
+//http://localhost:3001/Account
+app.use('/Account', AccountRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

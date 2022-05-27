@@ -1,6 +1,9 @@
 import React from "react";
 import style from "./UnloginHome.module.css";
+// 匯入component
 import UnloginNav from "../../Components/UnloginNav/UnloginNav";
+import PhoneFooter from "../../Components/PhoneFooter/PhoneFooter";
+// 匯入icon
 import { ImSearch } from "react-icons/im";
 
 //匯入圖片
@@ -15,12 +18,15 @@ function UnloginHome() {
   return (
     <header>
       <UnloginNav />
+      {/* search header */}
       <hgroup className={style.backgroundImg}>
+
         <div className={style.headerSlogan}>
           <h1 className={style.heading2}>有才有財，柴米網</h1>
           <p className={style.heading3}>集結台灣優質設計師</p>
           <p className={style.heading3}>全台最大數位設計產品販售平台</p>
         </div>
+        
         <div className={style.searchbar}>
           <input
             className={style.searchInput}
@@ -41,54 +47,46 @@ function UnloginHome() {
           </button>
         </div>
         <div className={style.tags}>
-            <a href="product">
-              <button className={style.searchTag}>中秋節</button>
-            </a>
-            <a href="product">
-              <button className={style.searchTag}>中秋節</button>
-            </a>
-            <a href="product">
-              <button className={style.searchTag}>中秋節</button>
-            </a>
-            <a href="product">
-              <button className={style.searchTag}>中秋節</button>
-            </a>
+          <a href="/ProductPage">
+            <button className={style.searchTag}>中秋節</button>
+          </a>
+          <a href="/ProductPage">
+            <button className={style.searchTag}>中秋節</button>
+          </a>
+          <a href="/ProductPage">
+            <button className={style.searchTag}>中秋節</button>
+          </a>
+          <a href="/ProductPage">
+            <button className={style.searchTag}>中秋節</button>
+          </a>
         </div>
       </hgroup>
-      <div className={style.product}>
-        <a href="product">
-          <button className={style.productType}>UI/UX</button>
-        </a>
-        <a href="product">
-          <button className={style.productType}>品牌宣傳</button>
-        </a>
-        <a href="product">
-          <button className={style.productType}>插圖</button>
-        </a>
-        <a href="product">
-          <button className={style.productType}>網頁設計</button>
-        </a>
-        <a href="product">
-          <button className={style.productType}>攝影</button>
-        </a>
-      </div>
+
+
+      {/* 產品頁介紹 */}
       <div className={style.product}>
         <div>
-          <img className={style.productPicture} src={product1} alt="product" />
+          <img src={product1} alt="product" />
           <p className={style.heading4}>快速媒合，即時交流</p>
         </div>
         <div>
-          <img className={style.productPicture} src={product2} alt="product" />
+          <img src={product2} alt="product" />
           <p className={style.heading4}>需求客製，快速出貨</p>
         </div>
         <div>
-          <img className={style.productPicture} src={product3} alt="product" />
+          <img src={product3} alt="product" />
           <p className={style.heading4}>藝企合作，共創雙贏</p>
         </div>
       </div>
+
       <a href="product">
-        <button className={style.joinButton}> {"> "}查看所有商品</button>
+        <button className={`${style.joinButton} ${style.heading4}`}>
+          {" "}
+          {"> "}查看所有商品
+        </button>
       </a>
+
+      {/* 柴米人頁面介紹 */}
       <div className={style.portfolio}>
         <hgroup className={style.pageMargin}>
           <p className={style.heading3}>柴米武林招開中</p>
@@ -98,22 +96,23 @@ function UnloginHome() {
           </p>
         </hgroup>
         <a href="portfolio">
-          <img
-            className={style.introducePicture}
-            src={introduce1}
-            alt="introduce"
-          />
+          <img src={introduce1} alt="introduce" />
         </a>
       </div>
-      <div className={style.portfolio}>
+
+      {/* 柴訊介紹 */}
+      <div className={style.blog}>
+        <hgroup className={style.phoneDisplay}>
+          <p className={style.heading3}>最新設計新聞快報</p>
+          <p className={style.heading3}>掌握時事，掌握先機！</p>
+          <p className={style.heading4}>
+            每日搜集國內外設計情報，隨時掌握設計藝術界快訊
+          </p>
+        </hgroup>
         <a href="blog">
-          <img
-            className={style.introducePicture2}
-            src={introduce2}
-            alt="introduce"
-          />
+          <img src={introduce2} alt="introduce" />
         </a>
-        <hgroup>
+        <hgroup className={style.blogText}>
           <p className={style.heading3}>最新設計新聞快報</p>
           <p className={style.heading3}>掌握時事，掌握先機！</p>
           <p className={style.heading4}>
@@ -121,6 +120,8 @@ function UnloginHome() {
           </p>
         </hgroup>
       </div>
+
+      {/* 柴社介紹 */}
       <div className={style.portfolio}>
         <hgroup className={style.pageMargin}>
           <p className={style.heading3}>聚集全國優質創作者</p>
@@ -138,8 +139,11 @@ function UnloginHome() {
         </a>
       </div>
       <a href="login">
-        <button className={style.joinButton}>加入Charming</button>
+        <button className={`${style.joinButton} ${style.heading4}`}>
+          加入Charming
+        </button>
       </a>
+      <PhoneFooter />
     </header>
   );
 }
