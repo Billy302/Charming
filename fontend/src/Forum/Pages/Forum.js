@@ -212,15 +212,7 @@ export default function Forum() {
                       </tbody>
   
                   </Table>
-                  <Pagination className="forumPagenumber" >
-                      <Pagination.First />
-                      <Pagination.Item >{1}</Pagination.Item>
-                      <Pagination.Item>{2}</Pagination.Item>
-                      <Pagination.Item>{3}</Pagination.Item>
-                      {/* <Pagination.Item active>{12}</Pagination.Item> */}
-                      <Pagination.Last path="/AskPageTwo" />
-                  </Pagination>
-                      {/* <Sonnet /> */}
+                  
     </Tab>
   
   
@@ -246,7 +238,7 @@ export default function Forum() {
                                   <td>Smohouse思默好時 好睞空間<br/>littleMOCA微當代文創</td>
                                   <td>免費參觀</td>
                                   <td>
-                                  <Link to="/ArtShowOne">
+                                  <Link to="/ArtShow">
                                   <button type="button" class="btn btn-warning">
                                   查看活動詳情
                                   </button>
@@ -260,7 +252,7 @@ export default function Forum() {
                                       (SEMA)</td>
                                   <td>KRW 15,000</td>
                                   <td>
-                                  <Link to="/ArtShowTwo">
+                                  <Link to="/ArtShow">
                                   <button type="button" class="btn btn-warning">
                                   查看活動詳情
                                   </button>
@@ -274,7 +266,7 @@ export default function Forum() {
                                   <td>Louisiana Museum of
                                       Modern Art</td>
                                   <td>USD 30</td>
-                                  <td><Link to="/ArtShowThree">
+                                  <td><Link to="/ArtShow">
                                   <button type="button" class="btn btn-warning">
                                   查看活動詳情
                                   </button>
@@ -288,7 +280,7 @@ export default function Forum() {
                                   <td>2022-10-11~2023-02-02</td>
                                   <td>台北美術館</td>
                                   <td>新台幣 300元</td>
-                                  <td><Link to="/ArtShowFour">
+                                  <td><Link to="/ArtShow">
                                   <button type="button" class="btn btn-warning">
                                   查看活動詳情
                                   </button>
@@ -302,7 +294,7 @@ export default function Forum() {
                                   <td>2022-10-20~2023-03-30</td>
                                   <td>台北探索館特展廳</td>
                                   <td>新台幣 200元</td>
-                                  <td><Link to="/ArtShowFive">
+                                  <td><Link to="/ArtShow">
                                   <button type="button" class="btn btn-warning">
                                   查看活動詳情
                                   </button>

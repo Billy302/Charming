@@ -37,9 +37,9 @@ import OrderList from "./Sales/Pages/Order/OrderList";
 
 //討論區
 import Forum from './Forum/Pages/Forum';
-// import ReplyQone from './Forum/Pages/ReplyQone'
-// import ReplyQtwo from './Forum/Pages/ReplyQtwo'
-// import ArtShow from './Forum/Pages/ArtShow'
+import ReplyQone from './Forum/Pages/ReplyQone'
+import ReplyQtwo from './Forum/Pages/ReplyQtwo'
+import ArtShow from './Forum/Pages/ArtShow'
 
 
 function App() {
@@ -85,10 +85,9 @@ function App() {
 
         {/* 討論區 */}
         <Route path="/Forum" element={<Forum />} />
-        {/* 
         <Route path="/ReplyQone" element={<ReplyQone />} />
         <Route path="/ReplyQtwo" element={<ReplyQtwo />} />
-        <Route path="/ArtShow" element={<ArtShow />} /> */}
+        <Route path="/ArtShow" element={<ArtShow />} />
         {/* 討論區結束 */}
 
       </Routes>
