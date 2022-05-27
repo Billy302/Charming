@@ -1,19 +1,22 @@
 import classes from './Trending.module.css';
 
 const Trending = (props) => {
-    const allData = props.article;
-
-    return allData.map((data) => {
-        return (
-            <div key={data.id} className={classes['trending-article']}>
-                <img src={data.img} alt=""></img>
-                <div className={classes['trending-article--context']}>
-                    <h2 className={props.isDarkMode ? classes['active-title'] : ''}>{data.title}</h2>
-                    <p>{data.context}</p>
+    return (
+        <div className={classes['trending-article']}>
+            <img src={props.img} alt=""></img>
+            <div className={classes['trending-article--context']}>
+                <h2
+                    className={`${classes['trending-article--context__title']} ${
+                        props.isDarkMode ? classes['active-title'] : ''
+                    }`}
+                    dangerouslySetInnerHTML={{ __html: props.article.article_title }}
+                ></h2>
+                <div className={classes['trending-article--context__render-article']}>
+                    <p dangerouslySetInnerHTML={{ __html: props.article.article_content }}></p>
                 </div>
             </div>
-        );
-    });
+        </div>
+    );
 };
 
 export default Trending;

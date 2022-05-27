@@ -1,8 +1,5 @@
 .typing-area {
-    /* width: 70%; */
-    margin-left: 9rem;
-    /* display: flex; */
-    /* justify-content: space-between; */
+    width: 85%;
 }
 
 .typing-area label {
@@ -30,36 +27,6 @@
     margin-left: 3rem;
 }
 
-/* CSS */
-.typing-area button {
-    background-color: #fff;
-    border: 1px solid #d5d9d9;
-    border-radius: 8px;
-    box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
-    box-sizing: border-box;
-    color: #0f1111;
-    cursor: pointer;
-    display: inline-block;
-    font-family: 'Amazon Ember', sans-serif;
-    font-size: 13px;
-    line-height: 29px;
-    padding: 0 10px 0 11px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    width: 100px;
-}
-
-.typing-area button:hover {
-    background-color: #f7fafa;
-}
-
-.typing-area button:focus {
-    border-color: #008296;
-    box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
-    outline: 0;
+.typing-area--btn {
+    border-radius: 5%;
 }

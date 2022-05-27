@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './SliderSection.module.css';
 import slider1 from './img/slider1.jpg';
 import slider2 from './img/slider2.jpg';
@@ -10,6 +10,13 @@ const SliderSection = (props) => {
     const sliderData = [slider1, slider2, slider3];
     const [current, setCurrent] = useState(0);
     const [imgHover, setImgHover] = useState(false);
+
+    // useEffect(() => {
+    //     setInterval(() => {
+    //         nextSlideHandler();
+    //     }, 5000);
+    // }, [current]);
+
     const maxSlide = sliderData.length - 1;
 
     const nextSlideHandler = () => {
