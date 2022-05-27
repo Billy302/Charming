@@ -9,14 +9,14 @@
 }
 
 .slider--image {
-    margin-top: 20px;
+    margin-top: 2rem;
     object-fit: contain;
     margin: auto;
     display: block;
-    width: 40%;
+    width: 45%;
     border-radius: 2%;
     transition: 0.8s;
-    margin-top: 20px;
+    margin-top: 2rem;
     /* background: linear-gradient(0deg, rgba(255, 210, 71, 0.59), rgba(255, 210, 71, 0.59)); */
 }
 
@@ -30,6 +30,6 @@
     background-image: linear-gradient(0deg, rgba(255, 210, 71, 0.59), rgba(255, 210, 71, 0.59));
 } */
 
-.slide img:hover {
+/* .slide img:hover {
     transform: translateY(-20px);
-}
+} */

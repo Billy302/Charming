@@ -7,7 +7,7 @@ const ArticleRelated = (props) => {
         <div className={`${classes['article--context__related']} ${props.className}`}>
             <ul>
                 <p>
-                    熱門文章
+                    相關文章
                     <AiOutlineArrowRight className={classes['article--context__related-arrow']} />
                 </p>
                 <li className={classes.container}>

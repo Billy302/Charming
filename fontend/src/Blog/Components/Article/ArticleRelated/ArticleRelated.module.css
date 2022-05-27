@@ -1,9 +1,3 @@
-.article--context__related {
-    width: 70%;
-    margin-top: 2.5rem;
-    margin-left: 2rem;
-}
-
 .article--context__related ul {
     display: flex;
     flex-direction: column;
@@ -23,7 +17,7 @@
 
 .article--context__related li {
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 3rem;
 }
 
@@ -37,10 +31,7 @@
 }
 
 .container span {
-    background-color: green;
-    color: white;
-    border-radius: 50%;
-    font-size: 2rem;
-    margin-right: 0.5rem;
+    font-size: 1.8rem;
     margin-top: 0.3rem;
+    margin-right: 1rem;
 }

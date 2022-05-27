@@ -1,7 +1,7 @@
 .slider {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 50rem;
     display: flex;
     /* justify-content: center; */
     /* align-items: center; */
@@ -14,7 +14,7 @@
     position: absolute;
     object-fit: contain;
     display: block;
-    font-size: 50px;
+    font-size: 5rem;
     top: 50%;
     right: 80%;
     z-index: 10;
@@ -24,7 +24,7 @@
 .slider--btn__right {
     position: absolute;
     display: block;
-    font-size: 50px;
+    font-size: 5rem;
     top: 50%;
     left: 80%;
     z-index: 10;

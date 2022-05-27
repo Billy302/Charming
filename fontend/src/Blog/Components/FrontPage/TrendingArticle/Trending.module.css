@@ -37,18 +37,31 @@
     line-height: 4.4rem;
     margin-bottom: 2rem;
     width: 80%;
-    transition: 10s;
+    transition: 1s;
+}
+
+.trending-article--context__title h1 {
+    font-size: 2rem;
 }
 
 .active-title {
-    transition: 10s;
+    transition: 1s;
     color: white;
 }
+
 .trending-article--context p {
     font-size: 1.6rem;
     font-weight: 700;
     line-height: 2.5rem;
     width: 80%;
+}
+
+.trending-article--context__render-article {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
 }
 
 /* 1200 px 以下 */

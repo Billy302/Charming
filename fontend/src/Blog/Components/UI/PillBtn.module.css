@@ -1,34 +1,25 @@
-/* .pillbtn:link,
-.pillbtn:visited {
-    padding: 15px 40px;
-    display: inline-block;
-    border-radius: 100px;
-    transition: all 0.2s;
-    position: relative;
-    font-size: 16px;
-}
-
-.pillbtn {
-    background-color: #fff;
-    color: #777;
-    border: 1px solid red;
-} */
-
-.flexbox {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
 .pillbtn {
     color: #795252;
     border: 1px solid #795252;
-    border-radius: 20px;
+    border-radius: 2rem;
     background-color: transparent;
-    width: 106px;
-    height: 30px;
+    width: 10.6rem;
+    height: 3rem;
+    transition: 0.5s;
+    margin-left: 2rem;
+}
+
+a:link,
+a:visited {
+    color: #795252;
 }
 
 .pillbtn:hover {
-    border-radius: 5px;
+    transform: translateY(-0.8rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.pillbtn:active {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }

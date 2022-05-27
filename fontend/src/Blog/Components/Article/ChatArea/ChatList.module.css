@@ -1,5 +1,5 @@
 .chatlist--icon-and-context {
-    margin-left: 9rem;
+    /* margin-left: 9rem; */
     margin-top: 3rem;
     width: 60%;
     display: flex;
@@ -7,6 +7,8 @@
     flex-wrap: wrap;
     /* flex-direction: row;
     flex-wrap: wrap; */
+    border: 0.1rem solid #eee;
+    box-shadow: 0.1rem 0.1rem 0.3rem #eee;
 }
 
 .chatlist--icon-and-context img {
@@ -15,13 +17,15 @@
 }
 
 .chatlist--icon-and-context__loop {
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
     display: flex;
     flex-direction: row;
+    padding: 3rem;
 }
 
 .chatlist--icon-and-context p {
     font-size: 2.5rem;
     width: 70%;
     margin-left: 6rem;
+    border-bottom: 1px solid #eee;
 }

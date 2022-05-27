@@ -1,37 +1,94 @@
-.article--context {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.article {
+    max-width: 108rem;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 6rem;
 }
 
-.article--context__detail {
+.article--context {
+    width: 65%;
     display: flex;
     flex-direction: column;
-    margin-left: 100px;
-    margin-top: 30px;
-    grid-column: 1 / span 3;
-    grid-row: 1;
+    color: var(--brown2);
+    border: 0.1rem solid #eee;
+    box-shadow: 0.1rem 0.1rem 0.3rem #eee;
 }
 
-.article--context__trending-related {
-    width: 100%;
-    grid-column: 3 /4;
-    grid-row: 1;
+.article--context__tag {
+    margin-top: 3rem;
 }
 
-.article--context__detail p {
-    width: 60%;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
+.article--context p {
+    padding: 3rem;
+    font-size: 1.6rem;
 }
 
-.article--context__detail img {
-    margin: 20px 0;
-    width: 50%;
-    height: 50%;
+.article--context img {
+    margin: auto;
+    width: 80%;
     border-radius: 2%;
 }
 
-@media (min-width: 540px) {
+.article--trending-related {
+    color: var(--brown2);
+    /* float: right; */
+    /* margin-left: 2rem; */
+    width: 30%;
+}
+
+.article--trending {
+    border: 0.1rem solid #eee;
+    box-shadow: 0.1rem 0.1rem 0.3rem #eee;
+    padding: 4rem;
+    margin: auto;
+    margin-bottom: 6rem;
+}
+
+.article--related {
+    border: 0.1rem solid #eee;
+    box-shadow: 0.1rem 0.1rem 0.3rem #eee;
+    padding: 4rem;
+    margin: auto;
+}
+
+.article--context__share {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article--context__fav {
+    margin: 0;
+}
+
+@media (max-width: 1076px) {
+    .article {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .article--context {
+        width: 95%;
+        margin: auto;
+        margin-bottom: 4rem;
+    }
+
+    .article--trending-related {
+        width: 95%;
+        margin: auto;
+    }
+
+    .article--trending {
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .article--trending {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 480px) {
 }
