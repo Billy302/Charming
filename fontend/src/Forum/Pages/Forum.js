@@ -95,6 +95,120 @@ export default function Forum() {
                               <td>2022/4/15</td>
                               <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
                           </tr>
+
+                          <tr>
+                            <th scope="row">6</th>
+                            <td>客戶消失且沒有付款,如何保障自己的權益 ?</td>
+                            <td>接案後</td>
+                            <td>何靖翰</td>
+                            <td>2022/4/10</td>
+                            <td>
+                            <Link to="/">
+                                <button type="button" class="btn btn-warning">
+                                回應
+                                </button>
+                          </Link>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">7</th>
+                            <td>如何兼顧進修與接案工作?</td>
+                            <td>接案中</td>
+                            <td>方彥廷</td>
+                            <td>2022/3/21</td>
+                            <td>
+                            <Link to="/">
+                                <button type="button" class="btn btn-warning">
+                                回應
+                                </button>
+                          </Link>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>自由接案者的平均時薪?</td>
+                            <td>接案後</td>
+                            <td>梁嘉琪</td>
+                            <td>2022/3/20</td>
+                            <td>
+                            <Link to="/">
+                                <button type="button" class="btn btn-warning">
+                                回應
+                                </button>
+                          </Link>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">9</th>
+                            <td>如何開拓國外客戶市場?</td>
+                            <td>接案後</td>
+                            <td>胡靖睿</td>
+                            <td>2022/3/20</td>
+                            <td>
+                            <Link to="/">
+                                <button type="button" class="btn btn-warning">
+                                回應
+                                </button>
+                          </Link>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">10</th>
+                            <td>什麼樣特質的人適合長久接案?</td>
+                            <td>接案前</td>
+                            <td>簡柔馨</td>
+                            <td>2022/3/7</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">11</th>
+                            <td>接案工作容易面臨受騙的幾件事?</td>
+                            <td>接案前</td>
+                            <td>向柏賢</td>
+                            <td>2022/3/7</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">12</th>
+                            <td>如何保持創作靈感和動力?</td>
+                            <td>接案前</td>
+                            <td>許晞彤</td>
+                            <td>2022/2/23</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">13</th>
+                            <td>顧客的想法相當落伍,如何委婉地告訴他?</td>
+                            <td>接案中</td>
+                            <td>霍諾軒</td>
+                            <td>2022/2/22</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">14</th>
+                            <td>快三十歲了回歸職場,該注意些什麼?</td>
+                            <td>接案中</td>
+                            <td>趙筠榆</td>
+                            <td>2022/2/17</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">15</th>
+                            <td>自由接案者的夢想是否不切實際?</td>
+                            <td>接案後</td>
+                            <td>陳裕樺</td>
+                            <td>2022/2/15</td>
+                            <td><button type="button" class="btn btn-warning" href="#">回應</button></td>
+                        </tr>
                       </tbody>
   
                   </Table>
