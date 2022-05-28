@@ -20,8 +20,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 引用各自路由，記得加自己的代號
-app.use('/Sales', SalesRouter);
 app.use(cors())
+app.use('/Sales', SalesRouter);
+
 
 
 // catch 404 and forward to error handler

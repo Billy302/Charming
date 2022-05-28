@@ -24,8 +24,8 @@ const connection = require("../../modules/mysql_config");
 sales
   .route("/api/product")
   // 取得全部商品資料
-  // http://localhost:3000/Sales/api/product?id=1&order=price&sort=desc&page=1
-  // 需要四個參數，透過Query-> id 參照us_user資料表的id欄位(必備) | order 參照product_items欄位 | sort 分ASC / DESC | Page 參照總頁數
+  // http://localhost:3001/Sales/api/product?id=1&order=price&sort=desc&page=1&typeId=102
+  // 需要五個參數，透過Query-> id 參照us_user資料表的id欄位(必備) | order 參照product_items的欄位 | sort 分ASC / DESC | Page 參照總頁數 | typeId 參照product_items資料表的type_id欄位
   .get(async (req, res, next) => {
     // 取得使用者查詢的頁數
     let activePage = req.query.page ? req.query.page : 1;
@@ -39,15 +39,21 @@ sales
     //  預設排序依照 價格 asc
     let order = req.query.order ? req.query.order : "price";
     let sort = req.query.sort ? req.query.sort : "ASC";
+    let typeId = req.query.typeId ? req.query.typeId : "";
 
     // 兩個查詢第一個查詢商品，第二個查詢商品總數
     // 查詢商品需要三個變數，order依據 : order / order順序 : sort / Page頁數 : page
     // 預設為查詢第一頁，依照價格低到高
-    const sql = `SELECT product_items.* , all_type.type
+    let sql = `SELECT product_items.* , all_type.type
     FROM product_items
     INNER JOIN all_type
-    on product_items.type_id = all_type.sid
-    order by product_items.${order} ${sort}
+    on product_items.type_id = all_type.sid`;
+
+    if (typeId.length != 0) {
+      sql += ` WHERE product_items.type_id ='${typeId}'`;
+    }
+
+    sql += ` order by product_items.${order} ${sort}
     limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
     SELECT count(*) as totalItems FROM product_items;`;
 
@@ -90,7 +96,7 @@ sales
     res.json(datas);
   })
   // 新增商品，multipart/form-data
-  // http://localhost:3000/Sales/api/product
+  // http://localhost:3001/Sales/api/product
   // 需要六個參數，透過Body -> authorName | productName | productCopy | price | picPath | typeId
   .post(upload.array(), async (req, res, next) => {
     // 驗證初始值為false
@@ -110,7 +116,7 @@ sales
 sales
   .route("/api/product/:id")
   // 更新商品項目，multipart/form-data
-  // http://localhost:3000/Sales/api/product/1
+  // http://localhost:3001/Sales/api/product/1
   // 需要六個參數，5個透過body傳的參數，1個Params傳的參數
   // 透過Body -> productName | productCopy | price | picPath | typeId
   // 透過Params -> 商品ID : id
@@ -125,7 +131,7 @@ sales
     res.send("put : /api/product/:id");
   })
   // 刪除商品項目
-  // http://localhost:3000/Sales/api/product/1
+  // http://localhost:3001/Sales/api/product/1
   // 需要一個參數，透過Params->商品ID  : id
   .delete(async (req, res, next) => {
     const sql = `DELETE FROM product_items WHERE ID = ${req.params.id}`;
@@ -137,7 +143,7 @@ sales
   });
 
 // 查詢單筆商品資料
-// http://localhost:3000/Sales/api/product/1/2
+// http://localhost:3001/Sales/api/product/1/2
 // 需要兩個參數，透過Params -> 使用者ID : userID | 商品ID : productID
 sales.get("/api/product/:userID/:productID", async (req, res, next) => {
   // 查詢商品需要一個變數，productID
@@ -167,6 +173,125 @@ sales.get("/api/product/:userID/:productID", async (req, res, next) => {
   res.send(datas);
 });
 
+/* 特定商品 
+1. 功能：取得'使用者'，全部有按<3的商品資料。Method: GET。URL: /api/productUser?id=  完成
+2. 功能：取得'店家'，全部商品資料。Method: GET。URL: /api/productShop?id= 完成
+*/
+sales
+  .route("/api/productUser")
+  // 取得使用者，全部有按<3的商品資料
+  // http://localhost:3001/Sales/api/productUser?id=1&order=price&sort=desc&page=1
+  // 需要四個參數，透過Query-> id 參照product_love資料表的user_id欄位(必備) | order 參照product_items欄位 | sort 分ASC / DESC | Page 參照總頁數
+  .get(async (req, res, next) => {
+    let activePage = req.query.page ? req.query.page : 1;
+
+    // 一次取幾筆
+    let rowsPerPage = 15;
+
+    // 分頁數
+    let pageCount = 0;
+
+    //  預設排序依照 價格 asc
+    let order = req.query.order ? req.query.order : "price";
+    let sort = req.query.sort ? req.query.sort : "ASC";
+
+    // 兩個查詢第一個查詢商品，第二個查詢商品總數
+    // 查詢商品需要三個變數，order依據 : order / order順序 : sort / Page頁數 : page
+    // 預設為查詢第一頁，依照價格低到高
+    const sql = `SELECT product_items.* ,  product_love.* 
+    FROM product_love
+    INNER JOIN product_items
+    ON product_love.product_ID  = product_items.ID
+    WHERE product_love.user_id = '${req.query.id}'
+    order by product_items.${order} ${sort}
+    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+    SELECT count(*) as totalItems FROM product_love WHERE product_love.user_id = '${
+      req.query.id
+    }';`;
+
+    // 執行SQL語法，取得商品資料 & 商品總數
+    const [datas] = await connection.query(sql).catch((error) => {
+      console.log(`執行 Query : ${sql}時出錯 `);
+    });
+
+    // 計算 分頁總數
+    if (Object.values(datas[1]) > 0) {
+      pageCount = Math.ceil(Object.values(datas[1]) / rowsPerPage); //pageCount即分頁資料總頁數
+    }
+
+    // 分頁總數，加進陣列
+    datas.push(pageCount);
+
+    // 總共回傳，商品資料 / 商品總數 /  分頁總數
+    res.json(datas);
+  });
+
+sales
+  .route("/api/productShop")
+  // 取得店家，全部商品資料
+  // http://localhost:3001/Sales/api/productShop?id=1&order=price&sort=desc&typeId=102&page=1
+  // 需要五個參數，透過Query-> id 參照us_user資料表的id欄位(必備) | order 參照product_items的欄位 | sort 分ASC / DESC | Page 參照總頁數 | typeId 參照product_items資料表的type_id欄位
+  .get(async (req, res, next) => {
+    // 取得使用者查詢的頁數
+    let activePage = req.query.page ? req.query.page : 1;
+
+    // 一次取幾筆
+    let rowsPerPage = 15;
+
+    // 分頁數
+    let pageCount = 0;
+
+    //  預設排序依照 價格 asc
+    let order = req.query.order ? req.query.order : "price";
+    let sort = req.query.sort ? req.query.sort : "ASC";
+
+    // 選擇什麼分類
+    let typeId = req.query.typeId ? req.query.typeId : "";
+
+    // 查詢店家名稱，需要一個變數，店家id : id
+    let authorSql = `SELECT us_user.username FROM us_user WHERE id = ${req.query.id}`;
+    const [authorData] = await connection.query(authorSql).catch((error) => {
+      console.log(`執行 Query : ${authorSql}時出錯 `);
+    });
+
+    // 兩個查詢第一個查詢商品，第二個查詢商品總數
+    // 查詢商品需要三個變數，order依據 : order / order順序 : sort / Page頁數 : page
+    // 預設為查詢第一頁，依照價格低到高
+    let sql = `SELECT product_items.* , all_type.type
+    FROM product_items
+    INNER JOIN all_type
+    on product_items.type_id = all_type.sid
+    WHERE product_items.author_name = '${authorData[0].username}'`;
+
+    if (typeId.length != 0) {
+      sql += ` and product_items.type_id ='${typeId}'`;
+    }
+
+    sql += ` order by product_items.${order} ${sort}
+    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+    SELECT count(*) as totalItems FROM product_items WHERE product_items.author_name = '${authorData[0].username}'`;
+
+    if (typeId.length != 0) {
+      sql += ` and product_items.type_id ='${typeId}'`;
+    }
+
+    // 執行SQL語法，取得商品資料 & 商品總數
+    const [datas] = await connection.query(sql).catch((error) => {
+      console.log(`執行 Query : ${sql}時出錯 `);
+    });
+
+    // 計算 分頁總數
+    if (Object.values(datas[1]) > 0) {
+      pageCount = Math.ceil(Object.values(datas[1]) / rowsPerPage); //pageCount即分頁資料總頁數
+    }
+
+    // 分頁總數，加進陣列
+    datas.push(pageCount);
+
+    // 總共回傳，商品資料 / 商品總數 /  分頁總數
+    res.json(datas);
+  });
+
 /*訂單
 1. 功能：取得使用者的全部訂單。Method: GET。URL: /api/order/orderShop Postman未驗證
 2. 功能：取得使用者的訂單詳細內容。Method: GET。URL: /appi/ordershop/:id Postman未驗證
@@ -176,7 +301,7 @@ sales.get("/api/product/:userID/:productID", async (req, res, next) => {
 sales
   .route("/api/orderShop")
   // 取得使用者的全部訂單 TO C
-  // http://localhost:3000/Sales/api/orderShop?id=1&page=1
+  // http://localhost:3001/Sales/api/orderShop?id=1&page=1
   // 需要參數兩個，透過query -> 使用者ID : id | 頁面 : page
   .get(async (req, res, next) => {
     // 頁面預設第一頁
@@ -194,6 +319,7 @@ sales
     WHERE product_case.user_ID  = ${req.query.id}
     limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
     SELECT count(*) as totalItems FROM product_case`;
+
     const [datas] = await connection.query(sql).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
     });
@@ -213,15 +339,14 @@ sales
   .post(upload.array(), async (req, res, next) => {
     // 新增訂單，兩個參數
 
-    // 抓現在時間 
-    
+    // 抓現在時間
+
     // 紀錄
     let case_count = 1;
-    let cs
+    let cs;
     let sql = `INSERT INTO product_case ( ID, user_ID, total_price) 
     VALUES ('${case_ID}','${req.body.userID}','${req.body.totalPrice}');
     INSERT INTO product_case_items ()`;
-
 
     case_count = case_count + 1;
 
@@ -229,7 +354,7 @@ sales
   });
 
 // 取得使用者訂單的詳細內容 TO C
-// http://localhost:3000/Sales/api/orderShop/1
+// http://localhost:3001/Sales/api/orderShop/1
 // 需要一個參數，透過params-> 使用者ID : id
 sales.get("/api/ordershop/:id", async (req, res, next) => {
   let sql = `SELECT product_case.ID , product_case.create_time , product_items.product_name , product_items.price
@@ -246,7 +371,7 @@ sales.get("/api/ordershop/:id", async (req, res, next) => {
 });
 
 // 取得商家所有產品的銷售紀錄 TO B
-// http://localhost:3000/Sales/api/orderUser?name=aaa&orderID=1&itemsName=1
+// http://localhost:3001/Sales/api/orderUser?name=aaa&orderID=1&itemsName=1
 // 需要四個參數，透過query -> name (必須)，
 // 參考product_items的author_name | orderID，參考product_case_items的case_ID | itemsName，參考product_items的product_name / 頁面 : page 參照總頁數
 sales.get("/api/orderUser", async (req, res, next) => {
@@ -308,53 +433,8 @@ sales.get("/api/orderUser", async (req, res, next) => {
 
 sales
   .route("/api/love")
-  // 取得全部有按<3的商品資料
-  // http://localhost:3000/Sales/api/product?id=1&order=price&sort=desc&page=1
-  // 需要四個參數，透過Query-> id 參照product_love資料表的user_id欄位(必備) | order 參照product_items欄位 | sort 分ASC / DESC | Page 參照總頁數
-  .get(async (req, res, next) => {
-    
-    let activePage = req.query.page ? req.query.page : 1;
-
-    // 一次取幾筆
-    let rowsPerPage = 15;
-
-    // 分頁數
-    let pageCount = 0;
-
-    //  預設排序依照 價格 asc
-    let order = req.query.order ? req.query.order : "price";
-    let sort = req.query.sort ? req.query.sort : "ASC";
-
-    // 兩個查詢第一個查詢商品，第二個查詢商品總數
-    // 查詢商品需要三個變數，order依據 : order / order順序 : sort / Page頁數 : page
-    // 預設為查詢第一頁，依照價格低到高
-    const sql = `SELECT product_items.* ,  product_love.* 
-    FROM product_love
-    INNER JOIN product_items
-    ON product_love.product_ID  = product_items.ID
-    WHERE product_love.user_id = '${req.query.id}'
-    order by product_items.${order} ${sort}
-    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
-    SELECT count(*) as totalItems FROM product_love WHERE product_love.user_id = '${req.query.id}';`;
-
-    // 執行SQL語法，取得商品資料 & 商品總數
-    const [datas] = await connection.query(sql).catch((error) => {
-      console.log(`執行 Query : ${sql}時出錯 `);
-    });
-
-    // 計算 分頁總數
-    if (Object.values(datas[1]) > 0) {
-      pageCount = Math.ceil(Object.values(datas[1]) / rowsPerPage); //pageCount即分頁資料總頁數
-    }
-
-    // 分頁總數，加進陣列
-    datas.push(pageCount);
-
-    // 總共回傳，商品資料 / 商品總數 /  分頁總數
-    res.json(datas);
-  })
   // 新增使用者對商品按<3
-  // http://localhost:3000/Sales/api/love?productID=1&userID=1
+  // http://localhost:3001/Sales/api/love?productID=1&userID=1
   // 需要兩個參數，透過query -> 產品ID : productID， 使用者 : userID
   .post(async (req, res, next) => {
     const sql = `INSERT INTO product_love(product_ID, user_id) VALUES (${req.query.productID},${req.query.userID})`;
@@ -365,7 +445,7 @@ sales
     res.send(datas);
   })
   // 刪除使用者對哪個產品按<3
-  // http://localhost:3000/Sales/api/love?productID=1&userID=1
+  // http://localhost:3001/Sales/api/love?productID=1&userID=1
   // 需要兩個參數，透過query -> 產品ID : productID， 使用者 : userID
   .delete(async (req, res, next) => {
     const sql = `DELETE FROM product_love WHERE product_ID = ${req.query.productID} and user_id = ${req.query.userID}`;
