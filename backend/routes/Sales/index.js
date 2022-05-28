@@ -531,17 +531,18 @@ sales.post(
   }
 );
 // 刪除圖片檔
-// 需要一個參數，以body -> 檔名
+// 需要一個參數，以body -> 檔名 : name
 sales.post("/api/delete", async (req, res, next) => {
-  const { name } = req.body;
-  fs.unlink(`../../../fontend/src/Home/Assets/${name}`, (err) => {
-    if (err) {
-      console.log(err);
-      res.send("刪除文件失敗");
-    } else {
-      res.send("刪除文件成功");
+  fs.unlink(`../fontend/src/Home/assets/${req.body.id}.png`,
+    (err) => {
+      if (err) {
+        console.log(err);
+        res.send("刪除文件失敗");
+      } else {
+        res.send("刪除文件成功");
+      }
     }
-  });
+  );
 });
 
 module.exports = sales;
