@@ -497,21 +497,5 @@ sales.post("/api/delete", async (req, res, next) => {
   });
 });
 
-/* 店家
-1. 功能：取得店家資料。Method: GET。URL: /api/shop/:id
-2. 功能：新增店家。Method: POST。URL: /api/shop
-3. 功能：修改店家。Method: PUT。URL: /api/shop/:id
-sales.route("/api/shop").post(function (req, res, next) {
-  res.send("b");
-});
-sales
-  .route("/api/shop/:id")
-  .get(function (req, res, next) {
-    res.send("a");
-  })
-  .put(function (req, res, next) {
-    res.send("a");
-  });
-*/
 
 module.exports = sales;
