@@ -5,6 +5,9 @@ var multer = require("multer");
 var upload = multer();
 
 var fs = require("fs");
+
+const { body, validationResult, check } = require("express-validator");
+
 const connection = require("../../modules/mysql_config");
 
 // 全部都要加回傳訊息，成功或失敗 參考 https://reurl.cc/WrAgDL
@@ -97,21 +100,43 @@ sales
   })
   // 新增商品，multipart/form-data
   // http://localhost:3001/Sales/api/product
-  // 需要六個參數，透過Body -> authorName | productName | productCopy | price | picPath | typeId
-  .post(upload.array(), async (req, res, next) => {
-    // 驗證初始值為false
-    let verify = true;
-    // 通過驗證才可以新增
-    if (verify) {
-      const sql = `INSERT INTO product_items( author_name, product_name, product_copy, price, pic_path, type_id)
+  // 需要六個參數，透過Body -> authorName | productName | productCopy |
+  // 驗證 : authorName -> 不驗證 | productName 不能為空 & 最多45個字 | productCopy 不能為空
+  // 驗證 : price 不能為空 & 只能數字 | picPath 不能為空 | typeId 不能為空
+  .post(
+    upload.array(),
+    [
+      body("productName")
+        .notEmpty()
+        .withMessage("商品名稱不得為空")
+        .isLength({ max: 45 })
+        .withMessage("商品名稱長度錯誤"),
+      body("productCopy").notEmpty().withMessage("商品文案不得為空"),
+      body("price")
+        .notEmpty()
+        .withMessage("價格不得為空")
+        .matches(/^(0|[1-9][0-9]*)$/)
+        .withMessage("只能輸入數字"),
+      body("picPath").notEmpty().withMessage("照片不得為空"),
+      body("typeId").notEmpty().withMessage("分類不得為空"),
+    ],
+    async (req, res, next) => {
+      // 驗證結果
+      const error = validationResult(req);
+
+      // 有錯誤就回傳，沒錯誤就跑SQL
+      if (!error.isEmpty()) {
+        res.send({ error: error.array() });
+      } else {
+        const sql = `INSERT INTO product_items( author_name, product_name, product_copy, price, pic_path, type_id)
       VALUES ('${req.body.authorName}','${req.body.productName}','${req.body.productCopy}','${req.body.price}','${req.body.picPath}','${req.body.typeId}')`;
-      // 執行SQL語法，新增商品資料
-      const [datas] = await connection.query(sql).catch((error) => {
-        console.log(`執行 Query : ${sql}時出錯 `);
-      });
+        // 執行SQL語法，新增商品資料
+        const [datas] = await connection.query(sql).catch((error) => {
+          console.log(`執行 Query : ${sql}時出錯 `);
+        });
+      }
     }
-    res.send("post : /api/product");
-  });
+  );
 
 sales
   .route("/api/product/:id")
@@ -120,16 +145,36 @@ sales
   // 需要六個參數，5個透過body傳的參數，1個Params傳的參數
   // 透過Body -> productName | productCopy | price | picPath | typeId
   // 透過Params -> 商品ID : id
-  .put(upload.array(), async (req, res, next) => {
-    const sql = `UPDATE product_items SET product_name='${req.body.productName}',
+  // 驗證 : authorName -> 不驗證 | productName 不能為空 & 最多45個字 | productCopy 不能為空
+  // 驗證 : price 不能為空 & 只能數字 | picPath 不能為空 | typeId 不能為空
+  .put(
+    upload.array(),
+    [
+      body("productName")
+        .notEmpty()
+        .withMessage("商品名稱不得為空")
+        .isLength({ max: 45 })
+        .withMessage("商品名稱長度錯誤"),
+      body("productCopy").notEmpty().withMessage("商品文案不得為空"),
+      body("price")
+        .notEmpty()
+        .withMessage("價格不得為空")
+        .matches(/^(0|[1-9][0-9]*)$/)
+        .withMessage("只能輸入數字"),
+      body("picPath").notEmpty().withMessage("照片不得為空"),
+      body("typeId").notEmpty().withMessage("分類不得為空"),
+    ],
+    async (req, res, next) => {
+      const sql = `UPDATE product_items SET product_name='${req.body.productName}',
     product_copy='${req.body.productCopy}',price='${req.body.price}',
     pic_path='${req.body.picPath}',type_id='${req.body.typeId}' WHERE ID=${req.params.id}`;
-    // 執行SQL語法，更新商品項目
-    const [datas] = await connection.query(sql).catch((error) => {
-      console.log(`執行 Query : ${sql}時出錯 `);
-    });
-    res.send("put : /api/product/:id");
-  })
+      // 執行SQL語法，更新商品項目
+      const [datas] = await connection.query(sql).catch((error) => {
+        console.log(`執行 Query : ${sql}時出錯 `);
+      });
+      res.send("put : /api/product/:id");
+    }
+  )
   // 刪除商品項目
   // http://localhost:3001/Sales/api/product/1
   // 需要一個參數，透過Params->商品ID  : id
@@ -269,7 +314,9 @@ sales
 
     sql += ` order by product_items.${order} ${sort}
     limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
-    SELECT count(*) as totalItems FROM product_items WHERE product_items.author_name = '${authorData[0].username}'`;
+    SELECT count(*) as totalItems FROM product_items WHERE product_items.author_name = '${
+      authorData[0].username
+    }'`;
 
     if (typeId.length != 0) {
       sql += ` and product_items.type_id ='${typeId}'`;
@@ -293,10 +340,10 @@ sales
   });
 
 /*訂單
-1. 功能：取得使用者的全部訂單。Method: GET。URL: /api/order/orderShop Postman未驗證
-2. 功能：取得使用者的訂單詳細內容。Method: GET。URL: /appi/ordershop/:id Postman未驗證
-3. 功能：取得商家所有產品的銷售紀錄。Method: GET。URL: /api/order/orderUser Postman未驗證
-4. 功能：新增訂單。Method: POST。URL: /api/order 要問老師! 
+1. 功能：取得使用者的全部訂單。Method: GET。URL: /api/order/orderShop 
+2. 功能：取得使用者的訂單詳細內容。Method: GET。URL: /appi/ordershop/:id 
+3. 功能：取得商家所有產品的銷售紀錄。Method: GET。URL: /api/order/orderUser 
+4. 功能：新增訂單。Method: POST。URL: /api/order  
 */
 sales
   .route("/api/orderShop")
@@ -496,6 +543,5 @@ sales.post("/api/delete", async (req, res, next) => {
     }
   });
 });
-
 
 module.exports = sales;
