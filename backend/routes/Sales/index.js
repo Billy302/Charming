@@ -86,10 +86,9 @@ sales
         datas[0][i]["love"] = "false";
       }
     }
-
     // 計算 分頁總數
-    if (Object.values(datas[1]) > 0) {
-      pageCount = Math.ceil(Object.values(datas[1]) / rowsPerPage); //pageCount即分頁資料總頁數
+    if (Object.values(datas[1][0]) > 0) {
+      pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
     }
 
     // 分頁總數，加進陣列
@@ -260,8 +259,8 @@ sales
     });
 
     // 計算 分頁總數
-    if (Object.values(datas[1]) > 0) {
-      pageCount = Math.ceil(Object.values(datas[1]) / rowsPerPage); //pageCount即分頁資料總頁數
+    if (Object.values(datas[1][0]) > 0) {
+      pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
     }
 
     // 分頁總數，加進陣列
@@ -328,8 +327,8 @@ sales
     });
 
     // 計算 分頁總數
-    if (Object.values(datas[1]) > 0) {
-      pageCount = Math.ceil(Object.values(datas[1]) / rowsPerPage); //pageCount即分頁資料總頁數
+    if (Object.values(datas[1][0]) > 0) {
+      pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
     }
 
     // 分頁總數，加進陣列
@@ -372,8 +371,8 @@ sales
     });
 
     // 計算 分頁總數
-    if (Object.values(datas[1]) > 0) {
-      pageCount = Math.ceil(Object.values(datas[1]) / rowsPerPage); //pageCount即分頁資料總頁數
+    if (Object.values(datas[1][0]) > 0) {
+      pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
     }
 
     // 加進陣列 分頁總數
@@ -463,8 +462,8 @@ sales.get("/api/orderUser", async (req, res, next) => {
   });
 
   // 計算 分頁總數
-  if (Object.values(datas[1]) > 0) {
-    pageCount = Math.ceil(Object.values(datas[1]) / rowsPerPage); //pageCount即分頁資料總頁數
+  if (Object.values(datas[1][0]) > 0) {
+    pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
   }
 
   // 加進陣列 分頁總數
@@ -533,16 +532,14 @@ sales.post(
 // 刪除圖片檔
 // 需要一個參數，以body -> 檔名 : name
 sales.post("/api/delete", async (req, res, next) => {
-  fs.unlink(`../fontend/src/Home/assets/${req.body.id}.png`,
-    (err) => {
-      if (err) {
-        console.log(err);
-        res.send("刪除文件失敗");
-      } else {
-        res.send("刪除文件成功");
-      }
+  fs.unlink(`../fontend/src/Home/assets/${req.body.id}.png`, (err) => {
+    if (err) {
+      console.log(err);
+      res.send("刪除文件失敗");
+    } else {
+      res.send("刪除文件成功");
     }
-  );
+  });
 });
 
 module.exports = sales;
