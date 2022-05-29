@@ -4,7 +4,6 @@ function Processbar(props) {
   const { step } = props
   let start = step
   return (
-    //JSX
     <>
       <div className="progressBar">
         <div>
