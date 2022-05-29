@@ -73,7 +73,7 @@ function SignUp() {
 
         {/* 註冊柴米帳號 */}
         <p>或建立柴米帳號</p>
-        <div className={style.form}>
+        <form method="post" action="http://localhost:3001/Account/register" className={style.form}>
           <label htmlFor="account">帳號</label>
           <input onChange={handleChangeAccount}
             type="text" id="account" name="account"
@@ -93,15 +93,15 @@ function SignUp() {
             id="password"
             className={style.passwordShow}
             placeholder="密碼須為8碼以上英文、數字或符號"
-            required/>
+            name="password" required/>
 
           {/* 確認密碼 */}
           <label htmlFor="passwordCheck">確認密碼</label>
           <input type={invisible ? "password" : "text"} id="passwordCheck" required/>
 
           {/* 註冊按鈕 */}
-          <button onClick={handelSignup} className={style.button}>註冊</button>
-        </div>
+          <button type="submit" className={style.button}>註冊</button>
+        </form>
         <p>
           點擊「註冊」即表示你同意我們的<a href="#">使用條款</a>及
           <a href="#">隱私政策</a>

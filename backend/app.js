@@ -5,11 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config();
 const cors = require('cors')
-const authRoute = require("./routes/Account/auth")
 
 // 引入各自的路由
 var SalesRouter = require('./routes/Sales/index')
 var AccountRouter = require('./routes/Account/users')
+const authRoute = require("./routes/Account/auth")
 
 
 var app = express();
@@ -32,7 +32,6 @@ app.use(cors());
 app.use('/Sales', SalesRouter);
 //http://localhost:3001/Account
 app.use('/Account', AccountRouter)
-
 app.use("/api/user", authRoute);
 
 // catch 404 and forward to error handler

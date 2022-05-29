@@ -7,33 +7,34 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import axios from "axios";
 
 
-function SignIn(props) {
-  const [user_account, setUserAccount] = useState("");
-  const [user_password, setUserPassword] = useState("");
-  const { auth, setAuth } = props;
+function SignIn() {
+// function SignIn(props) {
+//   const [user_account, setUserAccount] = useState("");
+//   const [user_password, setUserPassword] = useState("");
+//   const { auth, setAuth } = props;
 
-  const login = (e) => {
-    if (user_account !== "" && user_password !== "") {
-      axios
-        .post("http://localhost:3001/signin", {
-          user_account: user_account,
-          user_password: user_password,
-        })
-        .then((res) => {
-          alert("登入成功!");
-          navigate("/home");
-        })
-        .catch((e) => {
-          if (e.response.error) {
-            alert("帳號或密碼錯誤！");
-          }
-        });
-    } else if (user_account === "") {
-      alert("請輸入帳號!");
-    } else {
-      alert("請輸入密碼!");
-    }
-  };
+//   const login = (e) => {
+//     if (user_account !== "" && user_password !== "") {
+//       axios
+//         .post("http://localhost:3001/signin", {
+//           user_account: user_account,
+//           user_password: user_password,
+//         })
+//         .then((res) => {
+//           alert("登入成功!");
+//           navigate("/home");
+//         })
+//         .catch((e) => {
+//           if (e.response.error) {
+//             alert("帳號或密碼錯誤！");
+//           }
+//         });
+//     } else if (user_account === "") {
+//       alert("請輸入帳號!");
+//     } else {
+//       alert("請輸入密碼!");
+//     }
+//   };
   
   // useHistory版本已被useNavigate取代
   const navigate = useNavigate();
@@ -63,31 +64,31 @@ function SignIn(props) {
 
         <hr className={style.hr} />
         <p>或用柴米帳號</p>
-        <form className={style.form}>
-          <label>帳號</label>
-          <input type="text" />
-           <label for='password'>密碼</label>
+
+        {/* 登入 */}
+        <form method="post" action="http://localhost:3001/Account/signin" className={style.form}>
+          <label htmlFor="username">帳號</label>
+          <input id="username" type="text" name="username" />
+           <label htmlFor='password'>密碼</label>
           <div className={style.password}>
             {/* 顯示/隱藏 密碼眼睛切換 text/password input type切換 */}
           {invisible &&  <FaEyeSlash onClick={invisibleHandler} />}
            {!invisible &&  <FaEye onClick={invisibleHandler} />}
           </div>
-          <input type={invisible? 'password' : 'text'} id="password" className={style.passwordShow}/>
+          <input type={invisible? 'password' : 'text'} id="password" className={style.passwordShow} name="password"/>
 
           <Link to="/signin/identify">忘記密碼</Link>
-        </form>
-        <button
-          className={style.button}
-          onClick={() => {
-            setAuth(!auth);
-
-            alert("登入成功");
-
-            navigate("/account");
-          }}
-        >
-          {auth ? "登出" : "登入"}
+        <button type="submit" className={style.button}>登入
         </button>
+        </form>
+            {/* onClick={() => {
+              setAuth(!auth);
+  
+              alert("登入成功");
+  
+              navigate("/account");
+            }}
+          {auth ? "登出" : "登入"} */}
 
         <p>
           還不是會員嗎? <Link to="/signup">立即註冊</Link>
