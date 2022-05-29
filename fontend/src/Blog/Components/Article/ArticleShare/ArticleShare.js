@@ -3,9 +3,12 @@ import { FaFacebookSquare, FaLine, FaTwitterSquare } from 'react-icons/fa';
 import { ImMail } from 'react-icons/im';
 import classes from './ArticleShare.module.css';
 import { FacebookShareButton, LineShareButton, TwitterShareButton, EmailShareButton } from 'react-share';
+import { useParams } from 'react-router-dom';
 
 const ArticleShare = (props) => {
-    const shareUrl = 'http://localhost:3000';
+    const params = useParams();
+    const currentArticle = params.id;
+    const shareUrl = `http://localhost:3000/blog/article/${currentArticle}`;
     return (
         <div className={`${classes['article--share']} ${props.className}`}>
             <FacebookShareButton url={shareUrl}>
