@@ -38,7 +38,7 @@ ul.pagination li a.active {
 
 ul.pagination li:hover {
   border-radius: 5px;
-  background-color: var(--sub-brown);
+  background-color: var(--brown3);
 }
 
 .arrow {
