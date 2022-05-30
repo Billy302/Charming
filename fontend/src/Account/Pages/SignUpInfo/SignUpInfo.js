@@ -2,21 +2,21 @@ import style from "./SignUpInfo.module.css";
 import {React, useState} from "react";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 
-function SignUpInfo() {
+function SignUpInfo(props) {
 
-  let [name, setName] = useState("");
-  let [gender, setGender] = useState("");
-  let [birthday, setBirthday] = useState("");
-  let [email, setEmail] = useState("");
-  let [mobile, setMobile] = useState("");
-  let [city, setCity] = useState("");
-  let [interestProduct, setInterestProduct] = useState("");
-  let [interestCollection, setInterestCollection] = useState("");
-  let [interestArticle, setInterestArticle] = useState("");
+  // let [name, setName] = useState("");
+  // let [gender, setGender] = useState("");
+  // let [birthday, setBirthday] = useState("");
+  // let [email, setEmail] = useState("");
+  // let [mobile, setMobile] = useState("");
+  // let [city, setCity] = useState("");
+  // let [interestProduct, setInterestProduct] = useState("");
+  // let [interestCollection, setInterestCollection] = useState("");
+  // let [interestArticle, setInterestArticle] = useState("");
 
   
   return (
-    <>
+    <div>
       {/* 登入navbar */}
       <UnloginNav />
       {/* 主框線 */}
@@ -25,7 +25,7 @@ function SignUpInfo() {
         {/* 基本資料表單 */}
         <form className={style.form}>
           <label>姓名</label>
-          <input type="text" placeholder="請輸入真實姓名" />
+          <input type="text" placeholder="請輸入真實姓名" required/>
           {/* 性別 */}
           <label>性別</label>
           <section>
@@ -61,9 +61,9 @@ function SignUpInfo() {
           <label>生日</label>
           <input type="date" />
           <label>E-mail</label>
-          <input type="email" />
+          <input type="email" required/>
           <label>連絡電話</label>
-          <input type="text" />
+          <input type="text" required/>
           <label for="location">所在地區</label>
           <select id="location" name="location">
             <option></option>
@@ -225,7 +225,7 @@ function SignUpInfo() {
           </div>
         </form>
       </main>
-    </>
+    </div>
   );
 }
 
