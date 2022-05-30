@@ -139,7 +139,7 @@ sales
 
 sales
   .route("/api/product/:id")
-  // 更新商品項目，multipart/form-data
+  // 修改商品項目，multipart/form-data
   // http://localhost:3001/Sales/api/product/1
   // 需要六個參數，5個透過body傳的參數，1個Params傳的參數
   // 透過Body -> productName | productCopy | price | picPath | typeId
@@ -458,7 +458,16 @@ sales.get("/api/orderShop", async (req, res, next) => {
   FROM product_case_items  
   JOIN product_items
   ON product_case_items.product_ID = product_items.ID 
-  WHERE product_items.author_name='${req.query.name}' ;`;
+  WHERE product_items.author_name='${req.query.name}'`;
+  // 查詢特定訂單 (可省)
+  if (orderID.length != 0) {
+    sql += ` and product_case_items.case_ID ='${req.query.orderID}'`;
+  }
+  // 查詢特定名稱 (可省)
+  if (itemsName.length != 0) {
+    sql += ` and product_items.product_name like '%%${req.query.itemsName}%%'`;
+  }
+  
 
   const [datas] = await connection.query(sql).catch((error) => {
     console.log(`執行 Query : ${sql}時出錯 `);

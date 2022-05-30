@@ -9,7 +9,7 @@ import data from '../../Json/Order.json'
 import './Cart.css'
 
 function Cart4() {
-  let history = useNavigate()
+  let Navigate = useNavigate()
   const productData = data[1]
   console.log(data)
   // console.log(data[0][0].ID)
@@ -87,7 +87,7 @@ function Cart4() {
         className="button"
         onClick={() => {
           // 回首頁
-          history.push('路徑')
+          Navigate('路徑')
         }}
       >
         完成

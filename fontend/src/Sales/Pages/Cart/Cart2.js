@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 function Cart2() {
   // useEffect 取會員個人資料 + 讀取購物車
 
-  let history = useNavigate()
+  let Navigate = useNavigate()
 
   const [inputText, setInputText] = useState('')
   // 計算購物車，價格總數
@@ -97,7 +97,7 @@ function Cart2() {
           className="button"
           onClick={() => {
             // 到下一頁
-            history.push('路徑')
+            Navigate('路徑')
             // 將個人資料存入Session
           }}
         >
@@ -107,7 +107,7 @@ function Cart2() {
           className="button"
           onClick={() => {
             // 回首頁
-            history.push('路徑')
+            Navigate('路徑')
           }}
         >
           回上頁

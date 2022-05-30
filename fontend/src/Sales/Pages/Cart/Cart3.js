@@ -14,7 +14,7 @@ import './CreditCard.css'
 import './Cart.css'
 
 function Cart3_Test() {
-  let history = useNavigate()
+  let Navigate = useNavigate()
 
   // 信用卡所需屬性
   const [number, SetNumber] = useState('')
@@ -53,7 +53,9 @@ function Cart3_Test() {
         <form>
           {/* 卡號 */}
           <div>
-            <label for="name" className='blockText'>信用卡卡號 : </label>
+            <label for="name" className="blockText">
+              信用卡卡號 :{' '}
+            </label>
             <input
               type="tel"
               className="form-control"
@@ -69,7 +71,9 @@ function Cart3_Test() {
           </div>
           {/* 持卡者姓名 */}
           <div>
-            <label for="name" className='blockText'>持卡者姓名 : </label>
+            <label for="name" className="blockText">
+              持卡者姓名 :{' '}
+            </label>
             <input
               type="text"
               className="form-control"
@@ -83,7 +87,9 @@ function Cart3_Test() {
           </div>
           {/* 到期日期 */}
           <div>
-            <label for="month" className='blockText'>有效截止月 / 年 : </label>
+            <label for="month" className="blockText">
+              有效截止月 / 年 :{' '}
+            </label>
             <select name="expiry" onChange={handleDate}>
               <option value=" ">Month</option>
               <option value="01">Jan</option>
@@ -115,7 +121,9 @@ function Cart3_Test() {
           </div>
           {/* 驗證碼 */}
           <div>
-            <label for="cvv" className='blockText'>CVV : </label>
+            <label for="cvv" className="blockText">
+              CVV :{' '}
+            </label>
             <input
               type="tel"
               name="cvc"
@@ -137,7 +145,7 @@ function Cart3_Test() {
           className="button"
           onClick={() => {
             // 到下一頁
-            history.push('路徑')
+            Navigate('路徑')
             // 新增訂單
           }}
         >
@@ -147,7 +155,7 @@ function Cart3_Test() {
           className="button"
           onClick={() => {
             // 回首頁
-            history.push('路徑')
+            Navigate('路徑')
           }}
         >
           回上頁

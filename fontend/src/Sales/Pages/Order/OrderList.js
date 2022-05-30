@@ -1,13 +1,14 @@
 // 取得使用者的全部訂單 TO C
 // http://localhost:3000/BtobPage/Order?id=1&page=1
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Pagination from '../../Components/Pagination/Pagination'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function OrderList() {
   // 取得包含目前URL的狀態和位置的物件函數
   const location = useLocation()
+  const Navigate = useNavigate()
 
   const [products, setProducts] = useState([])
   const [totalPage, setTotalPage] = useState([])
@@ -46,10 +47,18 @@ function OrderList() {
             <div>{user_ID}</div>
             <div>{total_price}</div>
             <div>{creat_time}</div>
+            <button
+              className="button"
+              onClick={() => {
+                Navigate(`${location.pathname}/${ID}`)
+              }}
+            >
+              詳細
+            </button>
           </div>
         )
       })}
-      {/* 丟變數  totalPages currentPages pathPages*/}
+      {/* 總頁數 */}
       <Pagination totalPages={totalPage} />
     </>
   )

@@ -25,7 +25,10 @@ function Pagination(props) {
         <li key={i}>
           <Link
             to={`${location.pathname}?id=${userId}&page=${i}`}
-            className={['page', i == currentPages ? ' active' : ''].join('')}
+            className={[
+              'page',
+              i === parseInt(currentPages) ? ' active' : '',
+            ].join('')}
           >
             {i}
           </Link>
@@ -38,7 +41,7 @@ function Pagination(props) {
     <>
       <ul className="pagination">
         {/* 到最初頁*/}
-        <li className={currentPages == 1 ? 'disabled' : ''}>
+        <li className={parseInt(currentPages) === 1 ? 'disabled' : ''}>
           <Link to={`${location.pathname}?id=${userId}&page=1`}>
             <i className="arrow left"></i>
             <i className="arrow left"></i>
@@ -69,7 +72,7 @@ function Pagination(props) {
           </Link>
         </li>
         {/* 到最末頁 */}
-        <li className={currentPages == totalPages ? 'disabled' : ''}>
+        <li className={parseInt(currentPages) === totalPages ? 'disabled' : ''}>
           <Link to={`${location.pathname}?id=${userId}&page=${totalPages}`}>
             <i className="arrow right"></i>
             <i className="arrow right"></i>

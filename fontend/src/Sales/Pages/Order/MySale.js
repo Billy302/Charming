@@ -26,18 +26,18 @@ function MySale() {
     <>
       <h3>To B - 個人銷售紀錄 Page</h3>
       {products.map((v, i) => {
-        const {} = v
+        const { ID, product_name, create_time, price } = v
         return (
           <div>
-            <div>{}</div>
-            <div>{}</div>
-            <div>{}</div>
-            <div>{}</div>
+            <div>訂單編號 : {ID}</div>
+            <div>產品名稱 : {product_name}</div>
+            <div>產品價格 : {price}</div>
+            <div>訂單日期 : {create_time}</div>
           </div>
         )
       })}
-      {/* 丟變數  totalPages currentPages pathPages*/}
-      <Pagination totalPages="15" currentPages="11" />
+      {/* 總頁數 */}
+      <Pagination totalPages={totalPage} />
     </>
   )
 }
