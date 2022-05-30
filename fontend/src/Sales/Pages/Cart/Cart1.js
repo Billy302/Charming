@@ -6,10 +6,10 @@ import React from 'react'
 import Processbar from '../../Components/ProcessBar/ProcessBar'
 import data from '../../Json/Cart.json'
 import './Cart.css'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Cart1() {
-  let history = useHistory()
+  let history = useNavigate()
   return (
     <>
       <h3>購物車-總攬 Page</h3>

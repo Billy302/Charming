@@ -4,7 +4,7 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Processbar from '../../Components/ProcessBar/ProcessBar'
 
 import Cards from 'react-credit-cards'
@@ -14,7 +14,7 @@ import './CreditCard.css'
 import './Cart.css'
 
 function Cart3_Test() {
-  let history = useHistory()
+  let history = useNavigate()
 
   // 信用卡所需屬性
   const [number, SetNumber] = useState('')

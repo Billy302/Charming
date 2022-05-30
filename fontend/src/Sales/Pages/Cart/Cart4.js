@@ -1,7 +1,7 @@
 // 功能：讀取購物車，Session productList(key)  / productID(key) / order(key)
 // 跳頁路徑未填
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import Processbar from '../../Components/ProcessBar/ProcessBar'
 import data from '../../Json/Order.json'
@@ -9,7 +9,7 @@ import data from '../../Json/Order.json'
 import './Cart.css'
 
 function Cart4() {
-  let history = useHistory()
+  let history = useNavigate()
   const productData = data[1]
   console.log(data)
   // console.log(data[0][0].ID)

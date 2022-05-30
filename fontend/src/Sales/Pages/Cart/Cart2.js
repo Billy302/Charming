@@ -7,12 +7,12 @@ import Processbar from '../../Components/ProcessBar/ProcessBar'
 import data from '../../Json/Cart.json'
 import number from '../../Json/number.json'
 import './Cart.css'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Cart2() {
   // useEffect 取會員個人資料 + 讀取購物車
 
-  let history = useHistory()
+  let history = useNavigate()
 
   const [inputText, setInputText] = useState('')
   // 計算購物車，價格總數
