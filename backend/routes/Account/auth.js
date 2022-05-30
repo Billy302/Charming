@@ -20,7 +20,7 @@ router.use((req,res,next) => {
   router.post("/register",(req, res) => {
       console.log("註冊!!");
         console.log(req.body);
-        // res.json({msg:123})
+        res.json({msg:123})
 
       
     });
