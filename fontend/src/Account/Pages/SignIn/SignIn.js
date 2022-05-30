@@ -77,8 +77,8 @@ function SignIn(props) {
           </div>
           <input type={invisible? 'password' : 'text'} id="password" className={style.passwordShow} name="user_password"/>
 
-          <Link to="/signin/identify">忘記密碼</Link>
-        <button onClick={login} className={style.button}>登入
+          <Link to="/signin/identify" className={style.forget}>忘記密碼</Link>
+        <button typeof="submit" className={style.button}>登入
         </button>
         </form>
             {/* onClick={() => {
