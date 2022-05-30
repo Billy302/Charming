@@ -7,43 +7,41 @@ import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 function SignUp() {
-  const navigate = useNavigate();
 
-  let [account, setAccount] = useState("");
-  let [password, setPassword] = useState("");
+  // let [account, setAccount] = useState("");
+  // let [password, setPassword] = useState("");
 
-  const handleChangeAccount = (e) => {setAccount(e.target.value);}
-  const handleChangePassword = (e) => {setPassword(e.target.value);}
+  // const handleChangeAccount = (e) => {setAccount(e.target.value);}
+  // const handleChangePassword = (e) => {setPassword(e.target.value);}
 
-  // AuthService.register(user_account, user_password)
-  const handelSignup = () =>{
-    AuthService.register(account, password).then(() => {
-      window.alert("註冊成功! 現在將導向登入頁面");
-      navigate('/signin');
-    }).catch(error => {
-      console.log(error.response)
-    })
+  // // AuthService.register(user_account, user_password)
+  // const handelSignup = () =>{
+  //   AuthService.register(account, password).then(() => {
+  //     window.alert("註冊成功! 現在將導向登入頁面");
+  //     navigate('/signin');
+  //   }).catch(error => {
+  //     console.log(error.response)
+  //   })
+  // }
+
+
+  // 檢查帳號是否存在
+  const [account, setAccount] = useState('')
+  const [accountMessage, setAccountMessage] = useState('')
+  const handleValueChange = (e) => {
+    setAccount(e.target.value)
   }
 
-
-  // // 檢查帳號是否存在
-  // const [account, setAccount] = useState('')
-  // const [accountMessage, setAccountMessage] = useState('')
-  // const handleValueChange = (e) => {
-  //   setAccount(e.target.value)
-  // }
-
-  // const handleCheckAccount = async () => {
-  //   const response = await fetch(
-  //     `${process.env.REACT_APP_API_URL}/users/checkAccount?account=${account}`
-  //   )
-  //   const results = await response.json()
-  //   if (results.total === 0) {
-  //     setAccountMessage('此帳號可以使用')
-  //   } else {
-  //     setAccountMessage('帳號已存在')
-  //   }
-  // }
+  const handleCheckAccount = async () => {
+    const response = await fetch(`http://localhost:3001/Account/checkAccount?user_account=${account}`
+    );
+    const results = await response.json()
+    if (results.total === 0) {
+      setAccountMessage('此帳號可以使用')
+    } else {
+      setAccountMessage('帳號已存在')
+    }
+  }
 
   // 密碼顯示or隱藏(眼睛)
   const [invisible, setInvisible] = useState(true);
@@ -75,20 +73,20 @@ function SignUp() {
         <p>或建立柴米帳號</p>
         <form method="post" action="http://localhost:3001/Account/register" className={style.form}>
           <label htmlFor="account">帳號</label>
-          <input onChange={handleChangeAccount}
-            type="text" id="account" name="account"
+          <input type="text" id="account" 
             placeholder="帳號只能是英文、數字" required
-            // value={account}
-            // onChange={handleValueChange}
-            // onBlur={handleCheckAccount}
-          />
+            value={account} name="user_account"
+            onChange={handleValueChange}
+            onBlur={handleCheckAccount}
+            />
+            {accountMessage}
           {/* 初次輸入密碼 */}
           <label htmlFor="password">密碼</label>
           <div className={style.password}>
             {invisible && <FaEyeSlash onClick={invisibleHandler} />}
             {!invisible && <FaEye onClick={invisibleHandler} />}
           </div>
-          <input onChange={handleChangePassword}
+          <input
             type={invisible ? "password" : "text"}
             id="password"
             className={style.passwordShow}

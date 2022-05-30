@@ -7,37 +7,37 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 import axios from "axios";
 
 
-// function SignIn() {
-function SignIn(props) {
-  const [user_account, setUserAccount] = useState("");
-  const [user_password, setUserPassword] = useState("");
-  const { auth, setAuth } = props;
+function SignIn() {
+// function SignIn(props) {
+//   const [user_account, setUserAccount] = useState("");
+//   const [user_password, setUserPassword] = useState("");
+//   const { auth, setAuth } = props;
 
-  const login = (e) => {
-    if (user_account !== "" && user_password !== "") {
-      axios
-        .post("http://localhost:3001/signin", {
-          user_account: user_account,
-          user_password: user_password,
-        })
-        .then((res) => {
-          alert("登入成功!");
-          navigate("/home");
-        })
-        .catch((e) => {
-          if (e.response.error) {
-            alert("帳號或密碼錯誤！");
-          }
-        });
-    } else if (user_account === "") {
-      alert("請輸入帳號!");
-    } else {
-      alert("請輸入密碼!");
-    }
-  };
+//   const login = (e) => {
+//     if (user_account !== "" && user_password !== "") {
+//       axios
+//         .post("http://localhost:3001/signin", {
+//           user_account: user_account,
+//           user_password: user_password,
+//         })
+//         .then((res) => {
+//           alert("登入成功!");
+//           navigate("/home");
+//         })
+//         .catch((e) => {
+//           if (e.response.error) {
+//             alert("帳號或密碼錯誤！");
+//           }
+//         });
+//     } else if (user_account === "") {
+//       alert("請輸入帳號!");
+//     } else {
+//       alert("請輸入密碼!");
+//     }
+//   };
   
-  // useHistory版本已被useNavigate取代
-  const navigate = useNavigate();
+//   // useHistory版本已被useNavigate取代
+//   const navigate = useNavigate();
   
   // 密碼顯示or隱藏
   const [invisible, setInvisible] = useState(true);
