@@ -14,13 +14,6 @@ function App() {
       <Routes>
         <Route path="/BtobPage/Order" element={<OrderList />} />
       </Routes>
-      {/* <Cart1 />
-      <Cart2 />
-      <Cart3 />
-      <Cart4 /> 
-       <MySale /> */}
-
-      
     </div>
   )
 }

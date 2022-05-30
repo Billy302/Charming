@@ -354,7 +354,7 @@ sales
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 2;
+    let rowsPerPage = 15;
 
     // 分頁數
     let pageCount = 0;
