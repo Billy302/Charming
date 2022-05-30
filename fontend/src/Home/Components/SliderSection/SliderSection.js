@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from 'animate.css';
+// import style from 'animate.css';
 import classes from "./SliderSection.module.css";
 import slider1 from "../../Assets/product1.png";
 import slider2 from "../../Assets/product2.png";

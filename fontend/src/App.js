@@ -36,15 +36,15 @@ import Order from './Sales/Pages/Order/Order';
 import OrderList from './Sales/Pages/Order/OrderList';
 
 //討論區
-import Forum from './Forum/Pages/Forum';
-import ReplyQone from './Forum/Pages/ReplyQone';
-import ReplyQtwo from './Forum/Pages/ReplyQtwo';
-import ArtShow from './Forum/Pages/ArtShow';
+// import Forum from './Forum/Pages/Forum';
+// import ReplyQone from './Forum/Pages/ReplyQone';
+// import ReplyQtwo from './Forum/Pages/ReplyQtwo';
+// import ArtShow from './Forum/Pages/ArtShow';
 
 // 部落格
-import Blog from './Blog/Components/Page/Blog';
-import Article from './Blog/Components/Page/Article';
-import Search from './Blog/Components/Page/Search';
+// import Blog from './Blog/Components/Page/Blog';
+// import Article from './Blog/Components/Page/Article';
+// import Search from './Blog/Components/Page/Search';
 
 function App() {
     return (
@@ -82,10 +82,10 @@ function App() {
                 <Route path="/Order" element={<Order />} />
                 <Route path="/OrderList" element={<OrderList />} />
                 {/* 討論區 */}
-                <Route path="/Forum" element={<Forum />} />
+                {/* <Route path="/Forum" element={<Forum />} />
                 <Route path="/ReplyQone" element={<ReplyQone />} />
                 <Route path="/ReplyQtwo" element={<ReplyQtwo />} />
-                <Route path="/ArtShow" element={<ArtShow />} />
+                <Route path="/ArtShow" element={<ArtShow />} /> */}
                 {/* 討論區結束 */}
 
                 {/* 部落格開始 */}
