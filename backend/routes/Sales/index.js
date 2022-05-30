@@ -19,8 +19,8 @@ const connection = require("../../modules/mysql_config");
 /* 商品 
 1. 功能：取得全部商品資料。Method: GET。URL: /api/product?id=  完成
 2. 功能：取得單筆商品資料。Method: GET。URL: /api/product/:userID/:productID 完成
-3. 功能：新增商品。Method: POST。URL: /api/product 待驗證(透過form-data)、驗證未寫
-4. 功能：修改商品。Method: PUT。URL: /api/product/:id  待驗證(透過form-data)、驗證未寫
+3. 功能：新增商品。Method: POST。URL: /api/product 完成
+4. 功能：修改商品。Method: PUT。URL: /api/product/:id  完成
 5. 功能：刪除商品。Method: DELETE。URL: /api/product/:id  完成
 */
 
@@ -364,7 +364,9 @@ sales
     FROM product_case 
     WHERE product_case.user_ID  = '${req.query.id}'
     limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
-    SELECT count(*) as totalItems FROM product_case WHERE product_case.user_ID  = '${req.query.id}'`;
+    SELECT count(*) as totalItems FROM product_case WHERE product_case.user_ID  = '${
+      req.query.id
+    }'`;
 
     const [datas] = await connection.query(sql).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
@@ -403,7 +405,8 @@ sales
 // http://localhost:3001/Sales/api/orderUser/1
 // 需要一個參數，透過params-> 使用者ID : id
 sales.get("/api/orderUser/:id", async (req, res, next) => {
-  let sql = `SELECT product_case.ID , product_case.create_time , product_items.product_name , product_items.price
+  let sql = `SELECT product_case.ID , product_case.create_time, product_case.total_price , product_items.pic_path ,
+  product_items.author_name ,product_items.product_name , product_items.price
   FROM product_case_items
   JOIN product_case
   ON product_case_items.case_ID=product_case.ID
@@ -511,7 +514,7 @@ sales
 var storage = multer.diskStorage({
   // 檔案上傳到這裡
   destination: function (req, file, cb) {
-    cb(null, "../../../fontend/src/Home/Assets/ProductImg");
+    cb(null, "../../../fontend/public/ProductImg");
   },
   // 定義檔案名稱規範
   filename: function (req, file, cb) {
