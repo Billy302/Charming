@@ -12,7 +12,7 @@
     "react-credit-cards": "^0.8.3",
     "react-dom": "^18.1.0",
     "react-icon": "^1.0.0",
-    "react-router-dom": "^5.3.1",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "reactjs-credit-card": "^1.0.6",
     "web-vitals": "^2.1.4",
