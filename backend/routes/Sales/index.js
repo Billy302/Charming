@@ -339,22 +339,22 @@ sales
   });
 
 /*訂單
-1. 功能：取得使用者的全部訂單。Method: GET。URL: /api/order/orderShop 
-2. 功能：取得使用者的訂單詳細內容。Method: GET。URL: /appi/ordershop/:id 
-3. 功能：取得商家所有產品的銷售紀錄。Method: GET。URL: /api/order/orderUser 
+1. 功能：取得使用者的全部訂單。Method: GET。URL: /api/order/orderUser 
+2. 功能：取得使用者的訂單詳細內容。Method: GET。URL: /appi/orderUser/:id 
+3. 功能：取得商家所有產品的銷售紀錄。Method: GET。URL: /api/order/orderShop 
 4. 功能：新增訂單。Method: POST。URL: /api/order  
 */
 sales
-  .route("/api/orderShop")
+  .route("/api/orderUser")
   // 取得使用者的全部訂單 TO C
-  // http://localhost:3001/Sales/api/orderShop?id=1&page=1
+  // http://localhost:3001/Sales/api/orderUser?id=1&page=1
   // 需要參數兩個，透過query -> 使用者ID : id | 頁面 : page
   .get(async (req, res, next) => {
     // 頁面預設第一頁
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 10;
+    let rowsPerPage = 2;
 
     // 分頁數
     let pageCount = 0;
@@ -362,9 +362,9 @@ sales
     // 查詢使用者的訂單 & 訂單總數
     const sql = `SELECT product_case.* 
     FROM product_case 
-    WHERE product_case.user_ID  = ${req.query.id}
+    WHERE product_case.user_ID  = '${req.query.id}'
     limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
-    SELECT count(*) as totalItems FROM product_case`;
+    SELECT count(*) as totalItems FROM product_case WHERE product_case.user_ID  = '${req.query.id}'`;
 
     const [datas] = await connection.query(sql).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
@@ -400,9 +400,9 @@ sales
   });
 
 // 取得使用者訂單的詳細內容 TO C
-// http://localhost:3001/Sales/api/orderShop/1
+// http://localhost:3001/Sales/api/orderUser/1
 // 需要一個參數，透過params-> 使用者ID : id
-sales.get("/api/ordershop/:id", async (req, res, next) => {
+sales.get("/api/orderUser/:id", async (req, res, next) => {
   let sql = `SELECT product_case.ID , product_case.create_time , product_items.product_name , product_items.price
   FROM product_case_items
   JOIN product_case
@@ -417,10 +417,10 @@ sales.get("/api/ordershop/:id", async (req, res, next) => {
 });
 
 // 取得商家所有產品的銷售紀錄 TO B
-// http://localhost:3001/Sales/api/orderUser?name=aaa&orderID=1&itemsName=1
+// http://localhost:3001/Sales/api/orderShop?name=aaa&orderID=1&itemsName=1&page=1
 // 需要四個參數，透過query -> name (必須)，
 // 參考product_items的author_name | orderID，參考product_case_items的case_ID | itemsName，參考product_items的product_name / 頁面 : page 參照總頁數
-sales.get("/api/orderUser", async (req, res, next) => {
+sales.get("/api/orderShop", async (req, res, next) => {
   //
   let orderID = req.query.orderID ? req.query.orderID : "";
   let itemsName = req.query.itemsName ? req.query.itemsName : "";
