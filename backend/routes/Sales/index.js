@@ -523,7 +523,7 @@ sales
 var storage = multer.diskStorage({
   // 檔案上傳到這裡
   destination: function (req, file, cb) {
-    cb(null, "../../../fontend/public/ProductImg");
+    cb(null, "../../../fontend/public/Home/ProductImg");
   },
   // 定義檔案名稱規範
   filename: function (req, file, cb) {
