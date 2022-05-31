@@ -39,7 +39,7 @@ import OrderList from './Sales/Pages/Order/OrderList';
 import AskPageOne from './Forum/Pages/AskPageOne/AskPageOne';
 // import ReplyQone from './Forum/Pages/ReplyQone';
 // import ReplyQtwo from './Forum/Pages/ReplyQtwo';
-// import ArtShow from './Forum/Pages/ArtShow';
+import ArtShow from './Forum/Pages/ArtShow/ArtShow';
 
 // 部落格
 // import Blog from './Blog/Components/Page/Blog';
@@ -84,8 +84,8 @@ function App() {
                 {/* 討論區 */}
                 <Route path="/AskPageOne" element={<AskPageOne />} />
                 {/* <Route path="/ReplyQone" element={<ReplyQone />} />
-                <Route path="/ReplyQtwo" element={<ReplyQtwo />} />
-                <Route path="/ArtShow" element={<ArtShow />} /> */}
+                <Route path="/ReplyQtwo" element={<ReplyQtwo />} />*/}
+                <Route path="/ArtShow" element={<ArtShow />} /> 
                 {/* 討論區結束 */}
 
                 {/* 部落格開始 */}
