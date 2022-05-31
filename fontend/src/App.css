@@ -1,39 +1,46 @@
 /* 共通項目 */
+*{
+  padding: 0;
+  margin: 0;
+  margin: 0px;
+  box-sizing: border-box;
+  position: relative;
+}
 :root{
   /* 色票 */
   --white: #FFFFFF;
   --brown1: #472929;
-  /* 主要棕色 */
-  --brown2: #795252; 
+  --brown2: #795252;
   --brown3: #D6C5C5;
   --brown4: #F4EFEF;
   --gray1: #333333;
   --gray2: #4F4F4F;
   --gray3: #BDBDBD;
   --gray4: #E0E0E0;
-  /* 主要黃色 */
   --yellow1: #FFD247;
   --yellow2: #FFEBAF;
   --green1: #355F1C;
   --green2: #72925F;
   --green3: #B8D1A9;
+  --red:#b72020;
   /* 字體大小 */
-  --heading1: 7vmin;
-  --heading2: 6vmin;
-  --heading3: 4vmin;
-  --heading4: 2.5vmin;
-  --heading5: 2vmin;
-  --heading6: 1.5vmin;
+  --heading1: 56px;
+  --heading2: 48px;
+  --heading3: 32px;
+  --heading4: 20px;
+  --heading5: 16px;
+  --heading6: 12px;
+  --heading7: 10px;
+  --heading8: 8px;
   /* 圓角 */
   --desk-border-radius:15px;
   /* 網頁版border寬度 */
-  --desk-border:2px;
+  --border:2px solid var(--brown2);
+  --pageBorder:40px;
+  --holdpadding:50px;
 }
-
-*{
-  margin: 0px;
-  box-sizing: border-box;
-  position: relative;
+html{
+  font-size: 62.5%;
 }
 a{
   text-decoration: none;
@@ -53,14 +60,25 @@ body {
   -webkit-font-smoothing: antialiased;
   /* -moz-osx-font-smoothing: grayscale; */
 }
-nav, hgroup{
-  margin: 30px 100px;
+nav, hgroup, section{
+  margin: 0px var(--holdpadding);
 }
-img{
-  width: 100%;
+nav{
+  z-index: 1;
+  padding-top: 10px;
 }
-@media screen and (max-width:950px) {
-  nav, hgroup{
-    margin: 20px 30px;
+
+
+@media screen and (max-width:1024px){
+  :root{
+    --holdpadding:20px;
   }
 }
+
+@media screen and (max-width:441px){
+  :root{
+    --holdpadding:10px;
+  }
+  
+}
+

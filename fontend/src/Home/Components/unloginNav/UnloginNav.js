@@ -1,78 +1,113 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./UnloginNav.module.css";
-import { AiOutlineGlobal } from 'react-icons/ai';
-import { FaAngleDown } from 'react-icons/fa';
-import { ImSearch } from 'react-icons/im'
-import logo from "../../assets/charming_logo.png";
+import { AiOutlineGlobal } from "react-icons/ai";
+import { FaAngleDown } from "react-icons/fa";
+import { ImSearch } from "react-icons/im";
+import logo from "../../Assets/charming_logo.png";
 
-function UnloginNav(props){
+function UnloginNav(props) {
+  const [typebar, setNavbar] = useState(false);
+  const displayItemType = () => {
+    if (window.scrollY >= 350) {
+      setNavbar(true);
+    } else {
+      setNavbar(false);
+    }
+  };
+  window.addEventListener("scroll", displayItemType);
+
   return (
-    <header className={style.sticky}>
-      <nav className={style["mainPage-header"]}>
-        <div className={style.displayFlex}>
-          <a href="UnloginHome" className={`${style.heading4} ${style.displayFlex}`}>
-            <img className={style["mainPage-logo"]} src={logo} alt="logo" />
-            <p className={style.padding5px}>柴米Charming</p>
+    <header className={style.mainPage}>
+      <nav className={style.navBar}>
+        {/* logo 與charming文字 */}
+        <div className={style.charmingLogo}>
+          <a href="/" className={style.logoIcon}>
+            <img src={logo} alt="logo" />
+            <p>柴米Charming</p>
           </a>
         </div>
-        <div className={style.searchbar}>
+
+        <div
+          className={typebar ? `${style.searchBar}` : `${style.displayNone}`}
+        >
           <input
-            className={style.searchInput}
             type="search"
             placeholder="Search.."
             onChange={(e) => {
               console.log(e);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") console.log(e);
+            }}
           />
-          <button
-            onClick={alert["visualViewpo1"]}
-            className={style.searchButton}
-          >
-            <p>
-            <ImSearch/>
-              搜尋
-            </p>
-          </button>
+
+          <input type="submit" value="搜尋" />
         </div>
-        <div>
-          <ul className={style["mainPage-nav"]}>
-            <li>
-                <AiOutlineGlobal/>
+
+        {/* 平版版搜尋 */}
+        {/* <div className={style.padSearch}> */}
+        <div
+          className={typebar ? `${style.padSearch}` : `${style.displayNone}`}
+        >
+          <ImSearch className={style.padSearchIcon} />
+          <input type="search" className={style.padSearchBar}></input>
+        </div>
+        {/* -------選項------- */}
+        <div className={style.charmingItem}>
+          <ul className={style.itemStyle}>
+            <div>
+              <li className={style.changeLanguage}>
+                <AiOutlineGlobal />
                 <select>
                   <option value="australia">繁體中文</option>
                   <option value="English">English</option>
                 </select>
-                <FaAngleDown/>
+                <FaAngleDown />
               </li>
-            <a href="Portfolio">
-              <li>柴米人</li>
+              <a href="/Portfolio" className={style.phoneDisplayNone}>
+                <li>柴米人</li>
+              </a>
+              <a href="/Blog" className={style.phoneDisplayNone}>
+                <li>柴訊</li>
+              </a>
+              <a href="/Communication" className={style.phoneDisplayNone}>
+                <li>柴社</li>
+              </a>
+            </div>
+            <a href="/signin">
+              <li className={style.loginButton}>登入</li>
             </a>
-            <a href="Blog">
-              <li>柴訊</li>
-            </a>
-            <a href="Communication">
-              <li>柴社</li>
-            </a>
-            <a href="Login">
-              <button>登入</button>
-            </a>
-            <a href="">
-              <button>註冊</button>
+            <a href="/signup">
+              <li className={style.loginButton}>註冊</li>
             </a>
           </ul>
         </div>
       </nav>
-     <hr className={style.itemline}/>
-      <ul className={`${style.itemList} ${style.heading5}`}>
-        <a href=""><li>項目類別</li></a>
-        <a href=""><li>項目類別</li></a>
-        <a href=""><li>項目類別</li></a>
-        <a href=""><li>項目類別</li></a>
-        <a href=""><li>項目類別</li></a>
-        <a href=""><li>項目類別</li></a>
-      </ul>
-        <hr className={style.itemline}/>
+
+      <div
+        className={typebar ? `${style.displayblock}` : `${style.displayNone}`}
+      >
+        <hr />
+        <ul className={style.itemList}>
+          <a href="">
+            <li>UI/UX</li>
+          </a>
+          <a href="">
+            <li>品牌宣傳</li>
+          </a>
+          <a href="">
+            <li>插圖</li>
+          </a>
+          <a href="">
+            <li>網頁設計</li>
+          </a>
+          <a href="">
+            <li>攝影</li>
+          </a>
+        </ul>
+        <hr />
+      </div>
     </header>
   );
-};
+}
 export default UnloginNav;

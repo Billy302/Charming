@@ -29,12 +29,14 @@ function OrderList() {
   // 模擬componentDidMount
   useEffect(() => {
     fetchProducts()
+    console.log('模擬componentDidMount')
   }, [])
 
   // 模擬componentDidUpdate
   useEffect(() => {
     fetchProducts()
-  }, [products])
+    console.log('模擬componentDidMount')
+  }, [currentpage])
 
   return (
     <>

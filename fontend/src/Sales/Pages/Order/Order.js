@@ -15,19 +15,19 @@ function Order() {
       `http://localhost:3001/Sales/api/orderUser/${paramsID}`
     )
     const data = await response.json()
+    // 只需要商品的第一張圖
+    // 先取得全部圖名，進行切割
+    let picFirst = data[0].pic_path.split(' ')
+    for (let i = 0; i < data.length; i++) {
+      // 將products的商品路徑改為新的路徑(只有第一張)
+      data[i]['pic_path'] = picFirst[0]
+    }
     setProducts(data)
   }
 
   // 模擬componentDidMount
   useEffect(() => {
     fetchProducts()
-    // 只需要商品的第一張圖
-    // 先取得全部圖名，進行切割
-    // let picFirst = products[0]['pic_path'].split(' ')
-    // 將products的商品路徑改為新的路徑(只有第一張)
-    // for (let i = 0; i < products.length; i++) {
-    //   products[i]['pic_path'] = picFirst[0]
-    // }
   }, [])
 
   return (

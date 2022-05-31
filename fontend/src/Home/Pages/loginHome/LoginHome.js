@@ -1,31 +1,41 @@
-import React from "react";
-import style from "./LoginHome.module.css";
-import LoginNav from "../../components/loginNav/LoginNav";
-import { AiTwotoneSound } from 'react-icons/ai'
-import Card from "../../components/card/Card";
-import users from "../../mockdata/users.json";
+import React from 'react'
+import Style from './LoginHome.module.css'
+// component
+import LoginNav from '../../Components/LoginNav/LoginNav'
+import Card from '../../Components/Card/Card'
+import AsideProductLIst from '../../Components/AsideProductLIst/AsideProductLIst'
+import Product from '../../Components/Product/Product'
+import Slider from '../../Components/Slider/Slider'
+import SliderSection from '../../Components/SliderSection/SliderSection'
 
-function LoginHome(){
+// react icon
+import { AiTwotoneSound } from 'react-icons/ai'
+
+// data
+import users from '../../Mockdata/users.json'
+import { ImOpt } from 'react-icons/im'
+// const connection = require('../../../../../backend/modules/mysql_config');
+
+function LoginHome() {
   return (
     <header>
       <LoginNav />
-      <div className={style.pageMargin}>
-        <div className={style.carousel}>
-          <AiTwotoneSound/>
-          <p className={style.middleText}>
+      <hgroup>
+        <p className={Style.carousel}>
+          <AiTwotoneSound className={Style.icon} />
+          <p className={Style.middleText}>
             指揮中心快訊：新增75例COVID-19確定病例，分別為2例本土及73例境外移入
           </p>
-        </div>
-        <div>
-          <ul>
-            {users.map((r)=>(
-              <Card id={r.id} email={r.email} name={r.name}/>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </header>
-  );
-};
+        </p>
+      </hgroup>
 
-export default LoginHome;
+      {/* <SliderSection/> */}
+      <section className={Style.productType}>
+        <AsideProductLIst className={Style.displayNone} />
+        <Product />
+      </section>
+    </header>
+  )
+}
+
+export default LoginHome
