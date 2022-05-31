@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-
+import './EditUserForm.css';
 
 const EditUserForm = props => {
-  const initialFormState = { id: null, name: "", username: "", userdate: "", userplace: "", userfee: "" };
+  const initialFormState = { id: null, name: "", username: "", userclass: "", userwho: "", userday: "" };
   const [user, setUser] = useState(
     props.editing ? props.currentUser : initialFormState
   );
@@ -41,7 +41,7 @@ const EditUserForm = props => {
         onChange={handleInputChange}
       />
         <br />
-      <label>活動名稱</label>
+      <label>問題</label>
       <input
         type="text"
         name="username"
@@ -49,32 +49,33 @@ const EditUserForm = props => {
         onChange={handleInputChange}
       />
         <br />
-        <label>活動時間</label>
+        <label>類別</label>
        <input
         type="text"
-        name="userdate"
-        value={user.userdate}
+        name="userclass"
+        value={user.userclass}
         onChange={handleInputChange}
       />
         <br />
-      <label>活動地點</label>
+      <label>發表者</label>
       <input
         type="text"
-        name="userplace"
-        value={user.userplace}
+        name="userwho"
+        value={user.userwho}
         onChange={handleInputChange}
       />
         <br />
-      <label>活動費用</label>
+      <label>發表日期</label>
       <input
         type="text"
-        name="userfee"
-        value={user.userfee}
+        name="userday"
+        value={user.userday}
         onChange={handleInputChange}
       />
       <br />
 
-      <button>{props.editing ? "修改活動" : "新增活動"}</button>
+      <button>{props.editing ? "修改問題" : "新增問題"}</button>
+      <br />
       {props.editing && (
         <button onClick={resetAddUser} className="button muted-button">
           取消

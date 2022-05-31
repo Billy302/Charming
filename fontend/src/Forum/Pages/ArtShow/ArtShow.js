@@ -1,19 +1,17 @@
-// import {React,useState} from "react";
-// import { Link } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
-// import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
-// import './ArtShow.css'
-
 import React, { useState } from "react";
 import UserTable from "./UserTable";
 import EditUserForm from "./EditUserForm";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
+import './ArtShow.css';
+
 
 const ArtShow = () => {
   const usersData = [
-    { id: 1, name: "Tania", username: "floppydiskette", userdate: "2022", userplace:"1f", userfee:"100" },
-    { id: 2, name: "Craig", username: "siliconeidolon", userdate: "2021", userplace:"2f", userfee:"200" },
-    { id: 3, name: "Ben", username: "benisphere", userdate: "2019", userplace:"3f", userfee:"300" }
+    { id: 1, name: "1", username: "2022「世間都是貓」台日交流藝術聯展台中展", userdate: "2022-08-06~2022-09-04", userplace:"Smohouse思默好時 好睞空間", userfee:"100" },
+    { id: 2, name: "2", username: "DAVID HOCKNEY EXHIBITION IN SEOUL", userdate: "2022-09-09~2023-01-31", userplace:"MUSEUM OF ART (SEMA)", userfee:"200" },
+    { id: 3, name: "3", username: "The Cleaner", userdate: "2022-10-09~2023-01-09", userplace:"Louisiana Museum of Modern Art", userfee:"免費" },
+    { id: 4, name: "4", username: "凝視瑪莉納", userdate: "	2022-10-11~2023-02-02", userplace:"台北美術館", userfee:"700" },
+    { id: 5, name: "5", username: "畫中台北-大稻埕少年郭雪湖特展", userdate: "2022-10-20~2023-03-30", userplace:"台北探索館特展廳", userfee:"300" }
   ];
   const initialFormState = { id: null, name: "", username: "", userdate: "", userplace:"", userfee:""  };
 
@@ -47,7 +45,14 @@ const ArtShow = () => {
 
     <div className="container">
       <UnloginNav />
-      <h1></h1>
+      
+      <ul class="breadcrumb">
+      <li><a href="/AskPageOne">柴社</a></li>
+      <li><a href="/ArtShow">活動與展覽</a></li>
+      <li><a href="/">活動海報</a></li>
+      </ul>
+
+
       <div className="flex-row">
 
       <div className="flex-large">
@@ -56,9 +61,9 @@ const ArtShow = () => {
           <UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
         </div>
         
-        <div className="flex-large">
+        <div className="flex-large-two">
           <div>
-            <h2>{editing ? "Edit user" : "Add user"}</h2>
+            <h2>{editing ? "修改活動" : "新增活動"}</h2>
             <EditUserForm
               editing={editing}
               setEditing={setEditing}
