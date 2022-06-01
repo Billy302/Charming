@@ -3,6 +3,7 @@
     flex-direction: column;
     text-align: center;
     margin-top: 8px;
+    font-size: var(--heading4);
 }
 
 .AsideProduct a{
@@ -19,4 +20,10 @@
 }
 .AsideProduct a:hover{
     background-color: var(--brown3);
+}
+@media screen and (max-width:600px){
+    .AsideProduct{
+        display: none;
+    }
+    
 }

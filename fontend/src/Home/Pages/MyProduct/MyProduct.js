@@ -17,7 +17,7 @@ function MyProduct() {
       <LoginNav />
       <section>
         <div className={Style.buttonPosition}>
-          <a href="/AddProduct">
+          <a href="/MyProduct/AddProduct">
             <button className={Style.addButton}>新增商品</button>
           </a>
         </div>

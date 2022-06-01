@@ -59,8 +59,8 @@
 }
 /* 已售出 */
 .price p {
-	margin-left: 20%;
-	font-size: var(--heading7);
+	margin-left: 15%;
+	font-size: var(--heading6);
 }
 @media screen and (min-width:1024px){
 	.price p {

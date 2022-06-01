@@ -7,13 +7,13 @@ import AsideProductLIst from "../../Components/AsideProductLIst/AsideProductLIst
 import Product from "../../Components/Product/Product";
 import Slider from "../../Components/Slider/Slider";
 import SliderSection from "../../Components/SliderSection/SliderSection";
-
+import Pagination from "../../Components/Pagination/Pagination";
 
 // react icon
 import { AiTwotoneSound } from "react-icons/ai";
 
 // data
-import users from "../../Mockdata/users.json";
+
 import { ImOpt } from "react-icons/im";
 // const connection = require('../../../../../backend/modules/mysql_config');
 
@@ -30,11 +30,12 @@ function LoginHome() {
         </p>
       </hgroup>
 
-      <SliderSection/>
+      {/* <SliderSection/> */}
       <section className={Style.productType}>
-        <AsideProductLIst />
+        <AsideProductLIst className={Style.displayNone} />
         <Product />
       </section>
+        <Pagination totalPages={5}/>
     </header>
   );
 }

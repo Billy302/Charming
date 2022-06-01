@@ -4,7 +4,7 @@ import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 
 interface CardProps {
-  id: number;
+  ID: number;
   product_name: string;
   author_name: string;
   product_copy: string;
@@ -13,8 +13,8 @@ interface CardProps {
   sell_count: number;
   file_type: string;
 }
-const Card: React.FC<CardProps> = ({
-  id,
+const EditCard: React.FC<CardProps> = ({
+  ID,
   product_name,
   author_name,
   product_copy,
@@ -23,12 +23,16 @@ const Card: React.FC<CardProps> = ({
   sell_count,
   file_type,
 }) => {
-  const pig = "book2-2.webp";
+  const a = pic_path.split(" ");
   return (
     <div className={Style.cardContainer}>
       <div className={Style.cardSize}>
-        <a href="/ProductPage">
-          <img alt="robot" src={require(`../../Assets/ProductImg/${pig}`)} />
+        <a href={`/MyProduct/1/${ID}`}>
+          {/* <img alt="robot" src={require(`../../Assets/ProductImg/${a[0]}`)} /> */}
+          <img
+            alt="圖片無法顯示"
+            src={`http://localhost:3001/Home/ProductImg/${a[0]}`}
+          />
         </a>
         <FcLikePlaceholder className={Style.like} />
         <a href="">
@@ -44,7 +48,7 @@ const Card: React.FC<CardProps> = ({
             <a href="">
               <FaTrashAlt className={Style.icons} />
             </a>
-            <a href="/EditProductPage">
+            <a href={`/MyProduct/Edit/1/${ID}`}>
               <FaEdit className={Style.icons} />
             </a>
           </div>
@@ -53,4 +57,4 @@ const Card: React.FC<CardProps> = ({
     </div>
   );
 };
-export default Card; //導出組件
+export default EditCard; //導出組件

@@ -212,6 +212,7 @@
     display: flex;
     justify-content: space-around;
     margin: 0px 15px;
+    font-size: var(--heading4);
   }
   .itemList a{
     padding:.5em ;

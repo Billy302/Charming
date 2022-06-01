@@ -26,6 +26,9 @@
         position: absolute;
        left: 5%;
     }
+    .displayNone{
+        display: none;
+    }
     
 }
 @media screen and (max-width:441px){

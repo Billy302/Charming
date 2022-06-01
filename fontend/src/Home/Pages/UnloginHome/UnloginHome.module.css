@@ -21,15 +21,23 @@
     font-weight:bold;
   }
   /*-------------下方為各component專用項-----------------*/
+  :root{
+    --headerMargin:100px;
+  }
+  .displayblock{
+    display: block;
+  }
+  .displayNone{
+    display: none;
+  }
   .headerSlogan{
-    margin:30px 0px;
+    margin:30px 0px 30px var(--headerMargin);
     padding: 60px 0px 0px 0px;
   }
   .backgroundImg{
-    margin-bottom: 100px;
-      margin-right: 0px;
-      background:url(../../Assets/mainPage.png) no-repeat right;
-      background-size:60%;
+    height: 600px;
+    background:url(../../Assets/mainPage.png) no-repeat  center right -100px;
+    background-size: 70%;
 
   }
 
@@ -37,6 +45,7 @@
   .searchbar{
     display: flex;
     --searchHeight:50px;
+    margin:0px var(--headerMargin);
   }
   .searchInput{
     width: 30%;
@@ -53,6 +62,7 @@
   .searchButton{
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 75px;
     height:var(--searchHeight);
     border: 2px solid var(--brown2);
@@ -60,15 +70,15 @@
     border-radius: 0px 15px 15px 0px;
     background-color: var(--brown2);
   }
-  .searchButton p {
-    font-size: var(--heading5);
+  .iconStyle{
+    font-size: var(--heading4);
     font-weight:bold;
     color: var(--white);
   }
 .searchButton:hover{
   background-color: var(--brown1);
 }
-.serchTag{
+.searchTag{
     border: 1px solid var(--brown3);
     border-radius: 15px;
     background-color: white;
@@ -78,6 +88,7 @@
 
 /* 產品頁介紹 */
 .product{
+  /* margin-top: 100px; */
     display: flex;
     justify-content: space-around;
     text-align: center;
@@ -126,7 +137,7 @@
   color: var(--white);
 }
 .tags{
-  margin-top: 20px;
+  margin: 20px var(--headerMargin) 0px var(--headerMargin);
 }
 .tags::before{
   content: "熱門搜尋：";
@@ -134,9 +145,17 @@
   color: var(--brown2);
 }
 @media screen and (max-width:1024px){
-
+  .backgroundImg{
+    height: 500px;
+    background:url(../../Assets/mainPage.png) no-repeat  center right -60px;
+    background-size: 70%;
+  }
+  :root{
+    --headerMargin:50px;
+  }
 }
 @media screen and (max-width:780px) {
+ 
   .heading2{
     font-size:var(--heading3);
   }
@@ -173,8 +192,9 @@
     --searchHeight:40px;
   }
   .backgroundImg{
-      background:none;
-        margin-bottom:0px;
+    height: 250px;
+    background:none;
+    background-size: 70%;
   }
   .product{
     display: block;

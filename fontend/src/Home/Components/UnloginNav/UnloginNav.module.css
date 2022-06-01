@@ -147,6 +147,7 @@
   display: none;
 }
   .itemList{
+    font-size: var(--heading4);
     display: flex;
     justify-content: space-around;
     margin: 0px 15px;

@@ -100,7 +100,7 @@
     /* appearance: none; */
 
 }
-.shoppingCar{
+.EditProduct{
     width: 200px;
     display: block;
     appearance: none;
@@ -111,10 +111,10 @@
     color: var(--white);
     margin: 5px;
     margin-top: 10px;
-    background-color: var(--red);
+    background-color: var(--brown2);
     Cursor:pointer;
 }
-.shoppingCar:active{
+.EditProduct:active{
     background-color: rgb(93, 8, 8);
 }
 .productAdd {

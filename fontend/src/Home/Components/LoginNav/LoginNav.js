@@ -23,7 +23,7 @@ function LoginNav(props) {
       <nav className={style.navBar}>
         {/* logo 與charming文字 */}
         <div className={style.charmingLogo}>
-          <a href="loginHome" className={style.logoIcon}>
+          <a href="/Product/1" className={style.logoIcon}>
             <img src={logo} alt="logo" />
             <p>柴米Charming</p>
           </a>
@@ -68,7 +68,7 @@ function LoginNav(props) {
               <a href="Blog" className={style.phoneDisplayNone}>
                 <li>柴訊</li>
               </a>
-              <a href="Forum" className={style.phoneDisplayNone}>
+              <a href="Communication" className={style.phoneDisplayNone}>
                 <li>柴社</li>
               </a>
             </div>
@@ -92,10 +92,10 @@ function LoginNav(props) {
                 <div className={style.navList}>
                   <a href="">會員資料修改</a>
                   <a href="">我的設計</a>
-                  <a href="/MyProduct">我的商品</a>
+                  <a href="/MyProduct/1">我的商品</a>
                   <a href="/collection">我的收藏</a>
                   <a href="/shoppinglist">購買清單</a>
-                  <a href="/UnloginHome">登出</a>
+                  <a href="/">登出</a>
                 </div>
                 {/* ——————————————————————————————————————— */}
               </li>
@@ -109,19 +109,19 @@ function LoginNav(props) {
         <hr/>
         <ul className={style.itemList}>
           <a href="">
+            <li>NFT</li>
+          </a>
+          <a href="">
             <li>UI/UX</li>
           </a>
           <a href="">
-            <li>品牌宣傳</li>
+            <li>書籍/翻譯</li>
+          </a>
+          <a href="">
+            <li>Logo</li>
           </a>
           <a href="">
             <li>插圖</li>
-          </a>
-          <a href="">
-            <li>網頁設計</li>
-          </a>
-          <a href="">
-            <li>攝影</li>
           </a>
         </ul>
         <hr/>
