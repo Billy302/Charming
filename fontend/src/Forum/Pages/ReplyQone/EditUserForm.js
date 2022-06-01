@@ -57,11 +57,12 @@ const EditUserForm = props => {
       />
         <label>回應內容</label>
         <input
-        type="text"
+        type="text" rows="5"
         name="userreply"
         value={user.userreply}
         onChange={handleInputChange}
       />
+      
 
         
 

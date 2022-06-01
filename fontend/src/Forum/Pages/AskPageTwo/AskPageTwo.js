@@ -19,10 +19,10 @@ function AskPageOne(props) {
       <UnloginNav />
       <main>
 
-      <ul class="breadcrumb">
+      {/* <ul class="breadcrumb">
       <li><a href="/AskPage">柴社</a></li>
       <li><a href="/AskPage">討論區</a></li>
-      </ul>
+      </ul> */}
 
       <Link to="/AskPage">
       <button type="button" class="btn">

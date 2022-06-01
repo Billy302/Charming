@@ -3,7 +3,8 @@ import UserTable from "./UserTable";
 import EditUserForm from "./EditUserForm";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import './ArtShow.css';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import pictureone from "../../Components/01.jpg";
 
 
 const ArtShow = () => {
@@ -46,10 +47,6 @@ const ArtShow = () => {
 
     <div className="container">
       <UnloginNav />
-      
-      <div className="flex-row">
-
-      <div className="flex-large">
       <Link to="/AskPage">
       <button type="button" class="btn">
       討論區
@@ -60,6 +57,24 @@ const ArtShow = () => {
       活動與展覽
       </button>
       </Link>
+      {/* ----- */}
+      <div className="pictureall" >
+          <b3 className="" >活動一</b3>
+          <img className="pictureone" src={pictureone} alt="picture" />
+          <img className="pictureone" src={pictureone} alt="picture" />
+
+          <p className="" >活動二</p>
+          <img className="pictureone" src={pictureone} alt="picture" />
+          
+
+        
+        
+      </div>
+      {/* ----- */}
+      <div className="flex-row">
+
+      <div className="flex-large">
+      
       <UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
       </div>
 

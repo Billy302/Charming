@@ -1,3 +1,17 @@
+.flex-large-two{
+    /* text-align: left; */
+    background-color: rgb(233, 229, 227);
+    
+    width: 70%;
+    padding: 12px 200px; 
+    margin: 10px 10px;
+    margin-left: 200px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  } 
+
 .forumPagenumber{
     margin-left: 500px ;
 }

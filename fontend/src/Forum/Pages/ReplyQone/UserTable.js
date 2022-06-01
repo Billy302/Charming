@@ -8,6 +8,7 @@ const UserTable = props => (
         <th>回應者</th>
         <th>回應時間</th>
         <th>回應內容</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@ const UserTable = props => (
             <td>{user.username}</td>
             <td>{user.usertime}</td>
             <td>{user.userreply}</td>
+            <td>{user.userblank}</td>
             
 
             <td>

@@ -4,7 +4,7 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
-// import './AskPage.css';
+import './ReplyQtwo.css';
 import UserTable from "./UserTable";
 import EditUserForm from "./EditUserForm";
 
@@ -22,7 +22,7 @@ import EditUserForm from "./EditUserForm";
           { id: 3, name: "3", username: "趙筠榆", usertime:"2022/5/1", userreply: "勇敢直視對方的眼睛,確認他所想要表達的訊息內容。在對方說完後,以你理解的方式重述一遍:「陳副理,請問您剛剛是這個意思嗎?有沒有需要補充的地方?」詳實核對雙方認知是否一致。拿出理性專業 的態度,不卑不亢,會獲得對方更多尊重。心態上,不要把對方過度「放大」為一個很巨大的存在,不必賦予對方更高的地位,」你的恐懼就會縮小,力量就會拿回來。 最後,面對不舒服的對話情境,我們永遠可以喊暫停,另約時間溝通,或用文字溝通。" },
 
           { id: 4, name: "4", username: "向柏賢", usertime:"2022/5/1", userreply: "所有對話,都是為了讓彼此更了解自己,更接近想要的目標。三國時期的諸葛亮有句名言:「以柔克剛。」越不友善的溝通對象,越需要時間和耐心去卸下他的武裝,消弭彼此的隔閡。害羞內向的你,也需要給自己時間,強化自信。請繼續保持言語的善意,把每次對話都當作提升自我的機會,將使你從內而外變得更優雅、更堅強。" }
-          
+
         ];
         const initialFormState = { id: null, name: "", username: "" };
       
@@ -55,6 +55,22 @@ import EditUserForm from "./EditUserForm";
             
           <div className="container">
               <UnloginNav />
+              <table>
+              <tbody>
+                        <tr>
+                            <th scope="row"><Link to="/AskPage">
+                                  <button type="button" class="btn">
+                                  回討論區
+                                  </button>
+                            </Link></th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+              </table>
 
               <table>
                     <thead>
@@ -91,9 +107,9 @@ import EditUserForm from "./EditUserForm";
                 <UserTable users={users} editRow={editRow} deleteUser={deleteUser} />
               </div>
 
-              <div className="flex-large">
+              <div className="flex-large-two">
                 <div>
-                  <h2>{editing ? "Edit user" : "Add user"}</h2>
+                  <h2>{editing ? "修改回應" : "新增回應"}</h2>
                   <EditUserForm
                     editing={editing}
                     setEditing={setEditing}
