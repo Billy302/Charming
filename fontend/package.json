@@ -13,12 +13,13 @@
     "react-credit-cards": "^0.8.3",
     "react-dom": "^18.1.0",
     "react-icons": "^4.4.0",
+    "react-reveal": "^1.2.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "reactjs-credit-card": "^1.0.6",
+    "validate.js": "^0.13.1",
     "web-vitals": "^2.1.4",
-    "webpack": "^5.72.1",
-    "yarn": "^1.22.18"
+    "webpack": "^5.72.1"
   },
   "scripts": {
     "start": "react-scripts start",

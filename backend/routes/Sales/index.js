@@ -10,10 +10,12 @@ const { body, validationResult, check } = require("express-validator");
 
 const connection = require("../../modules/mysql_config");
 
+// 新增訂單還沒做完
+// 全部商品資料需要加入where
+
 // 全部都要加回傳訊息，成功或失敗 參考 https://reurl.cc/WrAgDL
 // 圖片上傳 & 刪除 參考 https://reurl.cc/Gx5veA
 // 處理multipart/form-data https://reurl.cc/n1q27X
-// 前端表單驗證 https://reurl.cc/yrD0k8
 // 後端表單驗證 https://reurl.cc/vdp2kN
 
 /* 商品 

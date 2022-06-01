@@ -4,6 +4,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Pagination from '../../Components/Pagination/Pagination'
 import { useLocation, useNavigate } from 'react-router-dom'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 
 function OrderList() {
   // 取得包含目前URL的狀態和位置的物件函數
@@ -26,20 +27,14 @@ function OrderList() {
     setTotalPage(data[2])
   }
 
-  // 模擬componentDidMount
+  // componentDidMount / componentDidUpdate
   useEffect(() => {
     fetchProducts()
-    console.log('模擬componentDidMount')
-  }, [])
-
-  // 模擬componentDidUpdate
-  useEffect(() => {
-    fetchProducts()
-    console.log('模擬componentDidMount')
-  }, [currentpage])
+  }, currentpage)
 
   return (
     <>
+      <LoginNav />
       <h3>To C -購買清單-總攬 Page</h3>
       {products.map((v, i) => {
         const { ID, user_ID, total_price, creat_time } = v

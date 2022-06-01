@@ -1,29 +1,74 @@
-// 功能：取得會員個人資料 Method: ? URL: ?
-// 功能：加入購物車，order(key) 基本資料(姓名/聯絡方式/總價)
-// 輸入框的value要改
-import React from 'react'
-import { useState } from 'react'
+// 功能：取得會員個人資料 Method: ? URL: ? ，要看會員怎麼寫
+// 功能：加入購物車，order(key) 基本資料(姓名/聯絡方式/總價) ，要看會員怎麼寫
+// 先用JSON假資料取代
+// http://localhost:3000/Sales/Cart2
+
+import React, { useState, useEffect } from 'react'
 import Processbar from '../../Components/ProcessBar/ProcessBar'
-import data from '../../Json/Cart.json'
-import number from '../../Json/number.json'
 import './Cart.css'
 import { useNavigate } from 'react-router-dom'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
+import number from '../../Json/number.json'
 
 function Cart2() {
-  // useEffect 取會員個人資料 + 讀取購物車
-
+  // 使用 useNavigate 套件
   let Navigate = useNavigate()
 
+  // 要看會員怎麼寫
+  // const [member, setmember] = useState([])
+  // const fetchProducts = async () => {
+  //   const response = await fetch(
+  //     `http://localhost:3001/Sales/api/orderUser?id=`
+  //   )
+  //   const data = await response.json()
+  //   setmember(data[0])
+  // }
+
+  // componentDidMount
+  // useEffect(() => {
+  //   fetchProducts()
+  // }, [])
+
   const [inputText, setInputText] = useState('')
+
+  // 使用 localStorage WebAPI
+  let storage = localStorage
+
+  // 取得localStorage的項目清單
+  let itemString = storage.getItem('addItemList')
+
+  // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
+  let items = itemString.split(' |')
+  items.pop()
+
+  // 建立空白陣列，存放jsx語法
+  let cartTable = []
+
   // 計算購物車，價格總數
-  // 已取得購物車資料，用迴圈重複加總
   let totalPrice = 0
-  for (let i = 0; i < data.length; i++) {
-    totalPrice += parseInt(data[i].price)
+
+  // 動態生成table的內容
+  for (let i = 0; i < items.length; i++) {
+    let { ID, author_name, price, product_name } = JSON.parse(
+      storage.getItem(items[i])
+    )
+    // 已取得購物車資料，用迴圈重複加總
+    totalPrice += { price }.price
+
+    // 將Html語法加入cartTable語法
+    cartTable.push(
+      <tr key={i + 1} className="blockNoPicture" id={ID}>
+        <th scope="row">{i + 1}</th>
+        <td>{author_name}</td>
+        <td>{product_name}</td>
+        <td>{price}</td>
+      </tr>
+    )
   }
 
   return (
     <>
+      <LoginNav />
       <h3>購物車-基本資料 Page</h3>
       {/* 進度條 */}
       <Processbar step="2" />
@@ -33,6 +78,7 @@ function Cart2() {
           <div>姓名</div>
           <input
             type="text"
+            disabled
             value={number[0].username}
             onChange={(e) => {
               setInputText(e.target.value)
@@ -43,6 +89,7 @@ function Cart2() {
           <div>聯絡方式</div>
           <input
             type="text"
+            disabled
             value={number[0].mobile}
             onChange={(e) => {
               setInputText(e.target.value)
@@ -53,6 +100,7 @@ function Cart2() {
           <div>總價</div>
           <input
             type="text"
+            disabled
             value={totalPrice}
             onChange={(e) => {
               setInputText(e.target.value)
@@ -78,18 +126,7 @@ function Cart2() {
             </th>
           </tr>
         </thead>
-        <tbody>
-          {data.map((v, i) => {
-            return (
-              <tr key={i} className="blockNoPicture">
-                <th scope="row">{i + 1}</th>
-                <td>{v.author_name}</td>
-                <td>{v.product_name}</td>
-                <td>{v.price}</td>
-              </tr>
-            )
-          })}
-        </tbody>
+        <tbody>{cartTable}</tbody>
       </table>
       {/* 按鈕 */}
       <div>
@@ -97,8 +134,9 @@ function Cart2() {
           className="button"
           onClick={() => {
             // 到下一頁
-            Navigate('路徑')
-            // 將個人資料存入Session
+            Navigate('../Sales/Cart3')
+            // 將個人資料存入Session，購買者ID & 訂單總價
+            storage.setItem('addUser', `1 | ${totalPrice}`)
           }}
         >
           下一步
@@ -106,8 +144,8 @@ function Cart2() {
         <button
           className="button"
           onClick={() => {
-            // 回首頁
-            Navigate('路徑')
+            // 回上頁
+            Navigate('../Sales/Cart1')
           }}
         >
           回上頁

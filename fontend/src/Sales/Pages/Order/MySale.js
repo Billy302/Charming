@@ -1,7 +1,9 @@
 // 取得商家所有產品的銷售紀錄 TO B
-// http://localhost:3000/BtobPage/MySale
+// http://localhost:3000/BtocPage/MySale
+// 還沒做完，Fetch處 還沒改為變數
 
 import React, { useEffect, useState } from 'react'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 import Pagination from '../../Components/Pagination/Pagination'
 
 function MySale() {
@@ -24,6 +26,7 @@ function MySale() {
 
   return (
     <>
+      <LoginNav />
       <h3>To B - 個人銷售紀錄 Page</h3>
       {products.map((v, i) => {
         const { ID, product_name, create_time, price } = v

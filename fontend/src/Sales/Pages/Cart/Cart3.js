@@ -1,20 +1,23 @@
-// reactjs-credit-card 引入失敗
 // 功能：新增訂單。Method: POST。URL: /api/order
-// 跳頁路徑未填
+// http://localhost:3000/Sales/Cart3
+// 還沒做完，將資料傳給後端API
 
-import React, { useState, useRef, useEffect } from 'react'
-
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Processbar from '../../Components/ProcessBar/ProcessBar'
-
 import Cards from 'react-credit-cards'
-
 import 'react-credit-cards/es/styles-compiled.css'
 import './CreditCard.css'
 import './Cart.css'
 
-function Cart3_Test() {
+import Processbar from '../../Components/ProcessBar/ProcessBar'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
+
+function Cart3() {
+  // 使用 useNavigate 套件
   let Navigate = useNavigate()
+
+  // 使用 localStorage WebAPI
+  let storage = localStorage
 
   // 信用卡所需屬性
   const [number, SetNumber] = useState('')
@@ -30,9 +33,98 @@ function Cart3_Test() {
   const handleExpiry = (e) => {
     SetExpiry(month.concat(e.target.value))
   }
+  // 取得各欄位的DOM元素
+  const cardNumber = document.getElementById('cardNumber')
+  const cardNumberMsg = document.getElementById('cardNumberMsg')
+  const cardName = document.getElementById('cardName')
+  const cardNameMsg = document.getElementById('cardNameMsg')
+
+  const cardYear = document.getElementById('cardYear')
+  const cardMon = document.getElementById('cardMon')
+  const cardDateMsg = document.getElementById('cardDateMsg')
+
+  const cardCvc = document.getElementById('cardCvc')
+  const cardCvcMsg = document.getElementById('cardCvcMsg')
+
+  function checkForm() {
+    let isPass = true
+    // 先清空訊息
+    cardNumberMsg.innerHTML = ''
+    cardNameMsg.innerHTML = ''
+    cardDateMsg.innerHTML = ''
+    cardCvcMsg.innerHTML = ''
+
+    // 判斷不得為空值
+    if (cardNumber.value == '') {
+      isPass = false
+      cardNumberMsg.innerHTML = '卡號不得為空'
+    } else if (cardName.value == '') {
+      isPass = false
+      cardNameMsg.innerHTML = '姓名不得為空'
+    } else if (cardMon.value == ' ') {
+      isPass = false
+      cardDateMsg.innerHTML = '請選擇月份'
+    } else if (cardYear.value == ' ') {
+      isPass = false
+      cardDateMsg.innerHTML = '請選擇年份'
+    } else if (cardCvc.value == '') {
+      isPass = false
+      cardCvcMsg.innerHTML = 'CVC不得為空'
+    }
+    // 正規表達式，判斷只能數字或英文
+    const numRegExp = /^[0-9]*$/
+    const textRegExp = /^[a-zA-Z]*$/
+    if (!numRegExp.test(cardNumber.value)) {
+      isPass = false
+      cardNumberMsg.innerHTML = '卡號必須為數字'
+    } else if (!numRegExp.test(cardCvc.value)) {
+      isPass = false
+      cardCvcMsg.innerHTML = 'CVC必須為數字'
+    } else if (!textRegExp.test(cardName.value)) {
+      isPass = false
+      cardNameMsg.innerHTML = '姓名必須為英文'
+    }
+    // 長度判斷
+    if (cardNumber.value.length != 16) {
+      isPass = false
+      cardNumberMsg.innerHTML = '卡號須為16碼'
+    } else if ((cardName.value.length > 12) | (cardName.value.length < 3)) {
+      isPass = false
+      cardNameMsg.innerHTML = '姓名長度需在3~12碼'
+    } else if (cardCvc.value.length != 3) {
+      isPass = false
+      cardCvcMsg.innerHTML = 'CVC長度為3碼'
+    }
+
+    if (isPass) {
+      // 存放 FormData的資料
+      let orderData = new FormData()
+      // 存放用戶資料
+      orderData.append('addUser', storage.getItem('addUser'))
+
+
+      // 取得localStorage的項目清單
+      let itemString = storage.getItem('addItemList')
+
+      // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
+      let items = itemString.split(' |')
+      items.pop()
+
+      // 建立空白陣列，存放localStorage的商品資料
+      let itemsDetail = []
+      for (let i = 0; i < items.length; i++) {
+        itemsDetail.push(JSON.parse(storage.getItem(items[i])))
+      }
+      orderData.append('addItemList', JSON.stringify(itemsDetail))
+
+      console.log(orderData.getAll('addItemList'));
+
+    }
+  }
 
   return (
     <>
+      <LoginNav />
       <h3>購物車-結帳 Page</h3>
       <Processbar step="3" />
 
@@ -40,7 +132,7 @@ function Cart3_Test() {
 
       <div className="card">
         {/* 卡面 */}
-        <div clasName="rccs__card rccs__card--unknown">
+        <div className="rccs__card rccs__card--unknown">
           <Cards
             number={number}
             name={name}
@@ -50,31 +142,32 @@ function Cart3_Test() {
           />
         </div>
         {/* 輸入欄 */}
-        <form>
+        <form name="card">
           {/* 卡號 */}
           <div>
-            <label for="name" className="blockText">
+            <label htmlFor="name" className="blockText">
               信用卡卡號 :{' '}
             </label>
             <input
+              id="cardNumber"
               type="tel"
               className="form-control"
               value={number}
               name="number"
-              maxlength="16"
-              pattern="[0-9]+"
               onChange={(e) => {
                 SetNumber(e.target.value)
               }}
               onFocus={(e) => SetFocus(e.target.name)}
             ></input>
+            <div id="cardNumberMsg"></div>
           </div>
           {/* 持卡者姓名 */}
           <div>
-            <label for="name" className="blockText">
+            <label htmlFor="name" className="blockText">
               持卡者姓名 :{' '}
             </label>
             <input
+              id="cardName"
               type="text"
               className="form-control"
               value={name}
@@ -83,14 +176,17 @@ function Cart3_Test() {
                 SetName(e.target.value)
               }}
               onFocus={(e) => SetFocus(e.target.name)}
+              required
             ></input>
+            <div id="cardNameMsg"></div>
           </div>
           {/* 到期日期 */}
           <div>
-            <label for="month" className="blockText">
+            <label htmlFor="month" className="blockText">
               有效截止月 / 年 :{' '}
             </label>
-            <select name="expiry" onChange={handleDate}>
+            <div id="cardDateMsg"></div>
+            <select id="cardMon" name="expiry" onChange={handleDate}>
               <option value=" ">Month</option>
               <option value="01">Jan</option>
               <option value="02">Feb</option>
@@ -105,7 +201,7 @@ function Cart3_Test() {
               <option value="11">Nov</option>
               <option value="12">Dec</option>
             </select>
-            <select name="expiry" onChange={handleExpiry}>
+            <select id="cardYear" name="expiry" onChange={handleExpiry}>
               <option value=" ">Year</option>
               <option value="21">2021</option>
               <option value="22">2022</option>
@@ -121,20 +217,20 @@ function Cart3_Test() {
           </div>
           {/* 驗證碼 */}
           <div>
-            <label for="cvv" className="blockText">
+            <label htmlFor="cvv" className="blockText">
               CVV :{' '}
             </label>
             <input
+              id="cardCvc"
               type="tel"
               name="cvc"
-              maxlength="3"
               value={cvc}
-              pattern="\d*"
               onChange={(e) => {
                 SetCvc(e.target.value)
               }}
               onFocus={(e) => SetFocus(e.target.name)}
             ></input>
+            <div id="cardCvcMsg"></div>
           </div>
         </form>
       </div>
@@ -144,9 +240,8 @@ function Cart3_Test() {
         <button
           className="button"
           onClick={() => {
-            // 到下一頁
-            Navigate('路徑')
-            // 新增訂單
+            // 做驗證，成功就跳頁 & 新增資料庫
+            checkForm()
           }}
         >
           下一步
@@ -155,7 +250,7 @@ function Cart3_Test() {
           className="button"
           onClick={() => {
             // 回首頁
-            Navigate('路徑')
+            Navigate('../Sales/Cart2')
           }}
         >
           回上頁
@@ -164,4 +259,4 @@ function Cart3_Test() {
     </>
   )
 }
-export default Cart3_Test
+export default Cart3

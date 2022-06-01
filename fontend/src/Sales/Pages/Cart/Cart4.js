@@ -1,7 +1,9 @@
 // 功能：讀取購物車，Session productList(key)  / productID(key) / order(key)
-// 跳頁路徑未填
+// http://localhost:3000/Sales/Cart4
+
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 
 import Processbar from '../../Components/ProcessBar/ProcessBar'
 import data from '../../Json/Order.json'
@@ -16,6 +18,7 @@ function Cart4() {
   // console.log(productData)
   return (
     <>
+      <LoginNav />
       <h3>購物車-訂單 Page(cart4)</h3>
       <Processbar step="3" />
       <div className="">
@@ -69,7 +72,7 @@ function Cart4() {
                 <tr key={i} className="blockPicture">
                   <th scope="row">{i + 1}</th>
                   <td>
-                    <img src={require(`../../Picture/${v.pic_path}`)} alt="a" />
+                    {/* <img src={require(`../../Picture/${v.pic_path}`)} alt="a" /> */}
                   </td>
                   <td>{v.author_name}</td>
                   <td>{v.product_name}</td>
@@ -87,7 +90,7 @@ function Cart4() {
         className="button"
         onClick={() => {
           // 回首頁
-          Navigate('路徑')
+          Navigate('/')
         }}
       >
         完成

@@ -1,19 +1,71 @@
-// 未完成 功能：讀取購物車，Session productList(key)  / productID(key)
-// 未完成 功能：刪除購物車，Session productList(key)  / productID(key)
-// 先用JSON假資料取代
-
+// http://localhost:3000/Sales/Cart1
 import React from 'react'
 import Processbar from '../../Components/ProcessBar/ProcessBar'
-import data from '../../Json/Cart.json'
 import './Cart.css'
 import { useNavigate } from 'react-router-dom'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 
 function Cart1() {
+  // 使用 useNavigate 套件
   let Navigate = useNavigate()
+
+  // 使用 localStorage WebAPI
+  let storage = localStorage
+
+  // 取得localStorage的項目清單
+  let itemString = storage.getItem('addItemList')
+
+  // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
+  let items = itemString.split(' |')
+  items.pop()
+
+  // 建立空白陣列，存放jsx語法
+  let cartTable = []
+
+  // 刪除語法
+  function deleteItem(e) {
+    // 取得按鈕所在位置的ID
+    let itemId = e.target.id
+    // 移除localStorage中的資料
+    storage.removeItem(itemId)
+    storage['addItemList'] = storage['addItemList'].replace(`${itemId}`, ``)
+    // 清除按鈕所在位置的html語法
+    document.getElementById(itemId).remove()
+  }
+
+  // 動態生成table的內容
+  for (let i = 0; i < items.length; i++) {
+    let { ID, author_name, pic_path, price, product_name } = JSON.parse(
+      storage.getItem(items[i])
+    )
+    cartTable.push(
+      <tr key={i + 1} className="blockPicture" id={ID}>
+        <th scope="row">{i + 1}</th>
+        <td>
+          <img
+            alt="圖片無法顯示"
+            src={`http://localhost:3000/Home/ProductImg/${pic_path}`}
+          />
+        </td>
+        <td>{author_name}</td>
+        <td>{product_name}</td>
+        <td>{price}</td>
+        <td>
+          <button id={ID} onClick={deleteItem} className="blockButton">
+            刪除
+          </button>
+        </td>
+      </tr>
+    )
+  }
+
   return (
     <>
+      <LoginNav />
       <h3>購物車-總攬 Page</h3>
+      {/* 進度條 */}
       <Processbar step="1" />
+      {/* 表格 */}
       <table>
         <thead>
           <tr>
@@ -35,31 +87,15 @@ function Cart1() {
             <th scope="col" className="blockSizeM"></th>
           </tr>
         </thead>
-        <tbody>
-          {data.map((v, i) => {
-            return (
-              <tr key={i} className="blockPicture">
-                <th scope="row">{i + 1}</th>
-                <td>
-                  <img src={require(`../../Picture/${v.pic_path}`)} alt="a" />
-                </td>
-                <td>{v.author_name}</td>
-                <td>{v.product_name}</td>
-                <td>{v.price}</td>
-                <td>
-                  <button className="blockButton">刪除</button>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
+        <tbody>{cartTable}</tbody>
       </table>
+      {/* 按鈕 */}
       <div>
         <button
           className="button"
           onClick={() => {
             // 到下一頁
-            Navigate('路徑')
+            Navigate('../Sales/Cart2')
           }}
         >
           下一步
@@ -67,10 +103,10 @@ function Cart1() {
         <button
           className="button"
           onClick={() => {
-            Navigate()
+            Navigate('/')
           }}
         >
-          回上頁
+          回首頁
         </button>
       </div>
     </>
