@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+
 const app = express();
 const db = require("../../modules/mysql_config");
 
@@ -43,7 +44,7 @@ router.post("/signin", async (req, res, next) => {
     console.log(`執行Query:${sql}時錯誤`);
   });
   res.send(sigin);
-  // res.redirect("/");
+  // res.redirect("/sigin");
 });
 
 // 檢查帳號是否已被使用(不能重複註冊)
@@ -57,7 +58,7 @@ router.get("/checkAccount", async (req, res, next) => {
 // sql=使用MySQL語法及欄位,VALUE值放表單name=""
 // router.post("/register", async (req, res, next) => {
 //   console.log(req.body);
-//   const sql = `INSERT INTO us_user(user_account,user_password,user_name,gender,birthday, email,mobile,city,interest_product,interest_collection,interest_article) VALUES ('${req.body.username}','${req.body.password}','${req.body.user_name}','${req.body.gender}','${req.body.birthday}','${req.body.email}','${req.body.mobile}','${req.body.city}','${req.body.interest_product}','${req.body.interest_collection}','${req.body.interest_article}')`;
+//   const sql = `INSERT INTO us_user(user_account,user_password,user_name,gender,birthday, email,mobile,city,interest_product,interest_collection,interest_article) VALUES ('${req.body.user_account}','${req.body.user_password}','${req.body.user_name}','${req.body.gender}','${req.body.birthday}','${req.body.email}','${req.body.mobile}','${req.body.city}','${req.body.interest_product}','${req.body.interest_collection}','${req.body.interest_article}')`;
 //   const [user] = await db.query(sql).catch((error) => {
 //     console.log(`執行Query:${sql}時錯誤`);
 //   });
@@ -65,14 +66,17 @@ router.get("/checkAccount", async (req, res, next) => {
 // });
 
 
-// 測試註冊 前端>資料庫 ok
+// 測試註冊 透過form post 前端>資料庫 ok
+// sql=使用MySQL語法及欄位,VALUE值放表單name=""
 router.post("/register", async (req, res, next) => {
   console.log(req.body);
-  const sql = `INSERT INTO users(user_account,user_password) VALUES ('${req.body.user_account}','${req.body.password}')`;
+  const sql = `INSERT INTO users(user_account,user_password) VALUES ('${req.body.account}','${req.body.password}')`;
   const [user] = await db.query(sql).catch((error) => {
     console.log(`執行Query:${sql}時錯誤`);
   });
-  res.json(user);
+  // res.json(user);
+  // 導向登入頁
+  res.redirect("http://localhost:3000/signin");
 });
 
 

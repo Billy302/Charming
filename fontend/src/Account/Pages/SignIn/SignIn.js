@@ -1,44 +1,46 @@
 import style from "./SignIn.module.css";
-import {React,useState} from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { React, useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import axios from "axios";
 
-
 function SignIn() {
-// function SignIn(props) {
-//   const [user_account, setUserAccount] = useState("");
-//   const [user_password, setUserPassword] = useState("");
-//   const { auth, setAuth } = props;
+  
+  // 設定導向頁面函式
+  const navigate = useNavigate();
 
-//   const login = (e) => {
-//     if (user_account !== "" && user_password !== "") {
-//       axios
-//         .post("http://localhost:3001/signin", {
-//           user_account: user_account,
-//           user_password: user_password,
-//         })
-//         .then((res) => {
-//           alert("登入成功!");
-//           navigate("/home");
-//         })
-//         .catch((e) => {
-//           if (e.response.error) {
-//             alert("帳號或密碼錯誤！");
-//           }
-//         });
-//     } else if (user_account === "") {
-//       alert("請輸入帳號!");
-//     } else {
-//       alert("請輸入密碼!");
-//     }
-//   };
-  
-//   // useHistory版本已被useNavigate取代
-//   const navigate = useNavigate();
-  
+  // function SignIn(props) {
+  //   const [user_account, setUserAccount] = useState("");
+  //   const [user_password, setUserPassword] = useState("");
+  //   const { auth, setAuth } = props;
+
+  //   const login = (e) => {
+  //     if (user_account !== "" && user_password !== "") {
+  //       axios
+  //         .post("http://localhost:3001/signin", {
+  //           user_account: user_account,
+  //           user_password: user_password,
+  //         })
+  //         .then((res) => {
+  //           alert("登入成功!");
+  //           navigate("/home");
+  //         })
+  //         .catch((e) => {
+  //           if (e.response.error) {
+  //             alert("帳號或密碼錯誤！");
+  //           }
+  //         });
+  //     } else if (user_account === "") {
+  //       alert("請輸入帳號!");
+  //     } else {
+  //       alert("請輸入密碼!");
+  //     }
+  //   };
+
+  //   // useHistory版本已被useNavigate取代
+  //   const navigate = useNavigate();
+
   // 密碼顯示or隱藏
   const [invisible, setInvisible] = useState(true);
   const invisibleHandler = () => {
@@ -66,22 +68,37 @@ function SignIn() {
         <p>或用柴米帳號</p>
 
         {/* 登入 */}
-        <form method="post" action="http://localhost:3001/Account/signin" className={style.form}>
+        <form
+          method="post"
+          action="http://localhost:3001/Account/signin"
+          className={style.form}
+        >
           <label htmlFor="username">帳號</label>
           <input id="username" type="text" name="user_account" />
-           <label htmlFor='password'>密碼</label>
+          <label htmlFor="password">密碼</label>
           <div className={style.password}>
             {/* 顯示/隱藏 密碼眼睛切換 text/password input type切換 */}
-          {invisible &&  <FaEyeSlash onClick={invisibleHandler} />}
-           {!invisible &&  <FaEye onClick={invisibleHandler} />}
+            {invisible && <FaEyeSlash onClick={invisibleHandler} />}
+            {!invisible && <FaEye onClick={invisibleHandler} />}
           </div>
-          <input type={invisible? 'password' : 'text'} id="password" className={style.passwordShow} name="user_password"/>
+          <input
+            type={invisible ? "password" : "text"}
+            id="password"
+            className={style.passwordShow}
+            name="user_password"
+          />
 
-          <Link to="/signin/identify" className={style.forget}>忘記密碼</Link>
-        <button typeof="submit" className={style.button}>登入
-        </button>
+          <Link to="/signin/identify" className={style.forget}>
+            忘記密碼
+          </Link>
+
+          {/* 登入並導向首頁 */}
+          <button typeof="submit" className={style.button} onClick={()=>navigate('/LoginHome')}>
+            登入
+          </button>
+
         </form>
-            {/* onClick={() => {
+        {/* onClick={() => {
               setAuth(!auth);
   
               alert("登入成功");
