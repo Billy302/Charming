@@ -5,6 +5,10 @@ import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import './ArtShow.css';
 import { Link } from "react-router-dom";
 import pictureone from "../../Components/01.jpg";
+import picturetwo from "../../Components/02.jpg";
+import picturethree from "../../Components/03.jpg";
+import picturefour from "../../Components/04.jpg";
+import picturefive from "../../Components/05.jpg";
 
 
 const ArtShow = () => {
@@ -59,17 +63,24 @@ const ArtShow = () => {
       </Link>
       {/* ----- */}
       <div className="pictureall" >
-          <b3 className="" >活動一</b3>
-          <img className="pictureone" src={pictureone} alt="picture" />
-          <img className="pictureone" src={pictureone} alt="picture" />
-
-          <p className="" >活動二</p>
-          <img className="pictureone" src={pictureone} alt="picture" />
+      &emsp;&emsp;&emsp;&emsp;&emsp;
+          <b3 className="" ></b3>&emsp;
+          <img className="pictureone" src={pictureone} alt="picture" />&emsp;
+          <b3 className="" ></b3>&emsp;
+          <img className="picturetwo" src={picturetwo} alt="picture" />&emsp;
+          <b3 className="" ></b3>&emsp;
+          <img className="picturethree" src={picturethree} alt="picture" />&emsp;
+          {/* <b3 className="" ></b3>&emsp;
+          <img className="picturefour" src={picturefour} alt="picture" />&emsp; */}
+          <b3 className="" ></b3>&emsp;
+          <img className="picturefive" src={picturefive} alt="picture" />&emsp;
           
 
-        
-        
+          {/* <p className="" >活動二</p>
+          <img className="pictureone" src={pictureone} alt="picture" /> */}
       </div>
+
+      
       {/* ----- */}
       <div className="flex-row">
 

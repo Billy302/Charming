@@ -64,7 +64,7 @@ const EditUserForm = props => {
         value={user.userplace}
         onChange={handleInputChange}
       />
-        <br />
+      <br />
       <label>活動費用</label>
       <input
         type="text"
@@ -78,7 +78,7 @@ const EditUserForm = props => {
       {props.editing && (
         <button onClick={resetAddUser} className="button muted-button">
           取消
-        </button>
+      </button>
       )}
     </form>
   );
