@@ -63,22 +63,21 @@ function AskPageOne(props) {
       <main>
 
       <ul class="breadcrumb">
-      <li><a href="/AskPageOne">柴社</a></li>
-      <li><a href="/AskPageOne">討論區</a></li>
+      <li><a href="/AskPage">柴社</a></li>
+      <li><a href="/AskPage">討論區</a></li>
       </ul>
 
-      <ul class="breadcrumb">
-      <li><a href="/AskPageOne">柴社</a></li>
-      <li><a href="/ArtShow">活動與展覽</a></li>
-      </ul>
-
-      {/* <Link to="/AskPageOne">
-        <h3>討論區</h3> 
+      <Link to="/AskPage">
+      <button type="button" class="btn">
+      討論區
+      </button>
       </Link>
 
       <Link to="/ArtShow">
-        <h3>活動與展覽</h3>
-      </Link> */}
+      <button type="button" class="btn">
+      活動與展覽
+      </button>
+      </Link>
 
       <div className="container">
 

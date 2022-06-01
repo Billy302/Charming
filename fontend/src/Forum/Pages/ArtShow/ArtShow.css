@@ -34,20 +34,4 @@
     background-color: ;
   }
 
-  /*breadcrumb */
-
-  ul.breadcrumb {
-    padding: 8px 16px;
-    list-style: none;
-    background-color: ;
-  }
   
-  ul.breadcrumb li {display: inline;}
-  
-  ul.breadcrumb li+li:before {
-    padding: 8px;
-    color: black;
-    content: "/\00a0";
-  }
-  
-  ul.breadcrumb li a {color: #795252;}

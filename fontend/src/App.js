@@ -37,8 +37,10 @@ import OrderList from './Sales/Pages/Order/OrderList';
 
 //討論區
 import AskPageOne from './Forum/Pages/AskPageOne/AskPageOne';
-// import ReplyQone from './Forum/Pages/ReplyQone';
-// import ReplyQtwo from './Forum/Pages/ReplyQtwo';
+import AskPage from './Forum/Pages/Askpage/AskPage';
+import AskPageTwo from './Forum/Pages/AskPageTwo/AskPageTwo';
+import ReplyQone from './Forum/Pages/ReplyQone/ReplyQone';
+import ReplyQtwo from './Forum/Pages/ReplyQtwo/ReplyQtwo';
 import ArtShow from './Forum/Pages/ArtShow/ArtShow';
 
 // 部落格
@@ -83,8 +85,10 @@ function App() {
                 <Route path="/OrderList" element={<OrderList />} />
                 {/* 討論區 */}
                 <Route path="/AskPageOne" element={<AskPageOne />} />
-                {/* <Route path="/ReplyQone" element={<ReplyQone />} />
-                <Route path="/ReplyQtwo" element={<ReplyQtwo />} />*/}
+                <Route path="/AskPage" element={<AskPage />} />
+                <Route path="/AskPageTwo" element={<AskPageTwo />} />
+                <Route path="/ReplyQone" element={<ReplyQone />} />
+                <Route path="/ReplyQtwo" element={<ReplyQtwo />} />
                 <Route path="/ArtShow" element={<ArtShow />} /> 
                 {/* 討論區結束 */}
 

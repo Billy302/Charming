@@ -66,7 +66,7 @@ function UnloginNav(props){
               <a href="/Blog" className={style.phoneDisplayNone}>
                 <li>柴訊</li>
               </a>
-              <a href="/AskPageOne" className={style.phoneDisplayNone}>
+              <a href="/AskPage" className={style.phoneDisplayNone}>
                 <li>柴社</li>
               </a>
             </div>
