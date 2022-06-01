@@ -26,9 +26,6 @@ function MyAccount(props) {
         <Link to="/collection" className={style.unactive}>
           我的收藏 <hr />
         </Link>
-        <Link to="/notice" className={style.unactive}>
-          我的通知 <hr />
-        </Link>
       </nav>
 
       {/* 右側內文 */}
@@ -55,19 +52,6 @@ function MyAccount(props) {
           <button className={style.button}>編輯</button>
         </div>
       </main>
-
-      {/* 左側選單 */}
-      <aside className={style.aside}>
-        <ul className={style.ul}>
-          <li>
-            <Link to="/account">基本資料</Link>
-          </li>
-          <li>
-            <Link to="/notice/setting">通知設定</Link>
-          </li>
-        </ul>
-      </aside>
-      <div className={style.clear}></div>
     </>
   );
 }

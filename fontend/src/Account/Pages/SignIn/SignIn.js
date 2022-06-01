@@ -73,8 +73,8 @@ function SignIn() {
           action="http://localhost:3001/Account/signin"
           className={style.form}
         >
-          <label htmlFor="username">帳號</label>
-          <input id="username" type="text" name="user_account" />
+          <label htmlFor="account">帳號</label>
+          <input id="account" type="text" name="account" />
           <label htmlFor="password">密碼</label>
           <div className={style.password}>
             {/* 顯示/隱藏 密碼眼睛切換 text/password input type切換 */}
@@ -85,7 +85,7 @@ function SignIn() {
             type={invisible ? "password" : "text"}
             id="password"
             className={style.passwordShow}
-            name="user_password"
+            name="password"
           />
 
           <Link to="/signin/identify" className={style.forget}>
@@ -93,7 +93,7 @@ function SignIn() {
           </Link>
 
           {/* 登入並導向首頁 */}
-          <button typeof="submit" className={style.button} onClick={()=>navigate('/LoginHome')}>
+          <button typeof="submit" className={style.button} >
             登入
           </button>
 
