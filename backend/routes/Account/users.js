@@ -83,8 +83,8 @@ router.post("/register", async (req, res, next) => {
   const [user] = await db.query(sql).catch((error) => {
     console.log(`執行Query:${sql}時錯誤`);
   });
-  res.json(user);
-  // res.redirect("http://localhost:3000/signin");
+  // res.json(user);
+  res.redirect("http://localhost:3000/signin");
 });
 
 
