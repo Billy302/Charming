@@ -17,25 +17,6 @@ router.get("/users", async (req, res, next) => {
   res.json(dates);
 });
 
-// router.post("/signin", async (req, res) => {
-//   let { user_account, password } = req.body;
-//   console.log(req.body);
-//   try {
-//     let foundUser = await db.query.findOne({ user_account });
-//     if (!foundUser) {
-//       res.send("Username not found");
-//     } else {
-//       if (password == foundUser.password) {
-//         res.render("/");
-//       } else {
-//         res.send("密碼錯誤");
-//       }
-//     }
-//   } catch (e) {
-//     next(e);
-//   }
-// });
-
 // 登入 (使用postman出現{} 查看postman格式是否非JSON)
 // router.post("/signin", async (req, res, next) => {
 //   console.log(req.body);
@@ -47,27 +28,19 @@ router.get("/users", async (req, res, next) => {
 //   // res.redirect("/sigin");
 // });
 
+// 登入驗證帳號密碼 ok
 router.post("/signin", async (req, res, next) => {
-  console.log(req.body.account);
-  const myaccount = `SELECT COUNT(user_account) FROM us_user WHERE user_account='${req.body.account}'`;
-  const pwd = `SELECT COUNT(user_password) FROM us_user WHERE user_password='${req.body.password}'`;
-  console.log(!!myaccount);
-  console.log(pwd);
-  if(myaccount == true && pwd == true){
-    res.send("登入成功")
+  const verify = `SELECT COUNT(user_account) AS result FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
+   const [login] = await db.query(verify, [req.query.user_account]);
+  console.log(login[0].result);
+  if(login[0].result == 1 ){
+    res.json({msg: "登入成功"})
   }else{
-    res.send("帳號或密碼有誤");
+    res.json({msg:"帳號或密碼有誤"});
     }
-
-    // if(req.body.account == 'abc123' && req.body.password == '12345678'){
-    //   res.send("登入成功")
-    // }else{
-    // res.send("帳號或密碼有誤");
-    // }
-  // res.redirect("/sigin");
 });
 
-// 檢查帳號是否已被使用(不能重複註冊)
+// 檢查帳號是否已被使用(不能重複註冊) ok
 router.get("/checkAccount", async (req, res, next) => {
   const sql = `SELECT Count(*) as total FROM us_user WHERE user_account=?`;
   const [datas] = await db.query(sql, [req.query.user_account]);
@@ -75,7 +48,7 @@ router.get("/checkAccount", async (req, res, next) => {
   res.json(datas[0]);
 });
 
-// 註冊帳號密碼
+// 註冊 帳號密碼 ok
 // sql=使用MySQL語法及欄位,VALUE值放表單name=""
 router.post("/register", async (req, res, next) => {
   console.log(req.body);
