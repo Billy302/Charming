@@ -45,7 +45,7 @@ import OrderList from "./Sales/Pages/Order/OrderList";
 // import AskPageTwo from "./Forum/Pages/AskPageTwo/AskPageTwo";
 // import ReplyQone from "./Forum/Pages/ReplyQone/ReplyQone";
 // import ReplyQtwo from "./Forum/Pages/ReplyQtwo/ReplyQtwo";
-// import ArtistShow from './Forum/Pages/ArtistShow/ArtistShow';
+// import SeePoster from './Forum/Pages/SeePoster/SeePoster ';
 
 // 部落格
 // import Blog from './Blog/Components/Page/Blog';
@@ -102,7 +102,7 @@ function App() {
         <Route path="/AskPageTwo" element={<AskPageTwo />} />
         <Route path="/ReplyQone" element={<ReplyQone />} />
         <Route path="/ReplyQtwo" element={<ReplyQtwo />} />  */}
-        {/* <Route path="/ArtistShow" element={<ArtistShow />} /> 
+        {/* <Route path="/SeePoster" element={<SeePoster  />} /> 
         {/* 討論區結束 */}
 
         {/* 部落格開始 */}

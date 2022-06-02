@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import UserTable from "./UserTable";
 import EditUserForm from "./EditUserForm";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
-import './ArtShow.css';
+import './SeePoster.css';
 import { Link } from "react-router-dom";
 import pictureone from "../../Components/01.jpg";
 import picturetwo from "../../Components/02.jpg";
@@ -11,7 +11,7 @@ import picturefour from "../../Components/04.jpg";
 import picturefive from "../../Components/05.jpg";
 
 
-const ArtShow = () => {
+const SeePoster = () => {
   const usersData = [
     { id: 1, name: "1", username: "2022「世間都是貓」台日交流藝術聯展台中展", userdate: "2022-08-06~2022-09-04", userplace:"Smohouse思默好時 好睞空間", userfee:"100" },
     { id: 2, name: "2", username: "DAVID HOCKNEY EXHIBITION IN SEOUL", userdate: "2022-09-09~2023-01-31", userplace:"MUSEUM OF ART (SEMA)", userfee:"200" },
@@ -56,7 +56,7 @@ const ArtShow = () => {
       討論區
       </button>
       </Link>
-      <Link to="/ArtShow">
+      <Link to="/SeePoster">
       <button type="button" class="btn">
       活動與展覽
       </button>
@@ -110,4 +110,4 @@ const ArtShow = () => {
   );
 };
 
-export default ArtShow;
+export default SeePoster;
