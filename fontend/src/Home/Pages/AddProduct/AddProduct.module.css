@@ -45,14 +45,11 @@
     padding: 10px;
     font-size: var(--heading4);
 }
-/* 新增圖片的label */
-.addPicture{
-    padding: 50px;
-    border: 3px dotted var(--brown2);
-    border-radius: 15px;
-}
 /* 新增圖片label中間的icon */
 .icon{
+    position: absolute;
+    right: 33%;
+    top: 33%;
     font-size: 50px;
     color: var(--brown2);
 }
@@ -116,6 +113,15 @@
 .submitButton:hover{
     background-color: var(--brown1);
 
+}
+.smallImg2{
+    border: 3px dotted var(--brown2);
+    width: var(--smallPictureSize);
+    height: var(--smallPictureSize);
+    border-radius: var(--borderRadius);
+    overflow: hidden;
+    object-fit: contain;
+    z-index: 999;
 }
 input{
     outline:none

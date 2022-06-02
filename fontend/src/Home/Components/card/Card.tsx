@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import Styles from './Card.module.css'
-import { FcLikePlaceholder, FcLike } from 'react-icons/fc'
+import React, { useEffect, useState } from "react";
+import Styles from "./Card.module.css";
+import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 
 interface CardProps {
-  ID: number
-  product_name: string
-  author_name: string
-  product_copy: string
-  price: number
-  pic_path: string
-  sell_count: number
-  file_type: string
+  ID: number;
+  product_name: string;
+  author_name: string;
+  product_copy: string;
+  price: number;
+  pic_path: string;
+  sell_count: number;
+  file_type: string;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -24,7 +24,7 @@ const Card: React.FC<CardProps> = ({
   file_type,
 }) => {
   // let a = products[0]["pic_path"].split(" ");
-  const a = pic_path.split(' ')
+  const a = pic_path.split(" ");
   // console.log(a[0]);
 
   return (
@@ -34,7 +34,7 @@ const Card: React.FC<CardProps> = ({
           {/* <img alt="robot" src={require(`../../Assets/ProductImg/${a[0]}`)} /> */}
           <img
             alt="圖片無法顯示"
-            src={`http://localhost:3001/ProductImg/${a[0]}`}
+            src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
           />
         </a>
         <FcLikePlaceholder className={Styles.like} />
@@ -51,6 +51,6 @@ const Card: React.FC<CardProps> = ({
         </div>
       </div>
     </li>
-  )
-}
-export default Card //導出組件
+  );
+};
+export default Card; //導出組件

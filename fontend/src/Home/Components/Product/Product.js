@@ -15,8 +15,8 @@ function MyProduct() {
   const catchUserId = useParams()
   // console.log(catchUserId.UserId)
   const fetchProducts = async () => {
-    //向遠端伺服器get資料 http://localhost:3000/Sales/api/product?id=1
-    const response = await fetch(`http://localhost:3000/Sales/api/product?id=${catchUserId.UserId}`)
+    //向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
+    const response = await fetch(`http://localhost:3001/Sales/api/product?id=${catchUserId.UserId}`)
     const data = await response.json();
     //測試
     // 載入資料後設定到狀態中

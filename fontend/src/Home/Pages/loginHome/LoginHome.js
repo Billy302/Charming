@@ -1,17 +1,20 @@
-import React from 'react'
-import Style from './LoginHome.module.css'
+import React from "react";
+import Style from "./LoginHome.module.css";
 // component
-import LoginNav from '../../Components/LoginNav/LoginNav'
-
-import AsideProductLIst from '../../Components/AsideProductLIst/AsideProductLIst'
-import Product from '../../Components/Product/Product'
+import LoginNav from "../../Components/LoginNav/LoginNav";
+import Card from "../../Components/Card/Card";
+import AsideProductLIst from "../../Components/AsideProductLIst/AsideProductLIst";
+import Product from "../../Components/Product/Product";
+import Slider from "../../Components/Slider/Slider";
+import SliderSection from "../../Components/SliderSection/SliderSection";
+import Pagination from "../../Components/Pagination/Pagination";
 
 // react icon
-import { AiTwotoneSound } from 'react-icons/ai'
+import { AiTwotoneSound } from "react-icons/ai";
 
 // data
-import users from '../../Mockdata/users.json'
-import { ImOpt } from 'react-icons/im'
+
+import { ImOpt } from "react-icons/im";
 // const connection = require('../../../../../backend/modules/mysql_config');
 
 function LoginHome() {
@@ -32,8 +35,9 @@ function LoginHome() {
         <AsideProductLIst className={Style.displayNone} />
         <Product />
       </section>
+        <Pagination totalPages={5}/>
     </header>
-  )
+  );
 }
 
-export default LoginHome
+export default LoginHome;

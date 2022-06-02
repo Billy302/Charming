@@ -22,7 +22,7 @@ function ProductPage() {
     //向遠端伺服器get資料 http://localhost:3000/Sales/api/product?id=1
     const response = await fetch(
       //取單一商品資料
-      `http://localhost:3000/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
+      `http://localhost:3001/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
     );
     const data = await response.json();
     // 載入資料後設定到狀態中
@@ -45,7 +45,7 @@ function ProductPage() {
         <img
           className={style.smallImg2}
           alt="圖片顯示失敗"
-          src={`http://localhost:3001/ProductImg/${a[i]}`}
+          src={`http://localhost:3000/Home/ProductImg/${a[i]}`}
         />
       </button>
     );
@@ -61,7 +61,7 @@ function ProductPage() {
           <img
             className={style.bigImg}
             alt=""
-            src={`http://localhost:3001/ProductImg/${a[0]}`}
+            src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
           />
           <div>{p}</div>
           {/* 價格，數量，加入購物車按鈕，收藏按鈕 */}
@@ -86,7 +86,7 @@ function ProductPage() {
                 </pre>
               </div>
               <div className={style.buyNumber}>
-                <a href="/MyProduct/EditProductPage">
+                <a href={`/MyProduct/Edit/1/${products.ID}`}>
                   <button className={style.EditProduct}>編輯商品</button>
                 </a>
               </div>

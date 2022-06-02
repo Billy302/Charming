@@ -59,6 +59,7 @@
 .icons{
 	color: var(--brown2);
 	margin-left: 15px;
+	font-size: var(--heading4);
 }
 @media screen and (max-width:780px) {
     .cardContainer{

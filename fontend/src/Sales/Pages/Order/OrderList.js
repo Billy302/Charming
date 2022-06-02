@@ -30,7 +30,7 @@ function OrderList() {
   // componentDidMount / componentDidUpdate
   useEffect(() => {
     fetchProducts()
-  }, currentpage)
+  }, [currentpage])
 
   return (
     <>

@@ -55,19 +55,19 @@ function Cart3() {
     cardCvcMsg.innerHTML = ''
 
     // 判斷不得為空值
-    if (cardNumber.value == '') {
+    if (cardNumber.value === '') {
       isPass = false
       cardNumberMsg.innerHTML = '卡號不得為空'
-    } else if (cardName.value == '') {
+    } else if (cardName.value === '') {
       isPass = false
       cardNameMsg.innerHTML = '姓名不得為空'
-    } else if (cardMon.value == ' ') {
+    } else if (cardMon.value === ' ') {
       isPass = false
       cardDateMsg.innerHTML = '請選擇月份'
-    } else if (cardYear.value == ' ') {
+    } else if (cardYear.value === ' ') {
       isPass = false
       cardDateMsg.innerHTML = '請選擇年份'
-    } else if (cardCvc.value == '') {
+    } else if (cardCvc.value === '') {
       isPass = false
       cardCvcMsg.innerHTML = 'CVC不得為空'
     }
@@ -85,13 +85,13 @@ function Cart3() {
       cardNameMsg.innerHTML = '姓名必須為英文'
     }
     // 長度判斷
-    if (cardNumber.value.length != 16) {
+    if (cardNumber.value.length !== 16) {
       isPass = false
       cardNumberMsg.innerHTML = '卡號須為16碼'
     } else if ((cardName.value.length > 12) | (cardName.value.length < 3)) {
       isPass = false
       cardNameMsg.innerHTML = '姓名長度需在3~12碼'
-    } else if (cardCvc.value.length != 3) {
+    } else if (cardCvc.value.length !== 3) {
       isPass = false
       cardCvcMsg.innerHTML = 'CVC長度為3碼'
     }
@@ -101,7 +101,6 @@ function Cart3() {
       let orderData = new FormData()
       // 存放用戶資料
       orderData.append('addUser', storage.getItem('addUser'))
-
 
       // 取得localStorage的項目清單
       let itemString = storage.getItem('addItemList')
@@ -115,10 +114,21 @@ function Cart3() {
       for (let i = 0; i < items.length; i++) {
         itemsDetail.push(JSON.parse(storage.getItem(items[i])))
       }
+
       orderData.append('addItemList', JSON.stringify(itemsDetail))
 
-      console.log(orderData.getAll('addItemList'));
-
+      const fetchProducts = async () => {
+        const response = await fetch(
+          `http://localhost:3001/Sales/api/orderUser`,
+          {
+            method: 'post',
+            body: orderData,
+          }
+        )
+        const data = await response.json()
+        console.log(data);
+      }
+      fetchProducts()
     }
   }
 

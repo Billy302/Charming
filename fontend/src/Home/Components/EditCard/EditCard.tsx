@@ -31,7 +31,7 @@ const EditCard: React.FC<CardProps> = ({
           {/* <img alt="robot" src={require(`../../Assets/ProductImg/${a[0]}`)} /> */}
           <img
             alt="圖片無法顯示"
-            src={`http://localhost:3001/ProductImg/${a[0]}`}
+            src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
           />
         </a>
         <FcLikePlaceholder className={Style.like} />
@@ -48,7 +48,7 @@ const EditCard: React.FC<CardProps> = ({
             <a href="">
               <FaTrashAlt className={Style.icons} />
             </a>
-            <a href="/EditProductPage">
+            <a href={`/MyProduct/Edit/1/${ID}`}>
               <FaEdit className={Style.icons} />
             </a>
           </div>

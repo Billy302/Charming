@@ -10,8 +10,8 @@ import { BsCaretDownFill } from "react-icons/bs";
 function EditProduct() {
   const [products, setProducts] = useState([])
   const fetchProducts = async () => {
-    //向遠端伺服器get資料 http://localhost:3000/Sales/api/product?id=1
-    const response = await fetch('http://localhost:3000/Sales/api/product?id=1')
+    //向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
+    const response = await fetch('http://localhost:3001/Sales/api/product?id=1')
     const data = await response.json();
     // 設定到狀態後，因改變狀態會觸發updating生命周期，然後重新render一次
     setProducts(data);
@@ -59,56 +59,57 @@ function EditProduct() {
       <section className={style.addProduct}>
 
       <form name="form1" action="/action_page.php" enctype="multipart/form-data" method="post" onSubmit="checkForm(); return false;">
+        
         <div className={style.pictureField}>
           <p className={style.title}>新增圖片</p>
 
           {/*第一張圖*/}
-          <label for="theFile1" className={style.addPicture} required>
+          <label for="theFile1" required>
             <IoIosAddCircleOutline className={style.icon} />
             {/* 預覽要顯示的圖片 */}
-            <img id="image" />
+            <img  className={style.smallImg2} id="image" />
           </label>
           <input id="theFile1" className={style.btn} type="file"></input>
 
           {/*第二張圖*/}
-          <label for="theFile2" className={style.addPicture}>
+          <label for="theFile2">
             <IoIosAddCircleOutline className={style.icon} />
             {/* 預覽要顯示的圖片 */}
-            <img id="image" />
+            <img  className={style.smallImg2} id="image" />
           </label>
           <input id="theFile2" className={style.btn} type="file"></input>
 
           {/*第三張圖*/}
-          <label for="theFile3" className={style.addPicture}>
+          <label for="theFile3">
             <IoIosAddCircleOutline className={style.icon} />
             {/* 預覽要顯示的圖片 */}
-            <img id="image" />
+            <img  className={style.smallImg2} id="image" />
           </label>
           <input id="theFile3" className={style.btn} type="file"></input>
 
           {/*第四張圖*/}
-          <label for="theFile4" className={style.addPicture}>
+          <label for="theFile4">
             <IoIosAddCircleOutline className={style.icon} />
             {/* 預覽要顯示的圖片 */}
-            <img id="image" />
+            <img  className={style.smallImg2} id="image" />
           </label>
           <input id="theFile4" className={style.btn} type="file"></input>
 
           {/*第五張圖*/}
-          <label for="theFile5" className={style.addPicture}>
+          <label for="theFile5">
             <IoIosAddCircleOutline className={style.icon} />
             {/* 預覽要顯示的圖片 */}
-            <img id="image" />
+            <img  className={style.smallImg2} id="image" src={``}/>
           </label>
           <input id="theFile5" className={style.btn} type="file"></input>
         </div>
 
         <div className={style.pictureField}>
           <p className={style.title}>新增影片</p>
-          <label for="theRadio" className={style.addPicture}>
+          <label for="theRadio">
             <IoIosAddCircleOutline className={style.icon} />
             {/* 預覽要顯示的圖片 */}
-            <img id="image" />
+            <img  className={style.smallImg2} id="image" src={``}/>
           </label>
           <input id="theRadio" className={style.btn} type="file"></input>
           <div className={style.warnText}>
