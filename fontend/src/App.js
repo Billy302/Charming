@@ -45,7 +45,7 @@ import OrderList from "./Sales/Pages/Order/OrderList";
 // import AskPageTwo from "./Forum/Pages/AskPageTwo/AskPageTwo";
 // import ReplyQone from "./Forum/Pages/ReplyQone/ReplyQone";
 // import ReplyQtwo from "./Forum/Pages/ReplyQtwo/ReplyQtwo";
-// import ArtShow from './Forum/Pages/ArtSee/ArtSee';
+// import ArtSee from './Forum/Pages/ArtSee/ArtSee';
 
 // 部落格
 // import Blog from './Blog/Components/Page/Blog';
