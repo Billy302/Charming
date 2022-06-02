@@ -40,11 +40,11 @@ import Order from "./Sales/Pages/Order/Order";
 import OrderList from "./Sales/Pages/Order/OrderList";
 
 //討論區
-import AskPageOne from "./Forum/Pages/AskPageOne/AskPageOne";
-import AskPage from "./Forum/Pages/Askpage/AskPage";
-import AskPageTwo from "./Forum/Pages/AskPageTwo/AskPageTwo";
-import ReplyQone from "./Forum/Pages/ReplyQone/ReplyQone";
-import ReplyQtwo from "./Forum/Pages/ReplyQtwo/ReplyQtwo";
+// import AskPageOne from "./Forum/Pages/AskPageOne/AskPageOne";
+// import AskPage from "./Forum/Pages/Askpage/AskPage";
+// import AskPageTwo from "./Forum/Pages/AskPageTwo/AskPageTwo";
+// import ReplyQone from "./Forum/Pages/ReplyQone/ReplyQone";
+// import ReplyQtwo from "./Forum/Pages/ReplyQtwo/ReplyQtwo";
 // import ArtShow from './Forum/Pages/ArtShow/ArtShow';
 
 // 部落格
@@ -61,8 +61,6 @@ function App() {
         {/* 商品總覽頁 */}
         <Route path="/Product/:UserId" element={<LoginHome />} />
         <Route path="/Product/:UserId/:ProductID" element={<ProductPage />} />
-        {/* <Route path="/Product/:UserId/:ProductID" element={<ProductPage2 />} /> */}
-
         <Route path="/MyProduct/:UserId" element={<MyProduct />} />
         <Route
           path="/MyProduct/:UserId/:ProductID"
@@ -99,12 +97,12 @@ function App() {
         <Route path="/Order" element={<Order />} />
         <Route path="/OrderList" element={<OrderList />} />
         {/* 討論區 */}
-        <Route path="/AskPageOne" element={<AskPageOne />} />
-        <Route path="/AskPage" element={<AskPage />} />
+        {/* <Route path="/AskPageOne" element={<AskPageOne />} /> */}
+        {/* <Route path="/AskPage" element={<AskPage />} />
         <Route path="/AskPageTwo" element={<AskPageTwo />} />
         <Route path="/ReplyQone" element={<ReplyQone />} />
-        <Route path="/ReplyQtwo" element={<ReplyQtwo />} />
-        {/* <Route path="/ArtShow" element={<ArtShow />} />  */}
+        <Route path="/ReplyQtwo" element={<ReplyQtwo />} />  */}
+        {/* <Route path="/ArtShow" element={<ArtShow />} /> 
         {/* 討論區結束 */}
 
         {/* 部落格開始 */}

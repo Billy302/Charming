@@ -2,11 +2,8 @@ import React from "react";
 import Style from "./LoginHome.module.css";
 // component
 import LoginNav from "../../Components/LoginNav/LoginNav";
-import Card from "../../Components/Card/Card";
 import AsideProductLIst from "../../Components/AsideProductLIst/AsideProductLIst";
 import Product from "../../Components/Product/Product";
-import Slider from "../../Components/Slider/Slider";
-import SliderSection from "../../Components/SliderSection/SliderSection";
 import Pagination from "../../Components/Pagination/Pagination";
 
 // react icon
