@@ -19,10 +19,10 @@ To B - 新增/修改商品 BtobPage/EditProduct
 購物車-訂單 sale/cart/4
 =>Cart_4
 
-To B - 個人銷售紀錄 BtobPage/MySale
+To C - 個人銷售紀錄 BtocPage/MySale
 =>MySale
 
-To C -購買清單-總攬  BtocPage/Order
+To B -購買清單-總攬  BtobPage/Order
 =>OrderList
-To C -購買清單-詳細 BtocPage/Order?id=
+To B -購買清單-詳細 BtobPage/Order?id=
 =>Order

@@ -28,7 +28,7 @@ function Cart1() {
     let itemId = e.target.id
     // 移除localStorage中的資料
     storage.removeItem(itemId)
-    storage['addItemList'] = storage['addItemList'].replace(`${itemId}`, ``)
+    storage['addItemList'] = storage['addItemList'].replace(`${itemId} |`, ``)
     // 清除按鈕所在位置的html語法
     document.getElementById(itemId).remove()
   }
