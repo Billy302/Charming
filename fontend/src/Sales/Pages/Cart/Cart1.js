@@ -12,15 +12,44 @@ function Cart1() {
   // 使用 localStorage WebAPI
   let storage = localStorage
 
-  // 取得localStorage的項目清單
-  let itemString = storage.getItem('addItemList')
-
-  // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
-  let items = itemString.split(' |')
-  items.pop()
-
   // 建立空白陣列，存放jsx語法
   let cartTable = []
+
+  // 確認addItemList 是否友值
+  if (storage.getItem('addItemList')) {
+    // 取得localStorage的項目清單
+    let itemString = storage.getItem('addItemList')
+
+    // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
+    let items = itemString.split(' |')
+    items.pop()
+
+    // 動態生成table的內容
+    for (let i = 0; i < items.length; i++) {
+      let { ID, author_name, pic_path, price, product_name } = JSON.parse(
+        storage.getItem(items[i])
+      )
+      cartTable.push(
+        <tr key={i + 1} className="blockPicture" id={ID}>
+          <th scope="row">{i + 1}</th>
+          <td>
+            <img
+              alt="圖片無法顯示"
+              src={`http://localhost:3000/Home/ProductImg/${pic_path}`}
+            />
+          </td>
+          <td>{author_name}</td>
+          <td>{product_name}</td>
+          <td>{price}</td>
+          <td>
+            <button id={ID} onClick={deleteItem} className="blockButton">
+              刪除
+            </button>
+          </td>
+        </tr>
+      )
+    }
+  }
 
   // 刪除語法
   function deleteItem(e) {
@@ -31,32 +60,6 @@ function Cart1() {
     storage['addItemList'] = storage['addItemList'].replace(`${itemId} |`, ``)
     // 清除按鈕所在位置的html語法
     document.getElementById(itemId).remove()
-  }
-
-  // 動態生成table的內容
-  for (let i = 0; i < items.length; i++) {
-    let { ID, author_name, pic_path, price, product_name } = JSON.parse(
-      storage.getItem(items[i])
-    )
-    cartTable.push(
-      <tr key={i + 1} className="blockPicture" id={ID}>
-        <th scope="row">{i + 1}</th>
-        <td>
-          <img
-            alt="圖片無法顯示"
-            src={`http://localhost:3000/Home/ProductImg/${pic_path}`}
-          />
-        </td>
-        <td>{author_name}</td>
-        <td>{product_name}</td>
-        <td>{price}</td>
-        <td>
-          <button id={ID} onClick={deleteItem} className="blockButton">
-            刪除
-          </button>
-        </td>
-      </tr>
-    )
   }
 
   return (
@@ -95,7 +98,11 @@ function Cart1() {
           className="button"
           onClick={() => {
             // 到下一頁
-            Navigate('../Sales/Cart2')
+            if (storage.getItem('addItemList')) {
+              Navigate('../Sales/Cart2')
+            } else {
+              alert('請選購商品')
+            }
           }}
         >
           下一步
