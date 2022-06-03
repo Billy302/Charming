@@ -432,6 +432,10 @@ sales
     const [orderDetail] = await connection.query(sql2).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
     });
+
+    let orderID = []
+    orderID.push(parseInt(addUser[0]),orderCount[0]["total"])
+    res.send(orderID)
   });
 
 // 取得使用者訂單的詳細內容 TO C

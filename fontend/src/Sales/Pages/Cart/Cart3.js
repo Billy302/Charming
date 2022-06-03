@@ -1,6 +1,5 @@
 // 功能：新增訂單。Method: POST。URL: /api/order
 // http://localhost:3000/Sales/Cart3
-// 還沒做完，將資料傳給後端API
 
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -33,20 +32,21 @@ function Cart3() {
   const handleExpiry = (e) => {
     SetExpiry(month.concat(e.target.value))
   }
-  // 取得各欄位的DOM元素
-  const cardNumber = document.getElementById('cardNumber')
-  const cardNumberMsg = document.getElementById('cardNumberMsg')
-  const cardName = document.getElementById('cardName')
-  const cardNameMsg = document.getElementById('cardNameMsg')
-
-  const cardYear = document.getElementById('cardYear')
-  const cardMon = document.getElementById('cardMon')
-  const cardDateMsg = document.getElementById('cardDateMsg')
-
-  const cardCvc = document.getElementById('cardCvc')
-  const cardCvcMsg = document.getElementById('cardCvcMsg')
 
   function checkForm() {
+    // 取得各欄位的DOM元素
+    const cardNumber = document.getElementById('cardNumber')
+    const cardNumberMsg = document.getElementById('cardNumberMsg')
+    const cardName = document.getElementById('cardName')
+    const cardNameMsg = document.getElementById('cardNameMsg')
+
+    const cardYear = document.getElementById('cardYear')
+    const cardMon = document.getElementById('cardMon')
+    const cardDateMsg = document.getElementById('cardDateMsg')
+
+    const cardCvc = document.getElementById('cardCvc')
+    const cardCvcMsg = document.getElementById('cardCvcMsg')
+
     let isPass = true
     // 先清空訊息
     cardNumberMsg.innerHTML = ''
@@ -114,20 +114,26 @@ function Cart3() {
       for (let i = 0; i < items.length; i++) {
         itemsDetail.push(JSON.parse(storage.getItem(items[i])))
       }
+
       // 將itemsDetail資料存入orderData
       orderData.append('addItemList', JSON.stringify(itemsDetail))
-      const fetchProducts = async () => {
-        const response = await fetch(
-          `http://localhost:3001/Sales/api/orderUser`,
-          {
-            method: 'post',
-            body: orderData,
-          }
-        )
-        // 預留
-        const data = await response.json()
+
+      // 清除localStorage的資料=>addItemList | addUser | 個產品
+      for (let i = 0; i < items.length; i++) {
+        storage.removeItem(items[i])
       }
-      fetchProducts()
+      storage.removeItem('addItemList')
+      storage.removeItem('addUser')
+
+      fetch(`http://localhost:3001/Sales/api/orderUser`, {
+        method: 'post',
+        body: orderData,
+      })
+        .then((r) => r.json())
+        .then((obj) => {
+          // 新增storage:addID 提供給Cart4使用
+          storage.setItem('addID', obj)
+        })
     }
   }
 
@@ -251,7 +257,7 @@ function Cart3() {
           onClick={() => {
             // 做驗證，成功就跳頁 & 新增資料庫
             checkForm()
-            Navigate('../Sales/Cart4')
+            // Navigate('../Sales/Cart4')
           }}
         >
           下一步
