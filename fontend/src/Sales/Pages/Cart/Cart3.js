@@ -96,6 +96,9 @@ function Cart3() {
       cardCvcMsg.innerHTML = 'CVC長度為3碼'
     }
 
+    // 資料驗證判斷OK
+    // => 將所有訂單需要的資料傳後端，新增進SQL
+    // => 清除localStorage，避免重複使用
     if (isPass) {
       // 存放 FormData的資料
       let orderData = new FormData()
@@ -118,7 +121,7 @@ function Cart3() {
       // 將itemsDetail資料存入orderData
       orderData.append('addItemList', JSON.stringify(itemsDetail))
 
-      // 清除localStorage的資料=>addItemList | addUser | 個產品
+      // 清除localStorage的資料=>addItemList | addUser | 各產品
       for (let i = 0; i < items.length; i++) {
         storage.removeItem(items[i])
       }
@@ -257,7 +260,7 @@ function Cart3() {
           onClick={() => {
             // 做驗證，成功就跳頁 & 新增資料庫
             checkForm()
-            // Navigate('../Sales/Cart4')
+            Navigate('../Sales/Cart4')
           }}
         >
           下一步

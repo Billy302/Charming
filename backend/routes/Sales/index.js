@@ -442,7 +442,7 @@ sales
 // http://localhost:3001/Sales/api/orderUser/1
 // 需要一個參數，透過params-> 使用者ID : id
 sales.get("/api/orderUser/:id", async (req, res, next) => {
-  let sql = `SELECT product_case.ID as CaseID, product_case.create_time, product_case.total_price , product_items.pic_path ,
+  let sql = `SELECT product_case.ID as CaseID,product_case.user_ID, product_case.create_time, product_case.total_price , product_items.pic_path ,
   product_items.author_name ,product_items.product_name , product_items.price
   FROM product_case_items
   JOIN product_case
