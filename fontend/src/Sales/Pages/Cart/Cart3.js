@@ -114,9 +114,8 @@ function Cart3() {
       for (let i = 0; i < items.length; i++) {
         itemsDetail.push(JSON.parse(storage.getItem(items[i])))
       }
-
+      // 將itemsDetail資料存入orderData
       orderData.append('addItemList', JSON.stringify(itemsDetail))
-
       const fetchProducts = async () => {
         const response = await fetch(
           `http://localhost:3001/Sales/api/orderUser`,
@@ -126,7 +125,6 @@ function Cart3() {
           }
         )
         const data = await response.json()
-        console.log(data);
       }
       fetchProducts()
     }
@@ -252,6 +250,7 @@ function Cart3() {
           onClick={() => {
             // 做驗證，成功就跳頁 & 新增資料庫
             checkForm()
+            Navigate('../Sales/Cart4')
           }}
         >
           下一步
