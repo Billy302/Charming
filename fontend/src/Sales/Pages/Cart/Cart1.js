@@ -15,7 +15,7 @@ function Cart1() {
   // 建立空白陣列，存放jsx語法
   let cartTable = []
 
-  // 確認addItemList 是否友值
+  // 確認addItemList 是否有值
   if (storage.getItem('addItemList')) {
     // 取得localStorage的項目清單
     let itemString = storage.getItem('addItemList')
