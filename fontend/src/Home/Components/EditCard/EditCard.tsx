@@ -1,17 +1,17 @@
-import React from "react";
-import Style from "./EditCard.module.css";
-import { FcLikePlaceholder, FcLike } from "react-icons/fc";
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import React from 'react'
+import Style from './EditCard.module.css'
+import { FcLikePlaceholder, FcLike } from 'react-icons/fc'
+import { FaTrashAlt, FaEdit } from 'react-icons/fa'
 
 interface CardProps {
-  ID: number;
-  product_name: string;
-  author_name: string;
-  product_copy: string;
-  price: number;
-  pic_path: string;
-  sell_count: number;
-  file_type: string;
+  ID: number
+  product_name: string
+  author_name: string
+  product_copy: string
+  price: number
+  pic_path: string
+  sell_count: number
+  file_type: string
 }
 const EditCard: React.FC<CardProps> = ({
   ID,
@@ -23,7 +23,13 @@ const EditCard: React.FC<CardProps> = ({
   sell_count,
   file_type,
 }) => {
-  const a = pic_path.split(" ");
+  const a = pic_path.split(' ')
+  function deleteItem() {
+    fetch(`http://localhost:3001/Sales/api/product/${ID}`, {
+      method: 'delete',
+    })
+  }
+
   return (
     <div className={Style.cardContainer}>
       <div className={Style.cardSize}>
@@ -46,7 +52,7 @@ const EditCard: React.FC<CardProps> = ({
           <h3>${price}</h3>
           <div>
             <a href="">
-              <FaTrashAlt className={Style.icons} />
+              <FaTrashAlt className={Style.icons} onClick={deleteItem} />
             </a>
             <a href={`/MyProduct/Edit/1/${ID}`}>
               <FaEdit className={Style.icons} />
@@ -55,6 +61,6 @@ const EditCard: React.FC<CardProps> = ({
         </div>
       </div>
     </div>
-  );
-};
-export default EditCard; //導出組件
+  )
+}
+export default EditCard //導出組件
