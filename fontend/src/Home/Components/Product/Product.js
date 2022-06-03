@@ -46,6 +46,7 @@ function MyProduct() {
                 price={r.price}
                 pic_path={r.pic_path}
                 sell_count={r.sell_count}
+                love={r.love}
               />
             </div>
           ))}
