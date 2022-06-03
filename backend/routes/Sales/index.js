@@ -9,11 +9,7 @@ var fs = require("fs");
 const { body, validationResult, check } = require("express-validator");
 
 const connection = require("../../modules/mysql_config");
-const { error } = require("console");
-const { json } = require("body-parser");
-const e = require("express");
 
-// 新增訂單還沒做完
 // 全部商品資料需要加入where
 
 // 全部都要加回傳訊息，成功或失敗 參考 https://reurl.cc/WrAgDL
@@ -347,8 +343,9 @@ sales
 /*訂單
 1. 功能：取得使用者的全部訂單。Method: GET。URL: /api/order/orderUser 
 2. 功能：取得使用者的訂單詳細內容。Method: GET。URL: /appi/orderUser/:id 
-3. 功能：取得商家所有產品的銷售紀錄。Method: GET。URL: /api/order/orderShop 
-4. 功能：新增訂單。Method: POST。URL: /api/order  
+3. 功能：取得使用者 指定 訂單的詳細內容 。Method: GET。URL: /api/orderUser/:userID/:caseID
+4. 功能：取得商家所有產品的銷售紀錄。Method: GET。URL: /api/order/orderShop 
+5. 功能：新增訂單。Method: POST。URL: /api/order  
 */
 sales
   .route("/api/orderUser")
@@ -388,7 +385,8 @@ sales
 
     res.send(datas);
   })
-  // 新增訂單，處理multipart/form-data的狀態
+  // 新增訂單 & 訂單詳細，處理multipart/form-data的狀態
+  // http://localhost:3001/Sales/api/orderUser
   .post(upload.array(), async (req, res, next) => {
     // 前端傳值 addUser & addItemList
 
@@ -440,7 +438,7 @@ sales
 // http://localhost:3001/Sales/api/orderUser/1
 // 需要一個參數，透過params-> 使用者ID : id
 sales.get("/api/orderUser/:id", async (req, res, next) => {
-  let sql = `SELECT product_case.ID , product_case.create_time, product_case.total_price , product_items.pic_path ,
+  let sql = `SELECT product_case.ID as CaseID, product_case.create_time, product_case.total_price , product_items.pic_path ,
   product_items.author_name ,product_items.product_name , product_items.price
   FROM product_case_items
   JOIN product_case
@@ -448,6 +446,24 @@ sales.get("/api/orderUser/:id", async (req, res, next) => {
   JOIN product_items
   ON product_case_items.product_ID = product_items.ID
   WHERE product_case.user_ID='${req.params.id}'`;
+  const [datas] = await connection.query(sql).catch((error) => {
+    console.log(`執行 Query : ${sql}時出錯 `);
+  });
+  res.send(datas);
+});
+
+// 取得使用者指定訂單的詳細內容 TO C
+// http://localhost:3001/Sales/api/orderUser/1/17
+// 需要一個參數，透過params-> 使用者ID : id
+sales.get("/api/orderUser/:userID/:caseID", async (req, res, next) => {
+  let sql = `SELECT product_case.ID as CaseID, product_case.create_time, product_case.total_price , product_items.pic_path ,
+  product_items.author_name ,product_items.product_name , product_items.price
+  FROM product_case_items
+  JOIN product_case
+  ON product_case_items.case_ID=product_case.ID
+  JOIN product_items
+  ON product_case_items.product_ID = product_items.ID
+  WHERE product_case.user_ID='${req.params.userID}' and product_case.ID ='${req.params.caseID}' `;
   const [datas] = await connection.query(sql).catch((error) => {
     console.log(`執行 Query : ${sql}時出錯 `);
   });
