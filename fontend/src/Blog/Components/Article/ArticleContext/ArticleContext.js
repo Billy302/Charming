@@ -1,16 +1,11 @@
 import classes from './ArticleContext.module.css';
-import ArticleTrending from '../ArticleTrending/ArticleTrending';
-import ArticleRelated from '../ArticleRelated/ArticleRelated';
-import article4 from './img/article4.jpg';
+import AuthorCard from '../AuthorCard/AuthorCard';
 import ArticleShare from '../ArticleShare/ArticleShare';
 import PillBtn from '../../UI/PillBtn';
-import { useEffect } from 'react';
-// import AuthorCard from '../AuthorCard/AuthorCard';
+import Fade from 'react-reveal/Fade';
 
 const ArticleContext = (props) => {
-    // 這邊按儲存會有資料，但是刷新就會給空物件
-    // 為什麼不能在最外層的 component 給物件，這邊用[0]取出來
-
+    // render 文章的 component
     return (
         <section>
             <div>
@@ -21,18 +16,17 @@ const ArticleContext = (props) => {
                             <PillBtn>#設計</PillBtn>
                             <PillBtn>#專訪</PillBtn>
                         </div>
+                        {/* render 文章內容 */}
                         <div dangerouslySetInnerHTML={{ __html: props.trendingArticle.article_content }}></div>
-                        <img src={article4} alt=""></img>
                         <div className={classes['article--context__share']}>
                             <p>share</p>
                             <ArticleShare />
-                            <PillBtn className={classes['article--context__fav']}>收藏文章</PillBtn>
                         </div>
+                        <PillBtn className={classes['article--context__fav']}>收藏文章</PillBtn>
                     </div>
                     <aside className={classes['article--trending-related']}>
                         <div>
-                            <ArticleTrending className={classes['article--trending']} />
-                            <ArticleRelated className={classes['article--related']} />
+                            <AuthorCard />
                         </div>
                     </aside>
                 </article>

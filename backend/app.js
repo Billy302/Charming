@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config();
 const cors = require('cors');
+const multer = require('multer');
 
 // 引入各自的路由
 // var SalesRouter = require('./routes/Sales/index');

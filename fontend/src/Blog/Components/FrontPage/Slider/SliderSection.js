@@ -15,7 +15,7 @@ const SliderSection = (props) => {
     //     setInterval(() => {
     //         nextSlideHandler();
     //     }, 5000);
-    // }, [current]);
+    // }, []);
 
     const maxSlide = sliderData.length - 1;
 

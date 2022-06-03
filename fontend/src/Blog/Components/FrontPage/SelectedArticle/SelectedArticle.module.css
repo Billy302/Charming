@@ -1,7 +1,7 @@
 .selected-article--title {
     margin-top: 1rem;
     color: var(--brown2);
-    margin-left: 10rem;
+    margin-left: 15rem;
     margin-bottom: 3rem;
     font-size: 3.2rem;
     font-weight: 700;
@@ -20,7 +20,7 @@
 
 .selected-article--title::after {
     content: '';
-    width: 78%;
+    width: 77%;
     height: 0.1rem;
     background-color: #101010;
     position: absolute;

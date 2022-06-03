@@ -30,7 +30,7 @@ function App() {
 
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/article/:id" element={<Article />} />
-                <Route path="/blog/search/:desc" element={<Search />} />
+                <Route path="/blog/search/:category" element={<Search />} />
                 {/* <Route path="/blog" element={<Footer />} /> */}
             </Routes>
             {/* <Footer />

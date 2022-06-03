@@ -8,6 +8,10 @@
     transition: 0.5s;
 }
 
+.fav-icon {
+    font-size: 5.4rem;
+}
+
 .article--share__icon:hover {
     transform: translateY(-0.8rem);
 }
@@ -26,7 +30,7 @@
         contrast(110%);
 }
 
-.article--share__icon.mail-icon:hover {
+.article--share__icon.fav-icon:hover {
     filter: brightness(0) saturate(100%) invert(59%) sepia(87%) saturate(378%) hue-rotate(4deg) brightness(105%)
         contrast(91%);
 }

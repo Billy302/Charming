@@ -33,7 +33,7 @@ const Blog = (props) => {
             <UnloginNav />
             <TagBar isDarkMode={darkMode} />
             {/* <PillBtn onClick={darkModeHandler}>關燈</PillBtn> */}
-            {/* <SliderSection isDarkMode={darkMode} /> */}
+            <SliderSection isDarkMode={darkMode} />
             <TrendingArticle trendingArticle={trendingArticle} isDarkMode={darkMode} />
             <SelectedArticle isDarkMode={darkMode} />
             <Footer />
