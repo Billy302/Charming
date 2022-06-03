@@ -351,7 +351,7 @@ sales
   .route("/api/orderUser")
   // 取得使用者的全部訂單 TO C
   // http://localhost:3001/Sales/api/orderUser?id=1&page=1
-  // 需要參數兩個，透過query -> 使用者ID : id | 頁面 : page
+  // 需要參數兩個，透過query -> 使用者ID : id (必要)| 頁面 : page (必要)
   .get(async (req, res, next) => {
     // 頁面預設第一頁
     let activePage = req.query.page ? req.query.page : 1;
@@ -442,7 +442,7 @@ sales
 // http://localhost:3001/Sales/api/orderUser/1
 // 需要一個參數，透過params-> 使用者ID : id
 sales.get("/api/orderUser/:id", async (req, res, next) => {
-  let sql = `SELECT product_case.ID as CaseID,product_case.user_ID, product_case.create_time, product_case.total_price , product_items.pic_path ,
+  let sql = `SELECT product_case.ID as CaseID, product_case.create_time, product_case.total_price , product_items.pic_path ,
   product_items.author_name ,product_items.product_name , product_items.price
   FROM product_case_items
   JOIN product_case
@@ -458,7 +458,7 @@ sales.get("/api/orderUser/:id", async (req, res, next) => {
 
 // 取得使用者指定訂單的詳細內容 TO C
 // http://localhost:3001/Sales/api/orderUser/1/17
-// 需要一個參數，透過params-> 使用者ID : id
+// 需要一個參數，透過params-> 使用者ID : userID | 訂單ID : caseID
 sales.get("/api/orderUser/:userID/:caseID", async (req, res, next) => {
   let sql = `SELECT product_case.ID as CaseID, product_case.create_time, product_case.total_price , product_items.pic_path ,
   product_items.author_name ,product_items.product_name , product_items.price
@@ -475,28 +475,35 @@ sales.get("/api/orderUser/:userID/:caseID", async (req, res, next) => {
 });
 
 // 取得商家所有產品的銷售紀錄 TO B
-// http://localhost:3001/Sales/api/orderShop?name=aaa&orderID=1&itemsName=1&page=1
-// 需要四個參數，透過query -> name (必須)，
-// 參考product_items的author_name | orderID，參考product_case_items的case_ID | itemsName，參考product_items的product_name / 頁面 : page 參照總頁數
+// http://localhost:3001/Sales/api/orderShop?id=4&orderID=19&itemsName=?&page=1
+// 需要四個參數，透過query -> id (必須)，orderID，itemsName,page
+// 參考us_user的id | orderID，參考product_case_items的case_ID | itemsName，參考product_items的product_name / 頁面 : page 參照總頁數
 sales.get("/api/orderShop", async (req, res, next) => {
   //
   let orderID = req.query.orderID ? req.query.orderID : "";
   let itemsName = req.query.itemsName ? req.query.itemsName : "";
   let activePage = req.query.page ? req.query.page : 1;
   // 一次取幾筆
-  let rowsPerPage = 10;
+  let rowsPerPage = 15;
   // 分頁數
   let pageCount = 0;
 
   // 查詢使用者的訂單 & 訂單總數
   // 兩個參數 使用者ID : id / 頁面 : page /
-  let sql = `SELECT product_case.ID , product_case.create_time , product_items.product_name , product_items.price
+  let sql = `SELECT username from us_user where id = '${req.query.id}' `
+
+  const [userName] = await connection.query(sql).catch((error) => {
+    console.log(`執行 Query : ${sql}時出錯 `);
+  });
+
+
+  sql = `SELECT product_case.ID , product_case.create_time , product_items.product_name , product_items.price
   FROM product_case_items
   JOIN product_case
   ON product_case_items.case_ID=product_case.ID
   JOIN product_items
   ON product_case_items.product_ID = product_items.ID
-  WHERE product_items.author_name='${req.query.name}'
+  WHERE product_items.author_name='${userName[0]["username"]}'
   `;
   // 查詢特定訂單 (可省)
   if (orderID.length != 0) {
@@ -513,7 +520,7 @@ sales.get("/api/orderShop", async (req, res, next) => {
   FROM product_case_items  
   JOIN product_items
   ON product_case_items.product_ID = product_items.ID 
-  WHERE product_items.author_name='${req.query.name}'`;
+  WHERE product_items.author_name='${userName[0]["username"]}'`;
   // 查詢特定訂單 (可省)
   if (orderID.length != 0) {
     sql += ` and product_case_items.case_ID ='${req.query.orderID}'`;

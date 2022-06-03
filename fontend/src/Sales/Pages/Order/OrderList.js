@@ -56,7 +56,7 @@ function OrderList() {
         )
       })}
       {/* 總頁數 */}
-      <Pagination totalPages={totalPage} />
+      <Pagination totalPages={totalPage} search={location.search} />
     </>
   )
 }
