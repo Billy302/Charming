@@ -7,7 +7,6 @@ import AsideProductLIst from "../../Components/AsideProductLIst/AsideProductLIst
 import Product from "../../Components/Product/Product";
 import Slider from "../../Components/Slider/Slider";
 import SliderSection from "../../Components/SliderSection/SliderSection";
-import Pagination from "../../Components/Pagination/Pagination";
 
 // react icon
 import { AiTwotoneSound } from "react-icons/ai";

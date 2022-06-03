@@ -38,8 +38,6 @@ function App() {
         {/* 商品總覽頁 */}
         <Route path="/Product/:UserId" element={<LoginHome />} />
         <Route path="/Product/:UserId/:ProductID" element={<ProductPage />} />
-        {/* <Route path="/Product/:UserId/:ProductID" element={<ProductPage2 />} /> */}
-
         <Route path="/MyProduct/:UserId" element={<MyProduct />} />
         <Route
           path="/MyProduct/:UserId/:ProductID"

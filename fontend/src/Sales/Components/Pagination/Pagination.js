@@ -10,7 +10,7 @@ function Pagination(props) {
 
   // 取得與當前頁數
   const searchParams = new URLSearchParams(location.search)
-  let currentPages = searchParams.get('page') ? searchParams.get('page') :1
+  let currentPages = searchParams.get('page') ? searchParams.get('page') : 1
 
   //
   // 建立頁數

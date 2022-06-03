@@ -14,7 +14,6 @@ function MySale() {
   const location = useLocation()
 
   const fetchProducts = async () => {
-
     const response = await fetch(
       `http://localhost:3001/Sales/api/orderShop${location.search}`
     )
@@ -24,9 +23,12 @@ function MySale() {
   }
 
   // 模擬componentDidMount
-  useEffect((location) => {
-    fetchProducts()
-  }, [location.search])
+  useEffect(
+    (location) => {
+      fetchProducts()
+    },
+    [location.search]
+  )
 
   return (
     <>
