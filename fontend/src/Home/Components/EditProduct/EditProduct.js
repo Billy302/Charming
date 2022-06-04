@@ -43,6 +43,7 @@ function EditProduct() {
           {products.map((r) => (
             <div key={r.ID}>
               <EditCard
+                userID={nowSort}
                 ID={r.ID}
                 author_name={r.author_name}
                 product_name={r['product_name']}

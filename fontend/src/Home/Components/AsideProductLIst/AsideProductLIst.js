@@ -17,7 +17,7 @@ function AsideProductLIst() {
         >
           總覽
         </a>
-        {/* {`${location.pathname + search.replace(`page=${currentPages}`, `page=${i}`)}`} */}
+
         <a
           href={`${
             location.pathname +

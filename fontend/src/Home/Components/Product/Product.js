@@ -31,6 +31,7 @@ function MyProduct() {
   const searchParams = new URLSearchParams(location.search)
   let nowSort = searchParams.get('sort') ? searchParams.get('sort') : ''
   let nowOrder = searchParams.get('order') ? searchParams.get('order') : ''
+  let nowID = searchParams.get('id')
 
   function goPath(value) {
     if (nowSort) {
@@ -96,6 +97,7 @@ function MyProduct() {
           {products.map((r) => (
             <div key={r.ID}>
               <Card
+                userID={nowID}
                 ID={r.ID}
                 author_name={r.author_name}
                 product_name={r['product_name']}

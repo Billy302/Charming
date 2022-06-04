@@ -36,9 +36,13 @@ function App() {
         {/* --------首頁------- */}
         <Route path="/" element={<UnloginHome />} />
         {/* 商品總覽頁 */}
+        {/* http://localhost:3000/Product?id=1&page=1&order=sell_count&sort=desc */}
         <Route path="/Product" element={<LoginHome />} />
-        <Route path="/Product/:ProductID" element={<ProductPage />} />
+        {/* http://localhost:3000/Product/1/13 */}
+        <Route path="/Product/:UserId/:ProductID" element={<ProductPage />} />
+        {/* http://localhost:3000/MyProduct?id=1&page=1 */}
         <Route path="/MyProduct" element={<MyProduct />} />
+        {/* http://localhost:3000/MyProduct/1/19 */}
         <Route
           path="/MyProduct/:UserId/:ProductID"
           element={<ProductPageEditButton />}

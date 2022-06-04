@@ -4,6 +4,7 @@ import { FcLikePlaceholder, FcLike } from 'react-icons/fc'
 import { FaTrashAlt, FaEdit } from 'react-icons/fa'
 
 interface CardProps {
+  userID : number
   ID: number
   product_name: string
   author_name: string
@@ -14,6 +15,7 @@ interface CardProps {
   file_type: string
 }
 const EditCard: React.FC<CardProps> = ({
+  userID,
   ID,
   product_name,
   author_name,
@@ -33,7 +35,7 @@ const EditCard: React.FC<CardProps> = ({
   return (
     <div className={Style.cardContainer}>
       <div className={Style.cardSize}>
-        <a href={`/MyProduct/1/${ID}`}>
+        <a href={`/MyProduct/${userID}/${ID}`}>
           {/* <img alt="robot" src={require(`../../Assets/ProductImg/${a[0]}`)} /> */}
           <img
             alt="圖片無法顯示"

@@ -4,6 +4,7 @@ import { FcLikePlaceholder, FcDislike } from 'react-icons/fc'
 import { useLocation, useParams } from 'react-router-dom'
 
 interface CardProps {
+  userID :number
   ID: number
   product_name: string
   author_name: string
@@ -15,6 +16,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
+  userID,
   ID,
   product_name,
   author_name,
@@ -68,7 +70,7 @@ const Card: React.FC<CardProps> = ({
   return (
     <li className={Styles.cardContainer}>
       <div id="card" className={Styles.cardSize}>
-        <a href={`/Product/1/${ID}`}>
+        <a href={`/Product/${userID}/${ID}`}>
           {/* <img alt="robot" src={require(`../../Assets/ProductImg/${a[0]}`)} /> */}
           <img
             alt="圖片無法顯示"
