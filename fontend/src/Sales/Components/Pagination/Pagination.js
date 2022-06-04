@@ -58,7 +58,7 @@ function Pagination(props) {
           </Link>
         </li>
         {/* 到上頁 */}
-        <li>
+        <li className={parseInt(currentPages) === 1 ? 'disabled' : ''}>
           <Link
             to={`${
               location.pathname +
@@ -78,7 +78,7 @@ function Pagination(props) {
         {/* 當前頁面 */}
         {list}
         {/* 到下頁 */}
-        <li>
+        <li className={parseInt(currentPages) === totalPages ? 'disabled' : ''}>
           <Link
             to={`${
               location.pathname +
