@@ -1,17 +1,81 @@
-import React from "react";
-import style from "./AsideProductLIst.module.css";
+import React from 'react'
+import { useLocation } from 'react-router-dom'
+import style from './AsideProductLIst.module.css'
 function AsideProductLIst() {
-  return (
-    <>
+  const location = useLocation()
+
+  let newPath = []
+  const searchParams = new URLSearchParams(location.search)
+  let type = searchParams.get('typeID') ? searchParams.get('typeID') : ''
+  if (type) {
+    newPath.push(
       <aside className={style.AsideProduct}>
-        <a href="">NFT</a>
-        <a href="">UI/UX</a>
-        <a href="">書籍/翻譯</a>
-        <a href="">Logo</a>
-        <a href="">插圖</a>
+        <a
+          href={`${
+            location.pathname + location.search.replace(`&typeID=${type}`, ``)
+          }`}
+        >
+          總覽
+        </a>
+        {/* {`${location.pathname + search.replace(`page=${currentPages}`, `page=${i}`)}`} */}
+        <a
+          href={`${
+            location.pathname +
+            location.search.replace(`typeID=${type}`, `typeID=101`)
+          }`}
+        >
+          NFT
+        </a>
+        <a
+          href={`${
+            location.pathname +
+            location.search.replace(`typeID=${type}`, `typeID=102`)
+          }`}
+        >
+          UI/UX
+        </a>
+        <a
+          href={`${
+            location.pathname +
+            location.search.replace(`typeID=${type}`, `typeID=103`)
+          }`}
+        >
+          書籍/翻譯
+        </a>
+        <a
+          href={`${
+            location.pathname +
+            location.search.replace(`typeID=${type}`, `typeID=104`)
+          }`}
+        >
+          Logo
+        </a>
+        <a
+          href={`${
+            location.pathname +
+            location.search.replace(`typeID=${type}`, `typeID=105`)
+          }`}
+        >
+          插圖
+        </a>
       </aside>
-    </>
-  );
+    )
+  } else {
+    newPath.push(
+      <aside className={style.AsideProduct}>
+        <a href={`${location.pathname + location.search}`}>總覽</a>
+        <a href={`${location.pathname + location.search}&typeID=101`}>NFT</a>
+        <a href={`${location.pathname + location.search}&typeID=102`}>UI/UX</a>
+        <a href={`${location.pathname + location.search}&typeID=103`}>
+          書籍/翻譯
+        </a>
+        <a href={`${location.pathname + location.search}&typeID=104`}>Logo</a>
+        <a href={`${location.pathname + location.search}&typeID=105`}>插圖</a>
+      </aside>
+    )
+  }
+
+  return <>{newPath}</>
 }
 
-export default AsideProductLIst;
+export default AsideProductLIst
