@@ -28,8 +28,8 @@ const connection = require("../../modules/mysql_config");
 sales
   .route("/api/product")
   // 取得全部商品資料
-  // http://localhost:3001/Sales/api/product?id=1&order=price&sort=desc&page=1&typeId=102
-  // 需要五個參數，透過Query-> id 參照us_user資料表的id欄位(必備) | order 參照product_items的欄位 | sort 分ASC / DESC | Page 參照總頁數 | typeId 參照product_items資料表的type_id欄位
+  // http://localhost:3001/Sales/api/product?id=1&order=price&sort=desc&page=1&typeID=102
+  // 需要五個參數，透過Query-> id 參照us_user資料表的id欄位(必備) | order 參照product_items的欄位 | sort 分ASC / DESC | Page 參照總頁數 | typeID 參照product_items資料表的type_id欄位
   .get(async (req, res, next) => {
     // 取得使用者查詢的頁數
     let activePage = req.query.page ? req.query.page : 1;
@@ -43,7 +43,7 @@ sales
     //  預設排序依照 價格 asc
     let order = req.query.order ? req.query.order : "price";
     let sort = req.query.sort ? req.query.sort : "ASC";
-    let typeId = req.query.typeId ? req.query.typeId : "";
+    let typeID = req.query.typeID ? req.query.typeID : "";
 
     // 兩個查詢第一個查詢商品，第二個查詢商品總數
     // 查詢商品需要三個變數，order依據 : order / order順序 : sort / Page頁數 : page
@@ -53,8 +53,8 @@ sales
     INNER JOIN all_type
     on product_items.type_id = all_type.sid`;
 
-    if (typeId.length != 0) {
-      sql += ` WHERE product_items.type_id ='${typeId}'`;
+    if (typeID.length != 0) {
+      sql += ` WHERE product_items.type_id ='${typeID}'`;
     }
 
     sql += ` order by product_items.${order} ${sort}
@@ -102,7 +102,7 @@ sales
   // http://localhost:3001/Sales/api/product
   // 需要六個參數，透過Body -> authorName | productName | productCopy |
   // 驗證 : authorName -> 不驗證 | productName 不能為空 & 最多45個字 | productCopy 不能為空
-  // 驗證 : price 不能為空 & 只能數字 | picPath 不能為空 | typeId 不能為空
+  // 驗證 : price 不能為空 & 只能數字 | picPath 不能為空 | typeID 不能為空
   .post(
     upload.array(),
     [
@@ -118,7 +118,7 @@ sales
         .matches(/^(0|[1-9][0-9]*)$/)
         .withMessage("只能輸入數字"),
       body("picPath").notEmpty().withMessage("照片不得為空"),
-      body("typeId").notEmpty().withMessage("分類不得為空"),
+      body("typeID").notEmpty().withMessage("分類不得為空"),
     ],
     async (req, res, next) => {
       // 驗證結果
@@ -129,7 +129,7 @@ sales
       //   res.send({ error: error.array() });
       // } else {
       //   const sql = `INSERT INTO product_items( author_name, product_name, product_copy, price, pic_path, type_id)
-      // VALUES ('${req.body.authorName}','${req.body.productName}','${req.body.productCopy}','${req.body.price}','${req.body.picPath}','${req.body.typeId}')`;
+      // VALUES ('${req.body.authorName}','${req.body.productName}','${req.body.productCopy}','${req.body.price}','${req.body.picPath}','${req.body.typeID}')`;
       //   // 執行SQL語法，新增商品資料
       //   const [datas] = await connection.query(sql).catch((error) => {
       //     console.log(`執行 Query : ${sql}時出錯 `);
@@ -144,10 +144,10 @@ sales
   // 修改商品項目，multipart/form-data
   // http://localhost:3001/Sales/api/product/1
   // 需要六個參數，5個透過body傳的參數，1個Params傳的參數
-  // 透過Body -> productName | productCopy | price | picPath | typeId
+  // 透過Body -> productName | productCopy | price | picPath | typeID
   // 透過Params -> 商品ID : id
   // 驗證 : authorName -> 不驗證 | productName 不能為空 & 最多45個字 | productCopy 不能為空
-  // 驗證 : price 不能為空 & 只能數字 | picPath 不能為空 | typeId 不能為空
+  // 驗證 : price 不能為空 & 只能數字 | picPath 不能為空 | typeID 不能為空
   .put(
     upload.array(),
     [
@@ -163,12 +163,12 @@ sales
         .matches(/^(0|[1-9][0-9]*)$/)
         .withMessage("只能輸入數字"),
       body("picPath").notEmpty().withMessage("照片不得為空"),
-      body("typeId").notEmpty().withMessage("分類不得為空"),
+      body("typeID").notEmpty().withMessage("分類不得為空"),
     ],
     async (req, res, next) => {
       const sql = `UPDATE product_items SET product_name='${req.body.productName}',
     product_copy='${req.body.productCopy}',price='${req.body.price}',
-    pic_path='${req.body.picPath}',type_id='${req.body.typeId}' WHERE ID=${req.params.id}`;
+    pic_path='${req.body.picPath}',type_id='${req.body.typeID}' WHERE ID=${req.params.id}`;
       // 執行SQL語法，更新商品項目
       const [datas] = await connection.query(sql).catch((error) => {
         console.log(`執行 Query : ${sql}時出錯 `);
@@ -275,8 +275,8 @@ sales
 sales
   .route("/api/productShop")
   // 取得店家，全部商品資料
-  // http://localhost:3001/Sales/api/productShop?id=1&order=price&sort=desc&typeId=102&page=1
-  // 需要五個參數，透過Query-> id 參照us_user資料表的id欄位(必備) | order 參照product_items的欄位 | sort 分ASC / DESC | Page 參照總頁數 | typeId 參照product_items資料表的type_id欄位
+  // http://localhost:3001/Sales/api/productShop?id=1&order=price&sort=desc&typeID=102&page=1
+  // 需要五個參數，透過Query-> id 參照us_user資料表的id欄位(必備) | order 參照product_items的欄位 | sort 分ASC / DESC | Page 參照總頁數 | typeID 參照product_items資料表的type_id欄位
   .get(async (req, res, next) => {
     // 取得使用者查詢的頁數
     let activePage = req.query.page ? req.query.page : 1;
@@ -292,7 +292,7 @@ sales
     let sort = req.query.sort ? req.query.sort : "ASC";
 
     // 選擇什麼分類
-    let typeId = req.query.typeId ? req.query.typeId : "";
+    let typeID = req.query.typeID ? req.query.typeID : "";
 
     // 查詢店家名稱，需要一個變數，店家id : id
     let authorSql = `SELECT us_user.username FROM us_user WHERE id = ${req.query.id}`;
@@ -309,8 +309,8 @@ sales
     on product_items.type_id = all_type.sid
     WHERE product_items.author_name = '${authorData[0].username}'`;
 
-    if (typeId.length != 0) {
-      sql += ` and product_items.type_id ='${typeId}'`;
+    if (typeID.length != 0) {
+      sql += ` and product_items.type_id ='${typeID}'`;
     }
 
     sql += ` order by product_items.${order} ${sort}
@@ -319,8 +319,8 @@ sales
       authorData[0].username
     }'`;
 
-    if (typeId.length != 0) {
-      sql += ` and product_items.type_id ='${typeId}'`;
+    if (typeID.length != 0) {
+      sql += ` and product_items.type_id ='${typeID}'`;
     }
 
     // 執行SQL語法，取得商品資料 & 商品總數
