@@ -36,9 +36,9 @@ function App() {
         {/* --------首頁------- */}
         <Route path="/" element={<UnloginHome />} />
         {/* 商品總覽頁 */}
-        <Route path="/Product/:UserId" element={<LoginHome />} />
-        <Route path="/Product/:UserId/:ProductID" element={<ProductPage />} />
-        <Route path="/MyProduct/:UserId" element={<MyProduct />} />
+        <Route path="/Product" element={<LoginHome />} />
+        <Route path="/Product/:ProductID" element={<ProductPage />} />
+        <Route path="/MyProduct" element={<MyProduct />} />
         <Route
           path="/MyProduct/:UserId/:ProductID"
           element={<ProductPageEditButton />}
