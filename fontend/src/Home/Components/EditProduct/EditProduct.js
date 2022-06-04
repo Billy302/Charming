@@ -3,25 +3,32 @@
 // 計算筆數 => Json轉陣列
 // 功能：刪除商品。Method: DELETE。URL: /api/product/:id
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import Style from './EditProduct.module.css'
 import EditCard from '../EditCard/EditCard'
+import Pagination from '../Pagination/Pagination'
 
 function EditProduct() {
   const [products, setProducts] = useState([])
-  const catchUserId = useParams()
-  // console.log(catchUserId.UserId)
+  const [totalPage, setTotalPage] = useState([])
+
+  // 取得當前網址資訊
+  const location = useLocation()
+
+  // 抓取網址中的id
+  const searchParams = new URLSearchParams(location.search)
+  let nowSort = searchParams.get('id')
+
   const fetchProducts = async () => {
     //向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
     const response = await fetch(
-      `http://localhost:3001/Sales/api/product?id=${catchUserId.UserId}`
+      `http://localhost:3001/Sales/api/product?id=${nowSort}`
     )
     const data = await response.json()
-    //測試
     // 載入資料後設定到狀態中
     // 設定到狀態後，因改變狀態會觸發updating生命周期，然後重新render一次
     setProducts(data[0])
-    // console.log(products[0])
+    setTotalPage(data[2])
   }
 
   // didMount
@@ -48,6 +55,7 @@ function EditProduct() {
           ))}
         </ul>
       </div>
+      <Pagination totalPages={totalPage} search={location.search} />
     </>
   )
 }
