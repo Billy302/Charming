@@ -61,23 +61,28 @@ function ProductPage() {
   let storage = localStorage
 
   function additem() {
-    if (storage[products.ID]) {
-      alert('已成功加入購物車')
-    } else {
-      if (storage['addItemList'] == null) {
-        storage['addItemList'] = `${products.ID} |`
+    if(UserId){
+      if (storage[products.ID]) {
+        alert('已成功加入購物車')
       } else {
-        storage['addItemList'] += `${products.ID} |`
+        if (storage['addItemList'] == null) {
+          storage['addItemList'] = `${products.ID} |`
+        } else {
+          storage['addItemList'] += `${products.ID} |`
+        }
+        const productCart = {
+          ID: products.ID,
+          pic_path: a[0],
+          author_name: products.author_name,
+          product_name: products.product_name,
+          price: products.price,
+        }
+        storage.setItem(products.ID, JSON.stringify(productCart))
       }
-      const productCart = {
-        ID: products.ID,
-        pic_path: a[0],
-        author_name: products.author_name,
-        product_name: products.product_name,
-        price: products.price,
-      }
-      storage.setItem(products.ID, JSON.stringify(productCart))
+    }else{
+      alert('請先登入會員')
     }
+    
   }
   return (
     <>
