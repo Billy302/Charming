@@ -28,8 +28,8 @@ const connection = require("../../modules/mysql_config");
 sales
   .route("/api/product")
   // 取得全部商品資料
-  // http://localhost:3001/Sales/api/product?id=1&order=price&sort=desc&page=1&typeID=102
-  // 需要五個參數，透過Query-> id 參照us_user資料表的id欄位(必備) | order 參照product_items的欄位 | sort 分ASC / DESC | Page 參照總頁數 | typeID 參照product_items資料表的type_id欄位
+  // http://localhost:3001/Sales/api/product?id=1&order=price&sort=desc&page=1&typeID=102&itemsName=?
+  // 需要五個參數，透過Query-> id 參照us_user資料表的id欄位 | order 參照product_items的欄位 | sort 分ASC / DESC | Page 參照總頁數(必備) | typeID 參照product_items資料表的type_id欄位
   .get(async (req, res, next) => {
     // 取得使用者查詢的頁數
     let activePage = req.query.page ? req.query.page : 1;
@@ -41,9 +41,11 @@ sales
     let pageCount = 0;
 
     //  預設排序依照 價格 asc
+    let userID = req.query.id ? req.query.id : "";
     let order = req.query.order ? req.query.order : "price";
     let sort = req.query.sort ? req.query.sort : "ASC";
     let typeID = req.query.typeID ? req.query.typeID : "";
+    let itemsName = req.query.itemsName ? req.query.itemsName : "";
 
     // 兩個查詢第一個查詢商品，第二個查詢商品總數
     // 查詢商品需要三個變數，order依據 : order / order順序 : sort / Page頁數 : page
@@ -53,40 +55,62 @@ sales
     INNER JOIN all_type
     on product_items.type_id = all_type.sid`;
 
-    if (typeID.length != 0) {
+    if ((typeID.length != 0) & (itemsName.length != 0)) {
       sql += ` WHERE product_items.type_id ='${typeID}'`;
+      sql += ` and ( product_items.product_name like '%%${itemsName}%%'`;
+      sql += ` or product_items.author_name like '%%${itemsName}%%')`;
+    } else if (typeID.length != 0) {
+      sql += ` WHERE product_items.type_id ='${typeID}'`;
+    } else if (itemsName.length != 0) {
+      sql += ` WHERE ( product_items.product_name like '%%${itemsName}%%'`;
+      sql += ` or product_items.author_name like '%%${itemsName}%%')`;
     }
 
     sql += ` order by product_items.${order} ${sort}
     limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
-    SELECT count(*) as totalItems FROM product_items;`;
+    SELECT count(*) as totalItems FROM product_items`;
+
+    if ((typeID.length != 0) & (itemsName.length != 0)) {
+      sql += ` WHERE product_items.type_id ='${typeID}'`;
+      sql += ` and ( product_items.product_name like '%%${itemsName}%%'`;
+      sql += ` or product_items.author_name like '%%${itemsName}%%')`;
+    } else if (typeID.length != 0) {
+      sql += ` WHERE product_items.type_id ='${typeID}'`;
+    } else if (itemsName.length != 0) {
+      sql += ` WHERE ( product_items.product_name like '%%${itemsName}%%'`;
+      sql += ` or product_items.author_name like '%%${itemsName}%%')`;
+    }
 
     // 執行SQL語法，取得商品資料 & 商品總數
     const [datas] = await connection.query(sql).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
     });
 
-    // 查詢使用者喜愛的產品
-    // 查詢LOVE需要一個變數，userID : id
-    const sql2 = `SELECT * from product_love where user_id = ${req.query.id}`;
+    // 判斷有沒有登入
+    if (userID) {
+      // 查詢使用者喜愛的產品
+      // 查詢LOVE需要一個變數，userID : id
+      const sql2 = `SELECT * from product_love where user_id = ${req.query.id}`;
 
-    // 執行SQL語法，取得使用者有哪些LOVE
-    const [love] = await connection.query(sql2).catch((error) => {
-      console.log(`執行 Query : ${sql2}時出錯 `);
-    });
+      // 執行SQL語法，取得使用者有哪些LOVE
+      const [love] = await connection.query(sql2).catch((error) => {
+        console.log(`執行 Query : ${sql2}時出錯 `);
+      });
 
-    // 比較取出的商品中，是否有被使用者點過LOVE(新增datas物件中的love屬性)
-    // 如果有就將商品資料中love為true
-    for (let i = 0; i < Object.keys(datas[0]).length; i++) {
-      for (let j = 0; j < Object.keys(love).length; j++) {
-        if (datas[0][i]["ID"] == love[j]["product_ID"]) {
-          datas[0][i]["love"] = "true";
+      // 比較取出的商品中，是否有被使用者點過LOVE(新增datas物件中的love屬性)
+      // 如果有就將商品資料中love為true
+      for (let i = 0; i < Object.keys(datas[0]).length; i++) {
+        for (let j = 0; j < Object.keys(love).length; j++) {
+          if (datas[0][i]["ID"] == love[j]["product_ID"]) {
+            datas[0][i]["love"] = "true";
+          }
+        }
+        if (!datas[0][i]["love"]) {
+          datas[0][i]["love"] = "false";
         }
       }
-      if (!datas[0][i]["love"]) {
-        datas[0][i]["love"] = "false";
-      }
     }
+
     // 計算 分頁總數
     if (Object.values(datas[1][0]) > 0) {
       pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
@@ -186,6 +210,23 @@ sales
       console.log(`執行 Query : ${sql}時出錯 `);
     });
     res.send("delete : /api/product/:id");
+  })
+  // 查詢單筆商品資料(遊客)
+  // http://localhost:3001/Sales/api/product/2
+  // 需要一個參數，透過Params ->商品ID : id
+  .get(async (req, res, next) => {
+    // 查詢商品需要一個變數，productID
+    const sql = `SELECT product_items.* , all_type.type
+    FROM product_items
+    INNER JOIN all_type
+    on product_items.type_id = all_type.sid
+    WHERE ID=${req.params.id}`;
+
+    // 執行SQL，查詢商品的細項
+    const [datas] = await connection.query(sql).catch((error) => {
+      console.log(`執行 Query : ${sql}時出錯 `);
+    });
+    res.send(datas);
   });
 
 // 查詢單筆商品資料
@@ -433,9 +474,9 @@ sales
       console.log(`執行 Query : ${sql}時出錯 `);
     });
 
-    let orderID = []
-    orderID.push(parseInt(addUser[0]),orderCount[0]["total"])
-    res.send(orderID)
+    let orderID = [];
+    orderID.push(parseInt(addUser[0]), orderCount[0]["total"]);
+    res.send(orderID);
   });
 
 // 取得使用者訂單的詳細內容 TO C
@@ -490,12 +531,11 @@ sales.get("/api/orderShop", async (req, res, next) => {
 
   // 查詢使用者的訂單 & 訂單總數
   // 兩個參數 使用者ID : id / 頁面 : page /
-  let sql = `SELECT username from us_user where id = '${req.query.id}' `
+  let sql = `SELECT username from us_user where id = '${req.query.id}' `;
 
   const [userName] = await connection.query(sql).catch((error) => {
     console.log(`執行 Query : ${sql}時出錯 `);
   });
-
 
   sql = `SELECT product_case.ID , product_case.create_time , product_items.product_name , product_items.price
   FROM product_case_items
@@ -507,11 +547,11 @@ sales.get("/api/orderShop", async (req, res, next) => {
   `;
   // 查詢特定訂單 (可省)
   if (orderID.length != 0) {
-    sql += ` and product_case_items.case_ID ='${req.query.orderID}'`;
+    sql += ` and product_case_items.case_ID ='${orderID}'`;
   }
   // 查詢特定名稱 (可省)
   if (itemsName.length != 0) {
-    sql += ` and product_items.product_name like '%%${req.query.itemsName}%%'`;
+    sql += ` and product_items.product_name like '%%${itemsName}%%'`;
   }
   // 查詢範圍
   sql += `limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};`;

@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 
 //component
 import Footer from './Home/Components/Footer/Footer'
 import PhoneFooter from './Home/Components/PhoneFooter/PhoneFooter'
-import Product from './Home/Components/Product/Product'
 
 //首頁
 import LoginHome from './Home/Pages/LoginHome/LoginHome'
@@ -40,6 +39,8 @@ function App() {
         <Route path="/Product" element={<LoginHome />} />
         {/* http://localhost:3000/Product/1/13 */}
         <Route path="/Product/:UserId/:ProductID" element={<ProductPage />} />
+        {/* http://localhost:3000/Product/13 */}
+        <Route path="/Product/:ProductID" element={<ProductPage />} />
         {/* http://localhost:3000/MyProduct?id=1&page=1 */}
         <Route path="/MyProduct" element={<MyProduct />} />
         {/* http://localhost:3000/MyProduct/1/19 */}

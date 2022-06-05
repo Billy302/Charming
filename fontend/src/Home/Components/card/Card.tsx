@@ -4,7 +4,7 @@ import { FcLikePlaceholder, FcDislike } from 'react-icons/fc'
 import { useLocation, useParams } from 'react-router-dom'
 
 interface CardProps {
-  userID :number
+  userID: number
   ID: number
   product_name: string
   author_name: string
@@ -34,7 +34,7 @@ const Card: React.FC<CardProps> = ({
 
   // 抓取網址中的id
   const searchParams = new URLSearchParams(location.search)
-  let nowSort = searchParams.get('id')
+  let nowSort = searchParams.get('id') ? searchParams.get('id') : ''
 
   const [loveState, setLoveState] = useState(love)
 
@@ -58,29 +58,35 @@ const Card: React.FC<CardProps> = ({
     }
   }
 
-  let loveBlock: any = []
-
-  if (loveState === 'true') {
-    loveBlock.push(
-      <FcLikePlaceholder className={Styles.like} onClick={check} />
-    )
-  } else if (loveState === 'false') {
-    loveBlock.push(<FcDislike className={Styles.like} onClick={check} />)
-  }
   return (
     <li className={Styles.cardContainer}>
       <div id="card" className={Styles.cardSize}>
-        <a href={`/Product/${userID}/${ID}`}>
-          {/* <img alt="robot" src={require(`../../Assets/ProductImg/${a[0]}`)} /> */}
-          <img
-            alt="圖片無法顯示"
-            src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
-          />
-        </a>
-        {loveState == 'true' ? (
-          <FcLikePlaceholder className={Styles.like} onClick={check} />
+          {userID ? (
+            <a href={`/Product/${userID}/${ID}`}>
+              {' '}
+              <img
+                alt="圖片無法顯示"
+                src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
+              />
+            </a>
+          ) : (
+            <a href={`/Product/${ID}`}>
+              {' '}
+              <img
+                alt="圖片無法顯示"
+                src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
+              />
+            </a>
+          )}
+
+        {nowSort ? (
+          loveState == 'true' ? (
+            <FcLikePlaceholder className={Styles.like} onClick={check} />
+          ) : (
+            <FcDislike className={Styles.like} onClick={check} />
+          )
         ) : (
-          <FcDislike className={Styles.like} onClick={check} />
+          ''
         )}
         <a href="">
           <h2>{product_name}</h2>

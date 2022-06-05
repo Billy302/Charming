@@ -1,4 +1,4 @@
-// http://localhost:3000/Product?id=1&page=1&order=sell_count&sort=desc
+
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Style from './Product.module.css'
