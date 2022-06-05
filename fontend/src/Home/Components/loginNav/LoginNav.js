@@ -5,15 +5,17 @@ import { BsFillBellFill } from 'react-icons/bs'
 import { FaShoppingCart, FaAngleDown } from 'react-icons/fa'
 import { ImSearch } from 'react-icons/im'
 import logo from '../../Assets/charming_logo.png'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 function LoginNav(props) {
   // 取得包含目前URL的狀態和位置的物件函數
   const location = useLocation()
+  const Params = useParams()
   const navigate = useNavigate()
 
   const searchParams = new URLSearchParams(location.search)
-  let userId = searchParams.get('id')
+
+  let userId = searchParams.get('id') ? searchParams.get('id') : ''
   let type = searchParams.get('typeID') ? searchParams.get('typeID') : ''
 
   let searchItem = searchParams.get('itemsName')

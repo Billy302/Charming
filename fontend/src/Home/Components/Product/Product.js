@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Style from './Product.module.css'
 import Card from '../Card/Card'
 import Pagination from '../Pagination/Pagination'
@@ -27,7 +26,7 @@ function MyProduct() {
   const location = useLocation()
   // 引用useNavigate套件
   let navigate = useNavigate()
-  // 判斷網址內是否包含sort欄位
+  // 判斷網址內是否包含sort欄位 | order欄位
   const searchParams = new URLSearchParams(location.search)
   let nowSort = searchParams.get('sort') ? searchParams.get('sort') : ''
   let nowOrder = searchParams.get('order') ? searchParams.get('order') : ''
@@ -50,7 +49,6 @@ function MyProduct() {
   }
 
   const fetchProducts = async () => {
-    //向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
     const response = await fetch(
       `http://localhost:3001/Sales/api/product${location.search}`
     )

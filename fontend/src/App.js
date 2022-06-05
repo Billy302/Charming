@@ -49,11 +49,10 @@ function App() {
           element={<ProductPageEditButton />}
         />
         <Route
-          path="/MyProduct/EditProductPage"
+          path="/MyProduct/Edit/:UserId/:ProductID"
           element={<EditProductPage />}
         />
         <Route path="/MyProduct/AddProduct" element={<AddProduct />} />
-        {/* <Route path="/LoginHome/Product/:UserId" element={<Product />} /> */}
 
         {/* --------商品頁面-------- */}
         <Route path="Sales/Cart1" element={<Cart1 />} />

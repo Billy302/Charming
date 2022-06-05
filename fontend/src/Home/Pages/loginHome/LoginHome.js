@@ -11,17 +11,16 @@ import { useLocation } from 'react-router-dom'
 import UnloginNav from '../../Components/UnloginNav/UnloginNav'
 
 function LoginHome() {
+  // 取得當前網址資訊
+  const location = useLocation()
 
-    // 取得當前網址資訊
-    const location = useLocation()
-
-    // 判斷網址內是否包含sort欄位
-    const searchParams = new URLSearchParams(location.search)
-    let nowID = searchParams.get('id')
+  // 判斷網址內是否包含sort欄位
+  const searchParams = new URLSearchParams(location.search)
+  let nowID = searchParams.get('id')
 
   return (
     <header>
-      {nowID ?       <LoginNav /> : <UnloginNav />}
+      {nowID ? <LoginNav /> : <UnloginNav />}
 
       <hgroup>
         <p className={Style.carousel}>

@@ -19,20 +19,24 @@ function ProductPage() {
     // 向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
     // 判斷是遊客還是會員
     if (UserId) {
-      console.log('t')
       const response = await fetch(
         //取單一商品資料
         `http://localhost:3001/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
       )
-      const data = await response.json()
+      let data = await response.json()
+      let dt = new Date(data[0]['create_time'])
+      data[0]['create_time'] = dt.toLocaleString()
+      console.log(data[0]);
       setProducts(data[0])
     } else {
-      console.log('r')
       const response = await fetch(
         //取單一商品資料
         `http://localhost:3001/Sales/api/product/${catchUserId.ProductID}`
       )
-      const data = await response.json()
+      let data = await response.json()
+      let dt = new Date(data[0]['create_time'])
+      data[0]['create_time'] = dt.toLocaleString()
+      console.log(data[0]);
       setProducts(data[0])
     }
   }
@@ -61,7 +65,7 @@ function ProductPage() {
   let storage = localStorage
 
   function additem() {
-    if(UserId){
+    if (UserId) {
       if (storage[products.ID]) {
         alert('已成功加入購物車')
       } else {
@@ -79,10 +83,9 @@ function ProductPage() {
         }
         storage.setItem(products.ID, JSON.stringify(productCart))
       }
-    }else{
+    } else {
       alert('請先登入會員')
     }
-    
   }
   return (
     <>
@@ -113,12 +116,6 @@ function ProductPage() {
             </h3>
             <p className={style.price}>${products.price}</p>
             <div className={style.displayFlex}>
-              <div>
-                <p className={style.littleInformation}>檔案格式：</p>
-                <pre className={style.littleInformation}>
-                  {products.file_type}
-                </pre>
-              </div>
               <div className={style.buyNumber}>
                 <button onClick={additem} className={style.shoppingCar}>
                   加入購物車

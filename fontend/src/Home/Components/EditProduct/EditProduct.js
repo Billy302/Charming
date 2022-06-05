@@ -20,9 +20,9 @@ function EditProduct() {
   let nowSort = searchParams.get('id')
 
   const fetchProducts = async () => {
-    //向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
+    //向遠端伺服器get資料 http://localhost:3001/Sales/api/productShop?id=2
     const response = await fetch(
-      `http://localhost:3001/Sales/api/product?id=${nowSort}`
+      `http://localhost:3001/Sales/api/productShop?id=${nowSort}`
     )
     const data = await response.json()
     // 載入資料後設定到狀態中
