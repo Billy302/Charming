@@ -1,21 +1,58 @@
-import React, {useState} from "react";
-import style from "./LoginNav.module.css";
-import { AiOutlineGlobal } from "react-icons/ai";
-import { BsCloudy, BsFillBellFill } from "react-icons/bs";
-import { FaShoppingCart, FaAngleDown } from "react-icons/fa";
-import { ImSearch } from "react-icons/im";
-import logo from "../../Assets/charming_logo.png";
+import React, { useState } from 'react'
+import style from './LoginNav.module.css'
+import { AiOutlineGlobal } from 'react-icons/ai'
+import { BsFillBellFill } from 'react-icons/bs'
+import { FaShoppingCart, FaAngleDown } from 'react-icons/fa'
+import { ImSearch } from 'react-icons/im'
+import logo from '../../Assets/charming_logo.png'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 function LoginNav(props) {
-  const [typebar,setNavbar] = useState(false);
-  const displayItemType = () =>{
-    if(window.scrollY >= 80){
-      setNavbar(true);
-    }else{
-      setNavbar(false);
+  // 取得包含目前URL的狀態和位置的物件函數
+  const location = useLocation()
+  const Params = useParams()
+  const navigate = useNavigate()
+
+  const searchParams = new URLSearchParams(location.search)
+
+  let userId = searchParams.get('id') ? searchParams.get('id') : ''
+  let type = searchParams.get('typeID') ? searchParams.get('typeID') : ''
+
+  let searchItem = searchParams.get('itemsName')
+    ? searchParams.get('itemsName')
+    : ''
+
+  const [searchValue, setSearchValue] = useState('')
+
+  const [typebar, setNavbar] = useState(false)
+
+  const displayItemType = () => {
+    if (window.scrollY >= 80) {
+      setNavbar(true)
+    } else {
+      setNavbar(false)
     }
   }
-  window.addEventListener('scroll',displayItemType);
+  window.addEventListener('scroll', displayItemType)
+
+  function goPath() {
+    console.log(searchItem)
+    if (searchItem) {
+      navigate(
+        `../${
+          location.pathname +
+          location.search.replace(
+            `itemsName=${searchItem}`,
+            `itemsName=${searchValue}`
+          )
+        }`
+      )
+    } else {
+      navigate(
+        `../${location.pathname + location.search}&itemsName=${searchValue}`
+      )
+    }
+  }
 
   return (
     //固定住nav在下移的時候不動
@@ -23,7 +60,7 @@ function LoginNav(props) {
       <nav className={style.navBar}>
         {/* logo 與charming文字 */}
         <div className={style.charmingLogo}>
-          <a href="/Product/1" className={style.logoIcon}>
+          <a href={`/Product?id=${userId}&page=1`} className={style.logoIcon}>
             <img src={logo} alt="logo" />
             <p>柴米Charming</p>
           </a>
@@ -32,22 +69,37 @@ function LoginNav(props) {
         <div className={style.searchBar}>
           <input
             type="search"
-            placeholder="Search.."
+            placeholder="Search product or author"
             onChange={(e) => {
-              console.log(e);
+              setSearchValue(e.target.value)
             }}
             onKeyDown={(e) => {
-              if (e.key === "Enter") console.log(e);
+              if (e.key === 'Enter') {
+                setSearchValue(e.target.value)
+                goPath()
+              }
             }}
           />
 
-          <input type="submit" value="搜尋" />
+          <input type="submit" value="搜尋" onClick={goPath} />
         </div>
 
         {/* 平版版搜尋 */}
         <div className={style.padSearch}>
-          <ImSearch className={style.padSearchIcon} />
-          <input type="search" className={style.padSearchBar}></input>
+          <ImSearch className={style.padSearchIcon} onClick={goPath} />
+          <input
+            type="search"
+            className={style.padSearchBar}
+            onChange={(e) => {
+              setSearchValue(e.target.value)
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                setSearchValue(e.target.value)
+                goPath()
+              }
+            }}
+          ></input>
         </div>
 
         {/* -------選項------- */}
@@ -62,26 +114,26 @@ function LoginNav(props) {
                 </select>
                 <FaAngleDown />
               </li>
-              <a href="Portfolio" className={style.phoneDisplayNone}>
+              <a href="/Portfolio" className={style.phoneDisplayNone}>
                 <li>柴米人</li>
               </a>
-              <a href="Blog" className={style.phoneDisplayNone}>
+              <a href="/blog" className={style.phoneDisplayNone}>
                 <li>柴訊</li>
               </a>
-              <a href="Communication" className={style.phoneDisplayNone}>
+              <a href="/AskPage" className={style.phoneDisplayNone}>
                 <li>柴社</li>
               </a>
             </div>
             {/* icon & 頭像 */}
             <div>
-              <a href="ShoppingCar">
+              <a href="/Sales/Cart1">
                 <li>
-                  <FaShoppingCart className={style.phoneIcon}/>
+                  <FaShoppingCart className={style.phoneIcon} />
                 </li>
               </a>
               <a href="">
                 <li>
-                  <BsFillBellFill className={style.phoneIcon}/>
+                  <BsFillBellFill className={style.phoneIcon} />
                 </li>
               </a>
               <li className={style.showList}>
@@ -92,9 +144,9 @@ function LoginNav(props) {
                 <div className={style.navList}>
                   <a href="">會員資料修改</a>
                   <a href="">我的設計</a>
-                  <a href="/MyProduct/1">我的商品</a>
+                  <a href={`/MyProduct?id=${userId}&page=1`}>我的商品</a>
                   <a href="/collection">我的收藏</a>
-                  <a href="/shoppinglist">購買清單</a>
+                  <a href={`/BtobPage/Order?id=${userId}&page=1`}>購買清單</a>
                   <a href="/">登出</a>
                 </div>
                 {/* ——————————————————————————————————————— */}
@@ -105,28 +157,85 @@ function LoginNav(props) {
       </nav>
 
       {/* ----往下滾動時滑時出現的種類選項----- */}
-      <div className={typebar ? `${style.displayblock}` :`${style.displayNone}`}>
-        <hr/>
+      <div
+        className={typebar ? `${style.displayblock}` : `${style.displayNone}`}
+      >
+        <hr />
         <ul className={style.itemList}>
-          <a href="">
-            <li>NFT</li>
-          </a>
-          <a href="">
-            <li>UI/UX</li>
-          </a>
-          <a href="">
-            <li>書籍/翻譯</li>
-          </a>
-          <a href="">
-            <li>Logo</li>
-          </a>
-          <a href="">
-            <li>插圖</li>
-          </a>
+          {!type ? (
+            <a href={`${location.pathname + location.search}&typeID=101`}>
+              <li>NFT</li>
+            </a>
+          ) : (
+            <a
+              href={`${
+                location.pathname +
+                location.search.replace(`&typeID=${type}`, ``)
+              }`}
+            >
+              <li>NFT</li>
+            </a>
+          )}
+          {!type ? (
+            <a href={`${location.pathname + location.search}&typeID=102`}>
+              <li>UI/UX</li>
+            </a>
+          ) : (
+            <a
+              href={`${
+                location.pathname +
+                location.search.replace(`&typeID=${type}`, ``)
+              }`}
+            >
+              <li>UI/UX</li>
+            </a>
+          )}
+          {!type ? (
+            <a href={`${location.pathname + location.search}&typeID=103`}>
+              <li>書籍/翻譯</li>
+            </a>
+          ) : (
+            <a
+              href={`${
+                location.pathname +
+                location.search.replace(`&typeID=${type}`, ``)
+              }`}
+            >
+              <li>書籍/翻譯</li>
+            </a>
+          )}
+          {!type ? (
+            <a href={`${location.pathname + location.search}&typeID=104`}>
+              <li>Logo</li>
+            </a>
+          ) : (
+            <a
+              href={`${
+                location.pathname +
+                location.search.replace(`&typeID=${type}`, ``)
+              }`}
+            >
+              <li>Logo</li>
+            </a>
+          )}
+          {!type ? (
+            <a href={`${location.pathname + location.search}&typeID=105`}>
+              <li>插圖</li>
+            </a>
+          ) : (
+            <a
+              href={`${
+                location.pathname +
+                location.search.replace(`&typeID=${type}`, ``)
+              }`}
+            >
+              <li>插圖</li>
+            </a>
+          )}
         </ul>
-        <hr/>
+        <hr />
       </div>
     </header>
-  );
+  )
 }
-export default LoginNav;
+export default LoginNav

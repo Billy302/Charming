@@ -1,20 +1,29 @@
-import React, { useState } from "react";
-import style from "./UnloginHome.module.css";
+import React, { useState } from 'react'
+import style from './UnloginHome.module.css'
 // 匯入component
-import UnloginNav from "../../Components/UnloginNav/UnloginNav";
-import PhoneFooter from "../../Components/PhoneFooter/PhoneFooter";
+import UnloginNav from '../../Components/UnloginNav/UnloginNav'
+import PhoneFooter from '../../Components/PhoneFooter/PhoneFooter'
 // 匯入icon
-import { ImSearch } from "react-icons/im";
+import { ImSearch } from 'react-icons/im'
 // 匯入動畫效果
-// import Fade from "react-reveal/Fade";
+import Fade from 'react-reveal/Fade'
 //匯入圖片
-import product1 from "../../Assets/communication2.png";
-import product2 from "../../Assets/Join.png";
-import product3 from "../../Assets/mainPageBlog.png";
-import introduce1 from "../../Assets/charmingMan.png";
-import introduce2 from "../../Assets/blog.png";
-import introduce3 from "../../Assets/communication.png";
+import product1 from '../../Assets/communication2.png'
+import product2 from '../../Assets/Join.png'
+import product3 from '../../Assets/mainPageBlog.png'
+import introduce1 from '../../Assets/charmingMan.png'
+import introduce2 from '../../Assets/blog.png'
+import introduce3 from '../../Assets/communication.png'
 function UnloginHome() {
+  const [scroll, setScroll] = useState(false)
+  const displayItemType = () => {
+    if (window.scrollY >= 200) {
+      setScroll(true)
+    } else {
+      setScroll(false)
+    }
+  }
+  window.addEventListener('scroll', displayItemType)
   return (
     <header>
       <UnloginNav />
@@ -32,7 +41,7 @@ function UnloginHome() {
             type="search"
             placeholder="Search.."
             onChange={(e) => {
-              console.log(e);
+              console.log(e)
             }}
           />
           <button className={style.searchButton}>
@@ -57,7 +66,7 @@ function UnloginHome() {
       {/* 產品頁介紹 */}
 
       {/* className={scroll ? `${style.product}` : `${style.displayNone}`} */}
-      {/* <Fade bottom> */}
+      <Fade bottom>
         <div className={style.product}>
           <div>
             <img src={product1} alt="product" />
@@ -74,8 +83,8 @@ function UnloginHome() {
         </div>
         <a href="product">
           <button className={`${style.joinButton} ${style.heading4}`}>
-            {" "}
-            {"> "}查看所有商品
+            {' '}
+            {'> '}查看所有商品
           </button>
         </a>
         {/* 柴米人頁面介紹 */}
@@ -134,9 +143,9 @@ function UnloginHome() {
           </button>
         </a>
         <PhoneFooter />
-      {/* </Fade> */}
+      </Fade>
     </header>
-  );
+  )
 }
 
-export default UnloginHome;
+export default UnloginHome

@@ -1,23 +1,27 @@
-import React from "react";
-import Style from "./LoginHome.module.css";
+import React from 'react'
+import Style from './LoginHome.module.css'
 // component
-import LoginNav from "../../Components/LoginNav/LoginNav";
-import AsideProductLIst from "../../Components/AsideProductLIst/AsideProductLIst";
-import Product from "../../Components/Product/Product";
-import Pagination from "../../Components/Pagination/Pagination";
+import LoginNav from '../../Components/LoginNav/LoginNav'
+import AsideProductLIst from '../../Components/AsideProductLIst/AsideProductLIst'
+import Product from '../../Components/Product/Product'
 
 // react icon
-import { AiTwotoneSound } from "react-icons/ai";
-
-// data
-
-import { ImOpt } from "react-icons/im";
-// const connection = require('../../../../../backend/modules/mysql_config');
+import { AiTwotoneSound } from 'react-icons/ai'
+import { useLocation } from 'react-router-dom'
+import UnloginNav from '../../Components/UnloginNav/UnloginNav'
 
 function LoginHome() {
+  // 取得當前網址資訊
+  const location = useLocation()
+
+  // 判斷網址內是否包含sort欄位
+  const searchParams = new URLSearchParams(location.search)
+  let nowID = searchParams.get('id')
+
   return (
     <header>
-      <LoginNav />
+      {nowID ? <LoginNav /> : <UnloginNav />}
+
       <hgroup>
         <p className={Style.carousel}>
           <AiTwotoneSound className={Style.icon} />
@@ -32,9 +36,8 @@ function LoginHome() {
         <AsideProductLIst className={Style.displayNone} />
         <Product />
       </section>
-        <Pagination totalPages={5}/>
     </header>
-  );
+  )
 }
 
-export default LoginHome;
+export default LoginHome

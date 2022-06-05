@@ -1,5 +1,3 @@
-// 功能：取得單筆商品資料。Method: GET。URL: /api/product/:id
-// 功能：修改商品。Method: PUT。URL: /api/product/:id
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -16,10 +14,10 @@ function EditProduct() {
   // 連線檔
   const catchUserId = useParams();
   const fetchProducts = async () => {
-    //向遠端伺服器get資料 http://localhost:3000/Sales/api/product?id=1
+    //向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
     const response = await fetch(
       //取單一商品資料
-      `http://localhost:3000/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
+      `http://localhost:3001/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
     );
     const data = await response.json();
     // 載入資料後設定到狀態中
@@ -44,7 +42,7 @@ function EditProduct() {
           <img
             className={style.smallImg2}
             alt="圖片顯示失敗"
-            src={`http://localhost:3001/Home/ProductImg/${a[i]}`}
+            src={`http://localhost:3000/Home/ProductImg/${a[i]}`}
           />
         </label>
         <input id={`theFile${i}`} className={style.btn} type="file"></input>

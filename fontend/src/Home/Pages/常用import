@@ -1,3 +1,0 @@
-import React from "react";
-import Style from "./LoginHome.module.css";
-import { FcLikePlaceholder, FcLike } from "react-icons/fc";

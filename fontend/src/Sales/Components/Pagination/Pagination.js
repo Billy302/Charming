@@ -12,6 +12,7 @@ function Pagination(props) {
   const searchParams = new URLSearchParams(location.search)
   let currentPages = searchParams.get('page') ? searchParams.get('page') : 1
 
+  //
   // 建立頁數
   let list = []
   // 迴圈，秀當前頁面前後各五頁

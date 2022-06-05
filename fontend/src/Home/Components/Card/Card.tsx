@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from "react";
-import Styles from "./Card.module.css";
-import { FcLikePlaceholder, FcLike } from "react-icons/fc";
+import React, { useEffect, useState } from 'react'
+import Styles from './Card.module.css'
+import { FcLikePlaceholder, FcDislike } from 'react-icons/fc'
+import { useLocation, useParams } from 'react-router-dom'
 
 interface CardProps {
-  ID: number;
-  product_name: string;
-  author_name: string;
-  product_copy: string;
-  price: number;
-  pic_path: string;
-  sell_count: number;
-  file_type: string;
+  userID: number
+  ID: number
+  product_name: string
+  author_name: string
+  product_copy: string
+  price: number
+  pic_path: string
+  sell_count: number
+  love: string
 }
 
 const Card: React.FC<CardProps> = ({
+  userID,
   ID,
   product_name,
   author_name,
@@ -21,23 +24,70 @@ const Card: React.FC<CardProps> = ({
   price,
   pic_path,
   sell_count,
-  file_type,
+  love,
 }) => {
   // let a = products[0]["pic_path"].split(" ");
-  const a = pic_path.split(" ");
-  // console.log(a[0]);
+  const a = pic_path.split(' ')
+
+  // 取得當前網址資訊
+  const location = useLocation()
+
+  // 抓取網址中的id
+  const searchParams = new URLSearchParams(location.search)
+  let nowSort = searchParams.get('id') ? searchParams.get('id') : ''
+
+  const [loveState, setLoveState] = useState(love)
+
+  const check = async () => {
+    if (loveState == 'true') {
+      setLoveState('false')
+      fetch(
+        `http://localhost:3001/Sales/api/love?productID=${ID}&userID=${nowSort}`,
+        {
+          method: 'delete',
+        }
+      )
+    } else {
+      setLoveState('true')
+      fetch(
+        `http://localhost:3001/Sales/api/love?productID=${ID}&userID=${nowSort}`,
+        {
+          method: 'post',
+        }
+      )
+    }
+  }
 
   return (
     <li className={Styles.cardContainer}>
-      <div className={Styles.cardSize}>
-        <a href={`/Product/1/${ID}`}>
-          {/* <img alt="robot" src={require(`../../Assets/ProductImg/${a[0]}`)} /> */}
-          <img
-            alt="圖片無法顯示"
-            src={`http://localhost:3001/Home/ProductImg/${a[0]}`}
-          />
-        </a>
-        <FcLikePlaceholder className={Styles.like} />
+      <div id="card" className={Styles.cardSize}>
+          {userID ? (
+            <a href={`/Product/${userID}/${ID}`}>
+              {' '}
+              <img
+                alt="圖片無法顯示"
+                src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
+              />
+            </a>
+          ) : (
+            <a href={`/Product/${ID}`}>
+              {' '}
+              <img
+                alt="圖片無法顯示"
+                src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
+              />
+            </a>
+          )}
+
+        {nowSort ? (
+          loveState == 'true' ? (
+            <FcLikePlaceholder className={Styles.like} onClick={check} />
+          ) : (
+            <FcDislike className={Styles.like} onClick={check} />
+          )
+        ) : (
+          ''
+        )}
         <a href="">
           <h2>{product_name}</h2>
         </a>
@@ -51,6 +101,6 @@ const Card: React.FC<CardProps> = ({
         </div>
       </div>
     </li>
-  );
-};
-export default Card; //導出組件
+  )
+}
+export default Card //導出組件
