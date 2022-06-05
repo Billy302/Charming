@@ -17,6 +17,14 @@ router.get("/users", async (req, res, next) => {
   res.json(dates);
 });
 
+
+// 取得 id=1 的使用者資料
+router.get("/users/1", async (req, res, next) => {
+  const sql = "SELECT * FROM us_user WHERE id=1";
+  const [dates] = await db.query(sql);
+  res.json(dates);
+});
+
 // 登入 (使用postman出現{} 查看postman格式是否非JSON)
 // router.post("/signin", async (req, res, next) => {
 //   console.log(req.body);
