@@ -42,7 +42,8 @@ router.post("/signin", async (req, res, next) => {
    const [login] = await db.query(verify, [req.query.user_account]);
   console.log(login[0].result);
   if(login[0].result == 1 ){
-    res.json({msg: "登入成功"})
+    // res.json({msg: "登入成功"})
+    res.redirect('http://localhost:3000/account')
   }else{
     res.json({msg:"帳號或密碼有誤"});
     }

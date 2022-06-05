@@ -5,7 +5,10 @@ import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import axios from "axios";
 
-function SignIn() {
+function SignIn(props) {
+
+    const { auth, setAuth } = props;
+
   
   // 設定導向頁面函式
   const navigate = useNavigate();
@@ -13,7 +16,6 @@ function SignIn() {
   // function SignIn(props) {
   //   const [user_account, setUserAccount] = useState("");
   //   const [user_password, setUserPassword] = useState("");
-  //   const { auth, setAuth } = props;
 
   //   const login = (e) => {
   //     if (user_account !== "" && user_password !== "") {
@@ -37,9 +39,6 @@ function SignIn() {
   //       alert("請輸入密碼!");
   //     }
   //   };
-
-  //   // useHistory版本已被useNavigate取代
-  //   const navigate = useNavigate();
 
   // 密碼顯示or隱藏
   const [invisible, setInvisible] = useState(true);
@@ -93,19 +92,18 @@ function SignIn() {
           </Link>
 
           {/* 登入並導向首頁 */}
-          <button typeof="submit" className={style.button} >
-            登入
-          </button>
-
-        </form>
-        {/* onClick={() => {
+          <button typeof="submit" className={style.button} onClick={() => {
               setAuth(!auth);
   
               alert("登入成功");
   
-              navigate("/account");
-            }}
-          {auth ? "登出" : "登入"} */}
+              navigate("http://localhost:3000/account");
+            }} >
+            登入
+          </button>
+
+        </form>
+
 
         <p>
           還不是會員嗎? <Link to="/signup">立即註冊</Link>

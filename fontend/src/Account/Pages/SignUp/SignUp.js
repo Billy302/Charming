@@ -273,8 +273,8 @@ function SignUp() {
               </select>
               <div>
                 {/* 註冊按鈕 */}
-                {/* id="submit"  */}
-                <button id='signUpBtn' type="submit" className={style.button}>
+                 
+                <button id="submit" type="submit" className={style.button}>
                   註冊
                 </button>
                 <p>
