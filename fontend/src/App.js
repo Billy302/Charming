@@ -15,16 +15,13 @@ import MyProduct from './Home/Pages/MyProduct/MyProduct';
 //Pages
 import SignInIdentify from './Account/Pages/SignInIdentify/SignInIdentify';
 import SignInRecover from './Account/Pages/SignInRecover/SignInRecover';
-import SignUpInfo from './Account/Pages/SignUpInfo/SignUpInfo';
 import SignUp from './Account/Pages/SignUp/SignUp';
 import SignIn from './Account/Pages/SignIn/SignIn';
 
 //Pages user
 import MyShoppingList from './Account/Pages/User/MyShoppingList';
-import NoticeSetting from './Account/Pages/User/NoticeSetting';
 import MyCollection from './Account/Pages/User/MyCollection';
 import MyAccount from './Account/Pages/User/MyAccount';
-import MyNotice from './Account/Pages/User/MyNotice';
 
 //購物車頁
 import Cart1 from './Sales/Pages/Cart/Cart1';
@@ -61,18 +58,14 @@ function App() {
                 {/* 忘記密碼 */}
                 <Route path="/signin/identify" element={<SignInIdentify />} />
                 <Route path="/signin/recover" element={<SignInRecover />} />
-                {/* 基本資料 */}
-                <Route path="/signup/info" element={<SignUpInfo />} />
                 {/* 註冊 */}
                 <Route path="/signup" element={<SignUp />} />
                 {/* 登入 */}
                 <Route path="/signin" element={<SignIn />} />
                 {/* -------user 登入後頁面------- */}
                 <Route path="/shoppinglist" element={<MyShoppingList />} />
-                <Route path="/notice/setting" element={<NoticeSetting />} />
                 <Route path="/collection" element={<MyCollection />} />
                 <Route path="/account" element={<MyAccount />} />
-                <Route path="/notice" element={<MyNotice />} />
                 {/* --------商品頁面-------- */}
                 <Route path="/Cart1" element={<Cart1 />} />
                 <Route path="/Cart2" element={<Cart2 />} />

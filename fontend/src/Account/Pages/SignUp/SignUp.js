@@ -8,7 +8,33 @@ import { FaEyeSlash, FaEye } from "react-icons/fa";
 function SignUp() {
   // 設定導向頁面函式
   const navigate = useNavigate();
+ 
+  // const signUpBtn = document.querySelector('#signUpBtn')
+  
+  // signUpBtn.addEventListener('click',()=>{
+  //   const signUpAccount = document.querySelector('.account');
+  //   const signUpPassword = document.querySelector('.password');
+  //   const signUpName = document.querySelector('#name')
+  //   const storageKey = signUpAccount.value + signUpPassword.value;
+  //   const checkUser = Boolean(localStorage.getItem(storageKey));
 
+  //   function successAction(){
+  //     if(checkUser){
+  //       return alert('The email has already created it, please re-enter')
+  //     }
+
+  //     localStorage.setItem(storageKey,signUpName.value)
+  //     signUpName.value = ''
+  //     signUpAccount.value=''
+  //     signUpPassword.value=''
+  //     alert('Created successfully, please go to sign in page.')
+  //   }
+  //   if(signUpAccount.value === '' || signUpPassword.value === ''){
+  //     alert('The input box cannot be empty')
+  //   }else{
+  //     successAction()
+  //   }
+  // })
   // 註冊
 
   // let [account, setAccount] = useState("");
@@ -168,6 +194,7 @@ function SignUp() {
             <div className={style.form2}>
               <label>姓名</label>
               <input
+              id="name"
                 type="text"
                 placeholder="請輸入真實姓名"
                 onChange={handleChangeUsername}
@@ -246,7 +273,8 @@ function SignUp() {
               </select>
               <div>
                 {/* 註冊按鈕 */}
-                <button id="submit" type="submit" className={style.button}>
+                {/* id="submit"  */}
+                <button id='signUpBtn' type="submit" className={style.button}>
                   註冊
                 </button>
                 <p>
