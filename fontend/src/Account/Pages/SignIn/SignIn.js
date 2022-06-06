@@ -5,11 +5,10 @@ import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import axios from "axios";
 
-function SignIn(props) {
-  const { auth, setAuth } = props;
+function SignIn() {
   
   // const [account, setAccount] = useState([]);
-
+const auth = localStorage.setItem('auth',false)
   // 設定導向頁面函式
   const navigate = useNavigate();
 
@@ -25,7 +24,8 @@ function SignIn(props) {
       document.getElementById("msg").innerHTML = "帳號或密碼輸入錯誤";
     }else{
       localStorage.setItem('id', obj)
-      // navigate('http://localhost:3001/Account');
+      localStorage.setItem('auth',true)
+      navigate('/account');
     }
   })
   };

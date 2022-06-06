@@ -4,6 +4,15 @@ import { Link } from 'react-router-dom'
 import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
 
 function SignInIdentify() {
+
+  const auth = JSON.parse(localStorage.getItem('auth'));
+  console.log(auth);
+  if(auth===false){
+    alert('您尚未登入')
+  }else{
+    
+  }
+
   return (
     <>
       <UnloginNav />

@@ -6,6 +6,8 @@ import BreadCrumb from "../../Components/BreadCrumb/BreadCrumb";
 
 function MyAccount() {
 
+  
+
   const storageMemory = localStorage.getItem('id');
   console.log(storageMemory);
   
@@ -13,16 +15,18 @@ function MyAccount() {
   const [account, setAccount] = useState([]);
 
   const fetchAccount = async () => {
-    const response = await fetch(`http://localhost:3001/Account/users/${storageMemory}`);
+    const response = await fetch(`http://localhost:3001/Account/users?userId=${storageMemory}`);
     const data = await response.json();
     setAccount(data[0]);
-    // console.log(data[0]);
+    console.log(data[0]);
   };
   useEffect(() => {
     fetchAccount();
   }, []);
 
   // const { auth } = props;
+  console.log(account);
+  const{avatar,birthday,city,email,gender,id,join_at,mobile,nickname,user_account,user_password,username} =account
 
   return (
     <>
@@ -48,7 +52,7 @@ function MyAccount() {
         <div className={style.form}>
           <div className={style.item1}>
             <img src={require("../../images/Avatar3.png")} alt="male" />
-            <label>{account["user_name"]}</label>
+            <label>{username}</label>
             {/* {auth ? "已登入" : "尚未登入"} */}
             <label>會員稱號：</label>
           </div>
@@ -56,15 +60,15 @@ function MyAccount() {
           <div className={style.item2}>
             <label>暱稱</label>
             <label>男性</label>
-            {account["gender"]}
+            {gender}
             <label>生日</label>
-            {account["birthday"]}
+            {birthday}
             <label>E-mail</label>
-            {account["email"]}
+            {email}
             <label>連絡電話</label>
-            {account["mobile"]}
+            {mobile}
             <label>所在地區</label>
-            {account["city"]}
+            {city}
           </div>
         </div>
         <div className={style.item3}>

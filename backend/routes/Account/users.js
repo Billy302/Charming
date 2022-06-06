@@ -16,19 +16,21 @@ router.get("/", function (req, res, next) {
 
 // 查看所有user資料
 //此寫法與下相同 router.route("/users").get(async (req, res, next) =>
-router.get("/users", async (req, res, next) => {
-  const sql = "SELECT * FROM us_user";
-  const [dates] = await db.query(sql);
-  res.json(dates);
-});
+// router.get("/users", async (req, res, next) => {
+//   const sql = "SELECT * FROM us_user";
+//   const [dates] = await db.query(sql);
+//   res.json(dates);
+// });
 
 
 // 取得 id=1 的使用者資料
-router.get("/users/:id", async (req, res, next) => {
-  const sql = "SELECT * FROM us_user WHERE id=?";
-  const [dates] = await db.query(sql,[req.query.id]);
+router.get("/users", async (req, res, next) => {
+  console.log(req.query.userId);
+  const sql = "SELECT id,user_account,user_password,username,gender,DATE_FORMAT(birthday,'%Y-%m-%d') AS birthday,email,mobile,city,nickname,avatar,DATE_FORMAT(join_at,'%Y-%m-%d')AS join_at FROM `us_user` WHERE id=?";
+  const [dates] = await db.query(sql,[req.query.userId]);
+  console.log(dates);
   res.json(dates);
-});
+})
 
 // 登入 (使用postman出現{} 查看postman格式是否非JSON)
 // router.post("/signin", async (req, res, next) => {
