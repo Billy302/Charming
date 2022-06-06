@@ -1,5 +1,5 @@
-import React from "react";
-import Style from "./Cart.module.css";
+import React from 'react'
+import Style from './Cart.module.css'
 
 function ComponentsName() {
   return (
@@ -10,7 +10,7 @@ function ComponentsName() {
         <a href="/Product/1">GO</a>
       </div>
     </div>
-  );
+  )
 }
 
-export default ComponentsName;
+export default ComponentsName

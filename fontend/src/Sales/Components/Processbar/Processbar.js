@@ -1,12 +1,12 @@
-import React from "react";
-import style from "./ProcessBar.module.css";
+import React from 'react'
+import style from './ProcessBar.module.css'
 function Processbar(props) {
-  const { step } = props;
-  let start = step;
+  const { step } = props
+  let start = step
   return (
     <section>
       <div className={style.title}>
-      <p>購物車</p>
+        <p>購物車</p>
       </div>
       <div className={style.progressBar}>
         {/* 確認購物車 */}
@@ -56,6 +56,6 @@ function Processbar(props) {
         </div>
       </div>
     </section>
-  );
+  )
 }
-export default Processbar;
+export default Processbar
