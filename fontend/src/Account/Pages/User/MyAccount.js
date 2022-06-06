@@ -5,12 +5,15 @@ import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import BreadCrumb from "../../Components/BreadCrumb/BreadCrumb";
 
 function MyAccount() {
+
+  const storageMemory = localStorage.getItem('id');
+  console.log(storageMemory);
   
   // 獲得會員id=1的資料
   const [account, setAccount] = useState([]);
 
   const fetchAccount = async () => {
-    const response = await fetch(`http://localhost:3001/Account/users/1`);
+    const response = await fetch(`http://localhost:3001/Account/users/${storageMemory}`);
     const data = await response.json();
     setAccount(data[0]);
     // console.log(data[0]);

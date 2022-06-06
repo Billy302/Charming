@@ -1,8 +1,13 @@
 var express = require("express");
 var router = express.Router();
+const multer = require("multer");
+var upload = multer();
 
 const app = express();
 const db = require("../../modules/mysql_config");
+// let bodyParser = require('body-parser')
+// app.use(bodyParser.urlencoded({extended:false}));
+// app.use(express.urlencoded({extended:false}));
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -19,9 +24,9 @@ router.get("/users", async (req, res, next) => {
 
 
 // 取得 id=1 的使用者資料
-router.get("/users/1", async (req, res, next) => {
-  const sql = "SELECT * FROM us_user WHERE id=1";
-  const [dates] = await db.query(sql);
+router.get("/users/:id", async (req, res, next) => {
+  const sql = "SELECT * FROM us_user WHERE id=?";
+  const [dates] = await db.query(sql,[req.query.id]);
   res.json(dates);
 });
 
@@ -37,16 +42,34 @@ router.get("/users/1", async (req, res, next) => {
 // });
 
 // 登入驗證帳號密碼 ok
-router.post("/signin", async (req, res, next) => {
-  const verify = `SELECT COUNT(user_account) AS result FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
-   const [login] = await db.query(verify, [req.query.user_account]);
-  console.log(login[0].result);
-  if(login[0].result == 1 ){
-    // res.json({msg: "登入成功"})
-    res.redirect('http://localhost:3000/account')
-  }else{
-    res.json({msg:"帳號或密碼有誤"});
-    }
+// router.post("/signin", async (req, res, next) => {
+//   const verify = `SELECT COUNT(user_account) AS result FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
+//    const [login] = await db.query(verify, [req.query.user_account]);
+//   console.log(login[0].result);
+// if(login[0].result == 1 ){
+//   res.json({msg: "登入成功"})
+//   // res.redirect('http://localhost:3000/account')
+// }else{
+//   res.json({msg:"帳號或密碼有誤"});
+//   }
+
+  // 登入驗證
+  router.post("/signin",upload.none(), async (req, res, next) => { console.log(req.body);
+    const verify = `SELECT * FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
+    console.log(verify);
+     const [login] = await db.query(verify);
+     console.log(login);
+     if(login[0] == undefined){
+       res.send("0");
+      //  0 表示帳號或密碼有誤 登入失敗
+     }else{
+       res.json(login[0].id);
+      //  res.redirect('/Account')
+      //  取得會員id
+     }
+    console.log(login[0]);
+    // console.log(login[0].id);
+    // res.json(login[0]);
 });
 
 // 檢查帳號是否已被使用(不能重複註冊) ok
