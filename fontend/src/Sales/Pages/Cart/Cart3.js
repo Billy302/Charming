@@ -1,6 +1,7 @@
 // 功能：新增訂單。Method: POST。URL: /api/order
 // http://localhost:3000/Sales/Cart3
 
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cards from "react-credit-cards";
@@ -94,6 +95,101 @@ function Cart3() {
     } else if (cardCvc.value.length !== 3) {
       isPass = false;
       cardCvcMsg.innerHTML = "CVC長度為3碼";
+=======
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Cards from 'react-credit-cards'
+import 'react-credit-cards/es/styles-compiled.css'
+import './CreditCard.css'
+import Style from './Cart.module.css'
+
+import Processbar from '../../Components/Processbar/Processbar'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
+
+function Cart3() {
+  // 使用 useNavigate 套件
+  let Navigate = useNavigate()
+
+  // 使用 localStorage WebAPI
+  let storage = localStorage
+
+  // 信用卡所需屬性
+  const [number, SetNumber] = useState('')
+  const [name, SetName] = useState('')
+  const [month, SetMonth] = useState('')
+  let [expiry, SetExpiry] = useState('')
+  const [cvc, SetCvc] = useState('')
+  const [focus, SetFocus] = useState('')
+  const handleDate = (e) => {
+    SetMonth(e.target.value)
+    SetExpiry(e.target.value)
+  }
+  const handleExpiry = (e) => {
+    SetExpiry(month.concat(e.target.value))
+  }
+
+  function checkForm() {
+    // 取得各欄位的DOM元素
+    const cardNumber = document.getElementById('cardNumber')
+    const cardNumberMsg = document.getElementById('cardNumberMsg')
+    const cardName = document.getElementById('cardName')
+    const cardNameMsg = document.getElementById('cardNameMsg')
+
+    const cardYear = document.getElementById('cardYear')
+    const cardMon = document.getElementById('cardMon')
+    const cardDateMsg = document.getElementById('cardDateMsg')
+
+    const cardCvc = document.getElementById('cardCvc')
+    const cardCvcMsg = document.getElementById('cardCvcMsg')
+
+    let isPass = true
+    // 先清空訊息
+    cardNumberMsg.innerHTML = ''
+    cardNameMsg.innerHTML = ''
+    cardDateMsg.innerHTML = ''
+    cardCvcMsg.innerHTML = ''
+
+    // 判斷不得為空值
+    if (cardNumber.value === '') {
+      isPass = false
+      cardNumberMsg.innerHTML = '卡號不得為空'
+    } else if (cardName.value === '') {
+      isPass = false
+      cardNameMsg.innerHTML = '姓名不得為空'
+    } else if (cardMon.value === ' ') {
+      isPass = false
+      cardDateMsg.innerHTML = '請選擇月份'
+    } else if (cardYear.value === ' ') {
+      isPass = false
+      cardDateMsg.innerHTML = '請選擇年份'
+    } else if (cardCvc.value === '') {
+      isPass = false
+      cardCvcMsg.innerHTML = 'CVC不得為空'
+    }
+    // 正規表達式，判斷只能數字或英文
+    const numRegExp = /^[0-9]*$/
+    const textRegExp = /^[a-zA-Z]*$/
+    if (!numRegExp.test(cardNumber.value)) {
+      isPass = false
+      cardNumberMsg.innerHTML = '卡號必須為數字'
+    } else if (!numRegExp.test(cardCvc.value)) {
+      isPass = false
+      cardCvcMsg.innerHTML = 'CVC必須為數字'
+    } else if (!textRegExp.test(cardName.value)) {
+      isPass = false
+      cardNameMsg.innerHTML = '姓名必須為英文'
+    }
+    // 長度判斷
+    if (cardNumber.value.length !== 16) {
+      isPass = false
+      cardNumberMsg.innerHTML = '卡號須為16碼'
+    } else if ((cardName.value.length > 12) | (cardName.value.length < 3)) {
+      isPass = false
+      cardNameMsg.innerHTML = '姓名長度需在3~12碼'
+    } else if (cardCvc.value.length !== 3) {
+      isPass = false
+      cardCvcMsg.innerHTML = 'CVC長度為3碼'
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
     }
 
     // 資料驗證判斷OK
@@ -101,6 +197,7 @@ function Cart3() {
     // => 清除localStorage，避免重複使用
     if (isPass) {
       // 存放 FormData的資料
+<<<<<<< HEAD
       let orderData = new FormData();
       // 存放用戶資料
       orderData.append("addUser", storage.getItem("addUser"));
@@ -130,15 +227,52 @@ function Cart3() {
 
       fetch(`http://localhost:3001/Sales/api/orderUser`, {
         method: "post",
+=======
+      let orderData = new FormData()
+      // 存放用戶資料
+      orderData.append('addUser', storage.getItem('addUser'))
+
+      // 取得localStorage的項目清單
+      let itemString = storage.getItem('addItemList')
+
+      // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
+      let items = itemString.split(' |')
+      items.pop()
+
+      // 建立空白陣列，存放localStorage的商品資料
+      let itemsDetail = []
+      for (let i = 0; i < items.length; i++) {
+        itemsDetail.push(JSON.parse(storage.getItem(items[i])))
+      }
+
+      // 將itemsDetail資料存入orderData
+      orderData.append('addItemList', JSON.stringify(itemsDetail))
+
+      // 清除localStorage的資料=>addItemList | addUser | 各產品
+      for (let i = 0; i < items.length; i++) {
+        storage.removeItem(items[i])
+      }
+      storage.removeItem('addItemList')
+      storage.removeItem('addUser')
+
+      fetch(`http://localhost:3001/Sales/api/orderUser`, {
+        method: 'post',
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
         body: orderData,
       })
         .then((r) => r.json())
         .then((obj) => {
           // 新增storage:addID 提供給Cart4使用
+<<<<<<< HEAD
           storage.setItem("addID", obj);
 
         });
         Navigate("../Sales/Cart4");
+=======
+          storage.setItem('addID', obj)
+        })
+      Navigate('../Sales/Cart4')
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
     }
   }
 
@@ -165,7 +299,11 @@ function Cart3() {
             {/* 卡號 */}
             <div>
               <label for="cardNumber" htmlFor="name">
+<<<<<<< HEAD
                 信用卡卡號 :{" "}
+=======
+                信用卡卡號 :{' '}
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
               </label>
               <input
                 id="cardNumber"
@@ -174,7 +312,11 @@ function Cart3() {
                 value={number}
                 name="number"
                 onChange={(e) => {
+<<<<<<< HEAD
                   SetNumber(e.target.value);
+=======
+                  SetNumber(e.target.value)
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
                 }}
                 onFocus={(e) => SetFocus(e.target.name)}
               ></input>
@@ -183,7 +325,11 @@ function Cart3() {
             {/* 持卡者姓名 */}
             <div>
               <label for="cardName" htmlFor="name">
+<<<<<<< HEAD
                 持卡者姓名 :{" "}
+=======
+                持卡者姓名 :{' '}
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
               </label>
               <input
                 id="cardName"
@@ -192,7 +338,11 @@ function Cart3() {
                 value={name}
                 name="name"
                 onChange={(e) => {
+<<<<<<< HEAD
                   SetName(e.target.value);
+=======
+                  SetName(e.target.value)
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
                 }}
                 onFocus={(e) => SetFocus(e.target.name)}
                 required
@@ -240,7 +390,11 @@ function Cart3() {
             {/* 驗證碼 */}
             <div>
               <label for="cardCvc" htmlFor="cvv">
+<<<<<<< HEAD
                 後三碼 :{" "}
+=======
+                後三碼 :{' '}
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
               </label>
               <input
                 id="cardCvc"
@@ -248,7 +402,11 @@ function Cart3() {
                 name="cvc"
                 value={cvc}
                 onChange={(e) => {
+<<<<<<< HEAD
                   SetCvc(e.target.value);
+=======
+                  SetCvc(e.target.value)
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
                 }}
                 onFocus={(e) => SetFocus(e.target.name)}
               ></input>
@@ -262,7 +420,11 @@ function Cart3() {
             className={Style.button2}
             onClick={() => {
               // 回首頁
+<<<<<<< HEAD
               Navigate("../Sales/Cart2");
+=======
+              Navigate('../Sales/Cart2')
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
             }}
           >
             回上頁
@@ -271,7 +433,11 @@ function Cart3() {
             className={Style.button1}
             onClick={() => {
               // 做驗證，成功就跳頁 & 新增資料庫
+<<<<<<< HEAD
               checkForm();
+=======
+              checkForm()
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
             }}
           >
             確認付款

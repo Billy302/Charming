@@ -11,17 +11,14 @@ function MyShoppingList() {
       <BreadCrumb />
       {/* 上方選單 */}
       <nav className={style.navLeft}>
-        <Link to="/account" className={style.active}>
+        <Link to="/account" className={style.unactive}>
           會員中心 <hr />
         </Link>
-        <Link to="/shoppinglist" className={style.unactive}>
+        <Link to="/shoppinglist" className={style.active}>
           購買清單 <hr />
         </Link>
         <Link to="/collection" className={style.unactive}>
           我的收藏 <hr />
-        </Link>
-        <Link to="/notice" className={style.unactive}>
-          我的通知 <hr />
         </Link>
       </nav>
 
@@ -31,18 +28,6 @@ function MyShoppingList() {
         <h1 className={style.h1}>購買清單</h1>
       </main>
 
-      {/* 左側選單 */}
-      <aside className={style.aside}>
-        <ul className={style.ul}>
-          <li>
-            <Link to="/account">基本資料</Link>
-          </li>
-          <li>
-            <Link to="/notice/setting">通知設定</Link>
-          </li>
-        </ul>
-      </aside>
-      <div className={style.clear}></div>
     </>
   )
 }

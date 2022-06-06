@@ -19,16 +19,24 @@ import ProductPageEditButton from './Home/Pages/ProductPageEditButton/ProductPag
 //Pages
 import SignInIdentify from './Account/Pages/SignInIdentify/SignInIdentify'
 import SignInRecover from './Account/Pages/SignInRecover/SignInRecover'
+<<<<<<< HEAD
 import SignUpInfo from './Account/Pages/SignUpInfo/SignUpInfo'
+=======
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 import SignUp from './Account/Pages/SignUp/SignUp'
 import SignIn from './Account/Pages/SignIn/SignIn'
 
 //Pages user
 import MyShoppingList from './Account/Pages/User/MyShoppingList'
+<<<<<<< HEAD
 import NoticeSetting from './Account/Pages/User/NoticeSetting'
 import MyCollection from './Account/Pages/User/MyCollection'
 import MyAccount from './Account/Pages/User/MyAccount'
 import MyNotice from './Account/Pages/User/MyNotice'
+=======
+import MyCollection from './Account/Pages/User/MyCollection'
+import MyAccount from './Account/Pages/User/MyAccount'
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 
 //購物車頁
 import Cart1 from './Sales/Pages/Cart/Cart1'
@@ -48,10 +56,16 @@ import OrderList from './Sales/Pages/Order/OrderList'
 // import SeePoster from './Forum/Pages/SeePoster/SeePoster ';
 
 // 部落格
+<<<<<<< HEAD
 import Blog from './Blog/Components/Page/Blog'
 import Article from './Blog/Components/Page/Article'
 import Search from './Blog/Components/Page/Search'
 // import MyProduct from './Blog/Components/Page/MyProduct';
+=======
+import Blog from './Blog/Page/Blog'
+import Article from './Blog/Page/Article'
+import Search from './Blog/Page/Search'
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 
 function App() {
   return (
@@ -81,6 +95,7 @@ function App() {
 
         {/* --------註冊及登入----- */}
         {/* 忘記密碼 */}
+<<<<<<< HEAD
         {/* <Route path="/signin/identify" element={<SignInIdentify />} />
         <Route path="/signin/recover" element={<SignInRecover />} />
         {/* 基本資料 */}
@@ -95,6 +110,19 @@ function App() {
         <Route path="/collection" element={<MyCollection />} />
         <Route path="/account" element={<MyAccount />} />
         <Route path="/notice" element={<MyNotice />} /> */}
+=======
+        <Route path="/signin/identify" element={<SignInIdentify />} />
+        <Route path="/signin/recover" element={<SignInRecover />} />
+        {/* 註冊 */}
+        <Route path="/signup" element={<SignUp />} />
+        {/* 登入 */}
+        <Route path="/signin" element={<SignIn />} />
+        {/* -------user 登入後頁面------- */}
+        <Route path="/shoppinglist" element={<MyShoppingList />} />
+        <Route path="/collection" element={<MyCollection />} />
+        <Route path="/account" element={<MyAccount />} />
+
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
         {/* --------商品頁面-------- */}
         <Route path="Sales/Cart1" element={<Cart1 />} />
         <Route path="Sales/Cart2" element={<Cart2 />} />

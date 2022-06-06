@@ -3,6 +3,7 @@
 // 先用JSON假資料取代
 // http://localhost:3000/Sales/Cart2
 
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import Processbar from "../../Components/Processbar/Processbar";
 import Style from "./Cart.module.css";
@@ -13,6 +14,18 @@ import number from "../../Json/number.json";
 function Cart2() {
   // 使用 useNavigate 套件
   let Navigate = useNavigate();
+=======
+import React, { useState, useEffect } from 'react'
+import Processbar from '../../Components/Processbar/Processbar'
+import Style from './Cart.module.css'
+import { useNavigate } from 'react-router-dom'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
+import number from '../../Json/number.json'
+
+function Cart2() {
+  // 使用 useNavigate 套件
+  let Navigate = useNavigate()
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 
   // 要看會員怎麼寫
   // const [member, setmember] = useState([])
@@ -29,6 +42,7 @@ function Cart2() {
   //   fetchProducts()
   // }, [])
 
+<<<<<<< HEAD
   const [inputText, setInputText] = useState("");
 
   // 使用 localStorage WebAPI
@@ -46,14 +60,39 @@ function Cart2() {
 
   // 計算購物車，價格總數
   let totalPrice = 0;
+=======
+  const [inputText, setInputText] = useState('')
+
+  // 使用 localStorage WebAPI
+  let storage = localStorage
+
+  // 取得localStorage的項目清單
+  let itemString = storage.getItem('addItemList')
+
+  // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
+  let items = itemString.split(' |')
+  items.pop()
+
+  // 建立空白陣列，存放jsx語法
+  let cartTable = []
+
+  // 計算購物車，價格總數
+  let totalPrice = 0
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 
   // 動態生成table的內容
   for (let i = 0; i < items.length; i++) {
     let { ID, author_name, price, product_name } = JSON.parse(
       storage.getItem(items[i])
+<<<<<<< HEAD
     );
     // 已取得購物車資料，用迴圈重複加總
     totalPrice += { price }.price;
+=======
+    )
+    // 已取得購物車資料，用迴圈重複加總
+    totalPrice += { price }.price
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 
     // 將Html語法加入cartTable語法
     cartTable.push(
@@ -63,9 +102,15 @@ function Cart2() {
         </th>
         <td className={Style.blockSizeM}>{author_name}</td>
         <td className={Style.blockSizeXL}>{product_name}</td>
+<<<<<<< HEAD
         <td className={`${Style.blockSizeM} ${Style.price}`}>{"$" + price}</td>
       </tr>
     );
+=======
+        <td className={`${Style.blockSizeM} ${Style.price}`}>{'$' + price}</td>
+      </tr>
+    )
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
   }
 
   return (
@@ -84,7 +129,11 @@ function Cart2() {
             disabled
             value={number[0].username}
             onChange={(e) => {
+<<<<<<< HEAD
               setInputText(e.target.value);
+=======
+              setInputText(e.target.value)
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
             }}
           />
         </div>
@@ -96,7 +145,11 @@ function Cart2() {
             disabled
             value={number[0].mobile}
             onChange={(e) => {
+<<<<<<< HEAD
               setInputText(e.target.value);
+=======
+              setInputText(e.target.value)
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
             }}
           />
         </div>
@@ -128,21 +181,35 @@ function Cart2() {
             id="inputPrice"
             type="text"
             disabled
+<<<<<<< HEAD
             value={"$" + totalPrice}
             onChange={(e) => {
               setInputText(e.target.value);
+=======
+            value={'$' + totalPrice}
+            onChange={(e) => {
+              setInputText(e.target.value)
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
             }}
           />
         </div>
       </table>
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
       {/* 按鈕 */}
       <div className={Style.checkButton}>
         <button
           className={Style.button2}
           onClick={() => {
             // 回上頁
+<<<<<<< HEAD
             Navigate("../Sales/Cart1");
+=======
+            Navigate('../Sales/Cart1')
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
           }}
         >
           回上頁
@@ -151,15 +218,24 @@ function Cart2() {
           className={Style.button1}
           onClick={() => {
             // 到下一頁
+<<<<<<< HEAD
             Navigate("../Sales/Cart3");
             // 將個人資料存入Session，購買者ID & 訂單總價
             storage.setItem("addUser", `1 | ${totalPrice}`);
           }}
         >
   確認訂單
+=======
+            Navigate('../Sales/Cart3')
+            // 將個人資料存入Session，購買者ID & 訂單總價
+            storage.setItem('addUser', `1 | ${totalPrice}`)
+          }}
+        >
+          確認訂單
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
         </button>
       </div>
     </>
-  );
+  )
 }
-export default Cart2;
+export default Cart2

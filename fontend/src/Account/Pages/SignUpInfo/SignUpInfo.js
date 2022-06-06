@@ -20,6 +20,9 @@ function SignUpInfo(props) {
       {/* 登入navbar */}
       <UnloginNav />
       {/* 主框線 */}
+      <div className={style.zindex}>
+
+      
       <main className={style.auto}>
         <h1 className={style.h1}>基本資料</h1>
         {/* 基本資料表單 */}
@@ -226,6 +229,12 @@ function SignUpInfo(props) {
         </form>
       </main>
     </div>
+<<<<<<< HEAD
+=======
+    </div>
+    
+
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
   );
 }
 

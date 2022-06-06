@@ -1,8 +1,12 @@
 /* 外框線 */
-.auto {
+.outline {
   margin: 20px auto;
   width: 80%;
+<<<<<<< HEAD
   height: 70vh;
+=======
+  height: 1200px;
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
   border-radius: var(--desk-border-radius);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   color: var(--brown2);
@@ -37,8 +41,9 @@
   border-radius: 15px;
   border: 2px solid var(--brown3);
   color: var(--brown2);
-  width: 250px;
+  /* width: 250px; */
   padding: 5px;
+
 }
 
 .form input:focus {
@@ -72,6 +77,7 @@
   border: 2px solid var(--brown2);
   background-color: var(--brown2);
   color: #ffffff;
+  cursor: pointer
 }
 
 .passwordShow {
@@ -84,4 +90,82 @@
   top: 97px;
   z-index: 2;
 }
+
+/* .auto2 {
+  margin: 20px auto;
+  width: 80%;
+  height: auto;
+  border-radius: var(--desk-border-radius);
+  background-color: #ffffff;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  color: var(--brown2);
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+/* .h12 {
+  text-align: center;
+  color: var(--brown2);
+  padding: 30px;
+} */
+
+/* 基本資料頁 */
+.form2 {
+  display: flex;
+  flex-direction: column;
+  color: var(--main-color);
+}
+
+.form2 label {
+  margin: 5px;
+}
+
+.form2 input,
+select {
+  border-radius: 15px;
+  border: 2px solid var(--brown3);
+  color: var(--brown2);
+  padding: 5px;
+  margin: 5px;
+}
+
+.form2 input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--brown2);
+}
+
+.form2 input::placeholder {
+  color: var(--brown3);
+  font-size: var(--heading6);
+  padding: 10px;
+}
+
+.form2 section {
+  padding: 5px;
+}
+
+.form2 img {
+  width: 50px;
+}
+
+.form2 div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form2 button {
+  padding: 5px;
+  margin: 25px;
+  width: 150px;
+  border-radius: 15px;
+  border: 2px solid var(--brown2);
+  background-color: var(--brown2);
+  color: #ffffff;
+  cursor: pointer
+}
+
 

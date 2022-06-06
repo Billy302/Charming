@@ -37,15 +37,25 @@
   --holdpadding: 50px;
 }
 
+<<<<<<< HEAD
 html {
   font-size: 62.5%;
 }
 
+=======
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 * {
   margin: 0px;
   box-sizing: border-box;
   position: relative;
 }
+<<<<<<< HEAD
+=======
+
+html {
+  font-size: 62.5%;
+}
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 a {
   text-decoration: none;
 }

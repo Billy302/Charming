@@ -3,10 +3,16 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
+<<<<<<< HEAD
 import Style from "./Cart.module.css";
 import Processbar from '../../Components/Processbar/Processbar'
 import data from '../../Json/Order.json'
 
+=======
+import Style from './Cart.module.css'
+import Processbar from '../../Components/Processbar/Processbar'
+import data from '../../Json/Order.json'
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 
 function Cart4() {
   // 使用 useNavigate 套件

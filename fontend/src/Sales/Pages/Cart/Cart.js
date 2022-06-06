@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React from "react";
 import Style from "./Cart.module.css";
+=======
+import React from 'react'
+import Style from './Cart.module.css'
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
 
 function ComponentsName() {
   return (
@@ -10,7 +15,14 @@ function ComponentsName() {
         <a href="/Product/1">GO</a>
       </div>
     </div>
+<<<<<<< HEAD
   );
 }
 
 export default ComponentsName;
+=======
+  )
+}
+
+export default ComponentsName
+>>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
