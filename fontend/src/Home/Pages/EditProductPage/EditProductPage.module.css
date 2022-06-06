@@ -1,8 +1,0 @@
-.EditProduct{
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 100px;
-    box-shadow: 0px 0px 5px var(--gray3);
-    border-radius: 15px;
-    --textAreaWidth:100%;
-}
