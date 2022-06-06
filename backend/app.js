@@ -4,13 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config();
-const cors = require('cors')
+const cors = require('cors');
 
 // 引入各自的路由
-var SalesRouter = require('./routes/Sales/index')
-var AccountRouter = require('./routes/Account/users')
-const authRoute = require("./routes/Account/auth")
-
+var SalesRouter = require('./routes/Sales/index');
+var AccountRouter = require('./routes/Account/users');
+const authRoute = require('./routes/Account/auth');
+var blogRouter = require('./routes/Blog/index');
 
 var app = express();
 
@@ -26,28 +26,28 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-
 // 引用各自路由，記得加自己的代號
-app.use(cors())
+app.use(cors());
 app.use('/Sales', SalesRouter);
 //http://localhost:3001/Account
-app.use('/Account', AccountRouter)
-app.use("/api/user", authRoute);
+app.use('/Account', AccountRouter);
+app.use('/api/user', authRoute);
+app.use('/Blog', blogRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use(function (req, res, next) {
+    next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;

@@ -22,7 +22,7 @@ const Blog = (props) => {
     // 為什麼props資料讀不到，但是可以render?
 
     useEffect(() => {
-        fetch('http://localhost:7000/article')
+        fetch('http://localhost:3001/blog/article')
             .then((res) => res.json())
             .then((data) => setTrendingArticle([...data]));
     }, []);
@@ -33,7 +33,7 @@ const Blog = (props) => {
             <UnloginNav />
             <TagBar isDarkMode={darkMode} />
             {/* <PillBtn onClick={darkModeHandler}>關燈</PillBtn> */}
-            {/* <SliderSection isDarkMode={darkMode} /> */}
+            <SliderSection isDarkMode={darkMode} />
             <TrendingArticle trendingArticle={trendingArticle} isDarkMode={darkMode} />
             <SelectedArticle isDarkMode={darkMode} />
             <Footer />

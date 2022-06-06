@@ -1,10 +1,10 @@
-import React from "react";
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import React from 'react'
+import './App.css'
+import { Route, Routes } from 'react-router-dom'
 
 //component
-import Footer from "./Home/Components/Footer/Footer";
-import PhoneFooter from "./Home/Components/PhoneFooter/PhoneFooter";
+import Footer from './Home/Components/Footer/Footer'
+import PhoneFooter from './Home/Components/PhoneFooter/PhoneFooter'
 
 //首頁
 import LoginHome from './Home/Pages/LoginHome/LoginHome'
@@ -17,18 +17,18 @@ import ProductPageEditButton from './Home/Pages/ProductPageEditButton/ProductPag
 
 //會員
 //Pages
-import SignInIdentify from "./Account/Pages/SignInIdentify/SignInIdentify";
-import SignInRecover from "./Account/Pages/SignInRecover/SignInRecover";
-import SignUpInfo from "./Account/Pages/SignUpInfo/SignUpInfo";
-import SignUp from "./Account/Pages/SignUp/SignUp";
-import SignIn from "./Account/Pages/SignIn/SignIn";
+import SignInIdentify from './Account/Pages/SignInIdentify/SignInIdentify'
+import SignInRecover from './Account/Pages/SignInRecover/SignInRecover'
+import SignUpInfo from './Account/Pages/SignUpInfo/SignUpInfo'
+import SignUp from './Account/Pages/SignUp/SignUp'
+import SignIn from './Account/Pages/SignIn/SignIn'
 
 //Pages user
-import MyShoppingList from "./Account/Pages/User/MyShoppingList";
-import NoticeSetting from "./Account/Pages/User/NoticeSetting";
-import MyCollection from "./Account/Pages/User/MyCollection";
-import MyAccount from "./Account/Pages/User/MyAccount";
-import MyNotice from "./Account/Pages/User/MyNotice";
+import MyShoppingList from './Account/Pages/User/MyShoppingList'
+import NoticeSetting from './Account/Pages/User/NoticeSetting'
+import MyCollection from './Account/Pages/User/MyCollection'
+import MyAccount from './Account/Pages/User/MyAccount'
+import MyNotice from './Account/Pages/User/MyNotice'
 
 //購物車頁
 import Cart1 from './Sales/Pages/Cart/Cart1'
@@ -48,9 +48,10 @@ import OrderList from './Sales/Pages/Order/OrderList'
 // import SeePoster from './Forum/Pages/SeePoster/SeePoster ';
 
 // 部落格
-// import Blog from './Blog/Components/Page/Blog';
-// import Article from './Blog/Components/Page/Article';
-// import Search from './Blog/Components/Page/Search';
+import Blog from './Blog/Components/Page/Blog'
+import Article from './Blog/Components/Page/Article'
+import Search from './Blog/Components/Page/Search'
+// import MyProduct from './Blog/Components/Page/MyProduct';
 
 function App() {
   return (
@@ -77,7 +78,7 @@ function App() {
           element={<EditProductPage />}
         />
         <Route path="/MyProduct/AddProduct" element={<AddProduct />} />
-        
+
         {/* --------註冊及登入----- */}
         {/* 忘記密碼 */}
         {/* <Route path="/signin/identify" element={<SignInIdentify />} />
@@ -87,7 +88,7 @@ function App() {
         {/* 註冊 */}
         {/* <Route path="/signup" element={<SignUp />} /> */}
         {/* 登入 */}
-        {/* <Route path="/signin" element={<SignIn />} /> */} 
+        {/* <Route path="/signin" element={<SignIn />} /> */}
         {/* -------user 登入後頁面------- */}
         {/* <Route path="/shoppinglist" element={<MyShoppingList />} />
         <Route path="/notice/setting" element={<NoticeSetting />} />
@@ -103,7 +104,7 @@ function App() {
         <Route path="BtocPage/MySale" element={<MySale />} />
         <Route path="BtobPage/Order/:id" element={<Order />} />
         <Route path="BtobPage/Order" element={<OrderList />} />
-        
+
         {/* 討論區 */}
         {/* <Route path="/AskPageOne" element={<AskPageOne />} /> */}
         {/* <Route path="/AskPage" element={<AskPage />} />
@@ -114,16 +115,16 @@ function App() {
         {/* 討論區結束 */}
 
         {/* 部落格開始 */}
-        {/* <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/article/:id" element={<Article />} />
-                <Route path="/blog/search/:desc" element={<Search />} />
-                <Route path="/blog" element={<Footer />} /> */}
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/article/:id" element={<Article />} />
+        <Route path="/blog/search/:category" element={<Search />} />
+        {/* <Route path="/blog/myproduct" element={<MyProduct />} /> */}
         {/* 部落格結束 */}
       </Routes>
       <Footer />
       <PhoneFooter />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

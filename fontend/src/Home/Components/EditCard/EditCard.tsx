@@ -4,7 +4,7 @@ import { FcLikePlaceholder, FcLike } from 'react-icons/fc'
 import { FaTrashAlt, FaEdit } from 'react-icons/fa'
 
 interface CardProps {
-  userID : number
+  userID: number
   ID: number
   product_name: string
   author_name: string

@@ -11,19 +11,21 @@ const ChatArea = () => {
     const params = useParams();
     const currentArticle = params.id;
 
-    const chatMsgPassingHandler = (message) => {
-        setChatContext((prev) => [message, ...prev]);
-    };
-
     useEffect(() => {
-        fetch(`http://localhost:7000/comment/${currentArticle}`)
+        fetch(`http://localhost:3001/blog/comment/${currentArticle}`)
             .then((res) => res.json())
-            .then((data) => setChatContext([...data]));
-    }, []);
+            .then((data) => {
+                setChatContext([...data]);
+            });
+    }, [currentArticle]);
+
+    const chatMsgPassingHandler = (message) => {
+        setChatContext((prev) => [...prev, message]);
+    };
 
     return (
         <section className={classes['chat-area']}>
-            <TypingArea onChatMsg={chatMsgPassingHandler} />
+            <TypingArea onChatMsg={chatMsgPassingHandler} onChatMsgPassing={chatMsgPassingHandler} />
             {chatContext && <ChatList src={usericon} messageContext={chatContext} />}
         </section>
     );
