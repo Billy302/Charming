@@ -1,0 +1,35 @@
+.author-card {
+    border: 0.1rem solid #eee;
+    box-shadow: 0.1rem 0.1rem 0.3rem #eee;
+    padding: 4rem;
+    margin: auto;
+}
+
+.author-card--body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.author-card--body img {
+    width: 8rem;
+    height: 8rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.author-card--body__content {
+    padding-left: 2rem;
+}
+
+.author-card--footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border: 0.1rem solid #eee;
+    padding: 2rem 0;
+    box-shadow: 0.1rem 0.1rem 0.3rem #eee;
+}
+
+.author-card--footer__btn {
+    margin: 0;
+}

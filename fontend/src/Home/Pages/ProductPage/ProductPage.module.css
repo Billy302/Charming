@@ -1,0 +1,216 @@
+.ProductPage{
+    margin: 50px 150px;
+    --borderRadius:15px;
+    --bigPictureSize:50%;
+    --smallPictureSize:94px;
+}
+/* 主要商品名稱 */
+.ProductPage h3{
+    font-size: var(--heading3);
+    color: var(--brown1);
+}
+
+/* 區隔標題框 */
+.ProductTitle{
+    background-color: var(--brown4);
+    border-radius: 15px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: var(--heading5);
+    color: var(--brown1);
+    font-weight: bold;
+}
+/* 設計師頭像照 */
+.designerPicture{
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    object-fit: cover;
+    border: 2px solid var(--brown1);
+    border-radius: 999px;
+}
+.displaySpaceAround{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+/* 設計師地點、加入時間 */
+.icon{
+    display: flex;
+    font-size: var(--heading4);
+    color: var(--brown2);
+}
+.icon div:first-child{
+    margin-right: 30px;
+}
+.displayFlex{
+    display: flex;
+    justify-content: space-between;
+}
+/* 販售數量 */
+.sellNumber{
+    display: flex;
+    align-items: center;
+}
+/* 設計師名稱 */
+.aboutDesigner{
+    font-size: var(--heading3);
+    color: var(--green1);
+    line-height:50px
+}
+.displayCenter{
+    display: flex;
+    justify-content: center;
+}
+
+/* 刊登時間，檔案格式 */
+.updateTime{
+    display: flex;
+    margin-top: 10px;
+
+}
+.updateTime p{
+    margin-right: 30px;
+    color: var(--brown2);
+}
+/* price */
+.priceDiv{
+    margin-left: 5%;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    /* align-items: center; */
+}
+.price{
+    font-size: var(--heading3);
+    color: var(--red);
+    padding: 50px 0px;
+}
+/* 購買數量 */
+.numberCount{
+    align-items: center;
+}
+.numberCount input{
+    width: 50px;
+    height: 30px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    font-size: var(--heading4);
+    color: var(--brown2);
+    /* appearance: none; */
+
+}
+.shoppingCar{
+    width: 200px;
+    display: block;
+    appearance: none;
+    padding:15px 30px;
+    border: none;
+    font-size: var(--heading4);
+    border-radius: 15px;
+    color: var(--white);
+    margin: 5px;
+    margin-top: 10px;
+    background-color: var(--red);
+    Cursor:pointer;
+}
+.shoppingCar:active{
+    background-color: rgb(93, 8, 8);
+}
+.productAdd {
+    width: 200px;
+    display: block;
+    appearance: none;
+    padding:15px 30px;
+    border: none;
+    font-size: var(--heading4);
+    border-radius: 15px;
+    color: var(--white);
+    margin: 5px;
+    margin-top: 10px;
+    background-color: var(--white);
+}
+
+.ProductText pre{
+    padding:20px;
+    font-size: var(--heading5);
+    white-space: pre-wrap;
+}
+
+.displayFlex > p {
+    font-size: var(--heading5);
+}
+/* 購買數量 */
+.buyNumber{
+    align-self:flex-end;
+}
+/* 文字輸入框樣式 */
+.inputTextStyle{
+    border: 2px solid var(--brown3);
+    border-radius: 15px;
+    width: 80px;
+    padding: 5px;
+    font-size: var(--heading4);
+}
+/* 售出數量、檔案格式等小資訊 */
+.littleInformation{
+    font-size: var(--heading4);
+    color: var(--brown2);
+}
+.title{
+    font-size: var(--heading5);
+    color: var(--brown2);
+    padding-right:50px ;
+    white-space: nowrap;
+}
+/* 照片 */
+.ProductPage{
+    margin: 50px 150px;
+    --borderRadius:15px;
+    --bigPictureSize:50%;
+    --smallPictureSize:94px;
+}
+.bigImg{
+    width: var(--bigPictureSize);
+    height: var(--bigPictureSize);
+    /* margin-top: 20px; */
+    margin-right: 10px;
+    border: 2px solid var(--brown2);
+    border-radius: var(--borderRadius);
+    object-fit: contain;
+}
+.smallImg{
+    display: block;
+    width: var(--smallPictureSize);
+    height: var(--smallPictureSize);
+    margin-bottom: 20px;
+    border: none;
+    border-radius: var(--borderRadius);
+    opacity: .4;
+    background-color: #fff;
+}
+.smallImg2{
+    display: block;
+    width: var(--smallPictureSize);
+    height: var(--smallPictureSize);
+    margin-bottom: 20px;
+    border-radius: var(--borderRadius);
+    overflow: hidden;
+    transform: translateY(0px);
+    translate: .4s;
+    object-fit: contain;
+}
+.smallImg:focus{
+        transform: translateY(-10px);
+
+    opacity:1;
+}
+@media screen and (max-width:1024px){
+   
+}
+@media screen and (max-width:780px) {
+    
+}
+@media screen and (max-width:441px){
+  
+}

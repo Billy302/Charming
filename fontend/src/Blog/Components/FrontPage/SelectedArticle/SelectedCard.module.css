@@ -1,0 +1,224 @@
+.selected-card {
+    margin: 2rem;
+    width: 90%;
+    /* display: table-cell; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    color: var(--brown2);
+}
+
+.selected-card--title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 0.2rem solid black;
+    margin-bottom: 1rem;
+
+    vertical-align: bottom;
+}
+
+.active--title {
+    color: white;
+    transition: 2s;
+}
+
+.selected-card--title__rightbtn {
+    font-size: 2.5rem;
+    display: inline-block;
+    padding-top: 0.5rem;
+}
+
+.testtest {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.testtest::before {
+    content: '\2192';
+    opacity: 0;
+    transition: 2s;
+    margin-left: 1rem;
+}
+
+.selected-card--title__test:hover .testtest::before {
+    opacity: 1;
+}
+
+.selected-card--title__test {
+    /* float: right; */
+    display: table-cell;
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.selected-card h3 {
+    font-size: 2rem;
+    align-items: stretch;
+    margin-bottom: 1rem;
+}
+
+.selected-card--title__testtest {
+    text-align: start;
+    height: 4.5rem;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.test {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 400;
+    opacity: 0;
+    transition: 1.5s;
+    max-width: 0;
+    white-space: nowrap;
+}
+
+.selected-card--title__detail {
+    opacity: 1;
+    font-size: 1.5rem;
+    margin: 0;
+    transition: 1s ease-in-out;
+    display: inline;
+}
+
+.selected-card--title__test:hover .test {
+    max-width: 200px;
+    opacity: 1;
+    transform: translateX(1rem);
+}
+
+.selected-card--context {
+    display: flex;
+    flex-direction: column;
+}
+
+.selected-card--context img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 1rem;
+    border-radius: 3%;
+}
+
+.selected-card--context h4 {
+    border-bottom: 0.1rem solid black;
+    padding-bottom: 1rem;
+}
+
+.selected-card--context p {
+    border-bottom: 0.1rem solid black;
+    padding: 1rem 0;
+}
+
+@media (max-width: 1200px) {
+    .selected-card {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 3rem;
+    }
+
+    .selected-card--title {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        border-bottom: 0.2rem solid black;
+        margin-bottom: 1rem;
+    }
+
+    .selected-card--title__rightbtn {
+        font-size: 3rem;
+        display: block;
+    }
+
+    .selected-card h3 {
+        font-size: 2rem;
+        align-items: stretch;
+        margin-bottom: 1rem;
+    }
+
+    .selected-card--context {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .selected-card--context img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
+        border-radius: 3%;
+    }
+
+    .selected-card--context h4 {
+        border-bottom: 0.1rem solid black;
+        padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .selected-card--title__rightbtn {
+        font-size: 2.3rem;
+        display: block;
+        margin-top: 0.2rem;
+    }
+
+    .selected-card h3 {
+        font-size: 1.5rem;
+        align-items: stretch;
+        margin-bottom: 0.8rem;
+    }
+
+    .selected-card--context img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
+        border-radius: 3%;
+    }
+
+    .selected-card--context h4 {
+        border-bottom: 0.1rem solid black;
+        padding-bottom: 1rem;
+        font-size: 0.5rem;
+    }
+}
+
+/* 目前 */
+
+@media (max-width: 768px) {
+    .selected-card--title__rightbtn {
+        font-size: 1.8rem;
+        display: block;
+    }
+
+    .selected-card--context img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 1rem;
+        border-radius: 3%;
+    }
+
+    .selected-card--context h4 {
+        border-bottom: 0.1rem solid black;
+        padding-bottom: 1rem;
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+}
+
+@media (max-width: 480px) {
+}
+
+/* @media (max-width: 375px) {
+} */

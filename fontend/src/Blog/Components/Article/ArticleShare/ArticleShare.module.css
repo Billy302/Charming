@@ -1,0 +1,41 @@
+.article--share {
+    font-size: 6rem;
+    margin-top: 5rem;
+}
+
+.article--share__icon {
+    padding-right: 2rem;
+    transition: 0.5s;
+}
+
+.fav-icon {
+    font-size: 5.4rem;
+}
+
+.article--share__icon:hover {
+    transform: translateY(-0.8rem);
+}
+
+.article--share__icon:active {
+    transform: translateY(-0.3rem);
+}
+
+.article--share__icon.facebook-icon:hover {
+    color: #1877f2;
+}
+
+.article--share__icon.line-icon:hover {
+    /* filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%); */
+    filter: brightness(0) saturate(100%) invert(39%) sepia(86%) saturate(1326%) hue-rotate(89deg) brightness(100%)
+        contrast(110%);
+}
+
+.article--share__icon.fav-icon:hover {
+    filter: brightness(0) saturate(100%) invert(59%) sepia(87%) saturate(378%) hue-rotate(4deg) brightness(105%)
+        contrast(91%);
+}
+
+.article--share__icon.twitter-icon:hover {
+    filter: brightness(0) saturate(100%) invert(38%) sepia(100%) saturate(734%) hue-rotate(162deg) brightness(98%)
+        contrast(104%);
+}

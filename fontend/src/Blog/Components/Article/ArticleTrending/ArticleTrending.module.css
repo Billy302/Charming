@@ -1,0 +1,43 @@
+.article--context__related ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.article--context__related p {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.article--context__related-arrow {
+    font-size: 2.5rem;
+}
+
+.article--context__related li {
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 3rem;
+}
+
+.article--context__related li:not(:last-child) {
+    margin-bottom: 2.5rem;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.container span {
+    /* background-color: green;
+    color: white;
+    border-radius: 50%;
+    font-size: 2rem;
+    margin-right: 0.5rem;
+    margin-top: 0.3rem; */
+    font-size: 1.8rem;
+    margin-top: 0.3rem;
+    margin-right: 1rem;
+}
