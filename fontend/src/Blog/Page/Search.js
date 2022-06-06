@@ -1,6 +1,6 @@
-import ArticleList from '../ArticleList/ArticleList'
-import UnloginNav from '../UI/UnLoginNavbar'
-import Footer from '../UI/Footer'
+import ArticleList from '../Components/ArticleList/ArticleList'
+import UnloginNav from '../Components/UI/UnLoginNavbar'
+import Footer from '../Components/UI/Footer'
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 

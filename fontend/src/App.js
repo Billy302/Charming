@@ -45,10 +45,9 @@ import OrderList from './Sales/Pages/Order/OrderList'
 // import SeePoster from './Forum/Pages/SeePoster/SeePoster ';
 
 // 部落格
-import Blog from './Blog/Components/Page/Blog'
-import Article from './Blog/Components/Page/Article'
-import Search from './Blog/Components/Page/Search'
-// import MyProduct from './Blog/Components/Page/MyProduct';
+import Blog from './Blog/Page/Blog'
+import Article from './Blog/Page/Article'
+import Search from './Blog/Page/Search'
 
 function App() {
   return (
@@ -89,7 +88,6 @@ function App() {
         <Route path="/collection" element={<MyCollection />} />
         <Route path="/account" element={<MyAccount />} />
 
-        
         {/* --------商品頁面-------- */}
         <Route path="Sales/Cart1" element={<Cart1 />} />
         <Route path="Sales/Cart2" element={<Cart2 />} />
