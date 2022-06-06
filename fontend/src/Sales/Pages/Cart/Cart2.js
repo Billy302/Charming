@@ -135,6 +135,7 @@ function Cart2() {
           />
         </div>
       </table>
+
       {/* 按鈕 */}
       <div className={Style.checkButton}>
         <button

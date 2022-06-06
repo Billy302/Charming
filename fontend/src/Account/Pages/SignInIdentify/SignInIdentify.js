@@ -13,8 +13,7 @@ function SignInIdentify() {
           <label>E-mail</label>
           <input type="email" />
           <p className={style.p}>
-            請輸入你註冊時的Email，我們會發送一封
-            <br />
+            請輸入你註冊時的Email，我們會發送一封<br />
             信件，點擊信件中的連結以重設密碼
           </p>
           <button className={style.button}>送出</button>

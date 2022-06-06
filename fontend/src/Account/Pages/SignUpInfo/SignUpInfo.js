@@ -229,12 +229,9 @@ function SignUpInfo(props) {
         </form>
       </main>
     </div>
-<<<<<<< HEAD
-=======
     </div>
     
 
->>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
   );
 }
 
