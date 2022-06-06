@@ -1,6 +1,6 @@
 // http://localhost:3000/Sales/Cart1
 import React from "react";
-import Processbar from "../../Components/Processbar/Processbar";
+import Processbar from '../../Components/ProcessBar/Processbar'
 import Cart from "./Cart";
 import Style from "./Cart.module.css";
 import { useNavigate } from "react-router-dom";
