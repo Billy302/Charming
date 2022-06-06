@@ -16,10 +16,7 @@
     "react-reveal": "^1.2.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
-<<<<<<< HEAD
-=======
     "react-share": "^4.4.0",
->>>>>>> 23d04c36c11044a97e803ae3df64f5a59838f249
     "validate.js": "^0.13.1",
     "web-vitals": "^2.1.4"
   },
