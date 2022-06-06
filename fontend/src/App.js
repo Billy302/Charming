@@ -48,6 +48,7 @@ import OrderList from './Sales/Pages/Order/OrderList'
 import Blog from './Blog/Page/Blog'
 import Article from './Blog/Page/Article'
 import Search from './Blog/Page/Search'
+import MyProductHeader from './Blog/Page/MyProduct'
 
 function App() {
   return (
@@ -111,7 +112,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/article/:id" element={<Article />} />
         <Route path="/blog/search/:category" element={<Search />} />
-        {/* <Route path="/blog/myproduct" element={<MyProduct />} /> */}
+        <Route path="/blog/myproduct" element={<MyProductHeader />} />
         {/* 部落格結束 */}
       </Routes>
       <Footer />
