@@ -1,5 +1,5 @@
 /* 外框線 */
-.auto {
+.auto2 {
   margin: 20px auto;
   width: 80%;
   height: auto;
@@ -12,23 +12,23 @@
   align-items: center;
 }
 
-.h1 {
+.h12 {
   text-align: center;
   color: var(--brown2);
   padding: 30px;
 }
 
-.form {
+.form2 {
   display: flex;
   flex-direction: column;
   color: var(--main-color);
 }
 
-.form label {
+.form2 label {
   margin: 5px;
 }
 
-.form input,
+.form2 input,
 select {
   border-radius: 15px;
   border: 2px solid var(--brown3);
@@ -37,33 +37,33 @@ select {
   margin: 5px;
 }
 
-.form input:focus,
+.form2 input:focus,
 select:focus {
   outline: none;
   border-color: var(--brown2);
 }
 
-.form input::placeholder {
+.form2 input::placeholder {
   color: var(--brown3);
   font-size: var(--heading6);
   padding: 10px;
 }
 
-.form section {
+.form2 section {
   padding: 5px;
 }
 
-.form img {
+.form2 img {
   width: 50px;
 }
 
-.form div{
+.form2 div{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.form button {
+.form2 button {
   padding: 5px;
   margin: 25px;
   width: 150px;
@@ -71,4 +71,5 @@ select:focus {
   border: 2px solid var(--brown2);
   background-color: var(--brown2);
   color: #ffffff;
+  cursor: pointer
 }

@@ -5,33 +5,38 @@ class AuthService {
   login() {}
   logout() {}
   register(
-    user_account,
-    user_password,
-    user_name,
-    gender,
-    birthday,
-    email,
-    mobile,
-    city,
-    interest_product,
-    interest_collection,
-    interest_article
+    account,
+    password
+    // user_account,
+    // user_password,
+    // user_name,
+    // gender,
+    // birthday,
+    // email,
+    // mobile,
+    // city,
+    // interest_product,
+    // interest_collection,
+    // interest_article
   ) {
-    return axios.post(API_URL + "/register", {
-      user_account,
-      user_password,
-      user_name,
-      gender,
-      birthday,
-      email,
-      mobile,
-      city,
-      interest_product,
-      interest_collection,
-      interest_article,
+    return axios.post(API_URL + "/signup", {
+      account,
+      password
+      // user_account,
+      // user_password,
+      // user_name,
+      // gender,
+      // birthday,
+      // email,
+      // mobile,
+      // city,
+      // interest_product,
+      // interest_collection,
+      // interest_article,
     });
   }
   getCurrentUser() {}
 }
 
+// class要new 一個object出來
 export default new AuthService();
