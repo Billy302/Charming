@@ -5,7 +5,7 @@ import { BsFillBellFill } from 'react-icons/bs'
 import { FaShoppingCart, FaAngleDown } from 'react-icons/fa'
 import { ImSearch } from 'react-icons/im'
 import logo from '../../Assets/charming_logo.png'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 
 function LoginNav(props) {
   // 取得包含目前URL的狀態和位置的物件函數
@@ -14,13 +14,10 @@ function LoginNav(props) {
   const navigate = useNavigate()
 
   const searchParams = new URLSearchParams(location.search)
-
   let userId = searchParams.get('id') ? searchParams.get('id') : ''
   let type = searchParams.get('typeID') ? searchParams.get('typeID') : ''
 
-  let searchItem = searchParams.get('itemsName')
-    ? searchParams.get('itemsName')
-    : ''
+  let userIdParams = Params.userId ? Params.userId : ''
 
   const [searchValue, setSearchValue] = useState('')
 
@@ -36,22 +33,9 @@ function LoginNav(props) {
   window.addEventListener('scroll', displayItemType)
 
   function goPath() {
-    console.log(searchItem)
-    if (searchItem) {
-      navigate(
-        `../${
-          location.pathname +
-          location.search.replace(
-            `itemsName=${searchItem}`,
-            `itemsName=${searchValue}`
-          )
-        }`
-      )
-    } else {
-      navigate(
-        `../${location.pathname + location.search}&itemsName=${searchValue}`
-      )
-    }
+    // 未登入 還沒寫
+    // 已登入
+    navigate(`../Product?id=${userId}&page=1&itemsName=${searchValue}`)
   }
 
   return (
@@ -60,6 +44,8 @@ function LoginNav(props) {
       <nav className={style.navBar}>
         {/* logo 與charming文字 */}
         <div className={style.charmingLogo}>
+          {/* 未登入，跳"/"  */}
+          {/* 已登入，跳"/Product?id=${userId}&page=1" */}
           <a href={`/Product?id=${userId}&page=1`} className={style.logoIcon}>
             <img src={logo} alt="logo" />
             <p>柴米Charming</p>
@@ -144,9 +130,9 @@ function LoginNav(props) {
                 <div className={style.navList}>
                   <a href="">會員資料修改</a>
                   <a href="">我的設計</a>
-                  <a href={`/MyProduct?id=${userId}&page=1`}>我的商品</a>
+                  <Link to={`../MyProduct?id=${userId}&page=1`}>我的商品</Link>
                   <a href="/collection">我的收藏</a>
-                  <a href={`/BtobPage/Order?id=${userId}&page=1`}>購買清單</a>
+                  <Link to={`../BtobPage/Order?id=${userId}&page=1`}>購買清單</Link>
                   <a href="/">登出</a>
                 </div>
                 {/* ——————————————————————————————————————— */}

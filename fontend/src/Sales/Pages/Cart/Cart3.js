@@ -137,6 +137,7 @@ function Cart3() {
           // 新增storage:addID 提供給Cart4使用
           storage.setItem('addID', obj)
         })
+      Navigate('../Sales/Cart4')
     }
   }
 
@@ -260,7 +261,6 @@ function Cart3() {
           onClick={() => {
             // 做驗證，成功就跳頁 & 新增資料庫
             checkForm()
-            Navigate('../Sales/Cart4')
           }}
         >
           下一步

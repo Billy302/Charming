@@ -149,17 +149,17 @@ sales
       const error = validationResult(req);
 
       // 有錯誤就回傳，沒錯誤就跑SQL
-      // if (!error.isEmpty()) {
-      //   res.send({ error: error.array() });
-      // } else {
-      //   const sql = `INSERT INTO product_items( author_name, product_name, product_copy, price, pic_path, type_id)
-      // VALUES ('${req.body.authorName}','${req.body.productName}','${req.body.productCopy}','${req.body.price}','${req.body.picPath}','${req.body.typeID}')`;
-      //   // 執行SQL語法，新增商品資料
-      //   const [datas] = await connection.query(sql).catch((error) => {
-      //     console.log(`執行 Query : ${sql}時出錯 `);
-      //   });
-      // }
-      console.log(req.body);
+      if (!error.isEmpty()) {
+        res.send({ error: error.array() });
+      } else {
+        const sql = `INSERT INTO product_items( author_name, product_name, product_copy, price, pic_path, type_id)
+      VALUES ('${req.body.authorName}','${req.body.productName}','${req.body.productCopy}','${req.body.price}','${req.body.picPath}','${req.body.typeID}')`;
+        // 執行SQL語法，新增商品資料
+        const [datas] = await connection.query(sql).catch((error) => {
+          console.log(`執行 Query : ${sql}時出錯 `);
+        });
+        res.send("成功")
+      }
     }
   );
 
@@ -204,7 +204,7 @@ sales
   // http://localhost:3001/Sales/api/product/1
   // 需要一個參數，透過Params->商品ID  : id
   .delete(async (req, res, next) => {
-    const sql = `DELETE FROM product_items WHERE ID = ${req.params.id}`;
+    const sql = `DELETE FROM product_items WHERE ID = '${req.params.id}'`;
     // 執行SQL，刪除商品項目
     const datas = await connection.query(sql).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
@@ -619,33 +619,40 @@ sales
 1. 功能 : 上傳圖片。Method: POST。URL: /api/upload  檔案儲存位置 fontend/src/Home/Assets/ProductImg 未驗證
 2. 功能 : 刪除圖片。Method: POST。URL: /api/delete  未驗證
 */
-
 // 設定multer內的參數，由前端限定上傳格式，檔案另存位置 & 檔名
+
 var storage = multer.diskStorage({
   // 檔案上傳到這裡
   destination: function (req, file, cb) {
-    cb(null, "../../../fontend/public/Home/ProductImg");
+    cb(null, "../fontend/public/Home/ProductImg");
   },
+
   // 定義檔案名稱規範
   filename: function (req, file, cb) {
-    cb(null, Date.now());
+    cb(null, Date.now().toString() + file.originalname.substr(-4));
   },
 });
 
-upload = multer({ storage: storage });
+upload = multer({ "storage": storage });
 // 新增圖片檔
-// 前端input type="file" name="uploadedFiles"，限制5筆資料
-sales.post(
-  "/api/upload",
-  upload.array("uploadedFiles", 5),
-  async (req, res, next) => {
-    res.send(JSON.stringify(req.files));
-  }
-);
+// 前端input type="file"
+sales.post("/api/upload", upload.array("theFile1",5), function (req, res, next) {
+  console.log(req.files);
+  // {"fieldname":"theFile1",
+  // "originalname":"Andrew.png",
+  // "encoding":"7bit",
+  // "mimetype":"image/png",
+  // "destination":"uploads",
+  // "filename":"1649758841069.jpge",
+  // "path":"uploads\\1649758841069-Andrew.jpge",
+  // "size":8810
+  // }
+  res.send(req.files);
+});
 // 刪除圖片檔
 // 需要一個參數，以body -> 檔名 : name
 sales.post("/api/delete", async (req, res, next) => {
-  fs.unlink(`../fontend/src/Home/assets/${req.body.id}.png`, (err) => {
+  fs.unlink(`../fontend/public/Home/ProductImg/${req.body.name}`, (err) => {
     if (err) {
       console.log(err);
       res.send("刪除文件失敗");

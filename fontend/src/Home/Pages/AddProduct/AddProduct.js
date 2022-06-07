@@ -4,184 +4,212 @@ import style from './AddProduct.module.css'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { BsCaretDownFill } from 'react-icons/bs'
 
-function EditProduct() {
-  const [products, setProducts] = useState([])
+function AddProduct() {
+  const [img1, setImg1] = useState()
+  const [productName, setProductName] = useState('')
+  const [productCopy, setProductCopy] = useState()
+  const [productPrice, setProductPrice] = useState('')
+  const [productType, setProductType] = useState('101')
+  // const [picPath, setPicPath] = useState('')
+  let picPath = ''
+
+  // 新建formData物件，用於處理整個form
+  const formData = new FormData()
+  // 存放圖片路徑 (string)
+  // 處理圖片，可以多張，不會保留上次按的圖片
+  function fileChange(e) {
+    for (let i = 0; i < e.target.files.length; i++) {
+      let file = document.getElementById(`theFile1`).files
+      let image = document.getElementById(`image${i + 1}`)
+      let readFile = new FileReader()
+      readFile.readAsDataURL(file[i])
+      readFile.addEventListener('load', function () {
+        image.src = readFile.result
+        image.style.maxWidth = '500px'
+        image.style.maxHeight = '500px'
+      })
+    }
+    for (let j = 0; j < 5 - e.target.files.length; j++) {
+      let image = document.getElementById(`image${5 - j}`)
+      image.removeAttribute('src')
+    }
+  }
+
   const fetchProducts = async () => {
-    //向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
-    const response = await fetch('http://localhost:3001/Sales/api/product?id=1')
-    const data = await response.json()
-    // 設定到狀態後，因改變狀態會觸發updating生命周期，然後重新render一次
-    setProducts(data)
-    console.log(data[0][1])
-  }
-
-  // didMount
-  useEffect(() => {
-    fetchProducts()
-    console.log(products)
-  }, [])
-
-  const doFirst = () => {
-    // 先跟 HTML 畫面產生關聯，再建事件聆聽功能
-    document.getElementById('theFile').onchange = fileChange
-  }
-  const fileChange = () => {
-    let file = document.getElementById('theFile').files[0]
-    let image = document.getElementById('image').files[0]
-    let readFile = new FileReader()
-    readFile.readAsDataURL(file)
-    readFile.addEventListener('load', function () {
-      image.src = readFile.result
-      image.style.maxWidth = '500px'
-      image.style.maxHeight = '500px'
+    // 新建formDataImg物件，用於處理照片
+    const formDataImg = new FormData()
+    // 將每張圖片都加入formData的theFile1值內
+    for (let i = 0; i < img1.length; i++) {
+      formDataImg.append('theFile1', img1[i])
+    }
+    // 與後端API取值，取新圖片的資訊
+    const response = await fetch('http://localhost:3001/Sales/api/upload', {
+      method: 'POST',
+      body: formDataImg,
     })
+    const data = await response.json()
+    // 取得新圖片的資訊後，另組成字串存入formData
+    for (let i = 0; i < data.length; i++) {
+      picPath += data[i]['filename'] + ' '
+    }
+    // 準備新增商品資料進SQL
+    formData.append('picPath', picPath)
+    formData.append('productName', productName)
+    formData.append('authorName', 'ishurik21')
+    formData.append('productCopy', productCopy)
+    formData.append('price', productPrice)
+    formData.append('typeID', productType)
+    fetch('http://localhost:3001/Sales/api/product', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log('Success:', result)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
   }
-  window.addEventListener('load', doFirst)
 
-  // 上傳照片-老師的：
-  // router.get('/api/upload',(req,res)=>{
-  //   res.render('register',{ title: 'Ajax POST Demo' })
-  // })
-  // 上傳照片-我們的：
-  // sales.post(
-  //   "/api/upload",
-  //   upload.array("uploadedFiles", 5),
-  //   async (req, res, next) => {
-  //     res.send(JSON.stringify(req.files));
-  //   }
-  // );
+  function getfetch(e) {
+    // 取消form按鈕的預設動作
+    let isPass = true
+    e.preventDefault()
+
+    if (isPass) {
+      fetchProducts()
+      // formData.append('productName', productName)
+      // formData.append('authorName', 'ishurik21')
+      // formData.append('productCopy', productCopy)
+      // formData.append('price', productPrice)
+      // formData.append('typeID', productType)
+      // fetch('http://localhost:3001/Sales/api/product', {
+      //   method: 'POST',
+      //   body: formData,
+      // })
+      //   .then((response) => response.json())
+      //   .then((result) => {
+      //     console.log('Success:', result)
+      //   })
+      //   .catch((error) => {
+      //     console.error('Error:', error)
+      //   })
+    }
+  }
   return (
     <>
       <LoginNav />
       <section className={style.addProduct}>
-        <form
-          name="form1"
-          action="/action_page.php"
-          enctype="multipart/form-data"
-          method="post"
-          onSubmit="checkForm(); return false;"
-        >
+        <form onSubmit={getfetch}>
+          {/* 圖片 */}
           <div className={style.pictureField}>
             <p className={style.title}>新增圖片</p>
-
-            {/*第一張圖*/}
-            <label for="theFile1" required>
+            <label htmlFor="theFile1" required>
               <IoIosAddCircleOutline className={style.icon} />
-              {/* 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image" />
+              {/* 第一張 預覽要顯示的圖片 */}
+              <img className={style.smallImg2} id="image1" alt="" />
             </label>
-            <input id="theFile1" className={style.btn} type="file"></input>
-
-            {/*第二張圖*/}
-            <label for="theFile2">
+            <label htmlFor="theFile1">
               <IoIosAddCircleOutline className={style.icon} />
-              {/* 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image" />
+              {/* 第二張 預覽要顯示的圖片 */}
+              <img className={style.smallImg2} id="image2" alt="" />
             </label>
-            <input id="theFile2" className={style.btn} type="file"></input>
-
-            {/*第三張圖*/}
-            <label for="theFile3">
+            <label htmlFor="theFile1">
               <IoIosAddCircleOutline className={style.icon} />
-              {/* 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image" />
+              {/* 第三張 預覽要顯示的圖片 */}
+              <img className={style.smallImg2} id="image3" alt="" />
             </label>
-            <input id="theFile3" className={style.btn} type="file"></input>
-
-            {/*第四張圖*/}
-            <label for="theFile4">
+            <label htmlFor="theFile1">
               <IoIosAddCircleOutline className={style.icon} />
-              {/* 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image" />
+              {/* 第四張 預覽要顯示的圖片 */}
+              <img className={style.smallImg2} id="image4" alt="" />
             </label>
-            <input id="theFile4" className={style.btn} type="file"></input>
-
-            {/*第五張圖*/}
-            <label for="theFile5">
+            <label htmlFor="theFile1">
               <IoIosAddCircleOutline className={style.icon} />
-              {/* 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image" src={``} />
+              {/* 第五張 預覽要顯示的圖片 */}
+              <img className={style.smallImg2} id="image5" alt="" />
             </label>
-            <input id="theFile5" className={style.btn} type="file"></input>
+            <input
+              id="theFile1"
+              name="theFile1"
+              className={style.btn}
+              type="file"
+              onChange={(e) => {
+                setImg1(e.target.files)
+                fileChange(e)
+              }}
+              multiple="multiple"
+            ></input>
           </div>
-
-          <div className={style.pictureField}>
-            <p className={style.title}>新增影片</p>
-            <label for="theRadio">
-              <IoIosAddCircleOutline className={style.icon} />
-              {/* 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image" src={``} />
-            </label>
-            <input id="theRadio" className={style.btn} type="file"></input>
-            <div className={style.warnText}>
-              <p>1. 大小：最大 30MB，像素不可超過 1280*1280px</p>
-              <p>2. 影片長度 : 10秒-60秒</p>
-              <p>3. 格式：MP4 （不支援 vp9 影像編碼格式）</p>
-            </div>
-          </div>
-
+          {/* 商品名稱 */}
           <div className={style.pictureField}>
             <p className={style.title}>商品名稱</p>
             <input
-              id="theText"
+              id="theName"
+              name="theName"
               className={style.inputTextStyle}
               type="text"
+              value={productName}
               placeholder="請輸入商品名稱"
+              onChange={(e) => {
+                setProductName(e.target.value)
+              }}
               required
             ></input>
           </div>
-
+          {/* 商品文案 */}
           <div className={style.pictureField}>
             <p className={style.title}>描述文案</p>
             <textarea
-              id="theArticle"
+              id="theCopy"
+              name="theCopy"
               className={style.inputArticleStyle}
               placeholder="請輸入商品描述"
+              value={productCopy}
+              onChange={(e) => {
+                setProductCopy(e.target.value)
+              }}
               required
             ></textarea>
           </div>
+
           <div className={style.itemStyle}>
+            {/* 商品價格 */}
             <div>
               <div className={style.pictureField}>
                 <p className={style.title}>商品價格</p>
                 <input
                   id="thePrice"
+                  name="thePrice"
                   className={style.inputTextStyle}
                   type="text"
                   placeholder="商品價格"
+                  value={productPrice}
+                  onChange={(e) => {
+                    setProductPrice(e.target.value)
+                  }}
                   required
                 ></input>
               </div>
               <div className={style.pictureField}>
                 <p className={style.title}>商品類別</p>
-                <select className={style.theSelect}>
-                  <option value={'攝影'}>攝影</option>
-                  <option value={'NFT'}>NFT</option>
-                  <option value={'UI/UX'}>UI/UX</option>
-                  <option value={'報告/教材'}>報告/教材</option>
-                  <option value={'Logo/插圖'}>Logo/插圖</option>
+                <select
+                  className={style.theSelect}
+                  id="theType"
+                  name="theType"
+                  value={productType}
+                  onChange={(e) => {
+                    setProductType(e.target.value)
+                  }}
+                >
+                  <option value={'101'}>攝影</option>
+                  <option value={'102'}>NFT</option>
+                  <option value={'103'}>UI/UX</option>
+                  <option value={'104'}>報告/教材</option>
+                  <option value={'105'}>Logo/插圖</option>
                 </select>
                 <BsCaretDownFill className={style.iconSelect} />
-              </div>
-            </div>
-
-            <div>
-              <div className={style.pictureField}>
-                <p className={style.title}>商品數量</p>
-                <input
-                  id="thePrice"
-                  className={style.inputTextStyle}
-                  type="text"
-                  placeholder="請輸入商品數量"
-                  required
-                ></input>
-              </div>
-              <div className={style.prepareTime}>
-                <p className={style.title}>較長備貨</p>
-                <label for="yes">是</label>
-                <input id="yes" type="radio" name="yesNo"></input>
-                <label for="no">否</label>
-                <input id="no" type="radio" name="yesNo"></input>
               </div>
             </div>
           </div>
@@ -196,4 +224,4 @@ function EditProduct() {
     </>
   )
 }
-export default EditProduct
+export default AddProduct
