@@ -12,8 +12,11 @@ const auth = localStorage.setItem('auth',false)
   // 設定導向頁面函式
   const navigate = useNavigate();
 
+  // 登入驗證
   const fetchAccount = async (e) => {
+    // 先停止表單送出
     e.preventDefault();
+    // 改透過FormData送資料
     const response = await fetch(`http://localhost:3001/Account/signin`,{method:'POST',
   body: new FormData(document.getElementById('form1'))})
   .then((r) => r.json())
