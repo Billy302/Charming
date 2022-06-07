@@ -1,8 +1,19 @@
+// 新增的商品的主人要改變數！！
+// 看會員怎麼寫
+
 import React, { useEffect, useState } from 'react'
 import LoginNav from '../../Components/LoginNav/LoginNav'
 import style from './AddProduct.module.css'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { BsCaretDownFill } from 'react-icons/bs'
+
+// Quill.js
+import ReactQuill from 'react-quill'
+import EditorToolbar, {
+  modules,
+  formats,
+} from '../../Components/EditorTool/EditorToolbar'
+import 'react-quill/dist/quill.snow.css'
 
 function AddProduct() {
   const [img1, setImg1] = useState()
@@ -10,31 +21,43 @@ function AddProduct() {
   const [productCopy, setProductCopy] = useState()
   const [productPrice, setProductPrice] = useState('')
   const [productType, setProductType] = useState('101')
-  // const [picPath, setPicPath] = useState('')
   let picPath = ''
+
+  // Quill.js
+  const [state, setState] = React.useState({ value: null })
+  const handleChange = (value) => {
+    setState({ value })
+  }
+
+  const picMsg = document.getElementById('thePicMsg')
+  const nameMsg = document.getElementById('theNameMsg')
+  const priceMsg = document.getElementById('thePriceMsg')
 
   // 新建formData物件，用於處理整個form
   const formData = new FormData()
   // 存放圖片路徑 (string)
   // 處理圖片，可以多張，不會保留上次按的圖片
   function fileChange(e) {
-    for (let i = 0; i < e.target.files.length; i++) {
-      let file = document.getElementById(`theFile1`).files
-      let image = document.getElementById(`image${i + 1}`)
-      let readFile = new FileReader()
-      readFile.readAsDataURL(file[i])
-      readFile.addEventListener('load', function () {
-        image.src = readFile.result
-        image.style.maxWidth = '500px'
-        image.style.maxHeight = '500px'
-      })
-    }
-    for (let j = 0; j < 5 - e.target.files.length; j++) {
-      let image = document.getElementById(`image${5 - j}`)
-      image.removeAttribute('src')
+    if (e.target.files.length < 6) {
+      for (let i = 0; i < e.target.files.length; i++) {
+        let file = document.getElementById(`theFile1`).files
+        let image = document.getElementById(`image${i + 1}`)
+        let readFile = new FileReader()
+        readFile.readAsDataURL(file[i])
+        readFile.addEventListener('load', function () {
+          image.src = readFile.result
+          image.style.maxWidth = '500px'
+          image.style.maxHeight = '500px'
+        })
+      }
+      for (let j = 0; j < 5 - e.target.files.length; j++) {
+        let image = document.getElementById(`image${5 - j}`)
+        image.removeAttribute('src')
+      }
+    } else {
+      alert('抱歉，我們只能存五筆')
     }
   }
-
   const fetchProducts = async () => {
     // 新建formDataImg物件，用於處理照片
     const formDataImg = new FormData()
@@ -49,16 +72,24 @@ function AddProduct() {
     })
     const data = await response.json()
     // 取得新圖片的資訊後，另組成字串存入formData
-    for (let i = 0; i < data.length; i++) {
-      picPath += data[i]['filename'] + ' '
+    if (data.length > 1) {
+      for (let i = 0; i < data.length - 1; i++) {
+        picPath += data[i]['filename'] + ' '
+      }
+      // 最後一筆，不用加空白做區隔
+      picPath += data[data.length]['filename']
+    } else {
+      picPath = data[0]['filename']
     }
     // 準備新增商品資料進SQL
     formData.append('picPath', picPath)
     formData.append('productName', productName)
     formData.append('authorName', 'ishurik21')
-    formData.append('productCopy', productCopy)
+    formData.append('productCopy', state.value)
+    // formData.append('productCopy', productCopy)
     formData.append('price', productPrice)
     formData.append('typeID', productType)
+
     fetch('http://localhost:3001/Sales/api/product', {
       method: 'POST',
       body: formData,
@@ -77,24 +108,27 @@ function AddProduct() {
     let isPass = true
     e.preventDefault()
 
+    // 先清空訊息
+    picMsg.innerHTML = ''
+    nameMsg.innerHTML = ''
+    priceMsg.innerHTML = ''
+
+    // 正規表達式，判斷只能數字或英文
+    const numRegExp = /^[0-9]*$/
+    if (!numRegExp.test(productPrice)) {
+      isPass = false
+      priceMsg.innerHTML = '價格必須為數字'
+    }
+    if (productName.length > 50) {
+      isPass = false
+      nameMsg.innerHTML = '商品名稱需小於50字'
+    }
+    if (img1.length === 0) {
+      isPass = false
+      picMsg.innerHTML = '圖片尚未選取'
+    }
     if (isPass) {
       fetchProducts()
-      // formData.append('productName', productName)
-      // formData.append('authorName', 'ishurik21')
-      // formData.append('productCopy', productCopy)
-      // formData.append('price', productPrice)
-      // formData.append('typeID', productType)
-      // fetch('http://localhost:3001/Sales/api/product', {
-      //   method: 'POST',
-      //   body: formData,
-      // })
-      //   .then((response) => response.json())
-      //   .then((result) => {
-      //     console.log('Success:', result)
-      //   })
-      //   .catch((error) => {
-      //     console.error('Error:', error)
-      //   })
     }
   }
   return (
@@ -141,6 +175,7 @@ function AddProduct() {
               }}
               multiple="multiple"
             ></input>
+            <div id="thePicMsg"></div>
           </div>
           {/* 商品名稱 */}
           <div className={style.pictureField}>
@@ -157,11 +192,23 @@ function AddProduct() {
               }}
               required
             ></input>
+            <div id="theNameMsg"></div>
           </div>
           {/* 商品文案 */}
+
           <div className={style.pictureField}>
             <p className={style.title}>描述文案</p>
-            <textarea
+            <EditorToolbar />
+            <ReactQuill
+              className="test"
+              theme="snow"
+              value={state.value}
+              onChange={handleChange}
+              placeholder={'Write something awesome...'}
+              modules={modules}
+              formats={formats}
+            />
+            {/* <textarea
               id="theCopy"
               name="theCopy"
               className={style.inputArticleStyle}
@@ -171,7 +218,7 @@ function AddProduct() {
                 setProductCopy(e.target.value)
               }}
               required
-            ></textarea>
+            ></textarea> */}
           </div>
 
           <div className={style.itemStyle}>
@@ -191,6 +238,7 @@ function AddProduct() {
                   }}
                   required
                 ></input>
+                <div id="thePriceMsg"></div>
               </div>
               <div className={style.pictureField}>
                 <p className={style.title}>商品類別</p>

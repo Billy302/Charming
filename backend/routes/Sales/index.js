@@ -10,13 +10,6 @@ const { body, validationResult, check } = require("express-validator");
 
 const connection = require("../../modules/mysql_config");
 
-// 全部商品資料需要加入where
-
-// 全部都要加回傳訊息，成功或失敗 參考 https://reurl.cc/WrAgDL
-// 圖片上傳 & 刪除 參考 https://reurl.cc/Gx5veA
-// 處理multipart/form-data https://reurl.cc/n1q27X
-// 後端表單驗證 https://reurl.cc/vdp2kN
-
 /* 商品 
 1. 功能：取得全部商品資料。Method: GET。URL: /api/product?id=  完成
 2. 功能：取得單筆商品資料。Method: GET。URL: /api/product/:userID/:productID 完成
@@ -133,7 +126,7 @@ sales
       body("productName")
         .notEmpty()
         .withMessage("商品名稱不得為空")
-        .isLength({ max: 45 })
+        .isLength({ max: 50 })
         .withMessage("商品名稱長度錯誤"),
       body("productCopy").notEmpty().withMessage("商品文案不得為空"),
       body("price")
@@ -158,7 +151,7 @@ sales
         const [datas] = await connection.query(sql).catch((error) => {
           console.log(`執行 Query : ${sql}時出錯 `);
         });
-        res.send("成功")
+        res.send("成功");
       }
     }
   );
@@ -344,41 +337,43 @@ sales
     // 兩個查詢第一個查詢商品，第二個查詢商品總數
     // 查詢商品需要三個變數，order依據 : order / order順序 : sort / Page頁數 : page
     // 預設為查詢第一頁，依照價格低到高
-    let sql = `SELECT product_items.* , all_type.type
-    FROM product_items
-    INNER JOIN all_type
-    on product_items.type_id = all_type.sid
-    WHERE product_items.author_name = '${authorData[0].username}'`;
 
-    if (typeID.length != 0) {
-      sql += ` and product_items.type_id ='${typeID}'`;
+    if (authorData.length) {
+      let sql = `SELECT product_items.* , all_type.type
+      FROM product_items
+      INNER JOIN all_type
+      on product_items.type_id = all_type.sid
+      WHERE product_items.author_name = '${authorData[0].username}'`;
+
+      if (typeID.length != 0) {
+        sql += ` and product_items.type_id ='${typeID}'`;
+      }
+
+      sql += ` order by product_items.${order} ${sort}
+      limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+      SELECT count(*) as totalItems FROM product_items WHERE product_items.author_name = '${
+        authorData[0].username
+      }'`;
+
+      if (typeID.length != 0) {
+        sql += ` and product_items.type_id ='${typeID}'`;
+      }
+
+      // 執行SQL語法，取得商品資料 & 商品總數
+      const [datas] = await connection.query(sql).catch((error) => {
+        console.log(`執行 Query : ${sql}時出錯 `);
+      });
+      // 計算 分頁總數
+      if (Object.values(datas[1][0]) > 0) {
+        pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
+      }
+      
+      // 分頁總數，加進陣列
+      datas.push(pageCount);
+
+      // 總共回傳，商品資料 / 商品總數 /  分頁總數
+      res.json(datas);
     }
-
-    sql += ` order by product_items.${order} ${sort}
-    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
-    SELECT count(*) as totalItems FROM product_items WHERE product_items.author_name = '${
-      authorData[0].username
-    }'`;
-
-    if (typeID.length != 0) {
-      sql += ` and product_items.type_id ='${typeID}'`;
-    }
-
-    // 執行SQL語法，取得商品資料 & 商品總數
-    const [datas] = await connection.query(sql).catch((error) => {
-      console.log(`執行 Query : ${sql}時出錯 `);
-    });
-
-    // 計算 分頁總數
-    if (Object.values(datas[1][0]) > 0) {
-      pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
-    }
-
-    // 分頁總數，加進陣列
-    datas.push(pageCount);
-
-    // 總共回傳，商品資料 / 商品總數 /  分頁總數
-    res.json(datas);
   });
 
 /*訂單
@@ -633,22 +628,26 @@ var storage = multer.diskStorage({
   },
 });
 
-upload = multer({ "storage": storage });
+upload = multer({ storage: storage });
 // 新增圖片檔
 // 前端input type="file"
-sales.post("/api/upload", upload.array("theFile1",5), function (req, res, next) {
-  console.log(req.files);
-  // {"fieldname":"theFile1",
-  // "originalname":"Andrew.png",
-  // "encoding":"7bit",
-  // "mimetype":"image/png",
-  // "destination":"uploads",
-  // "filename":"1649758841069.jpge",
-  // "path":"uploads\\1649758841069-Andrew.jpge",
-  // "size":8810
-  // }
-  res.send(req.files);
-});
+sales.post(
+  "/api/upload",
+  upload.array("theFile1", 5),
+  function (req, res, next) {
+    console.log(req.files);
+    // {"fieldname":"theFile1",
+    // "originalname":"Andrew.png",
+    // "encoding":"7bit",
+    // "mimetype":"image/png",
+    // "destination":"uploads",
+    // "filename":"1649758841069.jpge",
+    // "path":"uploads\\1649758841069-Andrew.jpge",
+    // "size":8810
+    // }
+    res.send(req.files);
+  }
+);
 // 刪除圖片檔
 // 需要一個參數，以body -> 檔名 : name
 sales.post("/api/delete", async (req, res, next) => {

@@ -26,7 +26,7 @@ function ProductPage() {
       let data = await response.json()
       let dt = new Date(data[0]['create_time'])
       data[0]['create_time'] = dt.toLocaleString()
-      console.log(data[0]);
+      console.log(data[0])
       setProducts(data[0])
     } else {
       const response = await fetch(
@@ -36,7 +36,7 @@ function ProductPage() {
       let data = await response.json()
       let dt = new Date(data[0]['create_time'])
       data[0]['create_time'] = dt.toLocaleString()
-      console.log(data[0]);
+      console.log(data[0])
       setProducts(data[0])
     }
   }
@@ -151,7 +151,7 @@ function ProductPage() {
         {/* 商品簡介 */}
         <article className={style.ProductText}>
           <div className={style.ProductTitle}>商品介紹</div>
-          <pre>{products.product_copy}</pre>
+          <div dangerouslySetInnerHTML={{ __html: products.product_copy }} />
         </article>
       </section>
     </>
