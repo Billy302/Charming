@@ -3,10 +3,15 @@ import style from "./User.module.css";
 import { useNavigate, Link } from "react-router-dom";
 import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import BreadCrumb from "../../Components/BreadCrumb/BreadCrumb";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function MyAccount() {
   // 設定導向頁面函式
   const navigate = useNavigate();
+
+  // 設定sweetalert2
+  const MySwal = withReactContent(Swal);
 
   // 登入狀態驗證
   const auth = JSON.parse(localStorage.getItem("auth"));
@@ -20,7 +25,7 @@ function MyAccount() {
   const storageMemory = localStorage.getItem("id");
   console.log(storageMemory);
 
-  // 獲得會員id=1的資料
+  // 獲得會員id=?的資料,存在account中
   const [account, setAccount] = useState([]);
 
   const fetchAccount = async () => {
@@ -35,8 +40,8 @@ function MyAccount() {
     fetchAccount();
   }, []);
 
-  // const { auth } = props;
   console.log(account);
+  // 解構accout獲得的值
   const {
     avatar,
     birthday,
@@ -51,6 +56,32 @@ function MyAccount() {
     user_password,
     username,
   } = account;
+
+  const logOut = (e) => {
+    e.preventDefault();
+    MySwal.fire({
+      title: "確定要登出嗎?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#795252",
+      confirmButtonText: "確定",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "取消",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('id')
+        localStorage.setItem('auth',false)
+        MySwal.fire({
+          title: '登出成功',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(()=>{
+          navigate('/UnloginHome')
+        })
+      }
+    })
+  };
 
   return (
     <>
@@ -90,7 +121,7 @@ function MyAccount() {
           </div>
         </div>
         <div className={style.item3}>
-          <button className={style.button}>編輯</button>
+          <button className={style.button} onClick={logOut}>編輯</button>
         </div>
       </main>
     </>
