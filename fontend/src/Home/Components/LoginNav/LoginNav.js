@@ -6,9 +6,40 @@ import { FaShoppingCart, FaAngleDown } from 'react-icons/fa'
 import { ImSearch } from 'react-icons/im'
 import logo from '../../Assets/charming_logo.png'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function LoginNav(props) {
   // 取得包含目前URL的狀態和位置的物件函數
+  const MySwal = withReactContent(Swal)
+
+const logOut = (e) => {
+  //—————————————登出畫面———————————————
+    e.preventDefault();
+    MySwal.fire({
+      title: "確定要登出嗎?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#795252",
+      confirmButtonText: "確定",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "取消",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('id')
+        localStorage.setItem('auth',false)
+        MySwal.fire({
+          title: '登出成功',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(()=>{
+          navigate('/')
+        })
+      }
+    })
+  };
+  // ———————————————————————————————————————
   const location = useLocation()
   const Params = useParams()
   const navigate = useNavigate()
@@ -147,7 +178,7 @@ function LoginNav(props) {
                   <a href={`/MyProduct?id=${userId}&page=1`}>我的商品</a>
                   <a href="/collection">我的收藏</a>
                   <a href={`/BtobPage/Order?id=${userId}&page=1`}>購買清單</a>
-                  <a href="/">登出</a>
+                  <button onClick={logOut}>登出</button>
                 </div>
                 {/* ——————————————————————————————————————— */}
               </li>
