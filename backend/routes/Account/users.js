@@ -23,7 +23,7 @@ router.get("/", function (req, res, next) {
 // });
 
 
-// 取得 id=1 的使用者資料
+// 取得登入者 id=? 的使用者資料
 router.get("/users", async (req, res, next) => {
   console.log(req.query.userId);
   const sql = "SELECT id,user_account,user_password,username,gender,DATE_FORMAT(birthday,'%Y-%m-%d') AS birthday,email,mobile,city,nickname,avatar,DATE_FORMAT(join_at,'%Y-%m-%d')AS join_at FROM `us_user` WHERE id=?";

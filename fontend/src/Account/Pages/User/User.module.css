@@ -78,11 +78,6 @@
 .item2 label {
   padding: 10px;
 }
-.item2 p {
-  padding: 10px;
-  background-color: aqua;
- align-self: end;
-}
 
 /* 編輯button */
 .item3 {
