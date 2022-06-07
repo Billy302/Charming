@@ -93,10 +93,13 @@ function App() {
         <Route path="Sales/Cart2" element={<Cart2 />} />
         <Route path="Sales/Cart3" element={<Cart3 />} />
         <Route path="Sales/Cart4" element={<Cart4 />} />
-
+        {/* 銷售記錄*/}
         <Route path="BtocPage/MySale" element={<MySale />} />
+        {/* 購買清單*/}
         <Route path="BtobPage/Order/:id" element={<Order />} />
+        {/* 購買清單細項*/}
         <Route path="BtobPage/Order" element={<OrderList />} />
+        {/* 我的蒐藏->商品頁 */}
 
         {/* 討論區 */}
         {/* <Route path="/AskPageOne" element={<AskPageOne />} /> */}
