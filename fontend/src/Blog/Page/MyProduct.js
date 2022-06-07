@@ -1,7 +1,7 @@
-import Banner from '../Components/MyProduct/Banner'
-import PersonalInfo from '../Components/MyProduct/PersonalInfo'
+import Banner from '../Components/MyProductHeader/Banner'
+import PersonalInfo from '../Components/MyProductHeader/PersonalInfo'
 
-const MyProduct = () => {
+const MyProductHeader = () => {
   return (
     <>
       <Banner />
@@ -10,4 +10,4 @@ const MyProduct = () => {
   )
 }
 
-export default MyProduct
+export default MyProductHeader

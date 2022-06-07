@@ -62,4 +62,24 @@ blog.get('/renderSearch', async (req, res) => {
     res.json(result);
 });
 
+// 上傳banner
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './Blog');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+});
+
+const uploadImage = multer({ storage: storage });
+
+blog.post('/image', uploadImage.single('file'), (req, res) => {
+    // const insertImg = 'INSERT INTO blog_test(test_id, test_image) VALUES (1,'')'
+    res.json({});
+});
+
+blog.get('/');
+
 module.exports = blog;
