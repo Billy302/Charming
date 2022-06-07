@@ -82,11 +82,11 @@ router.get("/checkAccount", async (req, res, next) => {
   res.json(datas[0]);
 });
 
-// 註冊 帳號密碼 ok
+// 註冊 帳號密碼
 // sql=使用MySQL語法及欄位,VALUE值放表單name=""
 router.post("/register", async (req, res, next) => {
   console.log(req.body);
-  const sql = `INSERT INTO us_user(user_account,user_password,user_name,gender,birthday, email,mobile,city) VALUES ('${req.body.account}','${req.body.password}','${req.body.name}','${req.body.gender}','${req.body.birthday}','${req.body.email}','${req.body.mobile}','${req.body.city}')`;
+  const sql = `INSERT INTO us_user(user_account,user_password,username,gender,birthday, email,mobile,city) VALUES ('${req.body.account}','${req.body.password}','${req.body.name}','${req.body.gender}','${req.body.birthday}','${req.body.email}','${req.body.mobile}','${req.body.city}')`;
   const [user] = await db.query(sql).catch((error) => {
     console.log(`執行Query:${sql}時錯誤`);
   });

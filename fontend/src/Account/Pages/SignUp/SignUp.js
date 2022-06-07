@@ -204,7 +204,7 @@ function SignUp() {
               {/* 性別 */}
               <label>性別</label>
               <section onChange={handleChangeGender}>
-                <input id="Male" type="radio" name="gender" value="male" />
+                <input id="Male" type="radio" name="gender" value="男" />
                 <label for="Male">
                   <img
                     src={require("../../images/Avatar3.png")}
@@ -217,7 +217,7 @@ function SignUp() {
                   id="female"
                   type="radio"
                   name="gender"
-                  value="female"
+                  value="女"
                 />
                 <label for="female">
                   <img
@@ -227,7 +227,7 @@ function SignUp() {
                   />
                   女性
                 </label>
-                <input id="other" type="radio" name="gender" value="other" />
+                <input id="other" type="radio" name="gender" value="其他" />
                 <label for="other">
                   <img
                     src={require("../../images/Avatar1.png")}
