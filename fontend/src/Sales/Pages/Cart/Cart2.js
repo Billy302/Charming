@@ -1,5 +1,5 @@
 // http://localhost:3000/Sales/Cart2
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Processbar from '../../Components/Processbar/Processbar'
 import Style from './Cart.module.css'
 import { useNavigate } from 'react-router-dom'

@@ -231,7 +231,7 @@ sales.get("/api/product/:userID/:productID", async (req, res, next) => {
   FROM product_items
   INNER JOIN all_type
   on product_items.type_id = all_type.sid
-  WHERE ID=${req.params.productID}`;
+  WHERE ID=${req.params.productID} `;
 
   // 執行SQL，查詢商品的細項
   const [datas] = await connection.query(sql).catch((error) => {
@@ -245,7 +245,7 @@ sales.get("/api/product/:userID/:productID", async (req, res, next) => {
   const [love] = await connection.query(sql2);
 
   // 如果查詢有值，datas中的lover存為True
-  if (love.length) {
+  if (love!="") {
     datas[0]["love"] = "true";
   } else {
     datas[0]["love"] = "false";
@@ -618,7 +618,7 @@ sales
 var storage = multer.diskStorage({
   // 檔案上傳到這裡
   destination: function (req, file, cb) {
-    cb(null, "../fontend/public/Home/ProductIm");
+    cb(null, "../fontend/public/Home/ProductImg");
   },
 
   // 定義檔案名稱規範

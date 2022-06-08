@@ -31,7 +31,7 @@ function MyProduct() {
   const searchParams = new URLSearchParams(location.search)
   let nowSort = searchParams.get('sort') ? searchParams.get('sort') : ''
   let nowOrder = searchParams.get('order') ? searchParams.get('order') : ''
-  let nowID = searchParams.get('id')
+  let nowID = localStorage.getItem('id')
 
   function goPath(value) {
     if (nowSort) {
@@ -48,10 +48,9 @@ function MyProduct() {
       navigate(`../${location.pathname + location.search + value}`)
     }
   }
-
   const fetchProducts = async () => {
     const response = await fetch(
-      `http://localhost:3001/Sales/api/product${location.search}`
+      `http://localhost:3001/Sales/api/product${location.search}&id=${nowID}`
     )
     const data = await response.json()
     //測試
@@ -70,7 +69,7 @@ function MyProduct() {
     <div className={Style.product}>
       {/* 排序 */}
       <div className={Style.order} id="select">
-        <label for="sort" htmlFor="cars">
+        <label htmlFor="sort">
           <FaBorderAll />
         </label>
         <select
@@ -111,7 +110,7 @@ function MyProduct() {
           ))}
         </ul>
       </div>
-      <Pagination totalPages={totalPage} search={location.search} />
+      <Pagination totalPages={totalPage} />
     </div>
   )
 }

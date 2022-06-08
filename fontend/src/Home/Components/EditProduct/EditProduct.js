@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
 import Style from './EditProduct.module.css'
 import EditCard from '../EditCard/EditCard'
 import Pagination from '../../../Sales/Components/Pagination/Pagination'
@@ -8,12 +7,9 @@ function EditProduct() {
   const [products, setProducts] = useState([])
   const [totalPage, setTotalPage] = useState([])
 
-  // 取得當前網址資訊
-  const location = useLocation()
-
   // 抓取網址中的id
-  const searchParams = new URLSearchParams(location.search)
-  let nowSort = searchParams.get('id')
+
+  let nowSort = localStorage.getItem('id')
 
   const fetchProducts = async () => {
     //向遠端伺服器get資料 http://localhost:3001/Sales/api/productShop?id=2
@@ -52,7 +48,7 @@ function EditProduct() {
           ))}
         </ul>
       </div>
-      <Pagination totalPages={totalPage} search={location.search} />
+      <Pagination totalPages={totalPage} />
     </>
   )
 }

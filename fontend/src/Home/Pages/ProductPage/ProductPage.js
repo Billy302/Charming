@@ -14,14 +14,15 @@ function ProductPage() {
 
   // 連線檔
   const catchUserId = useParams()
-  const UserId = catchUserId.UserId ? catchUserId.UserId : ''
+
+  const userId = localStorage.getItem('id')
   const fetchProducts = async () => {
     // 向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
     // 判斷是遊客還是會員
-    if (UserId) {
+    if (localStorage.getItem('auth') == 'true') {
       const response = await fetch(
         //取單一商品資料
-        `http://localhost:3001/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
+        `http://localhost:3001/Sales/api/product/${userId}/${catchUserId.ProductID}`
       )
       let data = await response.json()
       let dt = new Date(data[0]['create_time'])
@@ -71,7 +72,7 @@ function ProductPage() {
   let storage = localStorage
 
   function additem() {
-    if (UserId) {
+    if (localStorage.getItem('auth') == 'true') {
       if (storage[products.ID]) {
         alert('已成功加入購物車')
       } else {
@@ -95,7 +96,7 @@ function ProductPage() {
   }
   return (
     <>
-      {UserId ? <LoginNav /> : <UnloginNav />}
+      {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
       {/* 商品名稱 */}
       <section className={style.ProductPage}>
         {/* 圖片放置區 */}

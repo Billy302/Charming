@@ -1,7 +1,7 @@
 // 新增的商品的主人要改變數！！
 // 看會員怎麼寫
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import LoginNav from '../../Components/LoginNav/LoginNav'
 import style from './AddProduct.module.css'
 import { IoIosAddCircleOutline } from 'react-icons/io'
@@ -84,7 +84,7 @@ function AddProduct() {
     // 準備新增商品資料進SQL
     formData.append('picPath', picPath)
     formData.append('productName', productName)
-    formData.append('authorName', 'ishurik21')
+    formData.append('authorName', localStorage.getItem('name'))
     formData.append('productCopy', state.value)
     // formData.append('productCopy', productCopy)
     formData.append('price', productPrice)

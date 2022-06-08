@@ -1,39 +1,38 @@
-
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import LoginNav from "../../Components/LoginNav/LoginNav";
-import style from "./EditProductPage.module.css";
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { BsCaretDownFill } from "react-icons/bs";
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import LoginNav from '../../Components/LoginNav/LoginNav'
+import style from './EditProductPage.module.css'
+import { IoIosAddCircleOutline } from 'react-icons/io'
+import { BsCaretDownFill } from 'react-icons/bs'
 
 function EditProduct() {
   const [products, setProducts] = useState({
-    pic_path: "",
-  });
+    pic_path: '',
+  })
 
   // 連線檔
-  const catchUserId = useParams();
+  const catchUserId = useParams()
   const fetchProducts = async () => {
     //向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
     const response = await fetch(
       //取單一商品資料
       `http://localhost:3001/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
-    );
-    const data = await response.json();
+    )
+    const data = await response.json()
     // 載入資料後設定到狀態中
     // 設定到狀態後，因改變狀態會觸發updating生命周期，然後重新render一次
-    setProducts(data[0]);
-  };
+    setProducts(data[0])
+  }
   // console.log(products);
   // didMount
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts()
+  }, [])
 
-  const a = products.pic_path.split(" ");
+  const a = products.pic_path.split(' ')
 
   // 小圖
-  let p = [];
+  let p = []
   for (let i = 0; i < a.length; i++) {
     p.push(
       <div>
@@ -47,20 +46,9 @@ function EditProduct() {
         </label>
         <input id={`theFile${i}`} className={style.btn} type="file"></input>
       </div>
-    );
+    )
   }
-  // 上傳照片-老師的：
-  // router.get('/api/upload',(req,res)=>{
-  //   res.render('register',{ title: 'Ajax POST Demo' })
-  // })
-  // 上傳照片-我們的：
-  // sales.post(
-  //   "/api/upload",
-  //   upload.array("uploadedFiles", 5),
-  //   async (req, res, next) => {
-  //     res.send(JSON.stringify(req.files));
-  //   }
-  // );
+
   return (
     <>
       <LoginNav />
@@ -136,12 +124,14 @@ function EditProduct() {
               <div className={style.pictureField}>
                 <p className={style.title}>商品類別</p>
                 <select className={style.theSelect}>
-                <option value={products.price} selected>Professional</option> 
-                  <option value={"101"}>NFT</option>
-                  <option value={"102"}>UI/UX</option>
-                  <option value={"103"}>書籍/翻譯</option>
-                  <option value={"104"}>Logo</option>
-                  <option value={"105"}>插圖</option>
+                  <option value={products.price} selected>
+                    Professional
+                  </option>
+                  <option value={'101'}>NFT</option>
+                  <option value={'102'}>UI/UX</option>
+                  <option value={'103'}>書籍/翻譯</option>
+                  <option value={'104'}>Logo</option>
+                  <option value={'105'}>插圖</option>
                 </select>
                 <BsCaretDownFill className={style.iconSelect} />
               </div>
@@ -175,6 +165,6 @@ function EditProduct() {
         </form>
       </section>
     </>
-  );
+  )
 }
-export default EditProduct;
+export default EditProduct

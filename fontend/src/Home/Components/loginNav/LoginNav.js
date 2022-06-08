@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import style from './LoginNav.module.css'
-import { AiOutlineGlobal } from 'react-icons/ai'
-import { BsFillBellFill } from 'react-icons/bs'
-import { FaShoppingCart, FaAngleDown } from 'react-icons/fa'
+import { FaShoppingCart } from 'react-icons/fa'
 import { ImSearch } from 'react-icons/im'
 import logo from '../../Assets/charming_logo.png'
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -41,14 +39,13 @@ function LoginNav(props) {
 
   // 取得包含目前URL的狀態和位置的物件函數
   const location = useLocation()
-  const Params = useParams()
   const navigate = useNavigate()
 
   const searchParams = new URLSearchParams(location.search)
-  let userId = searchParams.get('id') ? searchParams.get('id') : ''
   let type = searchParams.get('typeID') ? searchParams.get('typeID') : ''
-
-  let userIdParams = Params.userId ? Params.userId : ''
+  let searchItem = searchParams.get('itemsName')
+    ? searchParams.get('itemsName')
+    : ''
 
   const [searchValue, setSearchValue] = useState('')
 
@@ -64,7 +61,25 @@ function LoginNav(props) {
   window.addEventListener('scroll', displayItemType)
 
   function goPath() {
-    navigate(`../Product?id=${userId}&page=1&itemsName=${searchValue}`)
+    // 先判斷搜尋欄內是否有值
+    if (searchValue) {
+      // 判斷是否已經有搜尋過
+      if (searchItem) {
+        navigate(
+          `../Product${location.search.replace(
+            `itemsName=${searchItem}`,
+            `itemsName=${searchValue}`
+          )}`
+        )
+      } else {
+        // 判斷來源處有沒有Query
+        if (searchParams.search) {
+          navigate(`../Product${searchParams}&page=1&itemsName=${searchValue}`)
+        } else {
+          navigate(`../Product?page=1&itemsName=${searchValue}`)
+        }
+      }
+    }
   }
 
   return (
@@ -73,9 +88,7 @@ function LoginNav(props) {
       <nav className={style.navBar}>
         {/* logo 與charming文字 */}
         <div className={style.charmingLogo}>
-          {/* 未登入，跳"/"  */}
-          {/* 已登入，跳"/Product?id=${userId}&page=1" */}
-          <a href={`/Product?id=${userId}&page=1`} className={style.logoIcon}>
+          <a href={`/Product?page=1`} className={style.logoIcon}>
             <img src={logo} alt="logo" />
             <p>柴米Charming</p>
           </a>
@@ -121,14 +134,14 @@ function LoginNav(props) {
         <div className={style.charmingItem}>
           <ul className={style.itemStyle}>
             <div>
-              <li className={style.changeLanguage}>
+              {/* <li className={style.changeLanguage}>
                 <AiOutlineGlobal />
                 <select>
                   <option value="australia">繁體中文</option>
                   <option value="English">English</option>
                 </select>
                 <FaAngleDown />
-              </li>
+              </li> */}
               <a href="/Portfolio" className={style.phoneDisplayNone}>
                 <li>柴米人</li>
               </a>
@@ -146,11 +159,6 @@ function LoginNav(props) {
                   <FaShoppingCart className={style.phoneIcon} />
                 </li>
               </a>
-              <a href="">
-                <li>
-                  <BsFillBellFill className={style.phoneIcon} />
-                </li>
-              </a>
               <li className={style.showList}>
                 <a href="/account">
                   <img src={logo} alt="logo" />
@@ -159,11 +167,9 @@ function LoginNav(props) {
                 <div className={style.navList}>
                   <a href="">會員資料修改</a>
                   <a href="">我的設計</a>
-                  <Link to={`../MyProduct?id=${userId}&page=1`}>我的商品</Link>
+                  <Link to={`../MyProduct?page=1`}>我的商品</Link>
                   <a href="/collection">我的收藏</a>
-                  <Link to={`../BtobPage/Order?id=${userId}&page=1`}>
-                    購買清單
-                  </Link>
+                  <Link to={`../BtobPage/Order?page=1`}>購買清單</Link>
                   <button onClick={logOut}>登出</button>
                 </div>
                 {/* ——————————————————————————————————————— */}

@@ -14,8 +14,7 @@ import EditProductPage from './Home/Pages/EditProductPage/EditProductPage'
 import AddProduct from './Home/Pages/AddProduct/AddProduct'
 import ProductPage from './Home/Pages/ProductPage/ProductPage'
 import ProductPageEditButton from './Home/Pages/ProductPageEditButton/ProductPageEditButton'
-import MyLikeProduct from "./Home/Components/MyLikeProduct/MyLikeProduct"
-
+import MyLikeProduct from './Home/Components/MyLikeProduct/MyLikeProduct'
 
 //購物車頁
 import Cart1 from './Sales/Pages/Cart/Cart1'
@@ -35,7 +34,7 @@ import MyShoppingList from './Account/Pages/User/MyShoppingList'
 import MyCollection from './Account/Pages/User/MyCollection'
 import MyAccount from './Account/Pages/User/MyAccount'
 
-import { ImOpt } from "react-icons/im";
+import { ImOpt } from 'react-icons/im'
 //討論區
 
 function App() {
@@ -46,21 +45,19 @@ function App() {
         {/* --------首頁------- */}
         <Route path="/" element={<UnloginHome />} />
         {/* 商品總覽頁 */}
-        {/* http://localhost:3000/Product?id=1&page=1&order=sell_count&sort=desc */}
+        {/* http://localhost:3000/Product?page=1&order=sell_count&sort=desc */}
         <Route path="/Product" element={<LoginHome />} />
         {/* http://localhost:3000/Product/1/13 */}
-        <Route path="/Product/:UserId/:ProductID" element={<ProductPage />} />
-        {/* http://localhost:3000/Product/13 */}
         <Route path="/Product/:ProductID" element={<ProductPage />} />
-        {/* http://localhost:3000/MyProduct?id=1&page=1 */}
+        {/* http://localhost:3000/MyProduct?page=1 */}
         <Route path="/MyProduct" element={<MyProduct />} />
         {/* http://localhost:3000/MyProduct/1/19 */}
         <Route
-          path="/MyProduct/:UserId/:ProductID"
+          path="/MyProduct/:ProductID"
           element={<ProductPageEditButton />}
         />
         <Route
-          path="/MyProduct/Edit/:UserId/:ProductID"
+          path="/MyProduct/Edit/:ProductID"
           element={<EditProductPage />}
         />
         <Route path="/MyProduct/AddProduct" element={<AddProduct />} />
@@ -75,7 +72,7 @@ function App() {
         <Route path="BtobPage/Order/:id" element={<Order />} />
         <Route path="BtobPage/Order" element={<OrderList />} />
 
-         {/* --------註冊及登入----- */}
+        {/* --------註冊及登入----- */}
         {/* 忘記密碼 */}
         <Route path="/signin/identify" element={<SignInIdentify />} />
         <Route path="/signin/recover" element={<SignInRecover />} />

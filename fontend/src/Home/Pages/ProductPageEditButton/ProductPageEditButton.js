@@ -12,12 +12,13 @@ function ProductPage() {
   });
 
   // 連線檔
+  let userID = localStorage.getItem('id')
   const catchUserId = useParams();
   const fetchProducts = async () => {
-    //向遠端伺服器get資料 http://localhost:3000/Sales/api/product?id=1
+    //向遠端伺服器get資料
     const response = await fetch(
       //取單一商品資料
-      `http://localhost:3001/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
+      `http://localhost:3001/Sales/api/product/${userID}/${catchUserId.ProductID}`
     );
     const data = await response.json();
     // 載入資料後設定到狀態中
@@ -81,7 +82,7 @@ function ProductPage() {
                 </pre>
               </div>
               <div className={style.buyNumber}>
-                <a href={`/MyProduct/Edit/1/${products.ID}`}>
+                <a href={`/MyProduct/Edit/${products.ID}`}>
                   <button className={style.EditProduct}>編輯商品</button>
                 </a>
               </div>
