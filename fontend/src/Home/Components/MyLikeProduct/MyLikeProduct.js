@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import Style from './Product.module.css'
+import Style from './MyLikeProduct.module.css'
 import Card from '../Card/Card'
 import Pagination from '../../../Sales/Components/Pagination/Pagination'
-import { FaBorderAll } from 'react-icons/fa'
+import {FaBorderAll} from "react-icons/fa"
 
 function MyProduct() {
   const [products, setProducts] = useState([])
@@ -51,7 +51,7 @@ function MyProduct() {
 
   const fetchProducts = async () => {
     const response = await fetch(
-      `http://localhost:3001/Sales/api/product${location.search}`
+      `http://localhost:3001/Sales/api/productUser?id=1&order=price&sort=desc&page=1`
     )
     const data = await response.json()
     //測試
@@ -71,7 +71,7 @@ function MyProduct() {
       {/* 排序 */}
       <div className={Style.order} id="select">
         <label for="sort" htmlFor="cars">
-          <FaBorderAll />
+        <FaBorderAll/>
         </label>
         <select
           name="sort"

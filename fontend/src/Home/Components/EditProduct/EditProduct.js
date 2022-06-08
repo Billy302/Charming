@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import Style from './EditProduct.module.css'
 import EditCard from '../EditCard/EditCard'
-import Pagination from '../Pagination/Pagination'
+import Pagination from '../../../Sales/Components/Pagination/Pagination'
 
 function EditProduct() {
   const [products, setProducts] = useState([])

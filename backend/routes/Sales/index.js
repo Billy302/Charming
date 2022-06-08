@@ -60,7 +60,7 @@ sales
     }
 
     sql += ` order by product_items.${order} ${sort}
-    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+    limit ${(activePage - 1) * rowsPerPage},15;
     SELECT count(*) as totalItems FROM product_items`;
 
     if ((typeID.length != 0) & (itemsName.length != 0)) {
@@ -284,7 +284,7 @@ sales
     ON product_love.product_ID  = product_items.ID
     WHERE product_love.user_id = '${req.query.id}'
     order by product_items.${order} ${sort}
-    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+    limit ${(activePage - 1) * rowsPerPage},15;
     SELECT count(*) as totalItems FROM product_love WHERE product_love.user_id = '${
       req.query.id
     }';`;
@@ -350,7 +350,7 @@ sales
       }
 
       sql += ` order by product_items.${order} ${sort}
-      limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+      limit ${(activePage - 1) * rowsPerPage},15;
       SELECT count(*) as totalItems FROM product_items WHERE product_items.author_name = '${
         authorData[0].username
       }'`;
@@ -402,7 +402,7 @@ sales
     const sql = `SELECT product_case.* 
     FROM product_case 
     WHERE product_case.user_ID  = '${req.query.id}'
-    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+    limit ${(activePage - 1) * rowsPerPage},15;
     SELECT count(*) as totalItems FROM product_case WHERE product_case.user_ID  = '${
       req.query.id
     }'`;
@@ -418,7 +418,6 @@ sales
 
     // 加進陣列 分頁總數
     datas.push(pageCount);
-
     res.send(datas);
   })
   // 新增訂單 & 訂單詳細，處理multipart/form-data的狀態
@@ -496,7 +495,7 @@ sales.get("/api/orderUser/:id", async (req, res, next) => {
 // http://localhost:3001/Sales/api/orderUser/1/17
 // 需要一個參數，透過params-> 使用者ID : userID | 訂單ID : caseID
 sales.get("/api/orderUser/:userID/:caseID", async (req, res, next) => {
-  let sql = `SELECT product_case.ID as CaseID, product_case.create_time, product_case.total_price , product_items.pic_path ,
+  let sql = `SELECT product_case.ID as CaseID, product_case_items.product_ID as productID, product_case.create_time, product_case.total_price , product_items.pic_path ,
   product_items.author_name ,product_items.product_name , product_items.price
   FROM product_case_items
   JOIN product_case
@@ -549,7 +548,7 @@ sales.get("/api/orderShop", async (req, res, next) => {
     sql += ` and product_items.product_name like '%%${itemsName}%%'`;
   }
   // 查詢範圍
-  sql += `limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};`;
+  sql += `limit ${(activePage - 1) * rowsPerPage},15;`;
   // 查詢筆數
   sql += `SELECT count(*) as totalItems 
   FROM product_case_items  
@@ -619,7 +618,7 @@ sales
 var storage = multer.diskStorage({
   // 檔案上傳到這裡
   destination: function (req, file, cb) {
-    cb(null, "../fontend/public/Home/ProductImg");
+    cb(null, "../fontend/public/Home/ProductIm");
   },
 
   // 定義檔案名稱規範

@@ -1,59 +1,39 @@
-// 功能：取得會員個人資料 Method: ? URL: ? ，等會員寫完
-// 功能：加入購物車，order(key) 基本資料(姓名/聯絡方式/總價) ，要看會員怎麼寫
-// 先用JSON假資料取代
 // http://localhost:3000/Sales/Cart2
-
-import React, { useState, useEffect } from "react";
-import Processbar from "../../Components/Processbar/Processbar";
-import Style from "./Cart.module.css";
-import { useNavigate } from "react-router-dom";
-import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
-import number from "../../Json/number.json";
+import React, { useState, useEffect } from 'react'
+import Processbar from '../../Components/Processbar/Processbar'
+import Style from './Cart.module.css'
+import { useNavigate } from 'react-router-dom'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 
 function Cart2() {
   // 使用 useNavigate 套件
-  let Navigate = useNavigate();
+  let Navigate = useNavigate()
 
-  // 要看會員怎麼寫
-  // const [member, setmember] = useState([])
-  // const fetchProducts = async () => {
-  //   const response = await fetch(
-  //     `http://localhost:3001/Sales/api/orderUser?id=`
-  //   )
-  //   const data = await response.json()
-  //   setmember(data[0])
-  // }
-
-  // componentDidMount
-  // useEffect(() => {
-  //   fetchProducts()
-  // }, [])
-
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState('')
 
   // 使用 localStorage WebAPI
-  let storage = localStorage;
+  let storage = localStorage
 
   // 取得localStorage的項目清單
-  let itemString = storage.getItem("addItemList");
+  let itemString = storage.getItem('addItemList')
 
   // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
-  let items = itemString.split(" |");
-  items.pop();
+  let items = itemString.split(' |')
+  items.pop()
 
   // 建立空白陣列，存放jsx語法
-  let cartTable = [];
+  let cartTable = []
 
   // 計算購物車，價格總數
-  let totalPrice = 0;
+  let totalPrice = 0
 
   // 動態生成table的內容
   for (let i = 0; i < items.length; i++) {
     let { ID, author_name, price, product_name } = JSON.parse(
       storage.getItem(items[i])
-    );
+    )
     // 已取得購物車資料，用迴圈重複加總
-    totalPrice += { price }.price;
+    totalPrice += { price }.price
 
     // 將Html語法加入cartTable語法
     cartTable.push(
@@ -63,9 +43,9 @@ function Cart2() {
         </th>
         <td className={Style.blockSizeM}>{author_name}</td>
         <td className={Style.blockSizeXL}>{product_name}</td>
-        <td className={`${Style.blockSizeM} ${Style.price}`}>{"$" + price}</td>
+        <td className={`${Style.blockSizeM} ${Style.price}`}>{'$' + price}</td>
       </tr>
-    );
+    )
   }
 
   return (
@@ -82,21 +62,9 @@ function Cart2() {
             id="inputName"
             type="text"
             disabled
-            value={number[0].username}
+            value={localStorage.getItem('name')}
             onChange={(e) => {
-              setInputText(e.target.value);
-            }}
-          />
-        </div>
-        <div className={Style.blockText}>
-          <label for="inputTel">聯絡方式</label>
-          <input
-            id="inputTel"
-            type="text"
-            disabled
-            value={number[0].mobile}
-            onChange={(e) => {
-              setInputText(e.target.value);
+              setInputText(e.target.value)
             }}
           />
         </div>
@@ -128,21 +96,21 @@ function Cart2() {
             id="inputPrice"
             type="text"
             disabled
-            value={"$" + totalPrice}
+            value={'$' + totalPrice}
             onChange={(e) => {
-              setInputText(e.target.value);
+              setInputText(e.target.value)
             }}
           />
         </div>
       </table>
-      
+
       {/* 按鈕 */}
       <div className={Style.checkButton}>
         <button
           className={Style.button2}
           onClick={() => {
             // 回上頁
-            Navigate("../Sales/Cart1");
+            Navigate('../Sales/Cart1')
           }}
         >
           回上頁
@@ -151,15 +119,15 @@ function Cart2() {
           className={Style.button1}
           onClick={() => {
             // 到下一頁
-            Navigate("../Sales/Cart3");
+            Navigate('../Sales/Cart3')
             // 將個人資料存入Session，購買者ID & 訂單總價
-            storage.setItem("addUser", `1 | ${totalPrice}`);
+            storage.setItem('addUser', `1 | ${totalPrice}`)
           }}
         >
-  確認訂單
+          確認訂單
         </button>
       </div>
     </>
-  );
+  )
 }
-export default Cart2;
+export default Cart2

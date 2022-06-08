@@ -14,7 +14,8 @@ import EditProductPage from './Home/Pages/EditProductPage/EditProductPage'
 import AddProduct from './Home/Pages/AddProduct/AddProduct'
 import ProductPage from './Home/Pages/ProductPage/ProductPage'
 import ProductPageEditButton from './Home/Pages/ProductPageEditButton/ProductPageEditButton'
-// import ProductPage2 from "./Home/Pages/ProductPage/ProductPage4"
+import MyLikeProduct from "./Home/Components/MyLikeProduct/MyLikeProduct"
+
 
 //購物車頁
 import Cart1 from './Sales/Pages/Cart/Cart1'
@@ -34,6 +35,7 @@ import MyShoppingList from './Account/Pages/User/MyShoppingList'
 import MyCollection from './Account/Pages/User/MyCollection'
 import MyAccount from './Account/Pages/User/MyAccount'
 
+import { ImOpt } from "react-icons/im";
 //討論區
 
 function App() {
@@ -85,7 +87,7 @@ function App() {
         <Route path="/shoppinglist" element={<MyShoppingList />} />
         <Route path="/collection" element={<MyCollection />} />
         <Route path="/account" element={<MyAccount />} />
-
+        <Route path="/collection/MyLikeProduct" element={<MyLikeProduct />} />
       </Routes>
       <Footer />
       <PhoneFooter />

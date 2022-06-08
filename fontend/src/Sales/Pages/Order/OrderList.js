@@ -5,7 +5,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import Style from './Order.module.css'
 import Pagination from '../../Components/Pagination/Pagination'
 import { useLocation, useNavigate } from 'react-router-dom'
-import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 
 function OrderList() {
   // 取得包含目前URL的狀態和位置的物件函數
@@ -15,8 +14,10 @@ function OrderList() {
   const [products, setProducts] = useState([])
   const [totalPage, setTotalPage] = useState([])
 
+  let userId = localStorage.getItem('id')
+
   const searchParams = new URLSearchParams(location.search)
-  let userId = searchParams.get('id')
+
   let currentpage = searchParams.get('page')
 
   const fetchProducts = async () => {
@@ -24,6 +25,11 @@ function OrderList() {
       `http://localhost:3001/Sales/api/orderUser?id=${userId}&page=${currentpage}`
     )
     const data = await response.json()
+    // 對時間格式做處理
+    for (let i = 0; i < data[0].length; i++) {
+      let dt = new Date(data[0][i]['create_time'])
+      data[0][i]['create_time'] = dt.toLocaleString().substring(0, 8)
+    }
     setProducts(data[0])
     setTotalPage(data[2])
   }
@@ -31,11 +37,10 @@ function OrderList() {
   // componentDidMount / componentDidUpdate
   useEffect(() => {
     fetchProducts()
-  }, currentpage)
+  }, [currentpage])
 
   return (
     <>
-      <LoginNav />
       <section>
         <table className={Style.shoppingListS}>
           <thead className={Style.listTitle}>
@@ -58,7 +63,7 @@ function OrderList() {
 
           <tbody className={`${Style.phoneCart} ${Style.listItem}`}>
             {products.map((v, i) => {
-              const { ID, user_ID, total_price, creat_time } = v
+              const { ID, user_ID, total_price, create_time } = v
               return (
                 <tr className={Style.listItem2} key={i}>
                   <th className={Style.blockSizeL} scope="row">
@@ -67,7 +72,7 @@ function OrderList() {
                   <td className={`${Style.blockSizeL} ${Style.price}`}>
                     {total_price}
                   </td>
-                  <td className={Style.blockSizeL}>{creat_time}</td>
+                  <td className={Style.blockSizeL}>{create_time}</td>
                   <td className={Style.blockSizeL}>
                     <button
                       className={Style.detailButton}
@@ -83,8 +88,8 @@ function OrderList() {
             })}
           </tbody>
         </table>
-        <Pagination totalPages={totalPage} />
       </section>
+      <Pagination totalPages={totalPage} />
     </>
   )
 }

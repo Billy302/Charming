@@ -119,12 +119,12 @@
 }
 .turnBack{
   /* display: inline; */
-  margin: 15px auto;
+  margin: 20px auto;
   cursor:pointer;
   border-radius: 99px;
   border: none;
   padding: 10px 20px;
-
+  font-size: var(--heading5);
   color: #fff;
   font-weight: bold;
   background-color: var(--brown2);
