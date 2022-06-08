@@ -1,5 +1,4 @@
 import classes from './ArticleHeader.module.css'
-import article4 from './img/article4.jpg'
 import { useEffect } from 'react'
 
 const ArticleHeader = (props) => {
