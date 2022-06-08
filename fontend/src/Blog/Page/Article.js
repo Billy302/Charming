@@ -6,6 +6,7 @@ import UnloginNav from '../Components/UI/UnLoginNavbar'
 import Footer from '../Components/UI/Footer'
 import { useParams } from 'react-router-dom'
 import Fade from 'react-reveal/Fade'
+import ScrollToTop from '../Components/UI/ScrollToTop'
 
 const Article = (props) => {
   const [trendingArticle, setTrendingArticle] = useState([])
@@ -25,10 +26,14 @@ const Article = (props) => {
   // console.log(trendingArticle.article_title);
   return (
     <>
-      <UnloginNav />
-      <ArticleHeader trendingArticle={trendingArticle} />
-      <ArticleContext trendingArticle={trendingArticle} />
-      <ChatArea trendingArticle={trendingArticle} />
+      <ScrollToTop>
+        <UnloginNav />
+        <Fade bottom>
+          <ArticleHeader trendingArticle={trendingArticle} />
+          <ArticleContext trendingArticle={trendingArticle} />
+          <ChatArea trendingArticle={trendingArticle} />
+        </Fade>
+      </ScrollToTop>
     </>
   )
 }
