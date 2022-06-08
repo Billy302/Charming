@@ -77,7 +77,7 @@ function AddProduct() {
         picPath += data[i]['filename'] + ' '
       }
       // 最後一筆，不用加空白做區隔
-      picPath += data[data.length]['filename']
+      picPath += data[data.length - 1]['filename']
     } else {
       picPath = data[0]['filename']
     }

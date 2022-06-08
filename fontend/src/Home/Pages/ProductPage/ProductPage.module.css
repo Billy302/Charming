@@ -1,7 +1,7 @@
 .ProductPage{
     margin: 50px 150px;
     --borderRadius:15px;
-    --bigPictureSize:50%;
+    --bigPictureSize:500px;
     --smallPictureSize:94px;
 }
 /* 主要商品名稱 */
@@ -170,26 +170,19 @@
     --bigPictureSize:50%;
     --smallPictureSize:94px;
 }
-.bigImg{
-    width: var(--bigPictureSize);
-    height: var(--bigPictureSize);
-    /* margin-top: 20px; */
-    margin-right: 10px;
-    border: 2px solid var(--brown2);
-    border-radius: var(--borderRadius);
-    object-fit: contain;
-}
+
 .smallImg{
+    left: 650px;
     display: block;
     width: var(--smallPictureSize);
     height: var(--smallPictureSize);
     margin-bottom: 20px;
     border: none;
     border-radius: var(--borderRadius);
-    opacity: .4;
     background-color: #fff;
 }
 .smallImg2{
+    opacity: .4;
     display: block;
     width: var(--smallPictureSize);
     height: var(--smallPictureSize);
@@ -200,10 +193,46 @@
     translate: .4s;
     object-fit: contain;
 }
-.smallImg:focus{
-        transform: translateY(-10px);
-
+/*-----照片切換----- */
+.bigImg{
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    position: absolute;
+    left: -650px;
+    border: 2px solid var(--brown2);
+    border-radius: var(--borderRadius);
+}
+.bigImg0{
+    top: 11px;
+}
+.bigImg1{
+    top: -103px;
+}
+.bigImg2{
+    top: -216px;
+}
+.bigImg3{
+    top: -330px;
+}
+.bigImg4{
+    top: -444.5px;
+}
+/* ————————————————————————— */
+/* .smallImg:hover{
     opacity:1;
+    z-index: 2;
+}
+.smallImg:hover .smallImg2{
+    opacity:1;
+} */
+.smallImg:focus{
+    z-index: 1;
+}
+.smallImg:focus .smallImg2{
+    transform: translateY(-10px);
+    opacity:1;
+
 }
 @media screen and (max-width:1024px){
    

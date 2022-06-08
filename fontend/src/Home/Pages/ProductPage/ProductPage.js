@@ -51,8 +51,14 @@ function ProductPage() {
   // 小圖
   let p = []
   for (let i = 0; i < a.length; i++) {
+    const s = style['bigImg' + i]
     p.push(
       <button className={style.smallImg}>
+        <img
+          className={`${s} ${style.bigImg}`}
+          alt="圖片顯示失敗"
+          src={`http://localhost:3000/Home/ProductImg/${a[i]}`}
+        />
         <img
           className={style.smallImg2}
           alt="圖片顯示失敗"
@@ -95,11 +101,6 @@ function ProductPage() {
         {/* 圖片放置區 */}
 
         <div className={style.displayFlex}>
-          <img
-            className={style.bigImg}
-            alt=""
-            src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
-          />
           <div>{p}</div>
           {/* 價格，數量，加入購物車按鈕，收藏按鈕 */}
           <div className={style.priceDiv}>

@@ -1,4 +1,23 @@
 /* 卡片排列方式 */
+.product{
+    display: flex;
+    flex-direction: column;
+}
+.order{
+    display: flex;
+    margin: 20px 0 10px 0;
+    align-self:flex-end;
+    align-items: center;
+
+}
+.order label{
+    font-size: var(--heading4);
+    color: var(--brown2);
+    text-align: center;
+}
+.order select{
+    width: 100%;
+}
 .cardFlex {
     display: flex;
     /* overflow: scroll; */

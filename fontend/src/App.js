@@ -25,6 +25,15 @@ import MySale from './Sales/Pages/Order/MySale'
 import Order from './Sales/Pages/Order/Order'
 import OrderList from './Sales/Pages/Order/OrderList'
 
+// 會員
+import SignInIdentify from './Account/Pages/SignInIdentify/SignInIdentify'
+import SignInRecover from './Account/Pages/SignInRecover/SignInRecover'
+import SignUp from './Account/Pages/SignUp/SignUp'
+import SignIn from './Account/Pages/SignIn/SignIn'
+import MyShoppingList from './Account/Pages/User/MyShoppingList'
+import MyCollection from './Account/Pages/User/MyCollection'
+import MyAccount from './Account/Pages/User/MyAccount'
+
 //討論區
 
 function App() {
@@ -63,6 +72,20 @@ function App() {
         <Route path="BtocPage/MySale" element={<MySale />} />
         <Route path="BtobPage/Order/:id" element={<Order />} />
         <Route path="BtobPage/Order" element={<OrderList />} />
+
+         {/* --------註冊及登入----- */}
+        {/* 忘記密碼 */}
+        <Route path="/signin/identify" element={<SignInIdentify />} />
+        <Route path="/signin/recover" element={<SignInRecover />} />
+        {/* 註冊 */}
+        <Route path="/signup" element={<SignUp />} />
+        {/* 登入 */}
+        <Route path="/signin" element={<SignIn />} />
+        {/* -------user 登入後頁面------- */}
+        <Route path="/shoppinglist" element={<MyShoppingList />} />
+        <Route path="/collection" element={<MyCollection />} />
+        <Route path="/account" element={<MyAccount />} />
+
       </Routes>
       <Footer />
       <PhoneFooter />

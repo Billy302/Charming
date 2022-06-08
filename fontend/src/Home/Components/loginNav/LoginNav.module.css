@@ -118,7 +118,7 @@
    border-right: 10px solid transparent;
    border-left: 10px solid transparent;
  }
- .navList a{
+ .navList a, .navList button{
    width: 100%;
    padding:10px;
    display: block;
@@ -131,13 +131,17 @@
    white-space:nowrap;
    text-align: center;
  }
+ .navList button{
+  color: var(--red);
+  font-weight: bold;
+ }
  /* 登出紅字 */
- .navList a:last-child{
-    color: var(--red);
-  }
-  .navList a:hover{
+  .navList a:hover, .navList button:hover{
     background-color: var(--allHoverColor);
     color: var(--allTextColor);
+  }
+  .navList button:hover{
+    color: #fff;
   }
 /* ——————————————————————————————————————— */
 

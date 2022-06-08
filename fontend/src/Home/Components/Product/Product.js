@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Style from './Product.module.css'
 import Card from '../Card/Card'
 import Pagination from '../Pagination/Pagination'
+import { FaBorderAll } from 'react-icons/fa'
 
 function MyProduct() {
   const [products, setProducts] = useState([])
@@ -66,11 +67,12 @@ function MyProduct() {
   }, [location.search, selectedValue])
 
   return (
-    <>
+    <div className={Style.product}>
       {/* 排序 */}
-      <section id="select">
-        <h2>排序方式</h2>
-        <label htmlFor="cars">選擇:</label>
+      <div className={Style.order} id="select">
+        <label for="sort" htmlFor="cars">
+          <FaBorderAll />
+        </label>
         <select
           name="sort"
           id="sort"
@@ -88,7 +90,7 @@ function MyProduct() {
             )
           })}
         </select>
-      </section>
+      </div>
 
       <div className={Style.arrangement}>
         <ul className={Style.cardFlex}>
@@ -110,7 +112,7 @@ function MyProduct() {
         </ul>
       </div>
       <Pagination totalPages={totalPage} search={location.search} />
-    </>
+    </div>
   )
 }
 export default MyProduct

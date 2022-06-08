@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
-
-import Processbar from '../../Components/ProcessBar/ProcessBar'
+import Success from './Success'
+import Style from "./Cart.module.css";
+import Processbar from '../../Components/Processbar/Processbar'
 import data from '../../Json/Order.json'
 
-import './Cart.css'
 
 function Cart4() {
   // 使用 useNavigate 套件
@@ -43,9 +43,10 @@ function Cart4() {
   return (
     <>
       <LoginNav />
-      <h3>購物車-訂單 Page(cart4)</h3>
-      <Processbar step="3" />
-      <div className="">
+      <Success/>
+
+    {/* 原訂單資訊 */}
+      {/* <div className="">
         <h2 className="successText">付款成功</h2>
         <div className="block">
           <p className="blockText">訂單ID</p>
@@ -129,7 +130,7 @@ function Cart4() {
         }}
       >
         完成
-      </button>
+      </button> */}
     </>
   )
 }

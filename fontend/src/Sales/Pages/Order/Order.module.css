@@ -1,0 +1,172 @@
+
+/* 表格-固定尺寸 */
+.blockSizeS {
+  width: var(--sizeS);
+}
+.blockSizeM {
+  width: var(--sizeM);
+}
+.blockSizeL {
+  width: var(--sizeL);
+}
+.blockSizeXL {
+  width: var(--sizeXL);
+}
+.price{
+  color: var(--red);
+}
+.flex{
+  display: flex;
+}
+/* ——
+/* —————————————表格———————————————— */
+.shoppingListS{
+  width: 60%;
+  display: flex;  
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--brown1);
+}
+.shoppingListS tr:nth-child(2n) {
+  background-color: var(--brown4);
+}
+/* 表單項目名稱 */
+.listTitle{
+  border-radius: 15px 15px 0 0 ;
+  padding: 10px 0;
+  font-size: var(--heading5);
+  background-color: var(--brown2);
+  color: var(--white);
+}
+/* 表單項目 */ 
+.listItem:last-child{
+  border: 2px solid var(--brown3);
+  border-radius: 0 0 15px 15px;
+}
+.listItem tr{
+  display: flex;
+  align-items: center;
+}
+.listItem tr:last-child{
+  border-radius: 0 0 15px 15px;
+}
+.listItem th{
+  font-size: var(--heading5);
+}
+.listItem td{
+  border-radius: 15px;
+  font-size: var(--heading4);
+}
+/* Cart2.js使用 */
+.listItem{
+  border:2px solid var(--brown3);
+  border-radius:0 0 15px 15px;
+}
+.listItem2{
+  padding: 5px 0px;
+  word-break: break-all;
+}
+.listItem2:last-child{
+  border-radius: 0 0 15px 15px;
+}
+/* 沒有銷售紀錄時出現 */
+.nosale{
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(../../Assets/noSale.png) no-repeat center;
+  background-color: rgba(255,255,255,.7);
+  background-blend-mode:screen;
+  background-size: 100%;
+}
+.nosale p{
+  color: var(--brown2);
+  font-size: var(--heading3);
+}
+/* OrderList.js */
+.detailButton{
+  padding: 8px 20px;
+  border-radius: 99px;
+  border: none;
+  margin: 5px 0px;
+  background-color: var(--yellow1);
+  font-size: var(--heading5);
+}
+/* Order.js */
+/* 最外圍統一置中排版 */
+.Orderflex{
+  display: flex;
+  flex-direction: column;
+}
+.orderInfo{
+  margin: 50px 0px;
+}
+.orderInfo div{
+  display: flex;
+  font-size: var(--heading4);
+}
+.orderInfo div p{
+  padding: 10px 0px;
+}
+.orderInfo div :first-child{
+  width: 50%;
+  display: inline-block;
+  text-align: right;
+  font-weight: bold;
+  color: var(--brown1);
+}
+.turnBack{
+  /* display: inline; */
+  margin: 15px auto;
+  cursor:pointer;
+  border-radius: 99px;
+  border: none;
+  padding: 10px 20px;
+
+  color: #fff;
+  font-weight: bold;
+  background-color: var(--brown2);
+}
+/* ——————————————————————————————————————— */
+@media screen and (max-width:441px){
+  /* ----card1.js---- */
+  .listItem{
+    border: none;
+  }
+  .listItem td{
+    font-size: var(--heading5);
+  }
+  .cartTable{
+    padding: 0px 10px;
+  }
+  .price{
+    font-weight: bold;
+    padding-right:10px ;
+  }
+  /* ---------------- */
+  /* -------cart2.js--------- */
+  .shoppingListS{
+    width: 95%;
+    display: flex;  
+    flex-direction: column;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+    color: var(--brown1);
+  }
+  /* ------表格------ */
+  .listItem{
+    margin-top: 60px;
+    margin-bottom: 80px;
+  }
+  .listItem:last-child{
+    border: none;
+  }
+  .phoneCart{
+  padding: 0px 10px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+}
