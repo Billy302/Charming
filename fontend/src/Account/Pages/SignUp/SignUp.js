@@ -1,14 +1,36 @@
 import style from "./SignUp.module.css";
 import { React, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import AuthService from "../../Services/auth.service";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+// sweetalert
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 
 function SignUp() {
   // 設定導向頁面函式
   const navigate = useNavigate();
+
+    // 設定sweetalert2
+    const MySwal = withReactContent(Swal);
  
+    const signUpAlert = () => {
+      MySwal.fire({
+        title: '歡迎加入柴米!',
+        text: '前往登入...',
+        imageUrl: 'http://localhost:3000/login.png',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+        showConfirmButton: false,
+       timer: 1500
+      }).then(
+        () => {
+          navigate("/signin");
+        }
+      );
+    }
   // const signUpBtn = document.querySelector('#signUpBtn')
   
   // signUpBtn.addEventListener('click',()=>{
@@ -83,8 +105,8 @@ function SignUp() {
   //   try{ window.alert("註冊成功! 現在將導向登入頁面");
   //   navigate('signin')
   //   }catch{error => console.log(error.response)}
+  
   // }
-
   // 檢查帳號是否存在
   const [account, setAccount] = useState("");
   const [accountMessage, setAccountMessage] = useState("");
@@ -274,7 +296,7 @@ function SignUp() {
               <div>
                 {/* 註冊按鈕 */}
                  
-                <button id="submit" type="submit" className={style.button}>
+                <button id="submit" type="submit" className={style.button} onClick={signUpAlert}>
                   註冊
                 </button>
                 <p>

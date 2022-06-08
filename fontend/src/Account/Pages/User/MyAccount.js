@@ -17,9 +17,21 @@ function MyAccount() {
   const auth = JSON.parse(localStorage.getItem("auth"));
   console.log(auth);
   if (auth === false) {
+    // MySwal.fire({
+    //   title:'尚未登入?',
+    //   text:'前往登入以獲得資訊',
+    //   icon:'question',
+    //   showConfirmButton: false,
+    //       timer: 1500}
+    // ).then(
+    //   () => {
+    //     navigate("/signin");
+    //   }
+    // );
     alert("您尚未登入");
     navigate("/signin");
   } else {
+    console.log('已登入');
   }
 
   const storageMemory = localStorage.getItem("id");
