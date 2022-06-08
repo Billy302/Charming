@@ -1,6 +1,6 @@
 import style from "./SignIn.module.css";
 import { React, useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation  } from "react-router-dom";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 // sweetalert
@@ -32,14 +32,15 @@ function SignIn() {
         if (obj == 0) {
           document.getElementById("msg").innerHTML = "帳號或密碼輸入錯誤";
         } else {
-          localStorage.setItem("id", obj);
+          localStorage.setItem("id", obj[0]);
+          localStorage.setItem("name", obj[1]);
           localStorage.setItem("auth", true);
           MySwal.fire({title: '登入成功!',
           icon: 'success',
           showConfirmButton: false,
           timer: 1500}).then(
             () => {
-              navigate("/LoginHome");
+            navigate("/LoginHome"); 
             }
           );
         }

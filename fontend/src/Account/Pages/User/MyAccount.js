@@ -13,26 +13,26 @@ function MyAccount() {
   // 設定sweetalert2
   const MySwal = withReactContent(Swal);
 
-  // 登入狀態驗證
-  const auth = JSON.parse(localStorage.getItem("auth"));
-  console.log(auth);
-  if (auth === false) {
-    // MySwal.fire({
-    //   title:'尚未登入?',
-    //   text:'前往登入以獲得資訊',
-    //   icon:'question',
-    //   showConfirmButton: false,
-    //       timer: 1500}
-    // ).then(
-    //   () => {
-    //     navigate("/signin");
-    //   }
-    // );
-    alert("您尚未登入");
-    navigate("/signin");
-  } else {
-    console.log('已登入');
-  }
+  // // 登入狀態驗證
+  // const auth = JSON.parse(localStorage.getItem("auth"));
+  // console.log(auth);
+  // if (auth === false) {
+  //   MySwal.fire({
+  //     title:'尚未登入?',
+  //     text:'前往登入以獲得資訊',
+  //     icon:'question',
+  //     showConfirmButton: false,
+  //         timer: 1500}
+  //   ).then(
+  //     () => {
+  //       navigate("/signin");
+  //     }
+  //   );
+  //   alert("您尚未登入");
+  //   navigate("/signin");
+  // } else {
+  //   console.log('已登入');
+  // }
 
   const storageMemory = localStorage.getItem("id");
   console.log(storageMemory);
@@ -82,6 +82,7 @@ function MyAccount() {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem('id')
+        localStorage.removeItem('name')
         localStorage.setItem('auth',false)
         MySwal.fire({
           title: '登出成功',

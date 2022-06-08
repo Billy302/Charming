@@ -60,14 +60,14 @@ router.get("/users", async (req, res, next) => {
     const verify = `SELECT * FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
     console.log(verify);
      const [login] = await db.query(verify);
-     console.log(login);
+     let newData = [login[0]["id"],login[0]["username"]] 
+    //  console.log(login);
      if(login[0] == undefined){
        res.send("0");
       //  0 表示帳號或密碼有誤 登入失敗
      }else{
-       res.json(login[0].id);
-      //  res.redirect('/Account')
-      //  取得會員id
+       res.json(newData);
+      //  取得會員id,username
      }
     console.log(login[0]);
     // console.log(login[0].id);
