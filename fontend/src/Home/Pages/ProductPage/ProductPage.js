@@ -50,10 +50,10 @@ function ProductPage() {
   const a = products.pic_path.split(' ')
 
   // 小圖
-  let p = []
+  let picture = []
   for (let i = 0; i < a.length; i++) {
     const s = style['bigImg' + i]
-    p.push(
+    picture.push(
       <button className={style.smallImg}>
         <img
           className={`${s} ${style.bigImg}`}
@@ -101,49 +101,47 @@ function ProductPage() {
       <section className={style.ProductPage}>
         {/* 圖片放置區 */}
 
-        <div className={style.displayFlex}>
-          <div>{p}</div>
-          {/* 價格，數量，加入購物車按鈕，收藏按鈕 */}
-          <div className={style.priceDiv}>
-            <h3>
-              {products.product_name}
-              <div className={style.displayFlex}>
-                <p className={style.littleInformation}>
-                  刊登時間：{products.create_time}
-                </p>
-                <p className={style.littleInformation}>
-                  已售出：{products.sell_count}
-                </p>
-              </div>
-            </h3>
-            <p className={style.price}>${products.price}</p>
+        <div className={style.phonePicture}>{picture}</div>
+        {/* 價格，數量，加入購物車按鈕，收藏按鈕 */}
+        <div className={style.priceDiv}>
+          <h3>
+            {products.product_name}
             <div className={style.displayFlex}>
-              <div className={style.buyNumber}>
-                <button onClick={additem} className={style.shoppingCar}>
-                  加入購物車
-                </button>
-              </div>
+              <p className={style.littleInformation}>
+                刊登時間：{products.create_time}
+              </p>
+              <p className={style.littleInformation}>
+                已售出：{products.sell_count}
+              </p>
             </div>
+          </h3>
+          <p className={style.price}>${products.price}</p>
+          <div className={style.displayFlex}>
+            <div className={style.buyNumber}>
+              <button onClick={additem} className={style.shoppingCar}>
+                加入購物車
+              </button>
+            </div>
+          </div>
 
-            {/* 關於設計師 */}
-            <div className={style.ProductTitle}>關於設計師</div>
-            <div className={style.displaySpaceAround}>
-              <img
-                className={style.designerPicture}
-                alt=""
-                src={require('../../Assets/charming_logo.png')}
-              />
-              <div>
-                <p className={style.aboutDesigner}>{products.author_name}</p>
-                <div className={style.icon}>
-                  <div>
-                    <MdLocationOn />
-                    所在地
-                  </div>
-                  <div>
-                    <MdCalendarToday />
-                    加入時間
-                  </div>
+          {/* 關於設計師 */}
+          <div className={style.ProductTitle}>關於設計師</div>
+          <div className={style.displaySpaceAround}>
+            <img
+              className={style.designerPicture}
+              alt=""
+              src={require('../../Assets/charming_logo.png')}
+            />
+            <div>
+              <p className={style.aboutDesigner}>{products.author_name}</p>
+              <div className={style.icon}>
+                <div>
+                  <MdLocationOn />
+                  所在地
+                </div>
+                <div>
+                  <MdCalendarToday />
+                  加入時間
                 </div>
               </div>
             </div>

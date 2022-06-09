@@ -21,6 +21,7 @@ function Cart4() {
             // 清除storage:addID
             storage.removeItem('addID')
             // 回首頁
+            window.scrollTo(0, 0)
             Navigate('/')
           }}
         >
