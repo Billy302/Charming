@@ -85,14 +85,25 @@ router.get("/checkAccount", async (req, res, next) => {
 
 // 註冊 帳號密碼
 // sql=使用MySQL語法及欄位,VALUE值放表單name=""
-router.post("/register", async (req, res, next) => {
+// router.post("/register", async (req, res, next) => {
+//   console.log(req.body);
+//   const sql = `INSERT INTO us_user(user_account,user_password,username,gender,birthday, email,mobile,city) VALUES ('${req.body.account}','${req.body.password}','${req.body.name}','${req.body.gender}','${req.body.birthday}','${req.body.email}','${req.body.mobile}','${req.body.city}')`;
+//   const [user] = await db.query(sql).catch((error) => {
+//     console.log(`執行Query:${sql}時錯誤`);
+//   });
+//   // res.json(user);
+//   res.redirect("http://localhost:3000/signin");
+// });
+router.post("/register",upload.none(), async (req, res, next) => {
   console.log(req.body);
   const sql = `INSERT INTO us_user(user_account,user_password,username,gender,birthday, email,mobile,city) VALUES ('${req.body.account}','${req.body.password}','${req.body.name}','${req.body.gender}','${req.body.birthday}','${req.body.email}','${req.body.mobile}','${req.body.city}')`;
   const [user] = await db.query(sql).catch((error) => {
-    console.log(`執行Query:${sql}時錯誤`);
-  });
-  // res.json(user);
-  res.redirect("http://localhost:3000/signin");
+        console.log(`執行Query:${sql}時錯誤`);
+      });
+  console.log(user);
+  console.log('註冊成功');
+  res.send("1");
+  // res.redirect("http://localhost:3000/signin");
 });
 
 // 測試註冊 透過form post 前端>資料庫 ok

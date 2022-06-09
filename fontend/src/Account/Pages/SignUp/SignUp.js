@@ -15,22 +15,56 @@ function SignUp() {
     // 設定sweetalert2
     const MySwal = withReactContent(Swal);
  
-    const signUpAlert = () => {
-      MySwal.fire({
-        title: '歡迎加入柴米!',
-        text: '前往登入...',
-        imageUrl: 'http://localhost:3000/login.png',
-        imageWidth: 400,
-        imageHeight: 200,
-        imageAlt: 'Custom image',
-        showConfirmButton: false,
-       timer: 2000
-      }).then(
-        () => {
-          navigate("/signin");
+    // 註冊
+    const signUpAlert = async (e) => {
+      // 先停止表單送出
+    e.preventDefault();
+    // 改透過FormData送資料到後端
+    const response = await fetch(`http://localhost:3001/Account/register`, {
+      method: "POST",
+      // 把表單內容放進FormData
+      body: new FormData(document.getElementById("signupForm")),
+    })
+      .then((r) => r.json())
+      .then((obj) => {
+        // console.log(obj)
+        // console.log(JSON.stringify(obj))
+        if (obj == 1) {
+          MySwal.fire({
+            title: '歡迎加入柴米!',
+            text: '前往登入...',
+            imageUrl: 'http://localhost:3000/login.png',
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Custom image',
+            showConfirmButton: false,
+           timer: 2000
+          }).then(
+            () => {
+              navigate("/signin");
+            }
+          );
+        } else {
+         console.log("註冊失敗")
         }
-      );
+      });
     }
+    // const signUpAlert = () => {
+    //   MySwal.fire({
+    //     title: '歡迎加入柴米!',
+    //     text: '前往登入...',
+    //     imageUrl: 'http://localhost:3000/login.png',
+    //     imageWidth: 400,
+    //     imageHeight: 200,
+    //     imageAlt: 'Custom image',
+    //     showConfirmButton: false,
+    //    timer: 2000
+    //   }).then(
+    //     () => {
+    //       navigate("/signin");
+    //     }
+    //   );
+    // }
   // const signUpBtn = document.querySelector('#signUpBtn')
   
   // signUpBtn.addEventListener('click',()=>{
@@ -163,7 +197,11 @@ function SignUp() {
 
         {/* 註冊柴米帳號 */}
         <p>或建立柴米帳號</p>
-        <form method="post" action="http://localhost:3001/Account/register">
+        <form method="post" 
+        onSubmit={signUpAlert}
+        id="signupForm"
+        // action="http://localhost:3001/Account/register"
+        >
           <div className={style.form}>
             <label htmlFor="account">帳號</label>
             <input
@@ -297,8 +335,9 @@ function SignUp() {
               <div>
                 {/* 註冊按鈕 */}
                  
-                <button id="submit" type="submit" className={style.button} onClick={signUpAlert}>
+                <button id="submit" type="submit" className={style.button} >
                   註冊
+                  {/* onClick={signUpAlert} */}
                 </button>
                 <p>
                   點擊「註冊」即表示你同意我們的<a href="#">使用條款</a>及
