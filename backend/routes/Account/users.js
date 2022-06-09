@@ -22,15 +22,15 @@ router.get("/", function (req, res, next) {
 //   res.json(dates);
 // });
 
-
 // 取得登入者 id=? 的使用者資料
 router.get("/users", async (req, res, next) => {
   console.log(req.query.userId);
-  const sql = "SELECT id,user_account,user_password,username,gender,DATE_FORMAT(birthday,'%Y-%m-%d') AS birthday,email,mobile,city,nickname,avatar,DATE_FORMAT(join_at,'%Y-%m-%d')AS join_at FROM `us_user` WHERE id=?";
-  const [dates] = await db.query(sql,[req.query.userId]);
+  const sql =
+    "SELECT id,user_account,user_password,username,gender,DATE_FORMAT(birthday,'%Y-%m-%d') AS birthday,email,mobile,city,nickname,avatar,DATE_FORMAT(join_at,'%Y-%m-%d')AS join_at FROM `us_user` WHERE id=?";
+  const [dates] = await db.query(sql, [req.query.userId]);
   console.log(dates);
   res.json(dates);
-})
+});
 
 // 登入 (使用postman出現{} 查看postman格式是否非JSON)
 // router.post("/signin", async (req, res, next) => {
@@ -55,23 +55,24 @@ router.get("/users", async (req, res, next) => {
 //   res.json({msg:"帳號或密碼有誤"});
 //   }
 
-  // 登入驗證
-  router.post("/signin",upload.none(), async (req, res, next) => { console.log(req.body);
-    const verify = `SELECT * FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
-    console.log(verify);
-     const [login] = await db.query(verify);
-     let newData = [login[0]["id"],login[0]["username"]] 
-    //  console.log(login);
-     if(login[0] == undefined){
-       res.send("0");
-      //  0 表示帳號或密碼有誤 登入失敗
-     }else{
-       res.json(newData);
-      //  取得會員id,username
-     }
-    console.log(login[0]);
-    // console.log(login[0].id);
-    // res.json(login[0]);
+// 登入驗證
+router.post("/signin", upload.none(), async (req, res, next) => {
+  console.log(req.body);
+  const verify = `SELECT * FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
+  // console.log(verify);
+  const [login] = await db.query(verify);
+  console.log(login[0]);
+  if (login[0] == undefined) {
+    res.send("0");
+    //  0 表示帳號或密碼有誤 登入失敗
+  } else {
+    let newData = [login[0]["id"], login[0]["username"]];
+    res.json(newData);
+    //  取得會員id,username
+  }
+  console.log(login[0]);
+  // console.log(login[0].id);
+  // res.json(login[0]);
 });
 
 // 檢查帳號是否已被使用(不能重複註冊) ok
@@ -94,7 +95,6 @@ router.post("/register", async (req, res, next) => {
   res.redirect("http://localhost:3000/signin");
 });
 
-
 // 測試註冊 透過form post 前端>資料庫 ok
 // sql=使用MySQL語法及欄位,VALUE值放表單name=""
 // router.post("/register", async (req, res, next) => {
@@ -107,6 +107,5 @@ router.post("/register", async (req, res, next) => {
 //   // 導向登入頁
 //   res.redirect("http://localhost:3000/signin");
 // });
-
 
 module.exports = router;

@@ -12,6 +12,11 @@
   align-items: center;
 }
 
+.outline a{
+  color: #4061A1
+}
+
+
 .h1 {
   text-align: center;
   color: var(--brown2);
@@ -38,7 +43,9 @@
   border: 2px solid var(--brown3);
   color: var(--brown2);
   /* width: 250px; */
-  padding: 5px;
+  padding: 5px 15px;
+
+  
 
 }
 
@@ -50,7 +57,6 @@
 .form input::placeholder {
   color: var(--brown3);
   font-size: var(--heading6);
-  padding: 10px;
 }
 
 .google {

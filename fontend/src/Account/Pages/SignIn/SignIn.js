@@ -95,7 +95,7 @@ function SignIn() {
           </Link>
 
           {/* 顯示登入錯誤訊息 */}
-          <p id="msg"></p>
+          <p className={style.checkMsg} id="msg"></p>
           {/* 登入並導向首頁 */}
           <button typeof="submit" className={style.button}>
             登入
