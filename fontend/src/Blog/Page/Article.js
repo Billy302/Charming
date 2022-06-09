@@ -10,29 +10,56 @@ import ScrollToTop from '../Components/UI/ScrollToTop'
 
 const Article = (props) => {
   const [trendingArticle, setTrendingArticle] = useState([])
+  const [isSaveArticle, setIsSaveArticle] = useState(true)
+  const [isFollowingAuthor, setIsFollowingAuthor] = useState(null)
+
   const params = useParams()
   const articleID = params.id
 
+  const userid = localStorage.getItem('id')
+
+  // render 整篇 article 文章
+
+  const fetchArticleAndAuthor = async () => {
+    const articleData = await fetch(
+      `http://localhost:3001/blog/article/${articleID}`
+    )
+    const articleResult = await articleData.json()
+    setTrendingArticle(articleResult[0])
+    const authorData = await fetch(
+      `http://localhost:3001/blog/follow/render?userid=${userid}&author=${trendingArticle.author_id}`
+    )
+    const dataResult = await authorData.json()
+    if (dataResult.length === 0) {
+      setIsFollowingAuthor(false)
+    } else setIsFollowingAuthor(true)
+  }
+
+  // const fetchFollowAuthor = async () => {
+  //   const data = await fetch(
+  //     `http://localhost:3001/blog/follow/render?userid=${userid}&author=${trendingArticle.author_id}`
+  //   )
+  //   const result = await data.json()
+  //   setIsFollowingAuthor(result[0])
+  // }
+
   useEffect(() => {
-    fetch(`http://localhost:3001/blog/article/${articleID}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTrendingArticle(data[0])
-      })
-    // 如果這樣設定的話下面的component讀不到
-    // 下面的component props.trendingArticle[0].article_title 這樣讀不到
-  }, [articleID])
-  // console.log(trendingArticle[0]);
-  // console.log(trendingArticle.article_title);
+    fetchArticleAndAuthor()
+    // fetchFollowAuthor()
+  }, [])
+
   return (
     <>
       <ScrollToTop>
         <UnloginNav />
-        <Fade bottom>
-          <ArticleHeader trendingArticle={trendingArticle} />
-          <ArticleContext trendingArticle={trendingArticle} />
-          <ChatArea trendingArticle={trendingArticle} />
-        </Fade>
+        {/* <Fade bottom> */}
+        <ArticleHeader trendingArticle={trendingArticle} />
+        <ArticleContext
+          trendingArticle={trendingArticle}
+          isFollowingAuthor={isFollowingAuthor}
+        />
+        <ChatArea trendingArticle={trendingArticle} />
+        {/* </Fade> */}
       </ScrollToTop>
     </>
   )

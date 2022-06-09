@@ -5,6 +5,8 @@ import PillBtn from '../../UI/PillBtn'
 import Fade from 'react-reveal/Fade'
 
 const ArticleContext = (props) => {
+  const { isFollowingAuthor } = props
+
   // render 文章的 component
   return (
     <section>
@@ -31,7 +33,10 @@ const ArticleContext = (props) => {
           </div>
           <aside className={classes['article--trending-related']}>
             <div>
-              <AuthorCard trendingArticle={props.trendingArticle} />
+              <AuthorCard
+                trendingArticle={props.trendingArticle}
+                isFollowingAuthor={isFollowingAuthor}
+              />
             </div>
           </aside>
         </article>
