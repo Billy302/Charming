@@ -1,0 +1,111 @@
+/* 上方nav */
+.navLeft {
+  padding: 0px 0px 10px 20px;
+  font-size: 24px;
+  display: flex;
+  position: relative;
+  transition: .5s 0.2s;
+}
+
+.navLeft a{
+  transition: .3s 0.1s;
+}
+
+.unactive{
+  padding: 0px 50px 0px 0px;
+  margin: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--brown3);
+}
+.active{
+  padding: 0px 50px 0px 0px;
+  margin: 15px;
+  font-weight: 700;
+  font-size: 28px;
+  text-decoration: none;
+  color: var(--brown2);
+}
+
+.navLeft a hr {
+  width: 150px;
+  border-top: 5px solid;
+  position: absolute;
+  left: -20px;
+}
+
+.navLeft a:hover {
+  color: var(--brown2);
+}
+
+/* 內文 */
+.main {
+  margin: 10px auto 50px;
+  width: 80%;
+  border-radius: var(--desk-border-radius);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  color: var(--brown2);
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+}
+
+.main img {
+  width: 80px;
+}
+
+/* 大頭貼 姓名 登入狀態 會員稱號 */
+.item1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.item1 img{
+  margin: 0px 0px 15px;
+}
+
+/* 基本資料 */
+.item2 {
+  width: 50%;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px 0px 150px;
+}
+
+.item2 label {
+  padding: 10px;
+}
+
+/* 編輯button */
+.item3 {
+  width: 25%;
+  align-self: flex-end;
+}
+
+.h1 {
+  text-align: center;
+  color: var(--brown2);
+  padding: 30px;
+}
+
+.form {
+  color: var(--main-color);
+}
+
+.form label {
+  margin: 5px;
+}
+
+.button {
+  padding: 5px;
+  margin: 25px 0px 50px 0px;
+  width: 80px;
+  border-radius: 15px;
+  border: 2px solid var(--brown2);
+  background-color: var(--brown2);
+  color: #ffffff;
+  cursor: pointer
+}

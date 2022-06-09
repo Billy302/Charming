@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import style from "./User.module.css";
+import style from "./MyAccount.module.css";
 import { useNavigate, Link } from "react-router-dom";
-import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
-import BreadCrumb from "../../Components/BreadCrumb/BreadCrumb";
+import LoginNav from "../../../../Home/Components/LoginNav/LoginNav";
+import BreadCrumb from "../../../Components/BreadCrumb/BreadCrumb";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -13,26 +13,26 @@ function MyAccount() {
   // 設定sweetalert2
   const MySwal = withReactContent(Swal);
 
-  // // 登入狀態驗證
-  // const auth = JSON.parse(localStorage.getItem("auth"));
-  // console.log(auth);
-  // if (auth === false) {
-  //   MySwal.fire({
-  //     title:'尚未登入?',
-  //     text:'前往登入以獲得資訊',
-  //     icon:'question',
-  //     showConfirmButton: false,
-  //         timer: 1500}
-  //   ).then(
-  //     () => {
-  //       navigate("/signin");
-  //     }
-  //   );
-  //   alert("您尚未登入");
-  //   navigate("/signin");
-  // } else {
-  //   console.log('已登入');
-  // }
+  // 登入狀態驗證
+  const auth = JSON.parse(localStorage.getItem("auth"));
+  console.log(auth);
+  if (auth === false) {
+    MySwal.fire({
+      title:'尚未登入?',
+      text:'前往登入以獲得資訊',
+      icon:'question',
+      showConfirmButton: false,
+          timer: 1500}
+    ).then(
+      () => {
+        navigate("/signin");
+      }
+    );
+    alert("您尚未登入");
+    navigate("/signin");
+  } else {
+    console.log('已登入');
+  }
 
   const storageMemory = localStorage.getItem("id");
   console.log(storageMemory);
@@ -102,13 +102,13 @@ function MyAccount() {
       <BreadCrumb />
       {/* 上方選單 */}
       <nav className={style.navLeft}>
-        <Link to="/account" className={style.active}>
+        <Link to="/BtocPage/account" className={style.active}>
           會員中心 <hr />
         </Link>
-        <Link to="/shoppinglist" className={style.unactive}>
+        <Link to="/BtocPage/shoppinglist" className={style.unactive}>
           購買清單 <hr />
         </Link>
-        <Link to="/collection" className={style.unactive}>
+        <Link to="/BtocPage/collection" className={style.unactive}>
           我的收藏 <hr />
         </Link>
       </nav>
@@ -119,7 +119,7 @@ function MyAccount() {
         <h1 className={style.h1}>基本資料</h1>
         <div className={style.form}>
           <div className={style.item1}>
-            <img src={require("../../images/Avatar3.png")} alt="male" />
+            <img src={require("../../../images/Avatar3.png")} alt="male" />
             <h3>{username}</h3>
             <label>會員稱號：柴米榜達人</label>
           </div>

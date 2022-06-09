@@ -1,25 +1,26 @@
 import { Link } from 'react-router-dom'
 import style from "./User.module.css";
-import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
-import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb'
+import LoginNav from '../../../../Home/Components/LoginNav/LoginNav'
+import BreadCrumb from '../../../Components/BreadCrumb/BreadCrumb'
 
 function MyCollection() {
   return (
     <>
+    {/* 登入後首頁 */}
       <LoginNav />
+      {/* 麵包屑 */}
       <BreadCrumb />
       {/* 上方選單 */}
       <nav className={style.navLeft}>
-        <Link to="/account" className={style.unactive}>
+        <Link to="/BtocPage/account" className={style.active}>
           會員中心 <hr />
         </Link>
-        <Link to="/shoppinglist" className={style.unactive}>
+        <Link to="/BtocPage/shoppinglist" className={style.unactive}>
           購買清單 <hr />
         </Link>
-        <Link to="/collection" className={style.active}>
+        <Link to="/BtocPage/collection" className={style.unactive}>
           我的收藏 <hr />
         </Link>
-
       </nav>
 
       {/* 右側內文 */}

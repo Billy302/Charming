@@ -1,21 +1,58 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import style from "./LoginNav.module.css";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { BsCloudy, BsFillBellFill } from "react-icons/bs";
 import { FaShoppingCart, FaAngleDown } from "react-icons/fa";
 import { ImSearch } from "react-icons/im";
 import logo from "../../Assets/charming_logo.png";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function LoginNav(props) {
-  const [typebar,setNavbar] = useState(false);
-  const displayItemType = () =>{
-    if(window.scrollY >= 80){
+  const [typebar, setNavbar] = useState(false);
+  const displayItemType = () => {
+    if (window.scrollY >= 80) {
       setNavbar(true);
-    }else{
+    } else {
       setNavbar(false);
     }
-  }
-  window.addEventListener('scroll',displayItemType);
+  };
+  window.addEventListener("scroll", displayItemType);
+
+  // 設定導向頁面函式
+  const navigate = useNavigate();
+
+  // 設定sweetalert2
+  const MySwal = withReactContent(Swal);
+
+  // 登出
+  const logOut = (e) => {
+    e.preventDefault();
+    MySwal.fire({
+      title: "確定要登出嗎?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#795252",
+      confirmButtonText: "確定",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "取消",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("id");
+        localStorage.removeItem("name");
+        localStorage.setItem("auth", false);
+        MySwal.fire({
+          title: "登出成功",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          navigate("/UnloginHome");
+        });
+      }
+    });
+  };
 
   return (
     //固定住nav在下移的時候不動
@@ -76,16 +113,16 @@ function LoginNav(props) {
             <div>
               <a href="ShoppingCar">
                 <li>
-                  <FaShoppingCart className={style.phoneIcon}/>
+                  <FaShoppingCart className={style.phoneIcon} />
                 </li>
               </a>
               <a href="">
                 <li>
-                  <BsFillBellFill className={style.phoneIcon}/>
+                  <BsFillBellFill className={style.phoneIcon} />
                 </li>
               </a>
               <li className={style.showList}>
-                <a href="/account">
+                <a href="/BtocPage/account">
                   <img src={logo} alt="logo" />
                 </a>
                 {/*--hover頭像時出現時才出現的會員表單 --*/}
@@ -95,7 +132,7 @@ function LoginNav(props) {
                   <a href="/MyProduct">我的商品</a>
                   <a href="/collection">我的收藏</a>
                   <a href="/shoppinglist">購買清單</a>
-                  <a href="/UnloginHome">登出</a>
+                  <button onClick={logOut}>登出</button>
                 </div>
                 {/* ——————————————————————————————————————— */}
               </li>
@@ -105,8 +142,10 @@ function LoginNav(props) {
       </nav>
 
       {/* ----往下滾動時滑時出現的種類選項----- */}
-      <div className={typebar ? `${style.displayblock}` :`${style.displayNone}`}>
-        <hr/>
+      <div
+        className={typebar ? `${style.displayblock}` : `${style.displayNone}`}
+      >
+        <hr />
         <ul className={style.itemList}>
           <a href="">
             <li>UI/UX</li>
@@ -124,7 +163,7 @@ function LoginNav(props) {
             <li>攝影</li>
           </a>
         </ul>
-        <hr/>
+        <hr />
       </div>
     </header>
   );

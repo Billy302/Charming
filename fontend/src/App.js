@@ -19,9 +19,9 @@ import SignUp from './Account/Pages/SignUp/SignUp';
 import SignIn from './Account/Pages/SignIn/SignIn';
 
 //Pages user
-import MyShoppingList from './Account/Pages/User/MyShoppingList';
-import MyCollection from './Account/Pages/User/MyCollection';
-import MyAccount from './Account/Pages/User/MyAccount';
+import MyShoppingList from './Account/Pages/User/MyShoppingList/MyShoppingList';
+import MyCollection from './Account/Pages/User/MyCollection/MyCollection';
+import MyAccount from './Account/Pages/User/MyAccount/MyAccount';
 
 //購物車頁
 import Cart1 from './Sales/Pages/Cart/Cart1';
@@ -63,9 +63,9 @@ function App() {
                 {/* 登入 */}
                 <Route path="/signin" element={<SignIn />} />
                 {/* -------user 登入後頁面------- */}
-                <Route path="/shoppinglist" element={<MyShoppingList />} />
-                <Route path="/collection" element={<MyCollection />} />
-                <Route path="/account" element={<MyAccount />} />
+                <Route path="/BtocPage/shoppinglist" element={<MyShoppingList />} />
+                <Route path="/BtocPage/collection" element={<MyCollection />} />
+                <Route path="/BtocPage/account" element={<MyAccount />} />
                 {/* --------商品頁面-------- */}
                 <Route path="/Cart1" element={<Cart1 />} />
                 <Route path="/Cart2" element={<Cart2 />} />

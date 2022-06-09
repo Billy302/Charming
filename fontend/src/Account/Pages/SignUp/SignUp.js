@@ -176,7 +176,7 @@ function SignUp() {
               onBlur={handleCheckAccount}
               required
             />
-            <span>{accountMessage}</span>
+              <p className={style.checkMsg}>{accountMessage}</p>
             {/* 初次輸入密碼 */}
             <label htmlFor="password">密碼</label>
             <div className={style.password}>
@@ -192,6 +192,7 @@ function SignUp() {
               name="password"
               required
             />
+              <p className={style.checkMsg}></p>
 
             {/* 確認密碼 */}
             <label htmlFor="passwordCheck">確認密碼</label>
