@@ -24,7 +24,7 @@ function SignUp() {
         imageHeight: 200,
         imageAlt: 'Custom image',
         showConfirmButton: false,
-       timer: 1500
+       timer: 2000
       }).then(
         () => {
           navigate("/signin");

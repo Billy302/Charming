@@ -12,13 +12,13 @@ function MyCollection() {
       <BreadCrumb />
       {/* 上方選單 */}
       <nav className={style.navLeft}>
-        <Link to="/BtocPage/account" className={style.active}>
+        <Link to="/BtocPage/account" className={style.unactive}>
           會員中心 <hr />
         </Link>
         <Link to="/BtocPage/shoppinglist" className={style.unactive}>
           購買清單 <hr />
         </Link>
-        <Link to="/BtocPage/collection" className={style.unactive}>
+        <Link to="/BtocPage/collection" className={style.active}>
           我的收藏 <hr />
         </Link>
       </nav>
