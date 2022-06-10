@@ -12,6 +12,7 @@ function MyCollection() {
   // -------- render 收藏文章功能 --------
   // 紀錄所有收藏的文章
   const [allFavArticle, setAllFavArticle] = useState([])
+  // 紀錄當下的使用者
   const userId = localStorage.getItem('id')
   // render user 追蹤的文章
   useEffect(() => {
@@ -23,8 +24,13 @@ function MyCollection() {
   // render 商品或文章功能
   const [renderProduct, setRenderProduct] = useState(true)
 
+  // 點選文章收藏時觸發
+  const renderArticleHandler = () => {
+    setRenderProduct(false)
+  }
+  // 點選商品收藏時觸發
   const renderProductHandler = () => {
-    setRenderProduct(!renderProduct)
+    setRenderProduct(true)
   }
 
   return (
@@ -46,7 +52,10 @@ function MyCollection() {
       </nav>
       {/* 右側內文 */}
       <section className={style.dispalyFlex}>
-        <MyCollectionButton onRenderProduct={renderProductHandler} />
+        <MyCollectionButton
+          onRenderProduct={renderProductHandler}
+          onRenderArticle={renderArticleHandler}
+        />
         <main className={style.main}>
           {renderProduct ? (
             <MyLoveProduct />

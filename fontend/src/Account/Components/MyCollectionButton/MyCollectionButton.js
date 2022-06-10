@@ -5,7 +5,7 @@ function ProductBtobButton(props) {
   return (
     <aside className={style.ProductBtobButton}>
       <a onClick={props.onRenderProduct}>商品收藏</a>
-      <a onClick={props.onRenderProduct}>文章收藏</a>
+      <a onClick={props.onRenderArticle}>文章收藏</a>
     </aside>
   )
 }
