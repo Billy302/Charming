@@ -86,9 +86,40 @@ blog.post('/image', uploadImage.single('file'), async (req, res) => {
 });
 
 // 讀取user的banner
+
 blog.get('/image/render', async (req, res) => {
     const userId = req.query.userid;
     const sqlSelect = `select * from us_banner_pic where user_id = ${userId}`;
+    const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
+    res.json(result);
+});
+
+// 因為一個使用者只能有一個 logo ，所以先把舊的刪掉，在insert一張新的
+
+const storageLogo = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, '../fontend/public/Blog/upload/icon');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+});
+
+const uploadLogo = multer({ storage: storageLogo });
+
+blog.post('/logo', uploadLogo.single('file'), async (req, res) => {
+    const userId = req.query.userid;
+    const image = req.file.originalname;
+    const updateImg = `DELETE FROM us_banner_logo WHERE user_id = ${userId} ;
+    INSERT INTO us_banner_logo(user_id, logo_file) VALUES ('${userId}','${image}')`;
+    const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
+    res.json(result);
+});
+
+// 讀取user的logo
+blog.get('/logo/render', async (req, res) => {
+    const userId = req.query.userid;
+    const sqlSelect = `select * from us_banner_logo where user_id = ${userId}`;
     const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
     res.json(result);
 });
