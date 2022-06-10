@@ -304,11 +304,10 @@ function SignUp() {
               <label htmlFor="email">E-mail</label>
               <input type="email" id="email" name="email" required onChange={handleChangeEmail} />
               <label>連絡電話</label>
-              <input type="text" minLength="8"
-              maxLength="11" pattern="09\d{2}\-?\d{3}\-?\d{3}" name="mobile" onChange={handleChangeMobile} required  />
+              <input type="text" name="mobile" onChange={handleChangeMobile} required  />
               <label for="city">所在地區</label>
-              <select id="city" name="city" onChange={handleChangeCity}>
-                <option></option>
+              <select id="city" name="city" onChange={handleChangeCity} required>
+                <option></option> 
                 <option>臺北市</option>
                 <option>新北市</option>
                 <option>基隆市</option>

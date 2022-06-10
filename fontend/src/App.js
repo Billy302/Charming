@@ -56,15 +56,22 @@ function App() {
                 <Route path="/" element={<UnloginHome />} />
                 {/* --------註冊及登入----- */}
                 {/* 忘記密碼 */}
+                {/* http://localhost:3000/signin/identify */}
                 <Route path="/signin/identify" element={<SignInIdentify />} />
+                {/* http://localhost:3000/signin/recover */}
                 <Route path="/signin/recover" element={<SignInRecover />} />
                 {/* 註冊 */}
+                {/* http://localhost:3000/signup */}
                 <Route path="/signup" element={<SignUp />} />
                 {/* 登入 */}
+                {/* http://localhost:3000/signin */}
                 <Route path="/signin" element={<SignIn />} />
                 {/* -------user 登入後頁面------- */}
+                {/* http://localhost:3000/BtocPage/shoppinglist */}
                 <Route path="/BtocPage/shoppinglist" element={<MyShoppingList />} />
+                {/* http://localhost:3000/BtocPage/collection */}
                 <Route path="/BtocPage/collection" element={<MyCollection />} />
+                {/* http://localhost:3000/BtocPage/account */}
                 <Route path="/BtocPage/account" element={<MyAccount />} />
                 {/* --------商品頁面-------- */}
                 <Route path="/Cart1" element={<Cart1 />} />

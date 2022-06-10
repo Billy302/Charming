@@ -7,6 +7,30 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 function MyAccount() {
+  // 上傳圖片
+const [image,setImage] = useState({preview:'',data:''})
+const [status,setStatus] = useState('')
+const userId = localStorage.getItem('id')
+
+const handleSubmit = async (e) =>{
+  e.preventDefault()
+  let formData = new FormData();
+  formData.append('file',image.data)
+  const response = await fetch(`http://localhost:3001/Account/image?userid=${userId}`,{
+    method:'POST',
+    body: formData,
+  })
+  if(response) setStatus(response.statusText)
+}
+
+const handleFileChange = (e) =>{
+  const img = {
+    preview: URL.createObjectURL(e.target.files[0]),
+    data:e.target.files[0],
+  }
+  setImage(img);
+}
+
   // 設定導向頁面函式
   const navigate = useNavigate();
 
@@ -69,6 +93,7 @@ function MyAccount() {
     username,
   } = account;
 
+
   const logOut = (e) => {
     e.preventDefault();
     MySwal.fire({
@@ -120,8 +145,14 @@ function MyAccount() {
         <div className={style.form}>
           <div className={style.item1}>
             <img src={require("../../../images/Avatar3.png")} alt="male" />
+            {image.preview && <img src={image.preview} width='100' height='100'/>}
+            <form onSubmit={handleSubmit}>
+              <input type='file' name='file' onChange={handleFileChange}></input>
+              <button type="submit">提交</button>
+            </form>
+            {status && <h4>{status}</h4>}
             <h3>{username}</h3>
-            <label>會員稱號：柴米榜達人</label>
+            <label>會員稱號：柴富自由柴米人</label>
           </div>
 
           <div className={style.item2}>

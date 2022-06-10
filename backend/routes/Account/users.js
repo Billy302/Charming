@@ -14,6 +14,29 @@ router.get("/", function (req, res, next) {
   res.send("<h1>後端正在監聽中</h1>");
 });
 
+// 上傳圖片
+// const storage = multer.diskStorage({
+//   destination:(req,file,cb) => {
+//     cb(null,'../../fontend/public/avatar')
+//   },
+//   filename:(req,file,cb) =>{
+//     cb(null,file.originalname)
+//   },
+// });
+
+// const uploadImage = multer({storage: storage})
+
+// router.post('/image', uploadImage.single('file'), async (req, res) => {
+//   const userId = req.query.userid;
+//   const image = req.file.originalname;
+//   const updateImg = `INSERT INTO us_avatar(user_id, avatar) VALUES ('${userId}',?)`;
+//   const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
+//   res.json(result);
+// })
+
+// app.listen(port, () => {
+//   console.log(`listening at http://localhost:${port}`)
+// })
 // 查看所有user資料
 //此寫法與下相同 router.route("/users").get(async (req, res, next) =>
 // router.get("/users", async (req, res, next) => {
