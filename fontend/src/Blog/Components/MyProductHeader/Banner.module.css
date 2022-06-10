@@ -1,34 +1,59 @@
-.myproduct--banner {
+.banner {
   margin-top: 8rem;
+  position: relative;
 }
 
-.myproduct--banner img {
+.banner img {
   width: 100%;
   object-fit: cover;
-  display: block;
-  margin: auto;
 }
 
-.myproduct--banner__upload {
+.banner--uploadimage {
   width: 100%;
   max-height: 500px;
   object-fit: contain;
-  display: block;
-  margin: auto;
 }
 
-.myproduct--banner__word p {
-  text-align: center;
-  padding-top: 1.2rem;
-  height: 5rem;
+.banner--upload {
+  position: absolute;
+  top: 75%;
+  left: 85%;
+}
+
+.banner--upload input[type='file'] {
+  display: none;
+}
+.banner--upload input[type='submit'] {
+  color: var(--brown1);
   font-size: 2rem;
-  background-color: rgba(0, 0, 0, 0.1);
-  transform: translateY(-4rem);
-  opacity: 0;
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  display: inline;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-top: 2rem;
+  margin-left: 4rem;
+}
+
+.custom-file-upload {
+  color: var(--brown1);
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  display: inline;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
   transition: 0.5s;
 }
 
-.myproduct--banner:hover .myproduct--banner__word p {
-  transform: translateY(-5rem);
-  opacity: 1;
+.custom-file-upload:hover {
+  background-color: #eee;
+  border: 1px solid #eee;
+}
+
+.banner--upload input[type='submit']:hover {
+  background-color: #eee;
+  border: 1px solid #eee;
 }

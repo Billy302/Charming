@@ -8,16 +8,14 @@ const Banner = (props) => {
   const [status, setStatus] = useState('')
   const [uploadBtn, setUploadBtn] = useState(false)
   const [userBanner, setUserBanner] = useState([])
-  // render 追蹤的文章
-  const [allFavArticle, setAllFavArticle] = useState([])
-
-  const userId = localStorage.getItem('id')
 
   const uploadBtnHandler = () => {
     setUploadBtn(true)
   }
 
-  // 上傳圖片
+  const userId = localStorage.getItem('id')
+
+  // 上傳橫幅banner圖片
   const fileHandler = (e) => {
     const img = {
       preview: URL.createObjectURL(e.target.files[0]),
@@ -40,8 +38,6 @@ const Banner = (props) => {
     if (response) setStatus(response.statusText)
   }
 
-  //
-
   // render user 的 banner
 
   const fetchBanner = async () => {
@@ -56,53 +52,38 @@ const Banner = (props) => {
     fetchBanner()
   }, [])
 
-  console.log(userBanner)
-
-  // render user 追蹤的文章
-  useEffect(() => {
-    fetch(`http://localhost:3001/blog/fav/all?userid=${userId}`)
-      .then((res) => res.json())
-      .then((data) => setAllFavArticle(data))
-  }, [])
+  // 上傳使用者小圖像
 
   return (
     <>
-      <div className={classes['myproduct--banner']}>
+      <div className={classes['banner']}>
         {image.preview ? (
           <img src={image.preview} width="100%" height="500" />
         ) : (
           <img
             src={`http://localhost:3000/blog/upload/banner/${userBanner.banner_file}`}
             alt="banner"
-            className={classes['myproduct--banner__upload']}
+            className={classes['banner--uploadimage']}
           ></img>
         )}
-        {uploadBtn && (
-          <form method="POST" onSubmit={imageUploadHandler}>
-            <input type="file" name="file" onChange={fileHandler} />
-            <button type="submit">upload</button>
+        <div className={classes['banner--upload']}>
+          <form id="banner-upload" method="POST" onSubmit={imageUploadHandler}>
+            <label
+              htmlFor="banner"
+              className={`${classes['custom-file-upload']}`}
+            >
+              編輯封面照片
+            </label>
+            <input
+              type="file"
+              name="banner"
+              id="banner"
+              onChange={fileHandler}
+            />
+            <input type="submit" value="儲存變更" form="banner-upload" />
           </form>
-        )}
-        <div className={classes['myproduct--banner__word']}>
-          <PillBtn onClick={uploadBtnHandler}>按我</PillBtn>
         </div>
       </div>
-      {/* 圖片上傳 */}
-      {/* <div>
-        <h1>一刀殺進去！！</h1>
-        {image.preview && (
-          <img src={image.preview} width="100%" height="1000" />
-        )}
-        <form method="POST" onSubmit={imageUploadHandler}>
-          <input type="file" name="banner" onChange={fileHandler} />
-          <button type="submit">upload</button>
-        </form>
-        {status && <h4>{status}</h4>}
-      </div> */}
-      {/* user 追蹤的文章 */}
-      {allFavArticle.map((aritcle) => {
-        return <Trending article={aritcle} key={aritcle.fav_id} />
-      })}
     </>
   )
 }
