@@ -23,7 +23,7 @@ blog.get('/article/:id', async (req, res) => {
 
 // render comment ，用後面的id來判讀是讀哪篇文章的 comment
 blog.get('/comment/:id', async (req, res) => {
-    const sqlUpdate = `SELECT * FROM blog_comments WHERE article_id = ${req.params.id}`;
+    const sqlUpdate = `SELECT * FROM blog_comments left join us_user on blog_comments.user_id = us_user.id where article_id = ${req.params.id}`;
     const [result] = await db.query(sqlUpdate).catch((e) => console.log(e));
     res.json(result);
 });
@@ -205,6 +205,15 @@ blog.post('/user/status/api', async (req, res) => {
     const userId = req.query.userid;
     const sqlUpdate = `UPDATE us_user_status SET status_title='${req.body.titleInput}',status_content='${req.body.contextInput}' WHERE user_id = ${userId}`;
     const [result] = await db.query(sqlUpdate).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// render user資料
+
+blog.get('/userinfo', async (req, res) => {
+    const userId = req.query.userid;
+    const sqlSelect = `select * from us_user where id=${userId}`;
+    const [result] = await db.query(sqlSelect).catch((e) => console.log(e));
     res.json(result);
 });
 
