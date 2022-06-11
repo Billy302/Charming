@@ -77,7 +77,7 @@ function SignIn() {
             name="password"
           />
 
-          <Link to="/signin/identify" className={style.forget}>
+          <Link to="/signforget" className={style.forget}>
             忘記密碼
           </Link>
 

@@ -204,7 +204,7 @@ sales
     });
     res.send("delete : /api/product/:id");
   })
-  // 查詢單筆商品資料(遊客 或 編輯)
+  // 查詢單筆商品資料(FOR遊客 或 編輯)
   // http://localhost:3001/Sales/api/product/2
   // 需要一個參數，透過Params ->商品ID : id
   .get(async (req, res, next) => {
