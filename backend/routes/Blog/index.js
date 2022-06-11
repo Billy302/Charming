@@ -66,7 +66,7 @@ blog.get('/renderSearch', async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../fontend/public/Blog/upload/banner');
+        cb(null, '../../fontend/public/Blog/upload/banner');
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -98,7 +98,7 @@ blog.get('/image/render', async (req, res) => {
 
 const storageLogo = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../fontend/public/Blog/upload/icon');
+        cb(null, '../../fontend/public/Blog/upload/icon');
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -187,6 +187,24 @@ blog.get('/fav/all', async (req, res) => {
     const userId = req.query.userid;
     const sqlSelect = `SELECT * FROM blog_fav left join blog_article on blog_fav.fav_article = blog_article.article_id where fav_user = ${userId}`;
     const [result] = await db.query(sqlSelect).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// render user 的狀態
+
+blog.get('/user/renderStatus', async (req, res) => {
+    const userId = req.query.userid;
+    const sqlSelect = `SELECT * FROM us_user_status WHERE user_id = ${userId}`;
+    const [result] = await db.query(sqlSelect).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// 修改 user 的狀態（標題及內文）
+
+blog.post('/user/status/api', async (req, res) => {
+    const userId = req.query.userid;
+    const sqlUpdate = `UPDATE us_user_status SET status_title='${req.body.titleInput}',status_content='${req.body.contextInput}' WHERE user_id = ${userId}`;
+    const [result] = await db.query(sqlUpdate).catch((e) => console.log(e));
     res.json(result);
 });
 
