@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import InfoDisplay from './InfoDisplay'
 import EditInfo from './EditInfo'
 import swal from 'sweetalert'
+import defaultIcon from './favicon.ico'
 
 const PersonalInfo = (props) => {
   // 判斷目前是要 render 修改文案(true)還是顯示文案(false)
@@ -117,7 +118,11 @@ const PersonalInfo = (props) => {
           <img src={image.preview} alt="user logo" />
         ) : (
           <img
-            src={`http://localhost:3000/blog/upload/icon/${userLogo}`}
+            src={
+              userLogo
+                ? `http://localhost:3000/blog/upload/icon/${userLogo}`
+                : defaultIcon
+            }
             alt="user logo"
             className={classes['personal-info--image__user-upload']}
           />
