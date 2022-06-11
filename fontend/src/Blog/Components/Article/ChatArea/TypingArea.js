@@ -16,9 +16,7 @@ const TypingArea = (props) => {
 
   const chatPostHandler = (e) => {
     e.preventDefault()
-    // const chatDetail = { context: userInput, id: Math.random(), img: usericon };
-    // props.onChatMsg(chatDetail);
-    // setUserInput('');
+
     fetch(`http://localhost:3001/Blog/insert/comment/${currentArticle}`, {
       method: 'POST',
       body: JSON.stringify({ userInput }),
