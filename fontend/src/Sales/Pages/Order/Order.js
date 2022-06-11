@@ -33,9 +33,6 @@ function Order() {
       let dt = new Date(data[i]["create_time"]);
       data[i]["create_time"] = dt.toLocaleString().substring(0, 8);
     }
-    // caseID.innerHTML = data[0]['CaseID']
-    // caseTime.innerHTML = data[0]['create_time']
-    // caseTotal.innerHTML = '$' + data[0]['total_price']
     setProducts(data);
   };
   // 模擬componentDidMount

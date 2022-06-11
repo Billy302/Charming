@@ -5,6 +5,7 @@ var upload = multer();
 
 const app = express();
 const db = require("../../modules/mysql_config");
+var nodemailer = require("nodemailer");
 // let bodyParser = require('body-parser')
 // app.use(bodyParser.urlencoded({extended:false}));
 // app.use(express.urlencoded({extended:false}));
@@ -66,6 +67,48 @@ router.post("/signin", upload.none(), async (req, res, next) => {
     res.json(newData);
     //  res.redirect('/Account')
     //  取得會員id、會員名稱
+  }
+});
+
+
+// 修改密碼，
+router.put("/signin", upload.none(), async (req, res, next) => {
+  const sql = `UPDATE us_user SET user_password ='${req.body.password}' WHERE user_account = '${req.body.account}'`;
+  const [data] = await db.query(sql).catch((error) => {
+    console.log(`執行 Query : ${sql}時出錯 `);
+  });
+  res.send("成功");
+});
+
+var mailTransport = nodemailer.createTransport({
+  host: "smtp-mail.outlook.com",
+  port: 587,
+  tls: {
+    rejectUnauthorized: false,
+  },
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASSWORD,
+  },
+});
+// 忘記密碼發mail
+// 當前測試只能用hotmail，無論發送者或接收者
+router.post("/signforget", upload.none(), async (req, res, next) => {
+  const sql = `SELECT COUNT(*) as total FROM us_user WHERE  user_account = '${req.body.account}' and email = '${req.body.email}'`;
+  const [data] = await db.query(sql).catch((error) => {
+    console.log(`執行 Query : ${sql}時出錯 `);
+  });
+  if (data[0]["total"] > 0) {
+    mailTransport.sendMail({
+      from: "a710146@hotmail.com",
+      // to: "a710146@hotmail.com",
+      to: req.body.email,
+      subject: "Charming網，密碼重新設定",
+      html: `<p>Click <a href="http://localhost:3000/signupdate">here</a> to reset your password</p>`,
+    });
+    res.json("success");
+  } else {
+    res.json("error");
   }
 });
 

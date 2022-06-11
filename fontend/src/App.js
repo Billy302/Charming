@@ -33,14 +33,15 @@ import SignIn from './Account/Pages/SignIn/SignIn'
 import MyShoppingList from './Account/Pages/User/MyShoppingList'
 import MyCollection from './Account/Pages/User/MyCollection'
 import MyAccount from './Account/Pages/User/MyAccount'
+import SingForget from './Account/Pages/SignForget/SignForget'
+import SignUpdate from './Account/Pages/SignUpdate/SignUpdate'
 
-import { ImOpt } from 'react-icons/im'
 //討論區
 // 部落格
-import Blog from "./Blog/Page/Blog";
-import Article from "./Blog/Page/Article";
-import Search from "./Blog/Page/Search";
-import MyProductHeader from "./Blog/Page/MyProduct";
+import Blog from './Blog/Page/Blog'
+import Article from './Blog/Page/Article'
+import Search from './Blog/Page/Search'
+import MyProductHeader from './Blog/Page/MyProduct'
 
 
 function App() {
@@ -85,6 +86,11 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         {/* 登入 */}
         <Route path="/signin" element={<SignIn />} />
+        {/* 忘記密碼 */}
+        {/* http://localhost:3000/signforget */}
+        <Route path="/signforget" element={<SingForget />} />
+        {/* http://localhost:3000/signUpdate */}
+        <Route path="/signupdate" element={<SignUpdate />} />
         {/* -------user 登入後頁面------- */}
         {/* http://localhost:3000/shoppinglist?page=1 */}
         <Route path="/shoppinglist" element={<MyShoppingList />} />
@@ -94,7 +100,8 @@ function App() {
         <Route path="/collection" element={<MyCollection />} />
         <Route path="/account" element={<MyAccount />} />
         <Route path="/collection/MyLikeProduct" element={<MyLikeProduct />} />
-        {/* 部落格開始 */}
+
+        {/* -------部落格開始------- */}
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/article/:id" element={<Article />} />
         <Route path="/blog/search/:category" element={<Search />} />

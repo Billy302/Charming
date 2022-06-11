@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './UnloginHome.module.css'
 // 匯入component
 import UnloginNav from '../../Components/UnloginNav/UnloginNav'

@@ -1,6 +1,3 @@
-// 新增的商品的主人要改變數！！
-// 看會員怎麼寫
-
 import React, { useState } from 'react'
 import LoginNav from '../../Components/LoginNav/LoginNav'
 import style from './AddProduct.module.css'
