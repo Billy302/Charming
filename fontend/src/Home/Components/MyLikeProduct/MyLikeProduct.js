@@ -92,7 +92,7 @@ function MyProduct() {
         </select>
       </div>
 
-      <div className={Style.arrangement}>
+      <div>
         <ul className={Style.cardFlex}>
           {products.map((r) => (
             <div key={r.ID}>

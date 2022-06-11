@@ -1,0 +1,155 @@
+/* 字體 */
+.heading1 {
+    font-size: var(--heading1);
+    color: var(--brown2);
+    font-weight: bold;
+}
+.heading2 {
+    font-size: var(--heading2);
+    color: var(--brown2);
+    font-weight: bold;
+}
+.heading3 {
+    font-size: var(--heading3);
+    color: var(--brown2);
+    font-weight: bold;
+}
+.heading4 {
+    font-size: var(--heading4);
+    color: var(--brown2);
+    font-weight: bold;
+}
+.heading5 {
+    font-size: var(--heading5);
+    color: var(--brown2);
+    font-weight: bold;
+}
+.heading6 {
+    font-size: var(--heading6);
+    color: var(--brown2);
+    font-weight: bold;
+}
+/* display樣式 */
+.displayFlex {
+    display: flex;
+    align-items: center;
+}
+.displayNone {
+    display: none;
+}
+/* 給icon套用的邊距 */
+.padding5px {
+    padding: 0px 5px;
+}
+/*-------------下方為各component專用項-----------------*/
+
+.mainPage-header {
+    display: flex;
+    justify-content: space-between;
+}
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.mainPage-logo {
+    width: 50px;
+}
+.mainPage-nav {
+    display: flex;
+    /* padding: 10px 0px; */
+    align-items: center;
+}
+.mainPage-nav li {
+    display: flex;
+    padding: 8px 15px;
+    color: var(--brown2);
+    font-size: var(--heading5);
+    font-weight: bold;
+    align-items: center;
+}
+.mainPage-nav a li:hover {
+    color: var(--brown3);
+}
+.mainPage-nav a button {
+    display: flex;
+    margin-right: 15px;
+    padding: 5px 15px;
+    left: 15px;
+    color: var(--brown2);
+    font-size: var(--heading5);
+    font-weight: bold;
+    align-items: center;
+    border: 2px solid var(--brown2);
+    border-radius: 15px;
+    background-color: var(--white);
+}
+.mainPage-nav a button:hover {
+    background-color: var(--brown3);
+}
+.searchbar {
+    display: none;
+}
+.searchInput {
+    width: 330px;
+    height: 35px;
+    border: 2px solid var(--brown2);
+    border-radius: 15px 0px 0px 15px;
+    padding: 0px 15px;
+    font-size: var(--heading5);
+    outline: none;
+}
+.searchInput:active {
+    border: 2px solid var(--brown2);
+}
+.searchButton {
+    display: flex;
+    align-items: center;
+    width: 75px;
+    height: 35px;
+    border: 2px solid var(--brown2);
+    border-left: none;
+    border-radius: 0px 15px 15px 0px;
+    background-color: var(--brown2);
+}
+.searchButton p {
+    font-size: var(--heading5);
+    font-weight: bold;
+    color: var(--white);
+}
+.searchButton:hover {
+    background-color: var(--brown1);
+}
+.itemline {
+    display: none;
+}
+.itemList {
+    display: none;
+    justify-content: space-evenly;
+}
+.itemList li {
+    color: var(--brown2);
+    padding: 5px 30px;
+    margin: 5px;
+    border-radius: 50px;
+}
+.itemList li:hover {
+    background-color: var(--brown3);
+}
+.mainPage-nav select {
+    background: transparent;
+    width: 75px;
+    font-size: var(--heading5);
+    border: none;
+    height: 35px;
+    /* overflow: hidden; */
+    outline: none;
+    appearance: none;
+    color: var(--brown2);
+    object-fit: contain;
+    padding: 0px 5px;
+    font-weight: bold;
+}

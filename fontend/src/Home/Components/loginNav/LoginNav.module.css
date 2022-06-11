@@ -80,8 +80,9 @@
       --circleSize:40px;
     }
     /* hover頭像顯示清單的參照物 */
-    .showList img{
-     object-fit:cover;
+    .showList a img{
+      top: 5px;
+      width: 100%;
     }
     .showList > :first-child{
       display: inline-block;
@@ -105,6 +106,7 @@
     display: none;
     border: 1px solid var(--gray3);
     border-radius:15px;
+    background-color: #fff;
   }
   /* 小箭頭 */
   .navList::before{
@@ -231,6 +233,22 @@
   .itemList a:hover{
     background-color: var(--allHoverColor);
   }
+  /* 歡迎句 */
+  .hello{
+    display: flex;
+    font-size: var(--heading5);
+    font-weight: bold;
+  }
+  .hello :first-child{
+    color: var(--green1);
+    font-weight:200;
+    padding-right: 10px;
+  }
+  .hello :last-child{
+    color: var(--green1);
+    font-weight: bold;
+  }
+  
 /* ——————————————————————————————————————— */
 
  /* —————————————————RWD——————————————————— */
@@ -282,7 +300,7 @@
   }
   /* -------------- */
   .showList{
-    display: none;
+    /* display: none; */
   }
   .phoneDisplayNone{
     display: none;
@@ -295,7 +313,4 @@
     font-size: var(--heading4);
     margin-top: 15px;
   }
-
-  
-  
 }

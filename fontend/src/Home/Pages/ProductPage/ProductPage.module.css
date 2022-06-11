@@ -243,10 +243,6 @@
     }
 }
 @media screen and (max-width:441px){
-    .bigImg{
-        width: 250px;
-        left: -300px;
-    }
     .ProductImg{
         left: 450px;
     }
@@ -258,7 +254,7 @@
     .ProductImg{
         display: flex;
         left: 0px;
-        top: 250px;
+        top: var(--topHight);
         width: var(--smallPictureSize);
         height: var(--smallPictureSize);
         margin-bottom: 20px;
@@ -271,15 +267,66 @@
         display: flex;
 
     }
-    .smallImg{
-        margin: 5px;
+    /* 手機版時的下邊margin */
+    .ProductPage{
+        margin-bottom: 80px;
     }
     .ProductPage{
         --smallPictureSize:65px;
-        --topHight:250px
+        --topHight:330px
         /* background-color: black; */
     }
     .priceDiv{
+        margin-top: var(--topHight);
         width: 100%;
+    }
+    /* 大圖定位 */
+    .bigImg{
+        background-color: #fff;
+        width: 355px;
+        height: 300px;
+        object-fit: cover;
+        position: absolute;
+        left: 0px;
+        border: 2px solid var(--brown2);
+        border-radius: var(--borderRadius);
+        --top:-330px;
+    }
+    .bigImg0{
+        top: var(--top);
+
+    }
+    .bigImg1{
+        top: var(--top);
+        left: -65px;
+    }
+    .bigImg2{
+        top: var(--top);
+        left: -130px;
+    }
+    .bigImg3{
+        top: var(--top);
+        left: -195px;
+    }
+    .bigImg4{
+        top: var(--top);
+        left: -260px;
+    }
+    /*價格padding*/
+    .price{
+        font-size: var(--heading3);
+        color: var(--red);
+        padding: 10px 0px;
+    }
+    .ProductPage h3{
+        font-size: var(--heading4);
+    }
+    .displayFlex > p {
+        font-size: var(--heading6);
+        padding: 5px;
+    }
+    .shoppingCar{
+        margin: 0px;
+        padding: 10px 15px;
     }
 }

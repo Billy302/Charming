@@ -139,6 +139,9 @@
 .tags{
   margin: 20px var(--headerMargin) 0px var(--headerMargin);
 }
+.tags a button{
+  padding:0px 5px;
+}
 .tags::before{
   content: "熱門搜尋：";
   font-size: var(--heading5);

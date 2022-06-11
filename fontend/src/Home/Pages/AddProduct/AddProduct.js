@@ -6,6 +6,8 @@ import LoginNav from '../../Components/LoginNav/LoginNav'
 import style from './AddProduct.module.css'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { BsCaretDownFill } from 'react-icons/bs'
+import { Link, useNavigate } from 'react-router-dom'
+import fileImg from '../AddProduct/fileblock.jpg'
 
 // Quill.js
 import ReactQuill from 'react-quill'
@@ -16,9 +18,10 @@ import EditorToolbar, {
 import 'react-quill/dist/quill.snow.css'
 
 function AddProduct() {
+  const navigator = useNavigate()
   const [img1, setImg1] = useState()
   const [productName, setProductName] = useState('')
-  const [productCopy, setProductCopy] = useState()
+  // const [productCopy, setProductCopy] = useState()
   const [productPrice, setProductPrice] = useState('')
   const [productType, setProductType] = useState('101')
   let picPath = ''
@@ -52,7 +55,7 @@ function AddProduct() {
       }
       for (let j = 0; j < 5 - e.target.files.length; j++) {
         let image = document.getElementById(`image${5 - j}`)
-        image.removeAttribute('src')
+        image.src = fileImg
       }
     } else {
       alert('抱歉，我們只能存五筆')
@@ -82,24 +85,28 @@ function AddProduct() {
       picPath = data[0]['filename']
     }
     // 準備新增商品資料進SQL
-    formData.append('picPath', picPath)
-    formData.append('productName', productName)
-    formData.append('authorName', localStorage.getItem('name'))
-    formData.append('productCopy', state.value)
+    formData.set('picPath', picPath)
+    formData.set('productName', productName)
+    formData.set('authorName', localStorage.getItem('name'))
+    formData.set('productCopy', state.value)
     // formData.append('productCopy', productCopy)
-    formData.append('price', productPrice)
-    formData.append('typeID', productType)
+    formData.set('price', productPrice)
+    formData.set('typeID', productType)
 
     fetch('http://localhost:3001/Sales/api/product', {
       method: 'POST',
       body: formData,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        response.json()
+        console.log(response)
+      })
       .then((result) => {
-        console.log('Success:', result)
+        navigator('../MyProduct?page=1')
+        alert('新增商品成功')
       })
       .catch((error) => {
-        console.error('Error:', error)
+        alert('新增商品失敗')
       })
   }
 
@@ -142,27 +149,52 @@ function AddProduct() {
             <label htmlFor="theFile1" required>
               <IoIosAddCircleOutline className={style.icon} />
               {/* 第一張 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image1" alt="" />
+              <img
+                className={style.smallImg}
+                id="image1"
+                src={fileImg}
+                alt=""
+              />
             </label>
             <label htmlFor="theFile1">
               <IoIosAddCircleOutline className={style.icon} />
               {/* 第二張 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image2" alt="" />
+              <img
+                className={style.smallImg}
+                id="image2"
+                src={fileImg}
+                alt=""
+              />
             </label>
             <label htmlFor="theFile1">
               <IoIosAddCircleOutline className={style.icon} />
               {/* 第三張 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image3" alt="" />
+              <img
+                className={style.smallImg}
+                id="image3"
+                src={fileImg}
+                alt=""
+              />
             </label>
             <label htmlFor="theFile1">
               <IoIosAddCircleOutline className={style.icon} />
               {/* 第四張 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image4" alt="" />
+              <img
+                className={style.smallImg}
+                id="image4"
+                src={fileImg}
+                alt=""
+              />
             </label>
             <label htmlFor="theFile1">
               <IoIosAddCircleOutline className={style.icon} />
               {/* 第五張 預覽要顯示的圖片 */}
-              <img className={style.smallImg2} id="image5" alt="" />
+              <img
+                className={style.smallImg}
+                id="image5"
+                src={fileImg}
+                alt=""
+              />
             </label>
             <input
               id="theFile1"
@@ -198,16 +230,19 @@ function AddProduct() {
 
           <div className={style.pictureField}>
             <p className={style.title}>描述文案</p>
-            <EditorToolbar />
-            <ReactQuill
-              className="test"
-              theme="snow"
-              value={state.value}
-              onChange={handleChange}
-              placeholder={'Write something awesome...'}
-              modules={modules}
-              formats={formats}
-            />
+            <div className={style.textTool}>
+              <EditorToolbar />
+              <ReactQuill
+                className="test"
+                theme="snow"
+                value={state.value}
+                onChange={handleChange}
+                placeholder={'請輸入商品內容...'}
+                modules={modules}
+                formats={formats}
+              />
+            </div>
+
             {/* <textarea
               id="theCopy"
               name="theCopy"
@@ -263,9 +298,10 @@ function AddProduct() {
           </div>
           <div className={style.submitButtonField}>
             <input type="submit" value="上架" className={style.submitButton} />
-            <a href="" className={style.submitButton}>
-              取消
-            </a>
+            <Link to="../MyProduct?page=1" className={style.submitButton}>
+              {' '}
+              取消{' '}
+            </Link>
           </div>
         </form>
       </section>

@@ -47,8 +47,8 @@ function EditProduct() {
             </div>
           ))}
         </ul>
-      </div>
       <Pagination totalPages={totalPage} />
+      </div>
     </>
   )
 }

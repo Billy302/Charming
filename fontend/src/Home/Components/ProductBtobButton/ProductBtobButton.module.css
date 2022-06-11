@@ -21,3 +21,15 @@
 .ProductBtobButton a:hover{
     background-color: var(--brown3);
 }
+@media screen and (max-width:441px){
+    .ProductBtobButton{
+        height: 50px;
+        flex-direction: row;
+        text-align: center;
+        margin-top: 8px;
+        font-size: var(--heading4);
+    }
+    .ProductBtobButton a{
+        display: inline-block;
+    }
+}

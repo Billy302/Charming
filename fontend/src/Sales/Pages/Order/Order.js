@@ -1,68 +1,68 @@
 // 取得使用者訂單的詳細內容 TO C
 // http://localhost:3000/BtobPage/Order/1
 
-import React, { useEffect, useState } from 'react'
-import Style from './Order.module.css'
-import { Link, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import Style from "./Order.module.css";
+import { Link, useParams } from "react-router-dom";
 
 function Order() {
   // 取得使用者id
-  const params = useParams()
-  const paramsID = params.id
-  const user_ID = localStorage.getItem('id')
-  const [products, setProducts] = useState([])
+  const params = useParams();
+  const paramsID = params.id;
+  const user_ID = localStorage.getItem("id");
+  const [products, setProducts] = useState([]);
 
-  const caseID = document.getElementById('caseID')
-  const caseTime = document.getElementById('caseTime')
-  const caseTotal = document.getElementById('caseTotal')
+  const caseID = document.getElementById("caseID");
+  const caseTime = document.getElementById("caseTime");
+  const caseTotal = document.getElementById("caseTotal");
 
   const fetchProducts = async () => {
     const response = await fetch(
       `http://localhost:3001/Sales/api/orderUser/${user_ID}/${paramsID}`
-    )
-    const data = await response.json()
+    );
+    const data = await response.json();
     // 只需要商品的第一張圖
     // 先取得全部圖名，進行切割
-    let picFirst = data[0].pic_path.split(' ')
+    let picFirst = data[0].pic_path.split(" ");
     for (let i = 0; i < data.length; i++) {
       // 將products的商品路徑改為新的路徑(只有第一張)
-      data[i]['pic_path'] = picFirst[i]
+      data[i]["pic_path"] = picFirst[i];
     }
     // 對時間格式做處理
     for (let i = 0; i < data.length; i++) {
-      let dt = new Date(data[i]['create_time'])
-      data[i]['create_time'] = dt.toLocaleString().substring(0, 8)
+      let dt = new Date(data[i]["create_time"]);
+      data[i]["create_time"] = dt.toLocaleString().substring(0, 8);
     }
     // caseID.innerHTML = data[0]['CaseID']
     // caseTime.innerHTML = data[0]['create_time']
     // caseTotal.innerHTML = '$' + data[0]['total_price']
-    setProducts(data)
-  }
+    setProducts(data);
+  };
   // 模擬componentDidMount
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, []);
 
-  let conponent = []
-  if (products != '') {
+  let conponent = [];
+  if (products != "") {
     conponent.push(
       <hgroup className={Style.orderInfo}>
         <div>
           <p>訂單ID：</p>
-          <p id="caseID">{products[0]['CaseID']}</p>
+          <p id="caseID">{products[0]["CaseID"]}</p>
         </div>
         <div>
           <p>訂單創立時間：</p>
-          <p id="caseTime">{products[0]['create_time']}</p>
+          <p id="caseTime">{products[0]["create_time"]}</p>
         </div>
         <div>
           <p>訂單總價：</p>
           <p id="caseTotal" className={Style.price}>
-            ${products[0]['total_price']}
+            ${products[0]["total_price"]}
           </p>
         </div>
       </hgroup>
-    )
+    );
   }
 
   return (
@@ -98,7 +98,7 @@ function Order() {
           <tbody className={`${Style.phoneCart} ${Style.listItem}`}>
             {products.map((v, i) => {
               const { productID, pic_path, author_name, product_name, price } =
-                v
+                v;
               return (
                 <>
                   <tr className={Style.listItem2}>
@@ -120,15 +120,14 @@ function Order() {
                     </td>
                   </tr>
                 </>
-              )
+              );
             })}
           </tbody>
         </table>
-        <Link to={`../BtobPage/Order?page=1`} className={Style.turnBack}>
-          返回上一頁
-        </Link>
+        
+          <div className={Style.turnBack}> <a href={`../shoppinglist?page=1`}>返回上一頁</a></div>
       </section>
     </>
-  )
+  );
 }
-export default Order
+export default Order;

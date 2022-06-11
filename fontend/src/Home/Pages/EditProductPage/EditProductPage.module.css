@@ -135,7 +135,7 @@
     background-color: var(--brown1);
 
 }
-.smallImg2{
+.smallImg{
     border: 3px dotted var(--brown2);
     width: var(--smallPictureSize);
     height: var(--smallPictureSize);

@@ -14,6 +14,7 @@ function MyProduct() {
         <div className={Style.buttonPosition}>
           <a href="/MyProduct/AddProduct">
             <button className={Style.addButton}>新增商品</button>
+            <button className={Style.addButton1}>+</button>
           </a>
         </div>
         <div className={Style.arrangement}>

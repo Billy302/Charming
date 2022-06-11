@@ -204,7 +204,7 @@ sales
     });
     res.send("delete : /api/product/:id");
   })
-  // 查詢單筆商品資料(遊客)
+  // 查詢單筆商品資料(遊客 或 編輯)
   // http://localhost:3001/Sales/api/product/2
   // 需要一個參數，透過Params ->商品ID : id
   .get(async (req, res, next) => {
@@ -610,8 +610,10 @@ sales
   });
 
 /* 雜項
-1. 功能 : 上傳圖片。Method: POST。URL: /api/upload  檔案儲存位置 fontend/src/Home/Assets/ProductImg 未驗證
-2. 功能 : 刪除圖片。Method: POST。URL: /api/delete  未驗證
+圖片檔案儲存位置 fontend/src/Home/Assets/ProductImg
+1. 功能 : 上傳圖片。Method: POST。URL: /api/upload  
+2. 功能 : 刪除圖片。Method: POST。URL: /api/delete  
+3. 功能 : 寄送Mail。Method: POST。URL: /api/Mail  
 */
 // 設定multer內的參數，由前端限定上傳格式，檔案另存位置 & 檔名
 

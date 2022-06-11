@@ -56,7 +56,7 @@ const EditCard: React.FC<CardProps> = ({
                 window.location.reload()
               }}
             />
-            <a href={`/MyProduct/Edit/1/${ID}`}>
+            <a href={`/MyProduct/EditProduct/${ID}`}>
               <FaEdit className={Style.icons} />
             </a>
           </div>

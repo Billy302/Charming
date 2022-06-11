@@ -157,7 +157,7 @@ function Cart3() {
         </div>
 
         {/* 輸入欄 */}
-        <section>
+        <section className={Style.ttttt}>
           <form className={Style.card} name="card">
             {/* 卡號 */}
             <div>

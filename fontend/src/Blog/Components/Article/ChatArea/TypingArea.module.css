@@ -1,0 +1,32 @@
+.typing-area {
+    width: 85%;
+}
+
+.typing-area label {
+    font-size: 2rem;
+}
+
+.typing-area input {
+    border: none;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    /* background-color: rgba($color-white, 0.5); */
+    border-bottom: 3px solid transparent;
+    width: 50%;
+    /* display: inline; */
+}
+
+.typing-area input:focus {
+    outline: none;
+    box-shadow: 2rem 2rem 3rem rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid var(--maincolor);
+}
+
+.typing-area button {
+    margin-left: 3rem;
+}
+
+.typing-area--btn {
+    border-radius: 5%;
+}

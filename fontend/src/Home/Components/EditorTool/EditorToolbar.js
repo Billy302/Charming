@@ -1,5 +1,6 @@
 import React from 'react'
 import { Quill } from 'react-quill'
+import "./Edittor.css"
 
 // Add sizes to whitelist and register them
 const Size = Quill.import('formats/size')
@@ -54,7 +55,7 @@ export const formats = [
 
 // Quill Toolbar component
 export const QuillToolbar = () => (
-  <div id="toolbar">
+  <div id="toolbar" className='ql-totalstyle'>
     <span className="ql-formats">
       <select className="ql-font" defaultValue="arial">
         <option value="arial">Arial</option>

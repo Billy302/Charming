@@ -1,0 +1,119 @@
+.selected-article--title {
+    margin-top: 1rem;
+    color: var(--brown2);
+    margin-left: 15rem;
+    margin-bottom: 3rem;
+    font-size: 3.2rem;
+    font-weight: 700;
+    transition: 2s;
+}
+.active--title {
+    color: white;
+}
+
+.selected-article--layout {
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+}
+
+.selected-article--title::after {
+    content: '';
+    width: 77%;
+    height: 0.1rem;
+    background-color: #101010;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    margin: auto;
+    margin-left: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .selected-article--title::after {
+        content: '';
+        width: 80%;
+        height: 0.1rem;
+        background-color: #101010;
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+        margin: auto;
+        margin-left: 2rem;
+    }
+}
+
+@media (max-width: 976px) {
+    .selected-article--title {
+        margin-top: 6rem;
+        margin-left: 8rem;
+        margin-bottom: 3rem;
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    .selected-article--title::after {
+        content: '';
+        width: 73%;
+        height: 0.1rem;
+        background-color: #101010;
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+        margin: auto;
+        margin-left: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .selected-article--title {
+        margin-top: 6rem;
+        margin-left: 8rem;
+        margin-bottom: 3rem;
+        font-size: 2.8rem;
+        font-weight: 700;
+    }
+
+    .selected-article--title::after {
+        content: '';
+        width: 68%;
+        height: 0.1rem;
+        background-color: #101010;
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+        margin: auto;
+        margin-left: 2rem;
+    }
+
+    .selected-article--layout {
+        display: grid;
+        width: 80%;
+        grid-template-columns: repeat(2, 1fr);
+        margin: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .selected-article--title {
+        margin-top: 4rem;
+        margin-left: 4rem;
+        margin-bottom: 2rem;
+        font-size: 2.6rem;
+        font-weight: 700;
+    }
+
+    .selected-article--layout {
+        display: grid;
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        margin: auto;
+    }
+}
+
+@media (max-width: 480px) {
+}
+
+/* @media (max-width: 375px) {
+} */

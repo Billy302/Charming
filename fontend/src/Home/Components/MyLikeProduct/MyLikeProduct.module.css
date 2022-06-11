@@ -30,12 +30,13 @@
 .cardFlex::-webkit-scrollbar {
     display: none; /* Chrome Safari */
   }
-@media screen and (max-width:1024px){
+@media screen and (max-width:1440px){
     .cardFlex > div{
         width:25%;
     }
     
 }
+
 @media screen and (max-width:780px) {
     .cardFlex > div{
         width:33%;

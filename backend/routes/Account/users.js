@@ -22,7 +22,6 @@ router.get("/users", async (req, res, next) => {
   res.json(dates);
 });
 
-
 // 取得 id=1 的使用者資料
 router.get("/users/1", async (req, res, next) => {
   const sql = "SELECT * FROM us_user WHERE id=1";
@@ -53,19 +52,21 @@ router.get("/users/1", async (req, res, next) => {
 //   res.json({msg:"帳號或密碼有誤"});
 //   }
 
-  // 登入驗證
-  router.post("/signin",upload.none(), async (req, res, next) => { console.log(req.body);
-    const verify = `SELECT * FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
-     const [login] = await db.query(verify);
-     let newData =[login[0]["id"],login[0]["username"]]
-     if(login[0] == undefined){
-       res.send("0");
-      //  0 表示帳號或密碼有誤 登入失敗
-     }else{
-       res.json(newData);
-      //  res.redirect('/Account')
-      //  取得會員id、會員名稱
-     }
+// 登入驗證
+router.post("/signin", upload.none(), async (req, res, next) => {
+  console.log(req.body);
+  const verify = `SELECT * FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
+  const [login] = await db.query(verify);
+
+  if (login[0] == undefined) {
+    res.send("0");
+    //  0 表示帳號或密碼有誤 登入失敗
+  } else {
+    let newData = [login[0]["id"], login[0]["username"]];
+    res.json(newData);
+    //  res.redirect('/Account')
+    //  取得會員id、會員名稱
+  }
 });
 
 // 檢查帳號是否已被使用(不能重複註冊) ok
@@ -88,7 +89,6 @@ router.post("/register", async (req, res, next) => {
   res.redirect("http://localhost:3000/signin");
 });
 
-
 // 測試註冊 透過form post 前端>資料庫 ok
 // sql=使用MySQL語法及欄位,VALUE值放表單name=""
 // router.post("/register", async (req, res, next) => {
@@ -101,6 +101,5 @@ router.post("/register", async (req, res, next) => {
 //   // 導向登入頁
 //   res.redirect("http://localhost:3000/signin");
 // });
-
 
 module.exports = router;
