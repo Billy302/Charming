@@ -2,8 +2,7 @@ import classes from './PersonalInfo.module.css'
 import { useState, useEffect } from 'react'
 import InfoDisplay from './InfoDisplay'
 import EditInfo from './EditInfo'
-import PillBtn from '../UI/PillBtn'
-import { FaCamera } from 'react-icons/fa'
+import swal from 'sweetalert'
 
 const PersonalInfo = (props) => {
   // 判斷目前是要 render 修改文案(true)還是顯示文案(false)
@@ -36,6 +35,7 @@ const PersonalInfo = (props) => {
 
   // 把使用者上傳的 logo 傳到後端
   const imageUploadHandler = async (e) => {
+    swal('圖片上傳成功', '您的品味真好', 'success')
     e.preventDefault()
     let formData = new FormData()
     formData.append('file', image.data)
@@ -93,15 +93,13 @@ const PersonalInfo = (props) => {
   // 接 EditInfo 丟上來有關使用者更新的內容
 
   const updateStatusRenderHandler = (update) => {
-    // console.log(update)
     setUserStatus((prev) => [update, prev])
   }
 
   // 更新 '選擇大頭貼', '上傳' , '取消' 按鈕
   const [displayCancelBtn, setDisPlayCancelBtn] = useState(false)
-  const displayCancelBtnHandler = () => {
-    setDisPlayCancelBtn(!displayCancelBtn)
-  }
+
+  // 使用者點選取消按鈕後清掉剛剛上傳的圖片
 
   const cancelUploadHandler = () => {
     setDisPlayCancelBtn(!displayCancelBtn)
