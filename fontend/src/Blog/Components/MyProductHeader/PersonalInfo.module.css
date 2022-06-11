@@ -1,30 +1,93 @@
 .personal-info {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: 0.5s;
+  margin-top: 3rem;
 }
 .personal-info--image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personal-info--image__user-upload:hover {
+  transition: 0.5s;
+  -webkit-filter: brightness(120%);
+}
+
+.test {
+  font-size: 2rem;
 }
 
 .personal-info--image img {
-    width: 20rem;
-    height: 20rem;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 2rem;
 }
 
 .personal-info--card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-left: 3rem;
-    width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 3rem;
+  width: 40%;
 }
 
-.personal-info--card h2 {
-    font-size: 3rem;
+.custom-file-upload {
+  color: var(--brown1);
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  display: inline;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
-.personal-info--card p {
-    font-size: 1.6rem;
+.personal-info--upload-logo input[type='file'] {
+  display: none;
+}
+
+.custom-file-upload:hover {
+  background-color: #eee;
+  border: 1px solid #eee;
+}
+
+input[type='submit'] {
+  font-size: 2rem;
+  color: var(--brown1);
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  display: inline;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+input[type='submit']:hover {
+  background-color: #eee;
+  border: 1px solid #eee;
+}
+
+.personal-info--upload-logo__cancel-submit {
+}
+.personal-info--upload-logo__cancel-submit input[type='button'] {
+  font-size: 2rem;
+  color: var(--brown1);
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  display: inline;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-right: 2rem;
+}
+.personal-info--upload-logo__cancel-submit input[type='button']:hover {
+  background-color: #eee;
+  border: 1px solid #eee;
 }
