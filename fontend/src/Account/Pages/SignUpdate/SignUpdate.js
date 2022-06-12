@@ -1,13 +1,16 @@
 import { React, useState } from 'react'
-import style from './SignUpdate.module.css'
 import { useNavigate, Link, useParams } from 'react-router-dom'
+// CSS檔
+import style from './SignUpdate.module.css'
+// navbar
 import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
+// react-icon
 import { FaEyeSlash, FaEye } from 'react-icons/fa'
 
 function SignUpdate() {
-    // 依auth有無 設定登入或未登入nav
-    let now = localStorage.getItem("auth");
+  // 依auth有無 設定登入或未登入nav
+  let now = localStorage.getItem("auth");
     
   const auth = localStorage.setItem('auth', false)
   // 設定導向頁面函式

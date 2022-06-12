@@ -1,8 +1,11 @@
-import style from "./SignIn.module.css";
 import { React, useEffect, useState } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+// CSS檔
+import style from "./SignIn.module.css";
+// navbar
 import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
+// react-icon
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 // sweetalert
 import Swal from "sweetalert2";
@@ -12,8 +15,10 @@ function SignIn() {
 
   // 依auth有無 設定登入或未登入nav
   let now = localStorage.getItem("auth");
+
   // const [account, setAccount] = useState([]);
   const auth = localStorage.setItem("auth", false);
+  
   // 設定導向頁面函式
   const navigate = useNavigate();
 

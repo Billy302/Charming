@@ -1,15 +1,12 @@
 import { Link } from 'react-router-dom'
 import style from "./User.module.css";
 import LoginNav from '../../../../Home/Components/LoginNav/LoginNav'
-import BreadCrumb from '../../../Components/BreadCrumb/BreadCrumb'
 
 function MyCollection() {
   return (
     <>
     {/* 登入後首頁 */}
       <LoginNav />
-      {/* 麵包屑 */}
-      <BreadCrumb />
       {/* 上方選單 */}
       <nav className={style.navLeft}>
         <Link to="/BtocPage/account" className={style.unactive}>

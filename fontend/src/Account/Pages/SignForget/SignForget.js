@@ -1,8 +1,11 @@
 import { React, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+// CSS檔
 import style from './SignForget.module.css'
+// navbar
 import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
+
 function SingForget() {
 
   // 依auth有無 設定登入或未登入nav
