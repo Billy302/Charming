@@ -692,7 +692,7 @@ sales.post("/api/mail", upload.none(), async (req, res, next) => {
   addItemList = JSON.parse(addItemList);
   // addItemList[i]["pic_path"] 檔案名稱
 
-  const sql = `SELECT email FROM us_user WHERE  id = '${addUser[0]}'`;
+  const sql = `SELECT username , email FROM us_user WHERE  id = '${addUser[0]}'`;
   const [data] = await connection.query(sql).catch((error) => {
     console.log(`執行 Query : ${sql}時出錯 `);
   });
@@ -707,7 +707,7 @@ sales.post("/api/mail", upload.none(), async (req, res, next) => {
     from: process.env.GMAIL_USER,
     to: data[0]["email"],
     subject: "Charming網，您的商品已送達",
-    html: `親愛的會員您購買的商品，請參照附件`,
+    html: `<div>親愛的會員${data[0]["username"]}，</div><div>    您所購買的商品已送達，請參照附件</div>`,
     attachments: picPath,
   });
   res.send('成功')
