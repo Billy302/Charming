@@ -703,7 +703,7 @@ sales.post("/api/mail", upload.none(), async (req, res, next) => {
     });
   }
   mailTransport.sendMail({
-    from: "a710146@hotmail.com",
+    from: process.env.GMAIL_USER,
     to: data[0]["email"],
     subject: "Charming網，您的商品已送達",
     html: `親愛的會員您購買的商品，請參照附件`,
