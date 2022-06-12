@@ -1,14 +1,12 @@
 var express = require("express");
 var router = express.Router();
+// 上傳圖片
 const multer = require("multer");
 var upload = multer();
+// 發送信件
 var nodemailer = require("nodemailer")
-
-const app = express();
+// 連接資料庫
 const db = require("../../modules/mysql_config");
-// let bodyParser = require('body-parser')
-// app.use(bodyParser.urlencoded({extended:false}));
-// app.use(express.urlencoded({extended:false}));
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -38,15 +36,8 @@ router.get("/", function (req, res, next) {
 // app.listen(port, () => {
 //   console.log(`listening at http://localhost:${port}`)
 // })
-// 查看所有user資料
-//此寫法與下相同 router.route("/users").get(async (req, res, next) =>
-// router.get("/users", async (req, res, next) => {
-//   const sql = "SELECT * FROM us_user";
-//   const [dates] = await db.query(sql);
-//   res.json(dates);
-// });
 
-// 取得登入者 id=? 的使用者資料
+// 登入 取得登入者 id=? 的使用者資料
 router.get("/users", async (req, res, next) => {
   console.log(req.query.userId);
   const sql =
@@ -55,29 +46,6 @@ router.get("/users", async (req, res, next) => {
   console.log(dates);
   res.json(dates);
 });
-
-// 登入 (使用postman出現{} 查看postman格式是否非JSON)
-// router.post("/signin", async (req, res, next) => {
-//   console.log(req.body);
-//   const sql = `SELECT * FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
-//   const [sigin] = await db.query(sql).catch((error) => {
-//     console.log(`執行Query:${sql}時錯誤`);
-//   });
-//   res.json(sigin);
-//   // res.redirect("/sigin");
-// });
-
-// 登入驗證帳號密碼 ok
-// router.post("/signin", async (req, res, next) => {
-//   const verify = `SELECT COUNT(user_account) AS result FROM us_user WHERE user_account='${req.body.account}' AND user_password='${req.body.password}'`;
-//    const [login] = await db.query(verify, [req.query.user_account]);
-//   console.log(login[0].result);
-// if(login[0].result == 1 ){
-//   res.json({msg: "登入成功"})
-//   // res.redirect('http://localhost:3000/account')
-// }else{
-//   res.json({msg:"帳號或密碼有誤"});
-//   }
 
 // 登入驗證
 router.post("/signin", upload.none(), async (req, res, next) => {
@@ -149,17 +117,7 @@ router.get("/checkAccount", async (req, res, next) => {
   res.json(datas[0]);
 });
 
-// 註冊 帳號密碼
-// sql=使用MySQL語法及欄位,VALUE值放表單name=""
-// router.post("/register", async (req, res, next) => {
-//   console.log(req.body);
-//   const sql = `INSERT INTO us_user(user_account,user_password,username,gender,birthday, email,mobile,city) VALUES ('${req.body.account}','${req.body.password}','${req.body.name}','${req.body.gender}','${req.body.birthday}','${req.body.email}','${req.body.mobile}','${req.body.city}')`;
-//   const [user] = await db.query(sql).catch((error) => {
-//     console.log(`執行Query:${sql}時錯誤`);
-//   });
-//   // res.json(user);
-//   res.redirect("http://localhost:3000/signin");
-// });
+// 註冊
 router.post("/register",upload.none(), async (req, res, next) => {
   console.log(req.body);
   const sql = `INSERT INTO us_user(user_account,user_password,username,gender,birthday, email,mobile,city) VALUES ('${req.body.account}','${req.body.password}','${req.body.name}','${req.body.gender}','${req.body.birthday}','${req.body.email}','${req.body.mobile}','${req.body.city}')`;
@@ -171,18 +129,5 @@ router.post("/register",upload.none(), async (req, res, next) => {
   res.send("1");
   // res.redirect("http://localhost:3000/signin");
 });
-
-// 測試註冊 透過form post 前端>資料庫 ok
-// sql=使用MySQL語法及欄位,VALUE值放表單name=""
-// router.post("/register", async (req, res, next) => {
-//   console.log(req.body);
-//   const sql = `INSERT INTO users(user_account,user_password) VALUES ('${req.body.account}','${req.body.password}')`;
-//   const [user] = await db.query(sql).catch((error) => {
-//     console.log(`執行Query:${sql}時錯誤`);
-//   });
-//   // res.json(user);
-//   // 導向登入頁
-//   res.redirect("http://localhost:3000/signin");
-// });
 
 module.exports = router;
