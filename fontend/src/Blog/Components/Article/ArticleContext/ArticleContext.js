@@ -20,6 +20,7 @@ const ArticleContext = (props) => {
             </div>
             {/* render 文章內容 */}
             <div
+              className={classes['article--context__render']}
               dangerouslySetInnerHTML={{
                 __html: props.trendingArticle.article_content,
               }}

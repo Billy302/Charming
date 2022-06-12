@@ -105,11 +105,6 @@ const AuthorCard = (props) => {
       })
   }, [])
 
-  // 沒辦法同步？
-  console.log(
-    `從上面傳下來的：${isFollowingAuthor}，這個原本的：${isFollowAuthor}`
-  )
-
   return (
     <>
       <div className={classes['author-card']}>

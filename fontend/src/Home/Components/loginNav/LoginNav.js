@@ -168,8 +168,7 @@ function LoginNav(props) {
               </a>
 
               <li className={style.showList}>
-                {/* <a href="/account"> */}
-                <a>
+                <a href="/account">
                   <img src={logo} alt="logo" />
                 </a>
                 {/*--hover頭像時出現時才出現的會員表單 --*/}

@@ -1,59 +1,62 @@
-.banner {
-  margin-top: 8rem;
-  position: relative;
-}
-
 .banner img {
   width: 100%;
   object-fit: cover;
+  position: relative;
+
 }
 
 .banner--uploadimage {
   width: 100%;
-  max-height: 500px;
+  max-height: 40rem;
   object-fit: contain;
 }
 
+/* 編輯背景圖片按鈕 */
 .banner--upload {
+  width: 100%;
   position: absolute;
-  top: 75%;
-  left: 85%;
+  bottom: 0;
+  transition: 0.2s;
 }
-
+.custom-file-upload{
+  width: 100%;
+  opacity: 0;
+}
+.banner:hover .custom-file-upload{
+  opacity: 1;
+}
 .banner--upload input[type='file'] {
   display: none;
 }
-.banner--upload input[type='submit'] {
-  color: var(--brown1);
-  font-size: 2rem;
-  background-color: #ccc;
-  border: 1px solid #ccc;
-  border-radius: 1rem;
-  display: inline;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  transition: 0.5s;
-  margin-top: 2rem;
-  margin-left: 4rem;
+.banner--upload form{
+  display: flex;
+  justify-content: center;
 }
 
 .custom-file-upload {
-  color: var(--brown1);
-  background-color: #ccc;
-  border: 1px solid #ccc;
-  border-radius: 1rem;
-  display: inline;
-  padding: 0.6rem 1.2rem;
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0px;
+    background:rgba(53,95,28,.5);
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
+  }
+  .icon{
+    top: 2px;
+    right: 5px;
+  }
+/* ——————————————————————————————————————— */
+.banner--upload__cancel-submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  color: var(--white);
+  text-align: center;
+  padding: 20px 0px;
+  background:rgba(53,95,28,.5);
   cursor: pointer;
   transition: 0.5s;
-}
-
-.custom-file-upload:hover {
-  background-color: #eee;
-  border: 1px solid #eee;
-}
-
-.banner--upload input[type='submit']:hover {
-  background-color: #eee;
-  border: 1px solid #eee;
+  font-weight: bold;
 }

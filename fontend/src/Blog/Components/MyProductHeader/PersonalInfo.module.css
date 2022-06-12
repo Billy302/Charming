@@ -1,30 +1,98 @@
+
 .personal-info {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  transition: 0.5s;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  --circleSize:15rem;
+
 }
 .personal-info--image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.personal-info--image__user-upload:hover {
+  transition: 0.5s;
+}
+
+.test {
+  font-size: 2rem;
 }
 
 .personal-info--image img {
-    width: 20rem;
-    height: 20rem;
-    border-radius: 50%;
-    object-fit: cover;
+  width: var(--circleSize);
+  height: var(--circleSize);
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 2rem;
 }
-
+/* 文字框 */
 .personal-info--card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-left: 3rem;
-    width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 3rem;
+  width: 50%;
+  box-shadow: 0px 1px 5px var(--gray3);
+  border-radius: 15px;
+  color: var(--brown1);
 }
-
-.personal-info--card h2 {
-    font-size: 3rem;
+/* hover賣場頭像出現換圖片樣式 */
+.personal-info--upload-logo {
+  
 }
+.personal-info--upload-logo label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:rgba(53,95,28,.5);
+  position: absolute;
+  bottom: 20px;
+  left: -75px;
+  width: var(--circleSize);
+  height: var(--circleSize);
+  border-radius: 50%;
+  opacity: 0;
+ 
+}
+.custom-file-upload {
+  color: var(--white);
+  background-color: var(--green2);
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+  opacity: 0;
+  
+}
+.personal-info--image:hover .custom-file-upload{
+  opacity: 1;
+}
+.personal-info--image:hover .personal-info--upload-logo{
+  opacity: 1;
+}
+/* ——————————————————————————————————————— */
 
-.personal-info--card p {
-    font-size: 1.6rem;
+.personal-info--upload-logo__cancel-submit{
+  display: flex;
+}
+.personal-info--upload-logo input[type='file'] {
+  display: none;
+}
+/* 設計師資訊 */
+.designer{
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+  font-size: var(--heading4);
+}
+.displayFlex{
+  display: flex;
 }

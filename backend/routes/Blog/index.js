@@ -23,7 +23,7 @@ blog.get('/article/:id', async (req, res) => {
 
 // render comment ，用後面的id來判讀是讀哪篇文章的 comment
 blog.get('/comment/:id', async (req, res) => {
-    const sqlUpdate = `SELECT * FROM blog_comments WHERE article_id = ${req.params.id}`;
+    const sqlUpdate = `SELECT * FROM blog_comments left join us_user on blog_comments.user_id = us_user.id where article_id = ${req.params.id}`;
     const [result] = await db.query(sqlUpdate).catch((e) => console.log(e));
     res.json(result);
 });
@@ -66,7 +66,7 @@ blog.get('/renderSearch', async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../fontend/public/Blog/upload/banner');
+        cb(null, '../../fontend/public/Blog/upload/banner');
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -86,9 +86,40 @@ blog.post('/image', uploadImage.single('file'), async (req, res) => {
 });
 
 // 讀取user的banner
+
 blog.get('/image/render', async (req, res) => {
     const userId = req.query.userid;
     const sqlSelect = `select * from us_banner_pic where user_id = ${userId}`;
+    const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
+    res.json(result);
+});
+
+// 因為一個使用者只能有一個 logo ，所以先把舊的刪掉，在insert一張新的
+
+const storageLogo = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, '../../fontend/public/Blog/upload/icon');
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+});
+
+const uploadLogo = multer({ storage: storageLogo });
+
+blog.post('/logo', uploadLogo.single('file'), async (req, res) => {
+    const userId = req.query.userid;
+    const image = req.file.originalname;
+    const updateImg = `DELETE FROM us_banner_logo WHERE user_id = ${userId} ;
+    INSERT INTO us_banner_logo(user_id, logo_file) VALUES ('${userId}','${image}')`;
+    const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
+    res.json(result);
+});
+
+// 讀取user的logo
+blog.get('/logo/render', async (req, res) => {
+    const userId = req.query.userid;
+    const sqlSelect = `select * from us_banner_logo where user_id = ${userId}`;
     const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
     res.json(result);
 });
@@ -155,6 +186,33 @@ blog.get('/follow/render', async (req, res) => {
 blog.get('/fav/all', async (req, res) => {
     const userId = req.query.userid;
     const sqlSelect = `SELECT * FROM blog_fav left join blog_article on blog_fav.fav_article = blog_article.article_id where fav_user = ${userId}`;
+    const [result] = await db.query(sqlSelect).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// render user 的狀態
+
+blog.get('/user/renderStatus', async (req, res) => {
+    const userId = req.query.userid;
+    const sqlSelect = `SELECT * FROM us_user_status WHERE user_id = ${userId}`;
+    const [result] = await db.query(sqlSelect).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// 修改 user 的狀態（標題及內文）
+
+blog.post('/user/status/api', async (req, res) => {
+    const userId = req.query.userid;
+    const sqlUpdate = `UPDATE us_user_status SET status_title='${req.body.titleInput}',status_content='${req.body.contextInput}' WHERE user_id = ${userId}`;
+    const [result] = await db.query(sqlUpdate).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// render user資料
+
+blog.get('/userinfo', async (req, res) => {
+    const userId = req.query.userid;
+    const sqlSelect = `select * from us_user where id=${userId}`;
     const [result] = await db.query(sqlSelect).catch((e) => console.log(e));
     res.json(result);
 });
