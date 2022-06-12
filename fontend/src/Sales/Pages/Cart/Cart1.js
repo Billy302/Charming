@@ -26,6 +26,7 @@ function Cart1() {
     let items = itemString.split(' |')
     items.pop()
 
+
     // 動態生成table的內容
     for (let i = 0; i < items.length; i++) {
       let { ID, author_name, pic_path, price, product_name } = JSON.parse(
@@ -57,7 +58,6 @@ function Cart1() {
       )
     }
   }
-
   // 刪除語法
   function deleteItem(e) {
     // 取得按鈕所在位置的ID
@@ -68,16 +68,19 @@ function Cart1() {
     // 清除按鈕所在位置的html語法
     document.getElementById(itemId).remove()
   }
-
   return (
     <>
       <LoginNav />
       {/* 購物車為空時出現的畫面 */}
-      {localStorage.getItem('addItemList') == '' ? <Cart /> : ''}
+      {localStorage.getItem('addItemList') != null ? '' : <Cart />}
       {/* 進度條 */}
-      {localStorage.getItem('addItemList') != '' ? <Processbar step="1" /> : ''}
+      {localStorage.getItem('addItemList') != null ? (
+        <Processbar step="1" />
+      ) : (
+        ''
+      )}
       {/* 表格 */}
-      {localStorage.getItem('addItemList') != '' ? (
+      {localStorage.getItem('addItemList') != null ? (
         <table className={Style.shoppingList}>
           <thead className={Style.listTitle}>
             <tr>
@@ -113,7 +116,7 @@ function Cart1() {
         ''
       )}
       {/* 按鈕 */}
-      {localStorage.getItem('addItemList') != '' ? (
+      {localStorage.getItem('addItemList') != null ? (
         <div className={Style.checkButton}>
           <button
             className={Style.button2}

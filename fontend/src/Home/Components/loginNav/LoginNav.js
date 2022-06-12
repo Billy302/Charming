@@ -42,7 +42,7 @@ function LoginNav(props) {
   const navigate = useNavigate()
 
   const searchParams = new URLSearchParams(location.search)
-  let type = searchParams.get('typeID') ? searchParams.get('typeID') : ''
+  let nowPage = searchParams.get('page') ? searchParams.get('page') : ''
   let searchItem = searchParams.get('itemsName')
     ? searchParams.get('itemsName')
     : ''
@@ -194,73 +194,48 @@ function LoginNav(props) {
       >
         <hr />
         <ul className={style.itemList}>
-          {!type ? (
-            <a href={`../${location.search}&typeID=101`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=101`}>
               <li>NFT</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=101`}>
               <li>NFT</li>
             </a>
           )}
-          {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=102`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=102`}>
               <li>UI/UX</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=102`}>
               <li>UI/UX</li>
             </a>
           )}
-          {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=103`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=103`}>
               <li>書籍/翻譯</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=103`}>
               <li>書籍/翻譯</li>
             </a>
           )}
-          {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=104`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=104`}>
               <li>Logo</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=104`}>
               <li>Logo</li>
             </a>
           )}
-          {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=105`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=105`}>
               <li>插圖</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=105`}>
               <li>插圖</li>
             </a>
           )}

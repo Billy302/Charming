@@ -610,9 +610,10 @@ sales
 1. 功能 : 上傳圖片。Method: POST。URL: /api/upload  
 2. 功能 : 刪除圖片。Method: POST。URL: /api/delete  
 3. 功能 : 寄送Mail。Method: POST。URL: /api/Mail  
+4. 功能 : 取得會員資料。 MEethod GET。URL: /api/member
 */
-// 設定multer內的參數，由前端限定上傳格式，檔案另存位置 & 檔名
 
+// 設定multer內的參數，由前端限定上傳格式，檔案另存位置 & 檔名
 var storage = multer.diskStorage({
   // 檔案上傳到這裡
   destination: function (req, file, cb) {
@@ -711,5 +712,15 @@ sales.post("/api/mail", upload.none(), async (req, res, next) => {
   });
   res.send('成功')
 });
+
+// http://localhost:3001/Sales/api/member
+sales.get("/api/member",async (req, res, next) => {
+  const sql = `SELECT username , join_at FROM us_user WHERE id = '${req.query.id}'`;
+  const [data] = await connection.query(sql).catch((error) => {
+    console.log(`執行 Query : ${sql}時出錯 `);
+  });
+  res.send(data[0]);
+});
+
 
 module.exports = sales;
