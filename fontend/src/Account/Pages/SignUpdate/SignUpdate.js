@@ -7,14 +7,19 @@ import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
 // react-icon
 import { FaEyeSlash, FaEye } from 'react-icons/fa'
+// sweetalert
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function SignUpdate() {
   // 依auth有無 設定登入或未登入nav
   let now = localStorage.getItem("auth");
     
   const auth = localStorage.setItem('auth', false)
-  // 設定導向頁面函式
-  const navigate = useNavigate()
+// 設定導向頁面函式
+const navigate = useNavigate()
+// 設定sweetalert2
+const MySwal = withReactContent(Swal);
 
   const params = useParams()
   const paramsAccount = params.account
@@ -37,6 +42,17 @@ function SignUpdate() {
       .then((r) => r.json())
       .then((obj) => {
         console.log(obj)
+        if(obj == 1){
+
+          MySwal.fire({
+            title: "修改成功!",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            navigate("/signin");
+          });
+        }
       })
       .then((err) => {
         console.log(err)

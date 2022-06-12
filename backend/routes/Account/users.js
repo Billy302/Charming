@@ -73,7 +73,7 @@ router.put("/signin", upload.none(), async (req, res, next) => {
   const [data] = await db.query(sql).catch((error) => {
     console.log(`執行 Query : ${sql}時出錯 `);
   });
-  res.send("成功");
+  res.send("1");
 });
 
 var mailTransport = nodemailer.createTransport({

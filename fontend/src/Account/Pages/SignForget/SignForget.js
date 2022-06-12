@@ -5,6 +5,9 @@ import style from './SignForget.module.css'
 // navbar
 import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
+// sweetalert
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function SingForget() {
 
@@ -14,6 +17,8 @@ function SingForget() {
   const auth = localStorage.setItem('auth', false)
   // 設定導向頁面函式
   const navigate = useNavigate()
+    // 設定sweetalert2
+    const MySwal = withReactContent(Swal);
 
   let [email, setEmail] = useState('')
 
@@ -36,7 +41,14 @@ function SingForget() {
         console.log(obj)
         // console.log((obj = 'error'))
         if ((obj = 'success')) {
-            errMsg.innerHTML = '已發送連結至您的信箱'
+          MySwal.fire({
+            title: "已發送連結至您的信箱",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            errMsg.innerHTML = '已發送連結至您的信箱，<br/>如5分鐘內未收到信件，<br/>請再點擊發送一次'
+          });
         }
         // 仍在測試中
         else if((obj = 'error')){
