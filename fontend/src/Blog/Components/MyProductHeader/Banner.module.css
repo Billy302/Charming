@@ -24,17 +24,6 @@
 .banner--upload input[type='file'] {
   display: none;
 }
-.banner--upload input[type='submit'] {
-  color: var(--brown1);
-  font-size: 2rem;
-  background-color: #ccc;
-  border: 1px solid #ccc;
-  border-radius: 1rem;
-  display: inline;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  transition: 0.5s;
-}
 
 .custom-file-upload {
   color: var(--brown1);
@@ -52,27 +41,9 @@
   border: 1px solid #eee;
 }
 
-.banner--upload input[type='submit']:hover {
-  background-color: #eee;
-  border: 1px solid #eee;
-}
-
-.banner--upload input[type='button'] {
-  color: var(--brown1);
-  background-color: #ccc;
-  border: 1px solid #ccc;
-  border-radius: 1rem;
-  display: inline;
-  padding: 0.5rem 1.1rem;
-  cursor: pointer;
-  transition: 0.5s;
+.myproductbtn {
   font-size: 2rem;
   margin-bottom: 2rem;
-}
-
-.banner--upload input[type='button']:hover {
-  background-color: #eee;
-  border: 1px solid #eee;
 }
 
 .banner--upload__cancel-submit {

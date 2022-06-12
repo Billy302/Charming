@@ -4,6 +4,7 @@ import Trending from '../FrontPage/TrendingArticle/Trending'
 import PillBtn from '../UI/PillBtn'
 import DefalutImage from './charmingDefalut.png'
 import swal from 'sweetalert'
+import MyProductBtn from '../UI/MyProductBtn'
 
 const Banner = (props) => {
   const [userBanner, setUserBanner] = useState([])
@@ -100,12 +101,17 @@ const Banner = (props) => {
               </label>
             ) : (
               <div className={classes['banner--upload__cancel-submit']}>
-                <input
+                <MyProductBtn
                   type="button"
                   value="取消"
                   onClick={cancelUploadHandler}
+                  className={classes.myproductbtn}
                 />
-                <input type="submit" value="儲存變更" form="banner-upload" />
+                <MyProductBtn
+                  type="submit"
+                  value="儲存變更"
+                  form="banner-upload"
+                />
               </div>
             )}
 

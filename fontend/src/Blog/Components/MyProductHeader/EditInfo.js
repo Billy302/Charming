@@ -1,6 +1,8 @@
 import classes from './EditInfo.module.css'
 import PillBtn from '../UI/PillBtn'
 import { useState, useEffect, useRef } from 'react'
+import MyProductBtn from '../UI/MyProductBtn'
+import TextField from '@mui/material/TextField'
 
 const EditInfo = (props) => {
   // 解構從資料庫拿出來的使用者狀態的title跟context
@@ -66,7 +68,7 @@ const EditInfo = (props) => {
 
   return (
     <div className={classes['personal-info--card__display']}>
-      <form onSubmit={inputChangeHandler} id="test">
+      <form onSubmit={inputChangeHandler} id="status">
         <label htmlFor="title">修改文章</label>
         <input
           type="text"
@@ -83,8 +85,10 @@ const EditInfo = (props) => {
           ref={contentUseRef}
         ></textarea>
         <p></p>
-        <PillBtn>完成修改</PillBtn>
       </form>
+      <div className={classes.myproductionbtn}>
+        <MyProductBtn value="完成修改" type="submit" form="status" />
+      </div>
     </div>
   )
 }

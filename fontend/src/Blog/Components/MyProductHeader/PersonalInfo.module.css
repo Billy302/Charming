@@ -4,6 +4,7 @@
   justify-content: center;
   transition: 0.5s;
   margin-top: 3rem;
+  margin-bottom: 5rem;
 }
 .personal-info--image {
   display: flex;

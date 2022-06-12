@@ -4,6 +4,7 @@ import InfoDisplay from './InfoDisplay'
 import EditInfo from './EditInfo'
 import swal from 'sweetalert'
 import defaultIcon from './favicon.ico'
+import MyProductBtn from '../UI/MyProductBtn'
 
 const PersonalInfo = (props) => {
   // 判斷目前是要 render 修改文案(true)還是顯示文案(false)
@@ -140,12 +141,12 @@ const PersonalInfo = (props) => {
               <div
                 className={classes['personal-info--upload-logo__cancel-submit']}
               >
-                <input
+                <MyProductBtn
                   type="button"
                   onClick={cancelUploadHandler}
                   value="取消"
-                />
-                <input type="submit" form="logo-form" value="上傳" />
+                />{' '}
+                <MyProductBtn type="submit" form="logo-form" value="上傳" />
               </div>
             )}
             <input type="file" name="logo" id="logo" onChange={fileHandler} />
