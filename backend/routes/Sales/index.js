@@ -1,14 +1,13 @@
 var express = require("express");
 var sales = express.Router();
-
 var multer = require("multer");
 var upload = multer();
-
 var fs = require("fs");
-
+var nodemailer = require("nodemailer");
 const { body, validationResult, check } = require("express-validator");
 
 const connection = require("../../modules/mysql_config");
+const { path } = require("../../app");
 
 /* 商品 
 1. 功能：取得全部商品資料。Method: GET。URL: /api/product?id=  完成
@@ -245,7 +244,7 @@ sales.get("/api/product/:userID/:productID", async (req, res, next) => {
   const [love] = await connection.query(sql2);
 
   // 如果查詢有值，datas中的lover存為True
-  if (love!="") {
+  if (love != "") {
     datas[0]["love"] = "true";
   } else {
     datas[0]["love"] = "false";
@@ -367,7 +366,7 @@ sales
       if (Object.values(datas[1][0]) > 0) {
         pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
       }
-      
+
       // 分頁總數，加進陣列
       datas.push(pageCount);
 
@@ -422,18 +421,15 @@ sales
   })
   // 新增訂單 & 訂單詳細，處理multipart/form-data的狀態
   // http://localhost:3001/Sales/api/orderUser
+  // 前端傳值 addUser & addItemList
+  // addUser : 1 | 150  (用戶ID | 總價)
+  // addItemList :
+  // [{"ID":26,
+  // "pic_path":"illustration1-1.jpeg",
+  // "author_name":"mohammadkasim",
+  // "product_name":"建立原創的兒童書籍插圖和封面",
+  // "price":150}]
   .post(upload.array(), async (req, res, next) => {
-    // 前端傳值 addUser & addItemList
-
-    // addUser : 1 | 150  (用戶ID | 總價)
-
-    // addItemList :
-    // [{"ID":26,
-    // "pic_path":"illustration1-1.jpeg",
-    // "author_name":"mohammadkasim",
-    // "product_name":"建立原創的兒童書籍插圖和封面",
-    // "price":150}]
-
     // 接值
     let { addUser, addItemList } = req.body;
     // [1],[150]
@@ -625,13 +621,14 @@ var storage = multer.diskStorage({
 
   // 定義檔案名稱規範
   filename: function (req, file, cb) {
-    cb(null, Date.now().toString() + file.originalname.substr(-4));
+    cb(null, Date.now().toString() + file.originalname.substr(-5));
   },
 });
 
 upload = multer({ storage: storage });
 // 新增圖片檔
 // 前端input type="file"
+// http://localhost:3001/Sales/api/upload
 sales.post(
   "/api/upload",
   upload.array("theFile1", 5),
@@ -651,6 +648,7 @@ sales.post(
 );
 // 刪除圖片檔
 // 需要一個參數，以body -> 檔名 : name
+// http://localhost:3001/Sales/api/delete
 sales.post("/api/delete", async (req, res, next) => {
   fs.unlink(`../fontend/public/Home/ProductImg/${req.body.name}`, (err) => {
     if (err) {
@@ -660,6 +658,58 @@ sales.post("/api/delete", async (req, res, next) => {
       res.send("刪除文件成功");
     }
   });
+});
+
+// Mail設定，用hotmail寄送，SMTP
+var mailTransport = nodemailer.createTransport({
+  host: "smtp-mail.outlook.com",
+  port: 587,
+  tls: {
+    rejectUnauthorized: false,
+  },
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASSWORD,
+  },
+});
+// 寄送mail
+// 當前測試只能用hotmail，無論發送者或接收者
+// http://localhost:3001/Sales/api/mail
+// 前端傳值 addUser & addItemList
+// addUser : 1 | 150  (用戶ID | 總價)
+// addItemList :
+// [{"ID":26,
+// "pic_path":"illustration1-1.jpeg",
+// "author_name":"mohammadkasim",
+// "product_name":"建立原創的兒童書籍插圖和封面",
+// "price":150}]
+sales.post("/api/mail", upload.none(), async (req, res, next) => {
+  // 取得用戶的信箱
+  let { addUser, addItemList } = req.body;
+  addUser = addUser.split(" | ");
+  // 轉換型別
+  addItemList = JSON.parse(addItemList);
+  // addItemList[i]["pic_path"] 檔案名稱
+
+  const sql = `SELECT email FROM us_user WHERE  id = '${addUser[0]}'`;
+  const [data] = await connection.query(sql).catch((error) => {
+    console.log(`執行 Query : ${sql}時出錯 `);
+  });
+  let picPath = [];
+  for (let i = 0; i < addItemList.length; i++) {
+    picPath.push({
+      filename: addItemList[i]["pic_path"],
+      path: `../fontend/public/Home/ProductImg/${addItemList[i]["pic_path"]}`,
+    });
+  }
+  mailTransport.sendMail({
+    from: "a710146@hotmail.com",
+    to: data[0]["email"],
+    subject: "Charming網，您的商品已送達",
+    html: `親愛的會員您購買的商品，請參照附件`,
+    attachments: picPath,
+  });
+  res.send('成功')
 });
 
 module.exports = sales;

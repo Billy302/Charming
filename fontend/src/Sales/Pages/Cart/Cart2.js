@@ -57,7 +57,7 @@ function Cart2() {
       {/* 輸入框 */}
       <form className={Style.infoInput}>
         <div className={Style.blockText}>
-          <label for="inputName">姓名</label>
+          <label htmlor="inputName">姓名</label>
           <input
             id="inputName"
             type="text"

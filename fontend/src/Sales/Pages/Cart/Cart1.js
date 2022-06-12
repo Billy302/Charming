@@ -35,9 +35,9 @@ function Cart1() {
       )
       cartTable.push(
         <tr key={i + 1} className={Style.blockPicture} id={ID}>
-          <th className={Style.blockSizeS} scope="row">
+          <td className={Style.blockSizeS} scope="row">
             {i + 1}
-          </th>
+          </td>
           <td className={Style.blockSizeL}>
             <img
               className={Style.blockSizeM}
@@ -45,10 +45,8 @@ function Cart1() {
               src={`http://localhost:3000/Home/ProductImg/${pic_path}`}
             />
           </td>
-          <div className={Style.phoneCart}>
-            <td className={Style.blockSizeM}>{author_name}</td>
-            <td className={Style.blockSizeXL}>{product_name}</td>
-          </div>
+          <td className={Style.blockSizeM}>{author_name}</td>
+          <td className={Style.blockSizeXL}>{product_name}</td>
           <td className={`${Style.blockSizeM} ${Style.price}`}>
             {'$' + price}
           </td>
@@ -112,9 +110,7 @@ function Cart1() {
               </th>
             </tr>
           </thead>
-          <tbody className={Style.listItem}>
-            <div className={Style.cartTable}>{cartTable}</div>
-          </tbody>
+          <tbody className={Style.listItem}>{cartTable}</tbody>
         </table>
       ) : (
         ''

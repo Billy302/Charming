@@ -89,7 +89,7 @@ function App() {
         {/* 忘記密碼 */}
         {/* http://localhost:3000/signforget */}
         <Route path="/signforget" element={<SingForget />} />
-        {/* http://localhost:3000/signUpdate */}
+        {/* http://localhost:3000/signupdate */}
         <Route path="/signupdate" element={<SignUpdate />} />
         {/* -------user 登入後頁面------- */}
         {/* http://localhost:3000/shoppinglist?page=1 */}
