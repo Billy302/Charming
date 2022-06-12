@@ -1,10 +1,14 @@
 import { React, useState } from 'react'
 import style from './SignUpdate.module.css'
 import { useNavigate, Link, useParams } from 'react-router-dom'
+import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
 import { FaEyeSlash, FaEye } from 'react-icons/fa'
 
 function SignUpdate() {
+    // 依auth有無 設定登入或未登入nav
+    let now = localStorage.getItem("auth");
+    
   const auth = localStorage.setItem('auth', false)
   // 設定導向頁面函式
   const navigate = useNavigate()
@@ -38,7 +42,7 @@ function SignUpdate() {
 
   return (
     <>
-      <UnloginNav />
+       {now == 'true' ? <LoginNav /> : <UnloginNav />}
       <main className={style.main}>
         <h1 className={style.h1}>重設密碼</h1>
       <form className={style.form} id="form1" method="post" onSubmit={fetchAccount}>

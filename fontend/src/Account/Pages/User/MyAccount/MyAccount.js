@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import style from "./MyAccount.module.css";
 import { useNavigate, Link } from "react-router-dom";
 import LoginNav from "../../../../Home/Components/LoginNav/LoginNav";
+import UnloginNav from '../../../../Home/Components/UnloginNav/UnloginNav'
 import BreadCrumb from "../../../Components/BreadCrumb/BreadCrumb";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 function MyAccount() {
+  // 依auth有無 設定登入或未登入nav
+  let now = localStorage.getItem("auth");
+
   // 上傳圖片
 const [image,setImage] = useState({preview:'',data:''})
 const [status,setStatus] = useState('')
@@ -123,8 +127,7 @@ const handleFileChange = (e) =>{
 
   return (
     <>
-      <LoginNav />
-      <BreadCrumb />
+       {now == 'true' ? <LoginNav /> : <UnloginNav />}
       {/* 上方選單 */}
       <nav className={style.navLeft}>
         <Link to="/BtocPage/account" className={style.active}>

@@ -1,6 +1,7 @@
 import style from "./SignIn.module.css";
 import { React, useEffect, useState } from "react";
-import { useNavigate, Link, useLocation  } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
+import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 // sweetalert
@@ -8,6 +9,9 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 function SignIn() {
+
+  // 依auth有無 設定登入或未登入nav
+  let now = localStorage.getItem("auth");
   // const [account, setAccount] = useState([]);
   const auth = localStorage.setItem("auth", false);
   // 設定導向頁面函式
@@ -35,14 +39,14 @@ function SignIn() {
           localStorage.setItem("id", obj[0]);
           localStorage.setItem("name", obj[1]);
           localStorage.setItem("auth", true);
-          MySwal.fire({title: '登入成功!',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500}).then(
-            () => {
-            navigate("/LoginHome"); 
-            }
-          );
+          MySwal.fire({
+            title: "登入成功!",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            navigate("/LoginHome");
+          });
         }
       });
   };
@@ -55,7 +59,7 @@ function SignIn() {
 
   return (
     <>
-      <UnloginNav />
+      {now == "true" ? <LoginNav /> : <UnloginNav />}
       <main className={style.main}>
         <h1 className={style.h1}>登入</h1>
         <p>用以下帳號繼續</p>

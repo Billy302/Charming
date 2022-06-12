@@ -1,9 +1,13 @@
 import { React, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import style from './SignForget.module.css'
+import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
 import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
-
 function SingForget() {
+
+  // 依auth有無 設定登入或未登入nav
+  let now = localStorage.getItem("auth");
+  
   const auth = localStorage.setItem('auth', false)
   // 設定導向頁面函式
   const navigate = useNavigate()
@@ -40,7 +44,7 @@ function SingForget() {
 
   return (
     <>
-      <UnloginNav />
+    {now == 'true' ? <LoginNav /> : <UnloginNav />}
       <main className={style.main}>
         <h1 className={style.h1}>重設密碼</h1>
       <form className={style.form} id="form1" method="post" onSubmit={fetchAccount}>

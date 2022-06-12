@@ -1,7 +1,8 @@
 import style from "./SignUp.module.css";
 import { React, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import UnloginNav from "../../../Home/Components/UnloginNav/UnloginNav";
+import LoginNav from "../../../Home/Components/LoginNav/LoginNav";
+import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 // sweetalert
 import Swal from "sweetalert2";
@@ -9,6 +10,10 @@ import withReactContent from "sweetalert2-react-content";
 
 
 function SignUp() {
+
+    // 依auth有無 設定登入或未登入nav
+    let now = localStorage.getItem("auth"); 
+    
   // 設定導向頁面函式
   const navigate = useNavigate();
 
@@ -182,7 +187,7 @@ function SignUp() {
 
   return (
     <>
-      <UnloginNav />
+       {now == 'true' ? <LoginNav /> : <UnloginNav />}
       <main className={style.outline}>
         <h1 className={style.h1}>會員註冊</h1>
         <p>用以下帳號快速註冊</p>
