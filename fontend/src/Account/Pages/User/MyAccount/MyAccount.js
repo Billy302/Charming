@@ -162,7 +162,7 @@ const handleFileChange = (e) =>{
             <label>性別：{gender}</label>
             <label>生日：{birthday}</label>
             <label>E-mail：{email}</label>
-            <label>連絡電話：0{mobile}</label>
+            <label>連絡電話：{mobile}</label>
             <label>所在地區：{city}</label>
           </div>
         </div>
