@@ -4,6 +4,7 @@ import style from './AddProduct.module.css'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { BsCaretDownFill } from 'react-icons/bs'
 import { Link, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import fileImg from '../AddProduct/fileblock.jpg'
 
 // Quill.js
@@ -100,10 +101,19 @@ function AddProduct() {
       })
       .then((result) => {
         navigator('../MyProduct?page=1')
-        alert('新增商品成功')
+        Swal.fire({
+          icon: 'success',
+          title: '新增商品',
+          text: '新增成功',
+        })
+        // alert('新增商品成功')
       })
       .catch((error) => {
-        alert('新增商品失敗')
+        Swal.fire({
+          icon: 'error',
+          title: '新增商品',
+          text: '新增失敗',
+        })
       })
   }
 

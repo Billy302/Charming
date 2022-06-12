@@ -7,7 +7,7 @@ function Pagination(props) {
   // 取得使用者 & 與當前頁數
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
-  let currentPages = searchParams.get('page')
+  let currentPages = searchParams.get('page') ? searchParams.get('page') : ''
 
   // 建立頁數
   let list = []
@@ -23,10 +23,13 @@ function Pagination(props) {
       list.push(
         <li key={i}>
           <Link
-            to={`${location.pathname}?page=${i}`}
-            className={[
-              ` ${Style.page} , i === parseInt(currentPages) ? ${Style.active} : ''`,
-            ].join('')}
+            to={`${
+              location.pathname +
+              location.search.replace(`page=${currentPages}`, `page=${i}`)
+            }`}
+            className={` ${Style.page} , ${
+              i === parseInt(currentPages) ? Style.active : ''
+            }`}
           >
             {i}
           </Link>
@@ -42,7 +45,13 @@ function Pagination(props) {
         <ul className={Style.pagination}>
           {/* 到最初頁*/}
           <li className={parseInt(currentPages) === 1 ? 'disabled' : ''}>
-            <Link to={`${location.pathname}?page=1`}>
+            <Link
+              to={`${
+                location.pathname +
+                location.search.replace(`page=${currentPages}`, `page=1`)
+              }`}
+            >
+              {/* <Link to={`${location.pathname}?page=1`}> */}
               <i className={`${Style.arrow} ${Style.left}`}></i>
               <i className={`${Style.arrow} ${Style.left}`}></i>
             </Link>
@@ -50,8 +59,16 @@ function Pagination(props) {
           {/* 到上頁 */}
           <li>
             <Link
-              to={`${location.pathname}?page=${
-                parseInt(currentPages) - 1 > 0 ? parseInt(currentPages) - 1 : 1
+              to={`${
+                location.pathname +
+                location.search.replace(
+                  `page=${currentPages}`,
+                  `page=${
+                    parseInt(currentPages) - 1 > 0
+                      ? parseInt(currentPages) - 1
+                      : 1
+                  }`
+                )
               }`}
             >
               <i className={`${Style.arrow} ${Style.left}`}></i>
@@ -62,10 +79,16 @@ function Pagination(props) {
           {/* 到下頁 */}
           <li>
             <Link
-              to={`${location.pathname}?page=${
-                parseInt(currentPages) + 1 > totalPages
-                  ? totalPages
-                  : parseInt(currentPages) + 1
+              to={`${
+                location.pathname +
+                location.search.replace(
+                  `page=${currentPages}`,
+                  `page=${
+                    parseInt(currentPages) + 1 > totalPages
+                      ? totalPages
+                      : parseInt(currentPages) + 1
+                  }`
+                )
               }`}
             >
               <i className={`${Style.arrow} ${Style.right}`}></i>
@@ -75,7 +98,15 @@ function Pagination(props) {
           <li
             className={parseInt(currentPages) === totalPages ? 'disabled' : ''}
           >
-            <Link to={`${location.pathname}?page=${totalPages}`}>
+            <Link
+              to={`${
+                location.pathname +
+                location.search.replace(
+                  `page=${currentPages}`,
+                  `page=${totalPages}`
+                )
+              }`}
+            >
               <i className={`${Style.arrow} ${Style.right}`}></i>
               <i className={`${Style.arrow} ${Style.right}`}></i>
             </Link>

@@ -1,5 +1,6 @@
 // 編輯尚未製作
 import React from 'react'
+import Swal from 'sweetalert2'
 import Style from './EditCard.module.css'
 import { FaTrashAlt, FaEdit } from 'react-icons/fa'
 
@@ -30,6 +31,11 @@ const EditCard: React.FC<CardProps> = ({
   function deleteItem() {
     fetch(`http://localhost:3001/Sales/api/product/${ID}`, {
       method: 'delete',
+    })
+    Swal.fire({
+      icon: 'success',
+      title: '刪除成功!',
+      text: '刪除成功',
     })
   }
 

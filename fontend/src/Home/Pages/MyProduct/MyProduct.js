@@ -10,7 +10,6 @@ import EditProduct from '../../Components/EditProduct/EditProduct'
 function MyProduct() {
   return (
     <>
-      <LoginNav />
       <section>
         <div className={Style.buttonPosition}>
           <a href="/MyProduct/AddProduct">

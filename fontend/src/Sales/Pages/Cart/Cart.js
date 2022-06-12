@@ -11,7 +11,7 @@ function ComponentsName() {
       <div>
         <p>現在購物車空空</p>
         <p>來看看有什麼新興設計吧？</p>
-        <Link to={`/Product?id=${storage.getItem('id')}&page=1`}>go</Link>
+        <Link to={`/Product?page=1`}>go</Link>
       </div>
     </div>
   )

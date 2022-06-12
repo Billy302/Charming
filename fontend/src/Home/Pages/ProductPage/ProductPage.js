@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import style from "./ProductPage.module.css";
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import style from './ProductPage.module.css'
 //component
-import LoginNav from "../../Components/LoginNav/LoginNav";
+import LoginNav from '../../Components/LoginNav/LoginNav'
 // icon
-import { MdLocationOn, MdCalendarToday } from "react-icons/md";
-import UnloginNav from "../../Components/UnloginNav/UnloginNav";
+import { MdLocationOn, MdCalendarToday } from 'react-icons/md'
+import UnloginNav from '../../Components/UnloginNav/UnloginNav'
 
 function ProductPage() {
   const [products, setProducts] = useState({
-    pic_path: "",
-  });
+    pic_path: '',
+  })
 
   // 連線檔
-  const catchUserId = useParams();
-  const UserId = catchUserId.UserId ? catchUserId.UserId : "";
+  const catchUserId = useParams()
+  const UserId = catchUserId.UserId ? catchUserId.UserId : ''
   const fetchProducts = async () => {
     // 向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
     // 判斷是遊客還是會員
@@ -22,36 +23,36 @@ function ProductPage() {
       const response = await fetch(
         //取單一商品資料
         `http://localhost:3001/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
-      );
-      let data = await response.json();
-      let dt = new Date(data[0]["create_time"]);
-      data[0]["create_time"] = dt.toLocaleString();
-      console.log(data[0]);
-      setProducts(data[0]);
+      )
+      let data = await response.json()
+      let dt = new Date(data[0]['create_time'])
+      data[0]['create_time'] = dt.toLocaleString()
+      console.log(data[0])
+      setProducts(data[0])
     } else {
       const response = await fetch(
         //取單一商品資料
         `http://localhost:3001/Sales/api/product/${catchUserId.ProductID}`
-      );
-      let data = await response.json();
-      let dt = new Date(data[0]["create_time"]);
-      data[0]["create_time"] = dt.toLocaleString();
-      console.log(data[0]);
-      setProducts(data[0]);
+      )
+      let data = await response.json()
+      let dt = new Date(data[0]['create_time'])
+      data[0]['create_time'] = dt.toLocaleString()
+      console.log(data[0])
+      setProducts(data[0])
     }
-  };
+  }
   // console.log(products);
   // didMount
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts()
+  }, [])
 
-  const a = products.pic_path.split(" ");
+  const a = products.pic_path.split(' ')
 
   // 小圖
-  let picture = [];
+  let picture = []
   for (let i = 0; i < a.length; i++) {
-    const s = style["bigImg" + i];
+    const s = style['bigImg' + i]
     picture.push(
       <button className={style.ProductImg}>
         <img
@@ -65,20 +66,24 @@ function ProductPage() {
           src={`http://localhost:3000/Home/ProductImg/${a[i]}`}
         />
       </button>
-    );
+    )
   }
   // new
-  let storage = localStorage;
+  let storage = localStorage
 
   function additem() {
-    if (localStorage.getItem('auth') == 'true')  {
+    if (localStorage.getItem('auth') == 'true') {
       if (storage[products.ID]) {
-        alert("已成功加入購物車");
+        Swal.fire({
+          icon: 'warning',
+          title: 'warning!',
+          text: '此商品已經加入購物車',
+        })
       } else {
-        if (storage["addItemList"] == null) {
-          storage["addItemList"] = `${products.ID} |`;
+        if (storage['addItemList'] == null) {
+          storage['addItemList'] = `${products.ID} |`
         } else {
-          storage["addItemList"] += `${products.ID} |`;
+          storage['addItemList'] += `${products.ID} |`
         }
         const productCart = {
           ID: products.ID,
@@ -86,17 +91,22 @@ function ProductPage() {
           author_name: products.author_name,
           product_name: products.product_name,
           price: products.price,
-        };
-        storage.setItem(products.ID, JSON.stringify(productCart));
+        }
+        storage.setItem(products.ID, JSON.stringify(productCart))
+        document.getElementById('cartMsg').innerHTML = '已加入購物車'
       }
     } else {
-      alert("請先登入會員");
+      Swal.fire({
+        icon: 'warning',
+        title: 'warning!',
+        text: '請先登入會員',
+      })
     }
   }
 
   return (
     <>
-      {localStorage.getItem("auth") == "true" ? <LoginNav /> : <UnloginNav />}
+      {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
       {/* 商品名稱 */}
       <section className={style.ProductPage}>
         <div className={style.displayFlex}>
@@ -121,7 +131,11 @@ function ProductPage() {
             <div className={style.displayFlex}>
               <div className={style.buyNumber}>
                 <button onClick={additem} className={style.shoppingCar}>
-                  加入購物車
+                  {storage[products.ID] ? (
+                    <p id="cartMsg">已加入購物車</p>
+                  ) : (
+                    <p id="cartMsg">加入購物車</p>
+                  )}
                 </button>
               </div>
             </div>
@@ -132,7 +146,7 @@ function ProductPage() {
               <img
                 className={style.designerPicture}
                 alt=""
-                src={require("../../Assets/charming_logo.png")}
+                src={require('../../Assets/charming_logo.png')}
               />
               <div>
                 <p className={style.aboutDesigner}>{products.author_name}</p>
@@ -158,6 +172,6 @@ function ProductPage() {
         </article>
       </section>
     </>
-  );
+  )
 }
-export default ProductPage;
+export default ProductPage

@@ -1,64 +1,64 @@
-import React, { useState } from "react";
-import style from "./LoginNav.module.css";
-import { FaShoppingCart } from "react-icons/fa";
-import { ImSearch } from "react-icons/im";
-import logo from "../../Assets/charming_logo.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import React, { useState } from 'react'
+import style from './LoginNav.module.css'
+import { FaShoppingCart } from 'react-icons/fa'
+import { ImSearch } from 'react-icons/im'
+import logo from '../../Assets/charming_logo.png'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function LoginNav(props) {
-  const MySwal = withReactContent(Swal);
+  const MySwal = withReactContent(Swal)
 
   const logOut = (e) => {
     //—————————————登出畫面———————————————
-    e.preventDefault();
+    e.preventDefault()
     MySwal.fire({
-      title: "確定要登出嗎?",
-      icon: "warning",
+      title: '確定要登出嗎?',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#795252",
-      confirmButtonText: "確定",
-      cancelButtonColor: "#d33",
-      cancelButtonText: "取消",
+      confirmButtonColor: '#795252',
+      confirmButtonText: '確定',
+      cancelButtonColor: '#d33',
+      cancelButtonText: '取消',
     }).then((result) => {
       if (result.isConfirmed) {
-        localStorage.removeItem("id");
-        localStorage.setItem("auth", false);
+        localStorage.removeItem('id')
+        localStorage.setItem('auth', false)
         MySwal.fire({
-          title: "登出成功",
-          icon: "success",
+          title: '登出成功',
+          icon: 'success',
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          navigate("/");
-        });
+          navigate('/')
+        })
       }
-    });
-  };
+    })
+  }
 
   // 取得包含目前URL的狀態和位置的物件函數
-  const location = useLocation();
-  const navigate = useNavigate();
+  const location = useLocation()
+  const navigate = useNavigate()
 
-  const searchParams = new URLSearchParams(location.search);
-  let type = searchParams.get("typeID") ? searchParams.get("typeID") : "";
-  let searchItem = searchParams.get("itemsName")
-    ? searchParams.get("itemsName")
-    : "";
+  const searchParams = new URLSearchParams(location.search)
+  let type = searchParams.get('typeID') ? searchParams.get('typeID') : ''
+  let searchItem = searchParams.get('itemsName')
+    ? searchParams.get('itemsName')
+    : ''
 
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('')
 
-  const [typebar, setNavbar] = useState(false);
+  const [typebar, setNavbar] = useState(false)
 
   const displayItemType = () => {
     if (window.scrollY >= 80) {
-      setNavbar(true);
+      setNavbar(true)
     } else {
-      setNavbar(false);
+      setNavbar(false)
     }
-  };
-  window.addEventListener("scroll", displayItemType);
+  }
+  window.addEventListener('scroll', displayItemType)
 
   function goPath() {
     // 先判斷搜尋欄內是否有值
@@ -70,13 +70,13 @@ function LoginNav(props) {
             `itemsName=${searchItem}`,
             `itemsName=${searchValue}`
           )}`
-        );
+        )
       } else {
         // 判斷來源處有沒有Query
         if (searchParams.search) {
-          navigate(`../Product${searchParams}&page=1&itemsName=${searchValue}`);
+          navigate(`../Product${searchParams}&page=1&itemsName=${searchValue}`)
         } else {
-          navigate(`../Product?page=1&itemsName=${searchValue}`);
+          navigate(`../Product?page=1&itemsName=${searchValue}`)
         }
       }
     }
@@ -99,12 +99,12 @@ function LoginNav(props) {
             type="search"
             placeholder="Search product or author"
             onChange={(e) => {
-              setSearchValue(e.target.value);
+              setSearchValue(e.target.value)
             }}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                setSearchValue(e.target.value);
-                goPath();
+              if (e.key === 'Enter') {
+                setSearchValue(e.target.value)
+                goPath()
               }
             }}
           />
@@ -119,12 +119,12 @@ function LoginNav(props) {
             type="search"
             className={style.padSearchBar}
             onChange={(e) => {
-              setSearchValue(e.target.value);
+              setSearchValue(e.target.value)
             }}
             onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                setSearchValue(e.target.value);
-                goPath();
+              if (e.key === 'Enter') {
+                setSearchValue(e.target.value)
+                goPath()
               }
             }}
           ></input>
@@ -144,7 +144,9 @@ function LoginNav(props) {
               </li> */}
               <div className={style.hello}>
                 <p> Hello!</p>
-                <a href="/account"><p>{localStorage.getItem("name")}</p></a>
+                <a href="/account">
+                  <p>{localStorage.getItem('name')}</p>
+                </a>
               </div>
               <a href="/Product?page=1" className={style.phoneDisplayNone}>
                 <li>探索</li>
@@ -173,11 +175,10 @@ function LoginNav(props) {
                 </a>
                 {/*--hover頭像時出現時才出現的會員表單 --*/}
                 <div className={style.navList}>
-                  <a href="">會員資料修改</a>
-                  <a href="">我的設計</a>
-                  <Link to={`../MyProduct?page=1`}>我的商品</Link>
-                  <a href="/collection">我的收藏</a>
-                  <Link to={`../BtobPage/Order?page=1`}>購買清單</Link>
+                  <Link to={`/account`}>會員中心</Link>
+                  <Link to={`/blog/myproduct?page=1`}>賣家中心</Link>
+                  <Link to={`/collection?page=1`}>我的收藏</Link>
+                  <Link to={`/shoppinglist?page=1`}>購買清單</Link>
                   <button onClick={logOut}>登出</button>
                 </div>
                 {/* ——————————————————————————————————————— */}
@@ -194,7 +195,7 @@ function LoginNav(props) {
         <hr />
         <ul className={style.itemList}>
           {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=101`}>
+            <a href={`../${location.search}&typeID=101`}>
               <li>NFT</li>
             </a>
           ) : (
@@ -267,6 +268,6 @@ function LoginNav(props) {
         <hr />
       </div>
     </header>
-  );
+  )
 }
-export default LoginNav;
+export default LoginNav

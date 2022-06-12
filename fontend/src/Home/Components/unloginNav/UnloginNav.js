@@ -104,14 +104,6 @@ function UnloginNav(props) {
         <div className={style.charmingItem}>
           <ul className={style.itemStyle}>
             <div>
-              {/* <li className={style.changeLanguage}>
-                <AiOutlineGlobal />
-                <select>
-                  <option value="australia">繁體中文</option>
-                  <option value="English">English</option>
-                </select>
-                <FaAngleDown />
-              </li> */}
               <a href="/Product?page=1" className={style.phoneDisplayNone}>
                 <li>探索</li>
               </a>
@@ -134,9 +126,6 @@ function UnloginNav(props) {
           </ul>
         </div>
       </nav>
-      <div
-        className={typebar ? `${style.displayblock}` : `${style.displayNone}`}
-      ></div>
     </header>
   )
 }

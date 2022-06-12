@@ -4,6 +4,7 @@ import style from './EditProductPage.module.css'
 import { IoIosAddCircleOutline } from 'react-icons/io'
 import { BsCaretDownFill } from 'react-icons/bs'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import fileImg from '../AddProduct/fileblock.jpg'
 
 // Quill.js
@@ -90,7 +91,11 @@ function EditProduct() {
         image.src = fileImg
       }
     } else {
-      alert('抱歉，我們只能存五筆')
+      Swal.fire({
+        icon: 'warning',
+        title: '選取圖片',
+        text: '抱歉，我們最多存五筆',
+      })
     }
   }
   const addProducts = async () => {
@@ -139,10 +144,18 @@ function EditProduct() {
       })
       .then((result) => {
         navigator('../MyProduct?page=1')
-        alert('修改商品成功')
+        Swal.fire({
+          icon: 'success',
+          title: '修改商品',
+          text: '商品成功',
+        })
       })
       .catch((error) => {
-        alert('修改商品失敗')
+        Swal.fire({
+          icon: 'error',
+          title: '修改商品',
+          text: '商品失敗',
+        })
       })
   }
 

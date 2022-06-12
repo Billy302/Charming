@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import style from './ProductPageEditButton.module.css'
 //component
 import LoginNav from '../../Components/LoginNav/LoginNav'
@@ -73,7 +74,11 @@ function ProductPage() {
   function additem() {
     if (localStorage.getItem('auth') == 'true') {
       if (storage[products.ID]) {
-        alert('已成功加入購物車')
+        Swal.fire({
+          icon: 'warning',
+          title: 'warning!',
+          text: '此商品已經加入購物車',
+        })
       } else {
         if (storage['addItemList'] == null) {
           storage['addItemList'] = `${products.ID} |`
@@ -90,7 +95,11 @@ function ProductPage() {
         storage.setItem(products.ID, JSON.stringify(productCart))
       }
     } else {
-      alert('請先登入會員')
+      Swal.fire({
+        icon: 'warning',
+        title: 'warning!',
+        text: '請先登入會員',
+      })
     }
   }
   return (

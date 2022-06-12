@@ -31,7 +31,7 @@ function MyProduct() {
   const searchParams = new URLSearchParams(location.search)
   let nowSort = searchParams.get('sort') ? searchParams.get('sort') : ''
   let nowOrder = searchParams.get('order') ? searchParams.get('order') : ''
-  let nowID = searchParams.get('id')
+  let nowPage = searchParams.get('page')
 
   function goPath(value) {
     if (nowSort) {
@@ -51,7 +51,7 @@ function MyProduct() {
 
   const fetchProducts = async () => {
     const response = await fetch(
-      `http://localhost:3001/Sales/api/productUser?id=1&order=price&sort=desc&page=1`
+      `http://localhost:3001/Sales/api/productUser?id=${localStorage.getItem('id')}&order=${nowOrder}&sort=${nowSort}&page=${nowPage}`
     )
     const data = await response.json()
     //測試
@@ -97,7 +97,7 @@ function MyProduct() {
           {products.map((r) => (
             <div key={r.ID}>
               <Card
-                userID={nowID}
+                userID={localStorage.getItem('id')}
                 ID={r.ID}
                 author_name={r.author_name}
                 product_name={r['product_name']}

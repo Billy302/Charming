@@ -15,8 +15,15 @@ import product3 from '../../Assets/mainPageBlog.png'
 import introduce1 from '../../Assets/charmingMan.png'
 import introduce2 from '../../Assets/blog.png'
 import introduce3 from '../../Assets/communication.png'
+import { useLocation, useNavigate } from 'react-router-dom'
+
 function UnloginHome() {
+  const [searchValue, setSearchValue] = useState('')
   const [scroll, setScroll] = useState(false)
+  // 取得包含目前URL的狀態和位置的物件函數
+  const location = useLocation()
+  const navigate = useNavigate()
+
   const displayItemType = () => {
     if (window.scrollY >= 200) {
       setScroll(true)
@@ -24,12 +31,39 @@ function UnloginHome() {
       setScroll(false)
     }
   }
+  const searchParams = new URLSearchParams(location.search)
+  let searchItem = searchParams.get('itemsName')
+    ? searchParams.get('itemsName')
+    : ''
   let now = localStorage.getItem('auth')
 
   window.addEventListener('scroll', displayItemType)
+
+  function goPath() {
+    // 先判斷搜尋欄內是否有值
+    if (searchValue) {
+      // 判斷是否已經有搜尋過
+      if (searchItem) {
+        navigate(
+          `../Product${location.search.replace(
+            `itemsName=${searchItem}`,
+            `itemsName=${searchValue}`
+          )}`
+        )
+      } else {
+        // 判斷來源處有沒有Query
+        if (searchParams.search) {
+          navigate(`../Product${searchParams}&page=1&itemsName=${searchValue}`)
+        } else {
+          navigate(`../Product?page=1&itemsName=${searchValue}`)
+        }
+      }
+    }
+  }
+
   return (
     <header>
-    {now == 'true' ? <LoginNav /> : <UnloginNav />}
+      {now == 'true' ? <LoginNav /> : <UnloginNav />}
       {/* search header */}
       <div className={style.backgroundImg}>
         <div className={style.headerSlogan}>
@@ -44,27 +78,26 @@ function UnloginHome() {
             type="search"
             placeholder="Search.."
             onChange={(e) => {
-              console.log(e)
+              setSearchValue(e.target.value)
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                setSearchValue(e.target.value)
+                goPath()
+              }
             }}
           />
-          <button className={style.searchButton}>
+          <button className={style.searchButton} value="搜尋" onClick={goPath}>
             <ImSearch className={style.iconStyle} />
           </button>
         </div>
-        <div className={style.tags}>
-          <a href="/ProductPage">
-            <button className={style.searchTag}>中秋節</button>
-          </a>
-          <a href="/ProductPage">
-            <button className={style.searchTag}>中秋節</button>
-          </a>
-          <a href="/ProductPage">
-            <button className={style.searchTag}>中秋節</button>
-          </a>
-          <a href="/ProductPage">
-            <button className={style.searchTag}>中秋節</button>
-          </a>
-        </div>
+        {/* 看有沒有時間補 */}
+        {/* <div className={style.tags}>
+          <button className={style.searchTag}>NFT</button>
+          <button className={style.searchTag}>UI/UX</button>
+          <button className={style.searchTag}>中秋節</button>
+          <button className={style.searchTag}>中秋節</button>
+        </div> */}
       </div>
       {/* 產品頁介紹 */}
 
@@ -84,14 +117,13 @@ function UnloginHome() {
             <p className={style.heading4}>藝企合作，共創雙贏</p>
           </div>
         </div>
-        <a href="product">
+        <a href="/Product?page=1">
           <button className={`${style.joinButton} ${style.heading4}`}>
-            {' '}
-            {'> '}查看所有商品
+           查看所有商品
           </button>
         </a>
         {/* 柴米人頁面介紹 */}
-        <div className={style.portfolio}>
+        {/* <div className={style.portfolio}>
           <hgroup className={style.pageMargin}>
             <p className={style.heading3}>柴米武林招開中</p>
             <p className={style.heading3}>快來加入成為柴米榜榜主吧！</p>
@@ -102,7 +134,7 @@ function UnloginHome() {
           <a href="portfolio">
             <img src={introduce1} alt="introduce" />
           </a>
-        </div>
+        </div> */}
         {/* 柴訊介紹 */}
         <div className={style.blog}>
           <hgroup className={style.phoneDisplay}>
@@ -132,7 +164,7 @@ function UnloginHome() {
               全國活動資訊交流，快來和大家分享你覺得有趣的設計、藝文活動吧！
             </p>
           </hgroup>
-          <a href="Communication">
+          <a href="./">
             <img
               className={style.introducePicture}
               src={introduce3}

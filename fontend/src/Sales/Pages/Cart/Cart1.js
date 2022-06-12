@@ -5,16 +5,15 @@ import Cart from './Cart'
 import Style from './Cart.module.css'
 import { useNavigate } from 'react-router-dom'
 import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
+import Swal from 'sweetalert2'
 
 function Cart1() {
-  const [state, setState] = useState(true)
   // 使用 useNavigate 套件
   let Navigate = useNavigate()
 
   // 使用 localStorage WebAPI
   let storage = localStorage
 
-  console.log(storage)
   // 建立空白陣列，存放jsx語法
   let cartTable = []
 
@@ -26,7 +25,6 @@ function Cart1() {
     // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
     let items = itemString.split(' |')
     items.pop()
-    console.log(items.length)
 
     // 動態生成table的內容
     for (let i = 0; i < items.length; i++) {
@@ -69,7 +67,6 @@ function Cart1() {
     storage['addItemList'] = storage['addItemList'].replace(`${itemId} |`, ``)
     // 清除按鈕所在位置的html語法
     document.getElementById(itemId).remove()
-    setState(false)
   }
 
   return (
@@ -133,7 +130,11 @@ function Cart1() {
               if (storage.getItem('addItemList')) {
                 Navigate('../Sales/Cart2')
               } else {
-                alert('請選購商品')
+                Swal.fire({
+                  title: `Error!`,
+                  text: '請選購商品',
+                  icon: 'error',
+                })
               }
             }}
           >
