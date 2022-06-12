@@ -245,8 +245,8 @@ function SignUp() {
                 註冊
               </button>
               <p>
-                點擊「註冊」即表示你同意我們的<a href="#">使用條款</a>及
-                <a href="#">隱私政策</a>
+                點擊「註冊」即表示你同意我們的<a target="_blank" href="http://localhost:3000/policya">使用條款</a>及
+                <a target="_blank" href="http://localhost:3000/policyb">隱私政策</a>
               </p>
             </div>
           </div>

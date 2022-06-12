@@ -13,7 +13,7 @@ import MyProduct from "./Home/Pages/MyProduct/MyProduct";
 
 //會員
 //Pages
-// import SignInIdentify from "./Account/Pages/SignInIdentify/SignInIdentify";
+import SignInIdentify from "./Account/Pages/PolicyA/PolicyA";
 // import SignInRecover from "./Account/Pages/SignInRecover/SignInRecover";
 import SignUp from "./Account/Pages/SignUp/SignUp";
 import SignIn from "./Account/Pages/SignIn/SignIn";
@@ -33,6 +33,7 @@ import Cart4 from "./Sales/Pages/Cart/Cart4";
 import MySale from "./Sales/Pages/Order/MySale";
 import Order from "./Sales/Pages/Order/Order";
 import OrderList from "./Sales/Pages/Order/OrderList";
+import PolicyA from "./Account/Pages/PolicyA/PolicyA";
 
 //討論區
 // import Forum from './Forum/Pages/Forum';
@@ -57,7 +58,9 @@ function App() {
         <Route path="/MyProduct" element={<MyProduct />} />
         <Route path="/" element={<UnloginHome />} />
         {/* --------註冊及登入----- */}
-        {/* 忘記密碼 */}
+        {/* 使用條款 隱私政策 */}
+        {/* http://localhost:3000/policya */}
+        <Route path="/policya" element={<PolicyA />} />
         {/* 忘記密碼 */}
         {/* http://localhost:3000/signforget */}
         <Route path="/signforget" element={<SingForget />} />
