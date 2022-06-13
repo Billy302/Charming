@@ -1,6 +1,7 @@
 /* 外框線 */
 .main {
   margin: 20px auto;
+  padding: 50px;
   width: 80%;
   height: auto;
   border-radius: var(--desk-border-radius);
