@@ -42,7 +42,8 @@ function MyAccount() {
 
   // 登入狀態驗證
   const auth = JSON.parse(localStorage.getItem("auth"));
-  console.log(auth);
+  // console.log(auth);
+
   if (auth === false) {
     MySwal.fire({
       title: "尚未登入?",
@@ -71,13 +72,13 @@ function MyAccount() {
     );
     const data = await response.json();
     setAccount(data[0]);
-    console.log(data[0]);
+    // console.log(data[0]);
   };
   useEffect(() => {
     fetchAccount();
   }, []);
 
-  console.log(account);
+  // console.log(account);
   // 解構accout獲得的值
   const {
     avatar,

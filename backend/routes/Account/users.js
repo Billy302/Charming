@@ -43,7 +43,7 @@ router.get("/users", async (req, res, next) => {
   const sql =
     "SELECT id,user_account,user_password,username,gender,DATE_FORMAT(birthday,'%Y-%m-%d') AS birthday,email,mobile,city,nickname,avatar,DATE_FORMAT(join_at,'%Y-%m-%d')AS join_at FROM `us_user` WHERE id=?";
   const [dates] = await db.query(sql, [req.query.userId]);
-  console.log(dates);
+  // console.log(dates);
   res.json(dates);
 });
 

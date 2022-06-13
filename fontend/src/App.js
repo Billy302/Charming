@@ -13,8 +13,8 @@ import MyProduct from "./Home/Pages/MyProduct/MyProduct";
 
 //會員
 //Pages
-import SignInIdentify from "./Account/Pages/PolicyA/PolicyA";
-// import SignInRecover from "./Account/Pages/SignInRecover/SignInRecover";
+import PolicyA from "./Account/Pages/PolicyA/PolicyA";
+import PolicyB from "./Account/Pages/PolicyB/PolicyB";
 import SignUp from "./Account/Pages/SignUp/SignUp";
 import SignIn from "./Account/Pages/SignIn/SignIn";
 import SingForget from "./Account/Pages/SignForget/SignForget";
@@ -33,7 +33,6 @@ import Cart4 from "./Sales/Pages/Cart/Cart4";
 import MySale from "./Sales/Pages/Order/MySale";
 import Order from "./Sales/Pages/Order/Order";
 import OrderList from "./Sales/Pages/Order/OrderList";
-import PolicyA from "./Account/Pages/PolicyA/PolicyA";
 
 //討論區
 // import Forum from './Forum/Pages/Forum';
@@ -59,23 +58,26 @@ function App() {
         <Route path="/" element={<UnloginHome />} />
         {/* --------註冊及登入----- */}
         {/* 使用條款 隱私政策 */}
-        {/* http://localhost:3000/policya */}
-        <Route path="/policya" element={<PolicyA />} />
+
+        {/* http://localhost:3000/signup/policya */}
+        <Route path="/signup/policya" element={<PolicyA />} />
+        {/* http://localhost:3000/signup/policyb*/}
+        <Route path="/signup/policyb" element={<PolicyB />} />
+        
         {/* 忘記密碼 */}
         {/* http://localhost:3000/signforget */}
         <Route path="/signforget" element={<SingForget />} />
         {/* http://localhost:3000/signUpdate */}
         <Route path="/signupdate" element={<SignUpdate />} />
-        {/* http://localhost:3000/signin/identify
-        <Route path="/signin/identify" element={<SignInIdentify />} />
-        http://localhost:3000/signin/recover */}
-        {/* <Route path="/signin/recover" element={<SignInRecover />} /> */}
+
         {/* 註冊 */}
         {/* http://localhost:3000/signup */}
         <Route path="/signup" element={<SignUp />} />
+
         {/* 登入 */}
         {/* http://localhost:3000/signin */}
         <Route path="/signin" element={<SignIn />} />
+
         {/* -------user 登入後頁面------- */}
         {/* http://localhost:3000/BtocPage/shoppinglist */}
         <Route path="/BtocPage/shoppinglist" element={<MyShoppingList />} />
