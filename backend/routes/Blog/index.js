@@ -75,26 +75,27 @@ const storage = multer.diskStorage({
 
 const uploadImage = multer({ storage: storage });
 
-// 因為一個使用者只能有一個 banner ，所以先把舊的刪掉，在insert一張新的
+// 更新使用者 banner
 blog.post('/image', uploadImage.single('file'), async (req, res) => {
     const userId = req.query.userid;
     const image = req.file.originalname;
-    const updateImg = `DELETE FROM us_banner_pic WHERE user_id = ${userId} ;
-    INSERT INTO us_banner_pic(user_id, banner_file) VALUES ('${userId}','${image}')`;
+    const updateImg = `UPDATE user_pic_status set banner_file = '${image}'`;
+    // const updateImg = `DELETE FROM us_banner_pic WHERE user_id = ${userId} ;
+    // INSERT INTO us_banner_pic(user_id, banner_file) VALUES ('${userId}','${image}')`;
     const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
     res.json(result);
 });
 
-// 讀取user的banner
+// 讀取使用者的banner
 
 blog.get('/image/render', async (req, res) => {
     const userId = req.query.userid;
-    const sqlSelect = `select * from us_banner_pic where user_id = ${userId}`;
+    const sqlSelect = `select * from user_pic_status where user_id = ${userId}`;
     const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
     res.json(result);
 });
 
-// 因為一個使用者只能有一個 logo ，所以先把舊的刪掉，在insert一張新的
+// 更新使用者 logo
 
 const storageLogo = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -110,8 +111,9 @@ const uploadLogo = multer({ storage: storageLogo });
 blog.post('/logo', uploadLogo.single('file'), async (req, res) => {
     const userId = req.query.userid;
     const image = req.file.originalname;
-    const updateImg = `DELETE FROM us_banner_logo WHERE user_id = ${userId} ;
-    INSERT INTO us_banner_logo(user_id, logo_file) VALUES ('${userId}','${image}')`;
+    // const updateImg = `DELETE FROM us_banner_logo WHERE user_id = ${userId} ;
+    // INSERT INTO us_banner_logo(user_id, logo_file) VALUES ('${userId}','${image}')`;
+    const updateImg = `UPDATE user_pic_status set logo_file = '${image}'`;
     const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
     res.json(result);
 });
@@ -119,7 +121,7 @@ blog.post('/logo', uploadLogo.single('file'), async (req, res) => {
 // 讀取user的logo
 blog.get('/logo/render', async (req, res) => {
     const userId = req.query.userid;
-    const sqlSelect = `select * from us_banner_logo where user_id = ${userId}`;
+    const sqlSelect = `select * from user_pic_status where user_id = ${userId}`;
     const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
     res.json(result);
 });
@@ -194,7 +196,7 @@ blog.get('/fav/all', async (req, res) => {
 
 blog.get('/user/renderStatus', async (req, res) => {
     const userId = req.query.userid;
-    const sqlSelect = `SELECT * FROM us_user_status WHERE user_id = ${userId}`;
+    const sqlSelect = `SELECT * FROM user_pic_status WHERE user_id = ${userId}`;
     const [result] = await db.query(sqlSelect).catch((e) => console.log(e));
     res.json(result);
 });
@@ -203,7 +205,7 @@ blog.get('/user/renderStatus', async (req, res) => {
 
 blog.post('/user/status/api', async (req, res) => {
     const userId = req.query.userid;
-    const sqlUpdate = `UPDATE us_user_status SET status_title='${req.body.titleInput}',status_content='${req.body.contextInput}' WHERE user_id = ${userId}`;
+    const sqlUpdate = `UPDATE user_pic_status SET status_title='${req.body.titleInput}',status_content='${req.body.contextInput}' WHERE user_id = ${userId}`;
     const [result] = await db.query(sqlUpdate).catch((e) => console.log(e));
     res.json(result);
 });
@@ -239,6 +241,15 @@ blog.get('follow/author/article', async (req, res) => {
     const authorId = req.query.authorid;
     const sqlSearch = `select * from blog_follow left join blog_article on blog_follow.follow_author = blog_article.article_author where follow_user = ${userId} `;
     const [result] = await db.query(sqlSearch).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// 帳號註冊成功後立即插入一筆 null 到 user_pic_status 資料表
+
+blog.get('new/user/insert/', async (req, res) => {
+    const userId = req.query.userid;
+    const sqlInsert = `INSERT INTO user_pic_status(user_id) VALUES ('${userId}')`;
+    const [result] = await db.query(sqlInsert).catch((e) => console.log(e));
     res.json(result);
 });
 
