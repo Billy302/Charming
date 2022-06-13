@@ -2,11 +2,13 @@ import classes from './Trending.module.css'
 
 const Trending = (props) => {
   return (
-    <div className={classes['trending-article']}>
+    <div className={`${classes['trending-article']} ${props.className}`}>
       <img
         src={`http://localhost:3000/blog/image/${props.article.article_image}.jpg`}
         alt=""
+        className={classes.test}
       ></img>
+
       <div className={classes['trending-article--context']}>
         <h2
           className={`${classes['trending-article--context__title']} ${
