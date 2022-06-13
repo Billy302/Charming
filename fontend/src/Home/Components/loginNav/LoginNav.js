@@ -157,7 +157,7 @@ function LoginNav(props) {
               <a className={style.phoneDisplayNone}>
                 <li>柴米人</li>
               </a>
-              <a  className={style.phoneDisplayNone}>
+              <a className={style.phoneDisplayNone}>
                 <li>柴社</li>
               </a>
             </div>
@@ -176,7 +176,7 @@ function LoginNav(props) {
                 {/*--hover頭像時出現時才出現的會員表單 --*/}
                 <div className={style.navList}>
                   <Link to={`/membercenter/account`}>會員中心</Link>
-                  <Link to={`/blog/myproduct?page=1`}>賣家中心</Link>
+                  <Link to={`/shopcenter/myproduct?page=1`}>賣家中心</Link>
                   <Link to={`/collection?page=1`}>我的收藏</Link>
                   <Link to={`/shoppinglist?page=1`}>購買清單</Link>
                   <button onClick={logOut}>登出</button>

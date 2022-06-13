@@ -4,7 +4,7 @@ var router = express.Router();
 const multer = require("multer");
 var upload = multer();
 // 發送信件
-var nodemailer = require("nodemailer")
+var nodemailer = require("nodemailer");
 // 連接資料庫
 const db = require("../../modules/mysql_config");
 
@@ -43,7 +43,7 @@ router.get("/users", async (req, res, next) => {
   const sql =
     "SELECT id,user_account,user_password,username,gender,DATE_FORMAT(birthday,'%Y-%m-%d') AS birthday,email,mobile,city,nickname,avatar,DATE_FORMAT(join_at,'%Y-%m-%d')AS join_at FROM `us_user` WHERE id=?";
   const [dates] = await db.query(sql, [req.query.userId]);
-  console.log(dates);
+  // console.log(dates);
   res.json(dates);
 });
 
@@ -97,7 +97,7 @@ router.post("/signforget", upload.none(), async (req, res, next) => {
   });
   if (data[0]["total"] > 0) {
     mailTransport.sendMail({
-      from: "a710146@hotmail.com",
+      from: "sub0617@hotmail.com",
       // to: "sub0617@hotmail.com",
       to: req.body.email,
       subject: "Charming網，密碼重新設定",
@@ -118,14 +118,22 @@ router.get("/checkAccount", async (req, res, next) => {
 });
 
 // 註冊
-router.post("/register",upload.none(), async (req, res, next) => {
+router.post("/register", upload.none(), async (req, res, next) => {
   console.log(req.body);
   const sql = `INSERT INTO us_user(user_account,user_password,username,gender,birthday, email,mobile,city) VALUES ('${req.body.account}','${req.body.password}','${req.body.name}','${req.body.gender}','${req.body.birthday}','${req.body.email}','${req.body.mobile}','${req.body.city}')`;
   const [user] = await db.query(sql).catch((error) => {
-        console.log(`執行Query:${sql}時錯誤`);
-      });
+    console.log(`執行Query:${sql}時錯誤`);
+  });
+  const sql2 = `SELECT  id ,join_at FROM us_user ORDER by join_at desc LIMIT 1`
+  const [uer2] = await db.query(sql2).catch((error) => {
+    console.log(`執行Query:${sql}時錯誤`);
+  });
+
+  const sql3 = `INSERT INTO user_pic_status(user_id) VALUES ('${uer2[0]["id"]}')`;
+  const [result] = await db.query(sql3).catch((e) => console.log(e));
+
   console.log(user);
-  console.log('註冊成功');
+  console.log("註冊成功");
   res.send("1");
   // res.redirect("http://localhost:3000/signin");
 });

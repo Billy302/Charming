@@ -7,6 +7,10 @@ import Style from './Order.module.css'
 import Pagination from '../../Components/Pagination/Pagination'
 import NoSale from './NoSale'
 import { useLocation } from 'react-router-dom'
+import ProductBtobButton from '../../../Home/Components/ProductBtobButton/ProductBtobButton'
+import Banner from '../../../Blog/Components/MyProductHeader/Banner'
+import PersonalInfo from '../../../Blog/Components/MyProductHeader/PersonalInfo'
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 
 function MySale() {
   const location = useLocation()
@@ -14,15 +18,12 @@ function MySale() {
   const [products, setProducts] = useState([])
   const [totalPage, setTotalPage] = useState([])
 
-  let userId = localStorage.getItem('id')
-
   const searchParams = new URLSearchParams(location.search)
   let currentpage = searchParams.get('page')
 
   const fetchProducts = async () => {
     const response = await fetch(
-      // `http://localhost:3001/Sales/api/orderShop?id=${userId}&page=${currentpage}`
-      `http://localhost:3001/Sales/api/orderShop?id=4&page=${currentpage}`
+      `http://localhost:3001/Sales/api/orderShop?id=${localStorage.getItem('id')}&page=${currentpage}`
     )
     const data = await response.json()
 
@@ -41,7 +42,11 @@ function MySale() {
 
   return (
     <>
+      <LoginNav />
+      <Banner />
+      <PersonalInfo />
       <section className={Style.flex}>
+        <ProductBtobButton />
         <div>
           {products == '' ? (
             <NoSale />

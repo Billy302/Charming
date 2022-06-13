@@ -12,7 +12,7 @@ function MyProduct() {
     <>
       <section>
         <div className={Style.buttonPosition}>
-          <a href="/MyProduct/AddProduct">
+          <a href="/shopcenter/AddProduct">
             <button className={Style.addButton}>新增商品</button>
             <button className={Style.addButton1}>+</button>
           </a>

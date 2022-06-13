@@ -39,7 +39,7 @@ function SignUp() {
           MySwal.fire({
             title: "歡迎加入柴米!",
             text: "前往登入...",
-            imageUrl: "http://localhost:3000/login.png",
+            imageUrl: "http://localhost:3000/Account/login.png",
             imageWidth: 400,
             imageHeight: 200,
             imageAlt: "Custom image",
@@ -86,18 +86,10 @@ function SignUp() {
 
       <main className={style.outline}>
         <h1 className={style.h1}>會員註冊</h1>
-        <p>用以下帳號快速註冊</p>
-
-        {/* 第三方登入 Google/Facebook */}
-        <div className={style.google}>
-          <a href="#">
-            <img src={require("../../images/google.png")} alt="google" />
-          </a>
-        </div>
-        <hr className={style.hr} />
+         {/* <p>用以下帳號快速註冊</p> */}
 
         {/* 註冊柴米帳號 */}
-        <p>或建立柴米帳號</p>
+        {/* <p>建立柴米帳號</p> */}
         <form
           method="post"
           onSubmit={signUpAlert}
@@ -245,8 +237,8 @@ function SignUp() {
                 註冊
               </button>
               <p>
-                點擊「註冊」即表示你同意我們的<a target="_blank" href="http://localhost:3000/policya">使用條款</a>及
-                <a target="_blank" href="http://localhost:3000/policyb">隱私政策</a>
+                點擊「註冊」即表示你同意我們的<a target="_blank" href="http://localhost:3000/signup/policya">使用條款</a>及
+                <a target="_blank" href="http://localhost:3000/signup/policyb">隱私政策</a>
               </p>
             </div>
           </div>

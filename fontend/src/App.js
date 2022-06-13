@@ -27,6 +27,8 @@ import Order from './Sales/Pages/Order/Order'
 // 會員
 // import SignInIdentify from './Account/Pages/SignInIdentify/SignInIdentify'
 // import SignInRecover from './Account/Pages/SignInRecover/SignInRecover'
+import PolicyA from './Account/Pages/PolicyA/PolicyA'
+import PolicyB from './Account/Pages/PolicyB/PolicyB'
 import SignUp from './Account/Pages/SignUp/SignUp'
 import SignIn from './Account/Pages/SignIn/SignIn'
 import SingForget from './Account/Pages/SignForget/SignForget'
@@ -44,7 +46,6 @@ import Search from './Blog/Page/Search'
 import MyProductHeader from './Blog/Page/MyProduct'
 import Author from './Blog/Page/Author'
 import ArticleSearch from './Blog/Components/ArticleSearch/ArticleSearch'
-
 
 function App() {
   document.title = `Charming`
@@ -80,6 +81,11 @@ function App() {
         {/* 更新密碼 */}
         {/* http://localhost:3000/signupdate */}
         <Route path="/signupdate" element={<SignUpdate />} />
+        {/* 使用條款 隱私政策 */}
+        {/* http://localhost:3000/signup/policya */}
+        <Route path="/signup/policya" element={<PolicyA />} />
+        {/* http://localhost:3000/signup/policyb*/}
+        <Route path="/signup/policyb" element={<PolicyB />} />
 
         {/* 會員中心 */}
         {/* 會員資料 */}
@@ -96,25 +102,33 @@ function App() {
         <Route path="/membercenter/shoppinglist/:id" element={<Order />} />
 
         {/* 賣家中心 */}
-        {/* http://localhost:3000/ */}
-        <Route path="/MyProduct" element={<MyProduct />} />
-        {/* http://localhost:3000/MyProduct/19 */}
+        {/* 首頁，商品總覽 */}
+        {/* http://localhost:3000/shopcenter/myproduct?page=1 */}
+        <Route path="/shopcenter/myproduct" element={<MyProductHeader />} />
+        {/* 商品詳細頁 */}
+        {/* http://localhost:3000/shopcenter/19 */}
         <Route
-          path="/MyProduct/:ProductID"
+          path="/shopcenter/:ProductID"
           element={<ProductPageEditButton />}
         />
+        {/* 新增商品頁 */}
+        {/* http://localhost:3000/shopcenter/AddProduct */}
+        <Route path="/shopcenter/AddProduct" element={<AddProduct />} />
+        {/* 編輯商品頁 */}
+        {/* http://localhost:3000/shopcenter/77 */}
         <Route
-          path="/MyProduct/EditProduct/:ProductID"
+          path="/shopcenter/EditProduct/:ProductID"
           element={<EditProductPage />}
         />
-        {/* http://localhost:3000/MyProduct/AddProduct */}
-        <Route path="/MyProduct/AddProduct" element={<AddProduct />} />
+        {/* 銷售紀錄 */}
+        {/* http://localhost:3000/shopcenter/MySale */}
+        <Route path="/shopcenter/MySale" element={<MySale />} />
 
         {/* -------部落格開始------- */}
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/article/:id" element={<Article />} />
         <Route path="/blog/search/:category" element={<Search />} />
-        <Route path="/blog/myproduct" element={<MyProductHeader />} />
+
         <Route path="/blog/author/:id" element={<Author />} />
         <Route path="/blog/keyword/search" element={<ArticleSearch />} />
       </Routes>

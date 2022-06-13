@@ -42,7 +42,7 @@ const EditCard: React.FC<CardProps> = ({
   return (
     <div className={Style.cardContainer}>
       <div className={Style.cardSize}>
-        <a href={`/MyProduct/${ID}`}>
+        <a href={`/shopcenter/${ID}`}>
           <img
             alt="圖片無法顯示"
             src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
@@ -62,7 +62,7 @@ const EditCard: React.FC<CardProps> = ({
                 window.location.reload()
               }}
             />
-            <a href={`/MyProduct/EditProduct/${ID}`}>
+            <a href={`/shopcenter/EditProduct/${ID}`}>
               <FaEdit className={Style.icons} />
             </a>
           </div>
