@@ -217,6 +217,33 @@ blog.get('/userinfo', async (req, res) => {
     res.json(result);
 });
 
+// 站內模糊搜尋
+
+blog.get('/keyword/search', async (req, res) => {
+    const search = req.query.keyword;
+    const sqlSearch = `SELECT * FROM blog_article WHERE article_content Like '%${search}%' or article_title like '%${search}%'`;
+    const [result] = await db.query(sqlSearch).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// render 這個作者寫過什麼文章
+blog.get('/author/article/:id', async (req, res) => {
+    const sqlSearch = `select * from blog_article left join blog_author on blog_article.article_author = blog_author.author_id where article_author = ${req.params.id}`;
+    const [result] = await db.query(sqlSearch).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// render user 追蹤的作者寫過什麼文章
+blog.get('follow/author/article', async (req, res) => {
+    const userId = req.query.userid;
+    const authorId = req.query.authorid;
+    const sqlSearch = `select * from blog_follow left join blog_article on blog_follow.follow_author = blog_article.article_author where follow_user = ${userId} `;
+    const [result] = await db.query(sqlSearch).catch((e) => console.log(e));
+    res.json(result);
+});
+
+// blog.get('/')
+
 // render 當前 user 追蹤的作者
 // blog.get('/follow/all', async (req,res)=>{
 //     const
@@ -225,3 +252,5 @@ blog.get('/userinfo', async (req, res) => {
 // blog.get('/follow/');
 
 module.exports = blog;
+
+// select * from blog_article left join blog_follow on blog_article.article_author = blog_follow.follow_author left join blog_author on blog_article.article_author = blog_author.author_id where article_author = 1

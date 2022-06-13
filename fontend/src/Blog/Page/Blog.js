@@ -7,6 +7,8 @@ import UnloginNav from '../Components/UI/UnLoginNavbar'
 import Footer from '../Components/UI/Footer'
 import { useState, useEffect } from 'react'
 import Fade from 'react-reveal/Fade'
+import LoginNav from '../Components/SearchBar/LoginNav'
+import { useLocation } from 'react-router-dom'
 
 const Blog = (props) => {
   const [darkMode, setDarkMode] = useState(false)
@@ -31,6 +33,7 @@ const Blog = (props) => {
   return (
     <>
       <UnloginNav />
+      <LoginNav />
       <TagBar isDarkMode={darkMode} />
       {/* <PillBtn onClick={darkModeHandler}>關燈</PillBtn> */}
       <SliderSection isDarkMode={darkMode} />
