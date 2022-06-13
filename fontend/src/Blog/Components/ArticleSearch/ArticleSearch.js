@@ -1,6 +1,5 @@
 // import classes from './ArticleSearch.module.css'
 import Trending from '../FrontPage/TrendingArticle/Trending'
-import article1 from './img/article1.jpg'
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
