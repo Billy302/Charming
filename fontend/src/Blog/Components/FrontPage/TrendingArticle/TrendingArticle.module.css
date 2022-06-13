@@ -1,8 +1,9 @@
 .trending-article {
-  width: 88%;
-  margin: auto;
-
+  width: 100%;
+  margin-top: 2rem;
+  /* margin: auto; */
   /* margin-top: 6rem; */
+  padding: 2rem 10rem;
 }
 
 .trending-article--title {

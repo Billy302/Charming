@@ -14,9 +14,9 @@ function MyCollection() {
   const userId = localStorage.getItem('id')
   // render user 追蹤的文章
   useEffect(() => {
-    // fetch(`http://localhost:3001/blog/fav/all?userid=${userId}`)
-    //   .then((res) => res.json())
-    //   .then((data) => setAllFavArticle(data))
+    fetch(`http://localhost:3001/blog/fav/all?userid=${userId}`)
+      .then((res) => res.json())
+      .then((data) => setAllFavArticle(data))
   }, [])
 
   // render 商品或文章功能

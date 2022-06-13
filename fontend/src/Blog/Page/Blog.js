@@ -1,19 +1,29 @@
 import TagBar from '../Components/FrontPage/TagBar/TagBar'
-import PillBtn from '../Components/UI/PillBtn'
 import SliderSection from '../Components/FrontPage/Slider/SliderSection'
 import TrendingArticle from '../Components/FrontPage/TrendingArticle/TrendingArticle'
 import SelectedArticle from '../Components/FrontPage/SelectedArticle/SelectedArticel'
-import UnloginNav from '../Components/UI/UnLoginNavbar'
-import Footer from '../Components/UI/Footer'
+
 import { useState, useEffect } from 'react'
-import Fade from 'react-reveal/Fade'
+import LoginNav from '../../Home/Components/LoginNav/LoginNav'
+import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
+import { useNavigate } from 'react-router-dom'
 
 const Blog = (props) => {
+  const navigate = useNavigate()
   const [darkMode, setDarkMode] = useState(false)
   const [trendingArticle, setTrendingArticle] = useState([])
+  const [searchKeyword, setSearchKeyword] = useState()
+  const userId = localStorage.getItem('id')
 
   const darkModeHandler = () => {
     setDarkMode(!darkMode)
+  }
+
+  const userInput = (e) => {
+    setSearchKeyword(e.target.value)
+  }
+  const keywordSearch = () => {
+    navigate(`../blog/keyword/search?keyword=${searchKeyword}`)
   }
 
   // useEffect(() => {
@@ -30,10 +40,20 @@ const Blog = (props) => {
   // <div style={{ backgroundColor: darkMode ? 'var(--gray1)' : '', transition: 'background 1s' }}>
   return (
     <>
-      <UnloginNav />
+      {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
+      
       <TagBar isDarkMode={darkMode} />
       {/* <PillBtn onClick={darkModeHandler}>關燈</PillBtn> */}
+
       <SliderSection isDarkMode={darkMode} />
+      <div>
+          <input
+            type="search"
+            placeholder="Search product or author"
+            onChange={userInput}
+          />
+          <input type="submit" value="搜尋" onClick={keywordSearch} />
+        </div>
       <TrendingArticle
         trendingArticle={trendingArticle}
         isDarkMode={darkMode}

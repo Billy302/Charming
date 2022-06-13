@@ -1,18 +1,15 @@
 .btn {
-  color: var(--white);
-  background-color: var(--green2);
-  font-size: var(--heading4);
-  border: 0.1rem solid #fff;
+  color: var(--brown1);
+  background-color: #ccc;
+  border: 0.1rem solid #ccc;
   border-radius: 1rem;
   display: inline;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
-  transition: 0.1s;
-  margin:0px 15px;
-  font-weight: bold;
+  transition: 0.5s;
 }
 
 .btn:hover {
-  background-color: var(--green3);
-  color: var(--green1);
+  background-color: #eee;
+  border: 0.1rem solid #eee;
 }
