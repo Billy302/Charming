@@ -100,8 +100,8 @@ router.post("/signforget", upload.none(), async (req, res, next) => {
       from: "sub0617@hotmail.com",
       // to: "sub0617@hotmail.com",
       to: req.body.email,
-      subject: "Charming網，密碼重新設定",
-      html: `<p>Click <a href="http://localhost:3000/signupdate">here</a> to reset your password</p>`,
+      subject: "【柴米Charming】：密碼重新設定",
+      html: `<p>請點擊連結 <a href="http://localhost:3000/signupdate"> here </a> ，前往設定新密碼</p>`,
     });
     res.json("success");
   } else {
