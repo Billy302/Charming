@@ -86,18 +86,18 @@ function SignUp() {
 
       <main className={style.outline}>
         <h1 className={style.h1}>會員註冊</h1>
-        <p>用以下帳號快速註冊</p>
+         {/* <p>用以下帳號快速註冊</p> */}
 
         {/* 第三方登入 Google/Facebook */}
-        <div className={style.google}>
+        {/* <div className={style.google}>
           <a href="#">
             <img src={require("../../images/google.png")} alt="google" />
           </a>
         </div>
-        <hr className={style.hr} />
+        <hr className={style.hr} />  */}
 
         {/* 註冊柴米帳號 */}
-        <p>或建立柴米帳號</p>
+        <p>建立柴米帳號</p>
         <form
           method="post"
           onSubmit={signUpAlert}

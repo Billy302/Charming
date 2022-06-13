@@ -68,14 +68,14 @@ function SignIn() {
       {now == "true" ? <LoginNav /> : <UnloginNav />}
       <main className={style.main}>
         <h1 className={style.h1}>登入</h1>
-        <p>用以下帳號繼續</p>
+        {/* <p>用以下帳號繼續</p>
         <div className={style.google}>
           <a href="#">
             <img src={require("../../images/google.png")} alt="google" />
           </a>
         </div>
-        <hr className={style.hr} />
-        <p>或用柴米帳號</p>
+        <hr className={style.hr} /> */}
+        <p>柴米帳號</p>
 
         {/* 登入 */}
         <form
