@@ -15,13 +15,37 @@
   height: 8rem;
   object-fit: cover;
   border-radius: 50%;
+  transition: 0.5s;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.author-card--body img:hover {
+  transform: scale(1.05) translateY(-1rem);
 }
 
 .author-card--body__content {
   padding-left: 2rem;
 }
+
 .author-card--body__content {
   color: black;
+}
+
+.author-card--body__content h2 {
+  transition: 0.5s;
+}
+
+.author-card--body__content h2:hover {
+  color: var(--yellow1);
+  cursor: pointer;
 }
 
 .author-card--footer {

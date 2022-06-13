@@ -3,7 +3,7 @@ import classes from './AuthorCard.module.css'
 import { useEffect, useState } from 'react'
 import PillBtn from '../../UI/PillBtn'
 import LoadingSpinner from './LoadingSpinner'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 const AuthorCard = (props) => {
   const { author_info, author_name, author_id, author_logo } =
@@ -109,13 +109,16 @@ const AuthorCard = (props) => {
     <>
       <div className={classes['author-card']}>
         <div className={classes['author-card--body']}>
-          <img
-            src={`http://localhost:3000/blog/image/${author_logo}.webp`}
-            alt="author_logo"
-          ></img>
-
+          <Link to={`../blog/author/${author_id}`}>
+            <img
+              src={`http://localhost:3000/blog/image/${author_logo}.webp`}
+              alt="author_logo"
+            ></img>
+          </Link>
           <div className={classes['author-card--body__content']}>
-            <h2>{author_name}</h2>
+            <Link to={`../blog/author/${author_id}`}>
+              <h2>{author_name}</h2>
+            </Link>
             <p>{author_info}</p>
           </div>
         </div>

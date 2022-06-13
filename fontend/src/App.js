@@ -49,6 +49,8 @@ import Blog from './Blog/Page/Blog'
 import Article from './Blog/Page/Article'
 import Search from './Blog/Page/Search'
 import MyProductHeader from './Blog/Page/MyProduct'
+import Author from './Blog/Page/Author'
+import ArticleSearch from './Blog/Components/ArticleSearch/ArticleSearch'
 
 function App() {
   return (
@@ -113,6 +115,8 @@ function App() {
         <Route path="/blog/article/:id" element={<Article />} />
         <Route path="/blog/search/:category" element={<Search />} />
         <Route path="/blog/myproduct" element={<MyProductHeader />} />
+        <Route path="/blog/author/:id" element={<Author />} />
+        <Route path="/blog/keyword/search" element={<ArticleSearch />} />
         {/* 部落格結束 */}
       </Routes>
       <Footer />
