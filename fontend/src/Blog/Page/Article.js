@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 import UnloginNav from '../Components/UI/UnLoginNavbar'
 import Footer from '../Components/UI/Footer'
 import { useParams } from 'react-router-dom'
-import Fade from 'react-reveal/Fade'
 import ScrollToTop from '../Components/UI/ScrollToTop'
 
 const Article = (props) => {
