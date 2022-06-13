@@ -39,7 +39,7 @@ function SignUp() {
           MySwal.fire({
             title: "歡迎加入柴米!",
             text: "前往登入...",
-            imageUrl: "http://localhost:3000/login.png",
+            imageUrl: "http://localhost:3000/Account/login.png",
             imageWidth: 400,
             imageHeight: 200,
             imageAlt: "Custom image",

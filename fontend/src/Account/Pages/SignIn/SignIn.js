@@ -51,6 +51,7 @@ function SignIn() {
             timer: 1500,
           }).then(() => {
             navigate("/LoginHome");
+            // navigate("/Product?page=1");
           });
         }
       });
