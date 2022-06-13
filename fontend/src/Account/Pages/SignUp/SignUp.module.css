@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.outline a{
+  color: #4061A1
+}
+
 .h1 {
   text-align: center;
   color: var(--brown2);
@@ -38,8 +42,7 @@
   border: 2px solid var(--brown3);
   color: var(--brown2);
   /* width: 250px; */
-  padding: 5px;
-
+  padding: 5px 15px;
 }
 
 .form input:focus {
@@ -50,7 +53,6 @@
 .form input::placeholder {
   color: var(--brown3);
   font-size: var(--heading6);
-  padding: 10px;
 }
 
 .google {
@@ -83,29 +85,9 @@
 .password {
   position: absolute;
   right: 20px;
-  top: 97px;
+  top: 106px;
   z-index: 2;
 }
-
-/* .auto2 {
-  margin: 20px auto;
-  width: 80%;
-  height: auto;
-  border-radius: var(--desk-border-radius);
-  background-color: #ffffff;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-  color: var(--brown2);
-  font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
-/* .h12 {
-  text-align: center;
-  color: var(--brown2);
-  padding: 30px;
-} */
 
 /* 基本資料頁 */
 .form2 {
@@ -123,7 +105,7 @@ select {
   border-radius: 15px;
   border: 2px solid var(--brown3);
   color: var(--brown2);
-  padding: 5px;
+  padding: 5px 15px;
   margin: 5px;
 }
 
@@ -136,7 +118,6 @@ select:focus {
 .form2 input::placeholder {
   color: var(--brown3);
   font-size: var(--heading6);
-  padding: 10px;
 }
 
 .form2 section {
@@ -164,4 +145,9 @@ select:focus {
   cursor: pointer
 }
 
-
+.checkMsg{
+  font-size: small;
+  justify-content: flex-end;
+  height: 8px;
+  margin: auto;
+}

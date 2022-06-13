@@ -10,12 +10,12 @@
     border: none;
     border-radius: 15px;
     color: var(--white);
-    background-color: var(--brown2);
+    background-color: var(--green2);
     font-weight: bold;
 }
 .addButton:hover{
-    color: var(--brown2);
-    background-color: var(--brown3);
+    color: var(--green1);
+    background-color: var(--green3);
     Cursor:pointer;
 }
 .addButton1{

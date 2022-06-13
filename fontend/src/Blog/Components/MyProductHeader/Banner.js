@@ -98,7 +98,7 @@ const Banner = (props) => {
                 htmlFor="banner"
                 className={`${classes['custom-file-upload']}`}
               >
-                <RiImageEditFill className={classes.icon}/>
+                <RiImageEditFill className={classes.icon} />
                 編輯封面照片
               </label>
             ) : (

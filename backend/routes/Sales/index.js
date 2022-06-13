@@ -1,13 +1,13 @@
-var express = require("express");
-var sales = express.Router();
-var multer = require("multer");
-var upload = multer();
-var fs = require("fs");
-var nodemailer = require("nodemailer");
+// 引用套件
 const { body, validationResult, check } = require("express-validator");
-
+var nodemailer = require("nodemailer");
+var express = require("express");
+var multer = require("multer");
+var fs = require("fs");
+// 引用
 const connection = require("../../modules/mysql_config");
-const { path } = require("../../app");
+var sales = express.Router();
+var upload = multer();
 
 /* 商品 
 1. 功能：取得全部商品資料。Method: GET。URL: /api/product?id=  完成
@@ -293,6 +293,27 @@ sales
       console.log(`執行 Query : ${sql}時出錯 `);
     });
 
+    // 查詢LOVE需要一個變數，userID : id
+    const sql2 = `SELECT * from product_love where user_id = ${req.query.id}`;
+
+    // 執行SQL語法，取得使用者有哪些LOVE
+    const [love] = await connection.query(sql2).catch((error) => {
+      console.log(`執行 Query : ${sql2}時出錯 `);
+    });
+
+    // 比較取出的商品中，是否有被使用者點過LOVE(新增datas物件中的love屬性)
+    // 如果有就將商品資料中love為true
+    for (let i = 0; i < Object.keys(datas[0]).length; i++) {
+      for (let j = 0; j < Object.keys(love).length; j++) {
+        if (datas[0][i]["ID"] == love[j]["product_ID"]) {
+          datas[0][i]["love"] = "true";
+        }
+      }
+      if (!datas[0][i]["love"]) {
+        datas[0][i]["love"] = "false";
+      }
+    }
+
     // 計算 分頁總數
     if (Object.values(datas[1][0]) > 0) {
       pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
@@ -445,7 +466,7 @@ sales
       console.log(`執行 Query : ${sql}時出錯 `);
     });
     // 取得訂單總數，總數 = 最後一筆的ID
-    sql = `SELECT count(*) total FROM product_case`;
+    sql = `SELECT ID  FROM product_case ORDER by create_time desc LIMIT 1`;
 
     const [orderCount] = await connection.query(sql).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
@@ -455,18 +476,19 @@ sales
     let sql2 = "INSERT INTO product_case_items(case_ID, product_ID) VALUES";
     for (let i = 0; i < addItemList.length; i++) {
       if (i < addItemList.length - 1) {
-        sql2 += `('${orderCount[0]["total"]}','${addItemList[i]["ID"]}'),`;
+        sql2 += `('${orderCount[0]["ID"]}','${addItemList[i]["ID"]}'),`;
       } else {
-        sql2 += `('${orderCount[0]["total"]}','${addItemList[i]["ID"]}')`;
+        sql2 += `('${orderCount[0]["ID"]}','${addItemList[i]["ID"]}')`;
       }
     }
+    console.log(sql2);
     const [orderDetail] = await connection.query(sql2).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
     });
 
     let orderID = [];
     orderID.push(parseInt(addUser[0]), orderCount[0]["total"]);
-    res.send(orderID);
+    res.send("成功");
   });
 
 // 取得使用者訂單的詳細內容 TO C
@@ -710,17 +732,16 @@ sales.post("/api/mail", upload.none(), async (req, res, next) => {
     html: `<div>親愛的會員${data[0]["username"]}，</div><div>    您所購買的商品已送達，請參照附件</div>`,
     attachments: picPath,
   });
-  res.send('成功')
+  res.send("成功");
 });
 
-// http://localhost:3001/Sales/api/member
-sales.get("/api/member",async (req, res, next) => {
+// http://localhost:3001/Sales/api/member?id=1
+sales.get("/api/member", async (req, res, next) => {
   const sql = `SELECT username , join_at FROM us_user WHERE id = '${req.query.id}'`;
   const [data] = await connection.query(sql).catch((error) => {
     console.log(`執行 Query : ${sql}時出錯 `);
   });
   res.send(data[0]);
 });
-
 
 module.exports = sales;

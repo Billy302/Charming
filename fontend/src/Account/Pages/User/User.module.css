@@ -4,21 +4,23 @@
   font-size: 24px;
   display: flex;
   position: relative;
-  transition: .5s 0.2s;
+  transition: 0.5s 0.2s;
 }
 
-.navLeft a{
-  transition: .3s 0.1s;
+.navLeft a {
+  transition: 0.3s 0.1s;
 }
-
-.unactive{
+.dispalyFlex{
+  display: flex;
+}
+.unactive {
   padding: 0px 50px 0px 0px;
   margin: 15px;
   font-weight: 700;
   text-decoration: none;
   color: var(--brown3);
 }
-.active{
+.active {
   padding: 0px 50px 0px 0px;
   margin: 15px;
   font-weight: 700;
@@ -38,9 +40,37 @@
   color: var(--brown2);
 }
 
-/* 內文 */
+/* 左側邊選單 */
+/* .aside {
+  margin: 0px 55px;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.ul li a {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: block;
+  padding: 10px;
+  margin: 5px;
+  color: var(--brown2);
+  text-decoration: none;
+  border: 1px solid var(--brown3);
+  border-radius: var(--desk-border-radius);
+  background-color: var(--brown3);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ul li a:hover {
+  margin: 0;
+  font-size: 26px;
+} */
+
+/* 右側邊內文 */
 .main {
   margin: 10px auto 50px;
+  padding: 30px;
   width: 80%;
   border-radius: var(--desk-border-radius);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
@@ -48,10 +78,6 @@
   font-weight: 700;
   display: flex;
   flex-direction: column;
-}
-
-.main img {
-  width: 80px;
 }
 
 /* 大頭貼 姓名 登入狀態 會員稱號 */
@@ -62,7 +88,7 @@
   padding: 10px;
 }
 
-.item1 img{
+.item1 img {
   margin: 0px 0px 15px;
 }
 
@@ -76,6 +102,9 @@
 }
 
 .item2 label {
+  padding: 10px;
+}
+.item2 p {
   padding: 10px;
 }
 
@@ -107,5 +136,5 @@
   border: 2px solid var(--brown2);
   background-color: var(--brown2);
   color: #ffffff;
-  cursor: pointer
+  cursor: pointer;
 }

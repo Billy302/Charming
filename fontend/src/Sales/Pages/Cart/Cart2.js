@@ -90,7 +90,7 @@ function Cart2() {
         </thead>
         <tbody className={Style.listItem}>{cartTable}</tbody>
         <div className={Style.totalPrice}>
-          <label for="inputPrice">總價：</label>
+          <label htmlFor="inputPrice">總價：</label>
           <input
             className={Style.totalPrice}
             id="inputPrice"
@@ -121,7 +121,10 @@ function Cart2() {
             // 到下一頁
             Navigate('../Sales/Cart3')
             // 將個人資料存入Session，購買者ID & 訂單總價
-            storage.setItem('addUser', `1 | ${totalPrice}`)
+            storage.setItem(
+              'addUser',
+              `${storage.getItem('id')} | ${totalPrice}`
+            )
           }}
         >
           確認訂單

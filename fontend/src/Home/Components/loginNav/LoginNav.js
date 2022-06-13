@@ -144,7 +144,7 @@ function LoginNav(props) {
               </li> */}
               <div className={style.hello}>
                 <p> Hello!</p>
-                <a href="/account">
+                <a href="/membercenter/account">
                   <p>{localStorage.getItem('name')}</p>
                 </a>
               </div>
@@ -170,12 +170,12 @@ function LoginNav(props) {
               </a>
 
               <li className={style.showList}>
-                <a href="/account">
+                <a href="/membercenter/account">
                   <img src={logo} alt="logo" />
                 </a>
                 {/*--hover頭像時出現時才出現的會員表單 --*/}
                 <div className={style.navList}>
-                  <Link to={`/account`}>會員中心</Link>
+                  <Link to={`/membercenter/account`}>會員中心</Link>
                   <Link to={`/blog/myproduct?page=1`}>賣家中心</Link>
                   <Link to={`/collection?page=1`}>我的收藏</Link>
                   <Link to={`/shoppinglist?page=1`}>購買清單</Link>

@@ -5,6 +5,8 @@ import EditInfo from './EditInfo'
 import swal from 'sweetalert'
 import defaultIcon from './favicon.ico'
 import MyProductBtn from '../UI/MyProductBtn'
+import { style } from '@mui/system'
+import { MdLocationOn, MdCalendarToday } from 'react-icons/md'
 
 const PersonalInfo = (props) => {
   // 判斷目前是要 render 修改文案(true)還是顯示文案(false)
@@ -172,11 +174,16 @@ const PersonalInfo = (props) => {
         </div>
       </div>
       <div className={classes.designer}>
-        <img src={image.preview} alt="user logo" />
+        <img
+          src={`http://localhost:3000/Home/ProductImg/logo1-1.jpeg`}
+          alt="user logo"
+        />
         <div>
-          <p>{localStorage.getItem('name')}</p>
-          <div className={classes.displayFlex}>
+          <p className={classes.name}>{localStorage.getItem('name')}</p>
+          <div className={`${classes.displayFlex} ${classes.info}`}>
+            <MdLocationOn />
             <p>位置</p>
+            <MdCalendarToday />
             <p>加入時間</p>
           </div>
         </div>

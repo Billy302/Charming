@@ -9,9 +9,10 @@ const cors = require('cors')
 
 // 引入各自的路由
 var SalesRouter = require('./routes/Sales/index');
-var AccountRouter = require('./routes/Account/users');
-const authRoute = require('./routes/Account/auth');
+var AccountRouter = require('./routes/Account/users')
 var blogRouter = require('./routes/Blog/index');
+
+
 var app = express();
 
 
@@ -31,7 +32,6 @@ app.use(cors())
 
 app.use('/Sales', SalesRouter);
 app.use('/Account', AccountRouter);
-app.use('/api/user', authRoute);
 app.use('/Blog', blogRouter);
 
 

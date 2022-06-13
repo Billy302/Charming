@@ -1,14 +1,28 @@
-import style from './SignIn.module.css'
 import { React, useEffect, useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useLocation } from 'react-router-dom'
+// CSS檔
+import style from './SignIn.module.css'
+// navbar
+import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 import UnloginNav from '../../../Home/Components/UnloginNav/UnloginNav'
+// react-icon
 import { FaEyeSlash, FaEye } from 'react-icons/fa'
+// sweetalert
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function SignIn() {
+  // 依auth有無 設定登入或未登入nav
+  let now = localStorage.getItem('auth')
+
   // const [account, setAccount] = useState([]);
   const auth = localStorage.setItem('auth', false)
+
   // 設定導向頁面函式
   const navigate = useNavigate()
+
+  // 設定sweetalert2
+  const MySwal = withReactContent(Swal)
 
   // 登入驗證
   const fetchAccount = async (e) => {
@@ -29,7 +43,14 @@ function SignIn() {
           localStorage.setItem('id', obj[0])
           localStorage.setItem('name', obj[1])
           localStorage.setItem('auth', true)
-          navigate('/account')
+          MySwal.fire({
+            title: '登入成功!',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            navigate('/Product?page=1')
+          })
         }
       })
   }
@@ -42,7 +63,7 @@ function SignIn() {
 
   return (
     <>
-      <UnloginNav />
+      {now == 'true' ? <LoginNav /> : <UnloginNav />}
       <main className={style.main}>
         <h1 className={style.h1}>登入</h1>
         <p>用以下帳號繼續</p>
@@ -82,7 +103,7 @@ function SignIn() {
           </Link>
 
           {/* 顯示登入錯誤訊息 */}
-          <p id="msg"></p>
+          <p className={style.checkMsg} id="msg"></p>
           {/* 登入並導向首頁 */}
           <button typeof="submit" className={style.button}>
             登入
