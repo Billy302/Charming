@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-left: 3rem;
+  margin:20px;
 }
 
 .personal-info--card__display h2 {

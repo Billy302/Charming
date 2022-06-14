@@ -27,7 +27,7 @@ sales
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 15;
+    let rowsPerPage = 20;
 
     // 分頁數
     let pageCount = 0;
@@ -59,7 +59,7 @@ sales
     }
 
     sql += ` order by product_items.${order} ${sort}
-    limit ${(activePage - 1) * rowsPerPage},15;
+    limit ${(activePage - 1) * rowsPerPage},20;
     SELECT count(*) as totalItems FROM product_items`;
 
     if ((typeID.length != 0) & (itemsName.length != 0)) {
@@ -265,7 +265,7 @@ sales
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 15;
+    let rowsPerPage = 20;
 
     // 分頁數
     let pageCount = 0;
@@ -283,7 +283,7 @@ sales
     ON product_love.product_ID  = product_items.ID
     WHERE product_love.user_id = '${req.query.id}'
     order by product_items.${order} ${sort}
-    limit ${(activePage - 1) * rowsPerPage},15;
+    limit ${(activePage - 1) * rowsPerPage},20;
     SELECT count(*) as totalItems FROM product_love WHERE product_love.user_id = '${
       req.query.id
     }';`;
@@ -336,7 +336,7 @@ sales
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 15;
+    let rowsPerPage = 20;
 
     // 分頁數
     let pageCount = 0;
@@ -370,7 +370,7 @@ sales
       }
 
       sql += ` order by product_items.${order} ${sort}
-      limit ${(activePage - 1) * rowsPerPage},15;
+      limit ${(activePage - 1) * rowsPerPage},20;
       SELECT count(*) as totalItems FROM product_items WHERE product_items.author_name = '${
         authorData[0].username
       }'`;
@@ -413,7 +413,7 @@ sales
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 15;
+    let rowsPerPage = 20;
 
     // 分頁數
     let pageCount = 0;
@@ -422,7 +422,7 @@ sales
     const sql = `SELECT product_case.* 
     FROM product_case 
     WHERE product_case.user_ID  = '${req.query.id}'
-    limit ${(activePage - 1) * rowsPerPage},15;
+    limit ${(activePage - 1) * rowsPerPage},20;
     SELECT count(*) as totalItems FROM product_case WHERE product_case.user_ID  = '${
       req.query.id
     }'`;
@@ -537,7 +537,7 @@ sales.get("/api/orderShop", async (req, res, next) => {
   let itemsName = req.query.itemsName ? req.query.itemsName : "";
   let activePage = req.query.page ? req.query.page : 1;
   // 一次取幾筆
-  let rowsPerPage = 15;
+  let rowsPerPage = 20;
   // 分頁數
   let pageCount = 0;
 
@@ -566,7 +566,7 @@ sales.get("/api/orderShop", async (req, res, next) => {
     sql += ` and product_items.product_name like '%%${itemsName}%%'`;
   }
   // 查詢範圍
-  sql += `limit ${(activePage - 1) * rowsPerPage},15;`;
+  sql += `limit ${(activePage - 1) * rowsPerPage},20;`;
   // 查詢筆數
   sql += `SELECT count(*) as totalItems 
   FROM product_case_items  

@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react'
 import AuthorHeader from '../Components/Author/AuthorHeader'
 import Trending from '../Components/FrontPage/TrendingArticle/Trending'
 import AuthorInfo from '../Components/Author/AuthorInfo'
+import SearchBar from '../Components/SearchBar/SearchBar'
+import LoginNav from '../../Home/Components/LoginNav/LoginNav'
+import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
 
 const Author = () => {
   const [authorData, setAuthorData] = useState([])
@@ -25,6 +28,7 @@ const Author = () => {
   // article={articleData} key={articleData.article_id}
   return (
     <ScrollToTop>
+      {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
       <AuthorHeader authorDetail={authorData} />
       <AuthorInfo authorDetail={authorData} />
       <AuthorCard authorData={authorData} />

@@ -143,7 +143,7 @@ function EditProduct() {
         console.log(response)
       })
       .then((result) => {
-        navigator('../MyProduct?page=1')
+        navigator('../shopcenter/myproduct?page=1')
         Swal.fire({
           icon: 'success',
           title: '修改商品',

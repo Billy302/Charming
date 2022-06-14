@@ -9,12 +9,11 @@ import PhoneFooter from './Home/Components/PhoneFooter/PhoneFooter'
 //首頁
 import LoginHome from './Home/Pages/LoginHome/LoginHome'
 import UnloginHome from './Home/Pages/UnloginHome/UnloginHome'
-import MyProduct from './Home/Pages/MyProduct/MyProduct'
 import EditProductPage from './Home/Pages/EditProductPage/EditProductPage'
 import AddProduct from './Home/Pages/AddProduct/AddProduct'
 import ProductPage from './Home/Pages/ProductPage/ProductPage'
 import ProductPageEditButton from './Home/Pages/ProductPageEditButton/ProductPageEditButton'
-import MyLikeProduct from './Home/Components/MyLikeProduct/MyLikeProduct'
+
 
 //購物車頁
 import Cart1 from './Sales/Pages/Cart/Cart1'
@@ -44,8 +43,9 @@ import Blog from './Blog/Page/Blog'
 import Article from './Blog/Page/Article'
 import Search from './Blog/Page/Search'
 import MyProductHeader from './Blog/Page/MyProduct'
+import MyproductLook from './Blog/Page/MyProductLook'
 import Author from './Blog/Page/Author'
-import ArticleSearch from './Blog/Components/ArticleSearch/ArticleSearch'
+import ArticleSearch from './Blog/Page/ArticleSearch'
 
 function App() {
   document.title = `Charming`
@@ -109,6 +109,7 @@ function App() {
           {/* 首頁，商品總覽 */}
           {/* http://localhost:3000/shopcenter/myproduct?page=1 */}
           <Route path="/shopcenter/myproduct" element={<MyProductHeader />} />
+          <Route path="/shopcenter/myproductLook" element={<MyproductLook />} />
           {/* 商品詳細頁 */}
           {/* http://localhost:3000/shopcenter/19 */}
           <Route

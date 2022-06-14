@@ -50,7 +50,7 @@ const EditCard: React.FC<CardProps> = ({
           <h2>{product_name}</h2>
         </a>
 
-        <p>{author_name}</p>
+        <a href="/shopcenter/myproductLook?page=1">{author_name}</a>
 
         <div className={Style.price}>
           <h3>${price}</h3>

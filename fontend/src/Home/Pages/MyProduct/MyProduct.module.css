@@ -36,6 +36,34 @@
 .arrangement{
     display: flex;
 }
+/* 設計師資訊 */
+.designer{
+    white-space:nowrap;
+    display: flex;
+    align-items: center;
+    font-size: var(--heading4);
+    margin: 20px;
+  }
+  .designer img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  .name{
+    font-size: var(--heading3);
+    color: var(--green2);
+  }
+  .info{
+    color: var(--brown1);
+  }
+  .info p{
+    margin-right: 20px;
+  }
+  .displayFlex{
+    display: flex;
+  }
+  /* ——————————————————————————————————————— */
 @media screen and (max-width:1024px){
     .cardFlex > div{
         width:25%;

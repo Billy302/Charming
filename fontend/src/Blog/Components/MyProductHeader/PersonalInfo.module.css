@@ -1,6 +1,5 @@
-
 .personal-info {
-  width:100%;
+  /* width:100%; */
   display: flex;
   transition: 0.5s;
   margin-top: 3rem;
@@ -83,11 +82,21 @@
 }
 /* 設計師資訊 */
 .designer{
+  white-space:nowrap;
   display: flex;
   align-items: center;
   font-size: var(--heading4);
-  text-align: center;
+  margin:30px 100px 0px 100px;
 }
+.DesignerTitle{
+  font-size: var(--heading4);
+  color: var(--brown1);
+  margin-top: 5px;
+}
+.DesignerTitle:first-child{
+  font-weight: bold;
+}
+
 .designer img{
   width: 80px;
   height: 80px;
@@ -106,19 +115,19 @@
 }
 .displayFlex{
   display: flex;
-  
 }
+/* ——————————————————————————————————————— */
 .imgAndText{
   width: 100%;
   display: flex;
 
 }
-@media screen and (max-width:1024px){
-   
+.imgAndText2{
+  width: 100%;
+  display: flex;
+
 }
-@media screen and (max-width:780px) {
-    
-}
+/* 訪客視角 */
 @media screen and (max-width:441px){
   .personal-info {
     display: block;
@@ -127,17 +136,29 @@
     --circleSize:8rem;
   
   }
+  /* 設計師資訊字體 */
+ .name{
+  font-size: var(--heading3);
+ }
+ .info p{
+  margin-right: 0px;
+}
+.DesignerTitle{
+  font-size: var(--heading5);
+}
   .imgAndText{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .imgAndText2{
     display: flex;
     align-items: center;
   }
   .personal-info--card{
-    width: 100%;
+    width: 60%;
     margin-right: 15px;
-  }
-  .designer{
-    margin-left:0px;
-    justify-content: center;
   }
   .personal-info--upload-logo label{
     bottom: 20px;
@@ -150,5 +171,19 @@
   .custom-file-upload {
     text-align: center;
     font-size:var(--heading5);
+  }
+  /* 設計師文字flex排列 */
+  .phoneFlex{
+    display: flex;
+    align-items: center;
+    padding-bottom:10px ;
+    justify-content: center;
+  }
+  .DesignerTitle{
+    margin-top: 0px;
+    margin-right: 20px;
+  }
+  .info{
+    display: none;
   }
 }

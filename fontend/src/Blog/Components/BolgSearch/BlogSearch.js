@@ -3,9 +3,9 @@ import Trending from '../FrontPage/TrendingArticle/Trending'
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import classes from './ArticleSearch.module.css'
+import classes from './BlogSearch.module.css'
 
-const ArticleSearch = (props) => {
+const BlogSearch = (props) => {
   const [searchArticle, setSearchArticle] = useState([])
   const keyword = useLocation()
   // const testContext = keyword.search.slice(9)
@@ -24,26 +24,28 @@ const ArticleSearch = (props) => {
   }, [])
 
   return (
-    <div className={classes['article-search']}>
-      {/* <h1 className="classes['article-list--title']">{`搜尋 ${testContext}`}</h1> */}
-      <div className={classes['article-search--card']}>
-        {searchArticle.map((data, item) => {
-          return (
-            <Link
-              to={`../blog/article/${data.article_id}`}
-              key={data.article_id}
-            >
-              <Trending
-                article={data}
+    <>
+      <div className={classes['article-search']}>
+        {/* <h1 className="classes['article-list--title']">{`搜尋 ${testContext}`}</h1> */}
+        <div className={classes['article-search--card']}>
+          {searchArticle.map((data, item) => {
+            return (
+              <Link
+                to={`../blog/article/${data.article_id}`}
                 key={data.article_id}
-                className={classes['trenging-card']}
-              />
-            </Link>
-          )
-        })}
+              >
+                <Trending
+                  article={data}
+                  key={data.article_id}
+                  className={classes['trenging-card']}
+                />
+              </Link>
+            )
+          })}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
-export default ArticleSearch
+export default BlogSearch

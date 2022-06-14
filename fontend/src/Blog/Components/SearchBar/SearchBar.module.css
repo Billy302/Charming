@@ -1,0 +1,69 @@
+/* 主search bar */
+.searchbar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  --searchHeight: 4rem;
+  margin: 3rem auto;
+}
+.searchInput {
+  width: 20%;
+  height: var(--searchHeight);
+  border: 0.2rem solid var(--brown2);
+  border-radius: 1.5rem 0rem 0rem 1.5rem;
+  padding: 0rem 1.5rem;
+  font-size: var(--heading4);
+  outline: none;
+}
+.searchInput:active {
+  border: 0.2rem solid var(--brown2);
+}
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 7.5rem;
+  height: var(--searchHeight);
+  border: 0.2rem solid var(--brown2);
+  border-left: none;
+  border-radius: 0rem 1.5rem 1.5rem 0rem;
+  background-color: var(--brown2);
+}
+.iconStyle {
+  font-size: var(--heading4);
+  font-weight: bold;
+  color: var(--white);
+}
+.searchButton:hover {
+  background-color: var(--brown1);
+}
+.searchTag {
+  border: 0.1rem solid var(--brown3);
+  border-radius: 1.5rem;
+  background-color: white;
+  margin-left: 0.6rem;
+  color: var(--brown2);
+}
+
+@media screen and (max-width: 441px) {
+  .searchbar {
+    --searchHeight: 0.4rem;
+  }
+
+  .searchInput {
+    width: 80%;
+  }
+  .tags {
+    text-align: center;
+  }
+}
+
+@media (max-width: 440px) {
+  .searchbar {
+    --searchHeight: 3rem;
+  }
+
+  .searchInput {
+    width: 30%;
+  }
+}

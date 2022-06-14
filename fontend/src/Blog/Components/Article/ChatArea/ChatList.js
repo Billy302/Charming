@@ -1,5 +1,5 @@
 import classes from './ChatList.module.css'
-import usericon from './img/usericon.png'
+import usericon from './img/favicon.ico'
 
 const ChatList = (props) => {
   console.log(props.messageContext)

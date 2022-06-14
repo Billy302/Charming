@@ -100,7 +100,7 @@ function AddProduct() {
         console.log(response)
       })
       .then((result) => {
-        navigator('../membercenter/collection?page=1')
+        navigator('../shopcenter/myproduct?page=1')
         Swal.fire({
           icon: 'success',
           title: '新增商品',

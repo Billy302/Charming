@@ -1,6 +1,6 @@
 import classes from './PersonalInfo.module.css'
 import { useState, useEffect } from 'react'
-import InfoDisplay from './InfoDisplay'
+import InfoDisplayLook from './InfoDisplayLook'
 import EditInfo from './EditInfo'
 import swal from 'sweetalert'
 import defaultIcon from './favicon.ico'
@@ -116,8 +116,9 @@ const PersonalInfo = (props) => {
 
   return (
     <section className={classes['personal-info']}>
-      {/* 大頭照 */}
-      <div className={classes.imgAndText2}>
+      <div className={classes.imgAndText}>
+        {/* 大頭照 */}
+
         <div className={classes['personal-info--image']}>
           {image.preview ? (
             <img src={image.preview} alt="user logo" />
@@ -133,7 +134,7 @@ const PersonalInfo = (props) => {
             />
           )}
           <div className={classes['personal-info--upload-logo']}>
-            <form method="POST" onSubmit={imageUploadHandler} id="logo-form">
+            {/* <form method="POST" onSubmit={imageUploadHandler} id="logo-form">
               {!displayCancelBtn ? (
                 <label
                   htmlFor="logo"
@@ -156,10 +157,10 @@ const PersonalInfo = (props) => {
                 </div>
               )}
               <input type="file" name="logo" id="logo" onChange={fileHandler} />
-            </form>
+            </form> */}
           </div>
         </div>
-
+        {/* 文字框部分：InfoDisplayLook */}
         <div className={classes['personal-info--card']}>
           <div>
             {changeInfo ? (
@@ -169,29 +170,32 @@ const PersonalInfo = (props) => {
                 onReRenderStatus={updateStatusRenderHandler}
               />
             ) : (
-              <InfoDisplay
+              <InfoDisplayLook
                 onEdit={displayEditHandler}
                 userStatusData={userStatus}
               />
             )}
           </div>
         </div>
-      </div>
-      {/* <div className={classes.designer}>
-        <img
-          src={`http://localhost:3000/Home/ProductImg/logo1-1.jpeg`}
-          alt="user logo"
-        />
-        <div>
-          <p className={classes.name}>{localStorage.getItem('name')}</p>
-          <div className={`${classes.displayFlex} ${classes.info}`}>
-            <MdLocationOn />
-            <p>位置</p>
-            <MdCalendarToday />
-            <p>加入時間</p>
+        <div className={classes.designer}>
+          {/* <img
+            src={`http://localhost:3000/Home/ProductImg/logo1-1.jpeg`}
+            alt="user logo"
+          /> */}
+          <div>
+            <div className={classes.phoneFlex}>
+              <p className={classes.DesignerTitle}>Designer :</p>
+              <p className={classes.name}>{localStorage.getItem('name')}</p>
+            </div>
+            <div className={`${classes.displayFlex} ${classes.info}`}>
+              <MdLocationOn className={classes.DesignerTitle} />
+              <p className={classes.DesignerTitle}>高雄</p>
+              <MdCalendarToday className={classes.DesignerTitle} />
+              <p className={classes.DesignerTitle}>加入時間：2022.05.10</p>
+            </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </section>
   )
 }
