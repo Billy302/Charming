@@ -14,9 +14,9 @@ const ArticleContext = (props) => {
         <article className={classes['article']}>
           <div className={classes['article--context']}>
             <div className={classes['article--context__tag']}>
-              <PillBtn>#最新消息</PillBtn>
+              {/* <PillBtn>#最新消息</PillBtn>
               <PillBtn>#設計</PillBtn>
-              <PillBtn>#專訪</PillBtn>
+              <PillBtn>#專訪</PillBtn> */}
             </div>
             {/* render 文章內容 */}
             <div

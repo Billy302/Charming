@@ -1,4 +1,4 @@
-import TagBar from '../Components/FrontPage/TagBar/TagBar'
+// import TagBar from '../Components/FrontPage/TagBar/TagBar'
 import PillBtn from '../Components/UI/PillBtn'
 import SliderSection from '../Components/FrontPage/Slider/SliderSection'
 import TrendingArticle from '../Components/FrontPage/TrendingArticle/TrendingArticle'
@@ -34,7 +34,7 @@ const Blog = (props) => {
     <>
       <UnloginNav />
       <LoginNav />
-      <TagBar isDarkMode={darkMode} />
+      {/* <TagBar isDarkMode={darkMode} /> */}
       {/* <PillBtn onClick={darkModeHandler}>關燈</PillBtn> */}
       <SliderSection isDarkMode={darkMode} />
       <TrendingArticle
