@@ -82,7 +82,7 @@ const Banner = (props) => {
         ) : (
           <img
             src={
-              userBanner
+              userBanner.banner_file
                 ? `http://localhost:3000/blog/upload/banner/${userBanner.banner_file}`
                 : DefalutImage
             }
