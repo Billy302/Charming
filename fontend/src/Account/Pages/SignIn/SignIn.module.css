@@ -75,7 +75,12 @@
   border: 2px solid var(--brown2);
   background-color: var(--brown2);
   color: #ffffff;
-  cursor: pointer
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover{
+  background-color: var(--brown1);
 }
 
 .passwordShow {

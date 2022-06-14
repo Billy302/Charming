@@ -83,9 +83,6 @@ const MySwal = withReactContent(Swal);
         />
         <button typeof="submit" className={style.button}>確認修改</button>
       </form>
-      <p>
-        還不是會員嗎? <Link to="/signup">立即註冊</Link>
-      </p>
       </main>
     </>
   )
