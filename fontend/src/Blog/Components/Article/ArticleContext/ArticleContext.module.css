@@ -66,6 +66,12 @@
   margin: 0;
 }
 
+.searchbar {
+  width: 125rem;
+  margin: 5rem auto;
+  justify-content: flex-start;
+}
+
 @media (max-width: 1076px) {
   .article {
     width: 100%;
@@ -85,6 +91,13 @@
 
   .article--trending {
     margin-bottom: 4rem;
+  }
+
+  .searchbar {
+    width: 150rem;
+    margin: 5rem auto;
+    width: 100%;
+    justify-content: center;
   }
 }
 

@@ -3,6 +3,7 @@ import AuthorCard from '../AuthorCard/AuthorCard'
 import ArticleShare from '../ArticleShare/ArticleShare'
 import PillBtn from '../../UI/PillBtn'
 import Fade from 'react-reveal/Fade'
+import SearchBar from '../../SearchBar/SearchBar'
 
 const ArticleContext = (props) => {
   const { isFollowingAuthor } = props
@@ -38,6 +39,7 @@ const ArticleContext = (props) => {
                 trendingArticle={props.trendingArticle}
                 isFollowingAuthor={isFollowingAuthor}
               />
+              <SearchBar className={classes.searchbar} />
             </div>
           </aside>
         </article>
