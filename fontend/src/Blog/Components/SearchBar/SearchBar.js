@@ -22,11 +22,11 @@ function SearchBar(props) {
 
   return (
     //固定住nav在下移的時候不動
-    <div className={style.searchbar}>
+    <div className={`${style.searchbar} ${props.className}`}>
       <input
         className={style.searchInput}
         type="search"
-        placeholder="Search.."
+        placeholder="搜尋文章"
         onChange={userInput}
       />
       <button className={style.searchButton} onClick={keywordSearch}>
