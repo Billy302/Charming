@@ -35,16 +35,10 @@ blog.post('/insert/comment/:id', async (req, res) => {
     res.json(result);
 });
 
-// blog.get('/search/:desc', async (req, res) => {
-//     const sqlUpdate = `SELECT * FROM blog_topictoblog WHERE topic_ID = ${req.params.category}`;
-//     const [result] = await db.query(sqlUpdate).catch((e) => console.log(e));
-//     res.json(result);
-// });
-
 // render search page ， 精選文章上面的抬頭點進去
 
 blog.get('/search/:category', async (req, res) => {
-    const sqlUpdate = `SELECT * FROM blog_topictoblog LEFT JOIN blog_article ON blog_topictoblog.article_ID = blog_article.article_id WHERE topic_ID = ${req.params.category};`;
+    const sqlUpdate = `SELECT * FROM blog_topictoblog left JOIN blog_topic ON blog_topictoblog.topic_ID = blog_topic.topic_ID LEFT JOIN blog_article ON blog_topictoblog.article_ID = blog_article.article_id WHERE blog_topictoblog.topic_ID = ${req.params.category};`;
     const [result] = await db.query(sqlUpdate).catch((e) => console.log(`${sqlUpdate} error`));
     res.json(result);
 });
