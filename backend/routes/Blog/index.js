@@ -79,7 +79,7 @@ const uploadImage = multer({ storage: storage });
 blog.post('/image', uploadImage.single('file'), async (req, res) => {
     const userId = req.query.userid;
     const image = req.file.originalname;
-    const updateImg = `UPDATE user_pic_status set banner_file = '${image}'`;
+    const updateImg = `UPDATE user_pic_status set banner_file = '${image}' where user_id = ${userId}`;
     // const updateImg = `DELETE FROM us_banner_pic WHERE user_id = ${userId} ;
     // INSERT INTO us_banner_pic(user_id, banner_file) VALUES ('${userId}','${image}')`;
     const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
@@ -90,7 +90,7 @@ blog.post('/image', uploadImage.single('file'), async (req, res) => {
 
 blog.get('/image/render', async (req, res) => {
     const userId = req.query.userid;
-    const sqlSelect = `select * from user_pic_status where user_id = ${userId}`;
+    const sqlSelect = `select * from user_pic_status where user_id = ${userId} `;
     const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
     res.json(result);
 });
@@ -113,7 +113,7 @@ blog.post('/logo', uploadLogo.single('file'), async (req, res) => {
     const image = req.file.originalname;
     // const updateImg = `DELETE FROM us_banner_logo WHERE user_id = ${userId} ;
     // INSERT INTO us_banner_logo(user_id, logo_file) VALUES ('${userId}','${image}')`;
-    const updateImg = `UPDATE user_pic_status set logo_file = '${image}'`;
+    const updateImg = `UPDATE user_pic_status set logo_file = '${image}' where user_id = ${userId}`;
     const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
     res.json(result);
 });
