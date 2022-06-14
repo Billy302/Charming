@@ -38,7 +38,9 @@ const PersonalInfo = (props) => {
   // 把使用者上傳的 logo 傳到後端
   const imageUploadHandler = async (e) => {
     swal('圖片上傳成功', '您的品味真好', 'success')
+
     e.preventDefault()
+
     let formData = new FormData()
     formData.append('file', image.data)
     const response = await fetch(
@@ -145,7 +147,7 @@ const PersonalInfo = (props) => {
                   type="button"
                   onClick={cancelUploadHandler}
                   value="取消"
-                />{' '}
+                />
                 <MyProductBtn type="submit" form="logo-form" value="上傳" />
               </div>
             )}

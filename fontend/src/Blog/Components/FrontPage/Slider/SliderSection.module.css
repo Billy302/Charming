@@ -1,4 +1,3 @@
-/* 原本的slider css */
 .slider {
   position: relative;
   width: 100%;
@@ -45,4 +44,72 @@
   width: 100%;
   transition-duration: 1s;
   transform: scale(1.05);
+}
+
+@media (max-width: 1200px) {
+  .slider {
+    height: 50vh;
+    margin-bottom: 6rem;
+  }
+
+  .slider--btn__left {
+    font-size: 6rem;
+    top: 50%;
+  }
+
+  .slider--btn__right {
+    font-size: 6rem;
+    top: 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  .slider {
+    height: 40vh;
+    margin-bottom: 6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider {
+    height: 30vh;
+    margin-bottom: 6rem;
+  }
+  .slider--btn__left {
+    font-size: 4.5rem;
+  }
+
+  .slider--btn__right {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .slider {
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider--btn__left {
+    font-size: 3.5rem;
+    top: 40%;
+  }
+
+  .slider--btn__right {
+    font-size: 3.5rem;
+    top: 40%;
+  }
+}
+
+@media (max-width: 375px) {
+  .slider--btn__left {
+    font-size: 3.5rem;
+    top: 30%;
+  }
+
+  .slider--btn__right {
+    font-size: 3.5rem;
+    top: 30%;
+  }
 }
