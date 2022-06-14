@@ -1,9 +1,10 @@
 import ArticleList from '../Components/ArticleList/ArticleList'
-import UnloginNav from '../Components/UI/UnLoginNavbar'
 import Footer from '../Components/UI/Footer'
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import LoginNav from '../Components/SearchBar/SearchBar'
+import SearchBar from '../Components/SearchBar/SearchBar'
+import LoginNav from '../../Home/Components/LoginNav/LoginNav'
+import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
 
 const Search = (props) => {
   const params = useParams()
@@ -25,7 +26,7 @@ const Search = (props) => {
   }, [])
   return (
     <>
-      <LoginNav />
+      {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
       <ArticleList article={fetchData} />
     </>
   )

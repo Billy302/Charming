@@ -3,12 +3,13 @@ import PillBtn from '../Components/UI/PillBtn'
 import SliderSection from '../Components/FrontPage/Slider/SliderSection'
 import TrendingArticle from '../Components/FrontPage/TrendingArticle/TrendingArticle'
 import SelectedArticle from '../Components/FrontPage/SelectedArticle/SelectedArticel'
-import UnloginNav from '../Components/UI/UnLoginNavbar'
 import Footer from '../Components/UI/Footer'
 import { useState, useEffect } from 'react'
 import Fade from 'react-reveal/Fade'
-import LoginNav from '../Components/SearchBar/SearchBar'
 import { useLocation } from 'react-router-dom'
+import SearchBar from '../Components/SearchBar/SearchBar'
+import LoginNav from '../../Home/Components/LoginNav/LoginNav'
+import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
 
 const Blog = (props) => {
   const [darkMode, setDarkMode] = useState(false)
@@ -32,11 +33,11 @@ const Blog = (props) => {
   // <div style={{ backgroundColor: darkMode ? 'var(--gray1)' : '', transition: 'background 1s' }}>
   return (
     <>
-      {/* <UnloginNav /> */}
-      <LoginNav />
+      {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
       {/* <TagBar isDarkMode={darkMode} /> */}
       {/* <PillBtn onClick={darkModeHandler}>關燈</PillBtn> */}
       <SliderSection isDarkMode={darkMode} />
+      <SearchBar />
       <TrendingArticle
         trendingArticle={trendingArticle}
         isDarkMode={darkMode}

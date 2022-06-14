@@ -2,11 +2,11 @@ import ArticleHeader from '../Components/Article/ArticleHeader/ArticleHeader'
 import ArticleContext from '../Components/Article/ArticleContext/ArticleContext'
 import ChatArea from '../Components/Article/ChatArea/ChatArea'
 import { useState, useEffect } from 'react'
-import UnloginNav from '../Components/UI/UnLoginNavbar'
-import Footer from '../Components/UI/Footer'
 import { useParams } from 'react-router-dom'
 import ScrollToTop from '../Components/UI/ScrollToTop'
-import LoginNav from '../Components/SearchBar/SearchBar'
+import LoginNav from '../../Home/Components/LoginNav/LoginNav'
+import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
+import SearchBar from '../Components/SearchBar/SearchBar'
 
 const Article = (props) => {
   const [trendingArticle, setTrendingArticle] = useState([])
@@ -51,7 +51,8 @@ const Article = (props) => {
   return (
     <>
       <ScrollToTop>
-        <LoginNav />
+        {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
+
         {/* <Fade bottom> */}
         <ArticleHeader trendingArticle={trendingArticle} />
         <ArticleContext
