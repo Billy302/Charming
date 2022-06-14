@@ -6,6 +6,7 @@ import UnloginNav from '../Components/UI/UnLoginNavbar'
 import Footer from '../Components/UI/Footer'
 import { useParams } from 'react-router-dom'
 import ScrollToTop from '../Components/UI/ScrollToTop'
+import LoginNav from '../Components/SearchBar/SearchBar'
 
 const Article = (props) => {
   const [trendingArticle, setTrendingArticle] = useState([])
@@ -50,7 +51,7 @@ const Article = (props) => {
   return (
     <>
       <ScrollToTop>
-        <UnloginNav />
+        <LoginNav />
         {/* <Fade bottom> */}
         <ArticleHeader trendingArticle={trendingArticle} />
         <ArticleContext

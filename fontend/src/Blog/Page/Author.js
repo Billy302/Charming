@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import AuthorHeader from '../Components/Author/AuthorHeader'
 import Trending from '../Components/FrontPage/TrendingArticle/Trending'
 import AuthorInfo from '../Components/Author/AuthorInfo'
+import LoginNav from '../Components/SearchBar/SearchBar'
 
 const Author = () => {
   const [authorData, setAuthorData] = useState([])
@@ -25,6 +26,7 @@ const Author = () => {
   // article={articleData} key={articleData.article_id}
   return (
     <ScrollToTop>
+      <LoginNav />
       <AuthorHeader authorDetail={authorData} />
       <AuthorInfo authorDetail={authorData} />
       <AuthorCard authorData={authorData} />

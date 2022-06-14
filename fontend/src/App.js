@@ -50,7 +50,7 @@ import Article from './Blog/Page/Article'
 import Search from './Blog/Page/Search'
 import MyProductHeader from './Blog/Page/MyProduct'
 import Author from './Blog/Page/Author'
-import ArticleSearch from './Blog/Components/ArticleSearch/ArticleSearch'
+import ArticleSearch from './Blog/Page/ArticleSearch'
 
 function App() {
   return (
