@@ -69,13 +69,22 @@ function Order() {
       <LoginNav />
       {/* 上方選單 */}
       <nav className={Style.navLeft}>
-        <Link to="/membercenter/account" className={Style.unactive}>
+        <Link
+          to="/membercenter/account"
+          className={`${Style.unactive} ${Style.link}`}
+        >
           會員中心 <hr />
         </Link>
-        <Link to="/membercenter/shoppinglist?page=1" className={Style.active}>
+        <Link
+          to="/membercenter/shoppinglist?page=1"
+          className={`${Style.active} ${Style.link}`}
+        >
           購買清單 <hr />
         </Link>
-        <Link to="/membercenter/collection?page=1" className={Style.unactive}>
+        <Link
+          to="/membercenter/collection?page=1"
+          className={`${Style.unactive} ${Style.link}`}
+        >
           我的收藏 <hr />
           {/* user 追蹤的文章 */}
         </Link>
@@ -84,7 +93,7 @@ function Order() {
         {/* 上方資訊部分 */}
         {conponent}
         {/* 商品資訊部分 */}
-        <table className={Style.shoppingListS}>
+        <table className={Style.shoppingListSS}>
           <thead className={Style.listTitle}>
             <tr>
               <th scope="col" className={Style.blockSizeL}>
@@ -93,7 +102,10 @@ function Order() {
               <th scope="col" className={Style.blockSizeL}>
                 商品圖
               </th>
-              <th scope="col" className={Style.blockSizeL}>
+              <th
+                scope="col"
+                className={`${Style.blockSizeL} ${Style.displayNone}`}
+              >
                 作者
               </th>
               <th scope="col" className={Style.blockSizeL}>
@@ -119,12 +131,14 @@ function Order() {
                     {/* 商品圖 */}
                     <td className={Style.blockSizeL}>
                       <img
-                        className={Style.blockSizeM}
+                        className={Style.blockSizeS}
                         alt="圖片無法顯示"
                         src={`http://localhost:3000/Home/ProductImg/${pic_path}`}
                       />
                     </td>
-                    <td className={Style.blockSizeL}>{author_name}</td>
+                    <td className={`${Style.blockSizeL} ${Style.displayNone}`}>
+                      {author_name}
+                    </td>
                     <td className={Style.blockSizeL}>{product_name}</td>
                     <td className={`${Style.blockSizeL} ${Style.price}`}>
                       {price}

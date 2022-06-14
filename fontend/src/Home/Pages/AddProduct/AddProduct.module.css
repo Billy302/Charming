@@ -1,120 +1,142 @@
 /* 整體最外圍 */
-.addProduct {
+:root{
+  --borderRadius:15px;
+  --bigPictureSize:50%;
+  --smallPictureSize:150px;
+}
+.addProduct{    
   margin-top: 30px;
   margin-bottom: 30px;
   padding: 100px;
   box-shadow: 0px 0px 5px var(--gray3);
   border-radius: 15px;
-  --textAreaWidth: 100%;
+  --textAreaWidth:100%;
+}
+.addProduct p{
+  padding-bottom: 20px;
 }
 /* 全體文字樣式 */
-.title {
+.title{
   font-size: var(--heading4);
-  color: var(--brown2);
-  padding-right: 50px;
+  color: var(--green2);
+  padding-right:50px ;
   white-space: nowrap;
+  overflow: scroll;
 }
 
 /* 新增圖片、影片、商品名稱、描述文案、商品類別的外框 */
-.pictureField {
+.pictureField{
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   padding: 10px;
 }
 
 /* 新增圖片間距 */
-.btn {
-  visibility: hidden;
+.btn{
+  visibility:hidden;
   width: 20px;
 }
 /* 文字輸入框樣式 */
-.inputTextStyle {
-  border: 2px solid var(--brown3);
+.inputTextStyle{
+  border: 2px solid var(--green2);
   border-radius: 15px;
   width: var(--textAreaWidth);
   padding: 10px;
   font-size: var(--heading4);
 }
 /* 文章輸入框樣式 */
-.inputArticleStyle {
-  border: 2px solid var(--brown3);
+.inputArticleStyle{
+  border: 2px solid var(--green2);
   border-radius: 15px;
   width: var(--textAreaWidth);
-  height: 300px;
-  resize: none;
+  height:400px;
+  resize:none;
   padding: 10px;
   font-size: var(--heading4);
 }
+.inputArticleStyle2{
+  border: 2px solid var(--green2);
+  border-radius: 15px;
+  width: var(--textAreaWidth);
+  height:120px;
+  resize:none;
+  padding: 10px;
+  font-size: var(--heading4);
+}
+/* 新增圖片的label */
+.addPicture{
+  padding: 50px;
+  border: 3px dotted var(--green2);
+  border-radius: 15px;
+}
 /* 新增圖片label中間的icon */
-.icon {
+.icon{
   position: absolute;
   right: 33%;
   top: 33%;
   font-size: 50px;
-  color: var(--brown2);
+  color: var(--green2);
 }
 /* 影片大小限制文字 */
-.warnText {
-  margin-left: 100px;
-  color: var(--gray3);
-  font-size: var(--heading4);
-}
-.productPrice {
+
+.productPrice{
   display: flex;
   justify-content: space-between;
 }
 /* 商品類別 */
-.theSelect {
+.theSelect{
   /* width: var(--textAreaWidth); */
   font-size: var(--heading4);
   appearance: none;
-  color: var(--brown2);
+  color: var(--green2);
   padding: 7px 5px;
   z-index: 1;
   background-color: transparent;
-  padding: 10px 40px 10px 10px;
+  padding:10px 40px 10px 10px;
 }
 /*商品類別箭頭小icon*/
-.iconSelect {
+.iconSelect{
   font-size: 20px;
-  color: var(--brown2);
+  color: var(--green2);
   position: absolute;
   left: 85%;
 }
-.itemStyle {
+.itemStyle{
   display: flex;
   justify-content: space-between;
-}
+}   
 
 /* 較長備貨 */
-.prepareTime {
+.prepareTime{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   font-size: var(--heading4);
-  color: var(--brown2);
+  color: var(--green2);
 }
-.submitButtonField {
+.submitButtonField{
   display: flex;
   justify-content: center;
 }
-.submitButton {
+.submitButton{
   appearance: none;
-  padding: 15px 30px;
+  padding:15px 30px;
   border: none;
   font-size: var(--heading4);
   border-radius: 15px;
   color: var(--white);
   margin: 5px;
   margin-top: 50px;
-  background-color: var(--brown2);
+  background-color: var(--green2);
 }
-.submitButton:hover {
-  background-color: var(--brown1);
+.submitButton:hover{
+  background-color: var(--green1);
+
 }
-.smallImg {
-  border: 3px dotted var(--brown2);
+.smallImg{
+  border: 3px dotted var(--green2);
   width: var(--smallPictureSize);
   height: var(--smallPictureSize);
   border-radius: var(--borderRadius);
@@ -122,18 +144,27 @@
   object-fit: contain;
   z-index: 999;
 }
-input {
-  outline: none;
+input{
+  outline:none
 }
-textarea {
-  outline: none;
+textarea{
+  outline:none
+
 }
-input:active {
-  border: 2px solid var(--brown1);
+input:active{
+  border: 2px solid var(--green1);
 }
 
-
-.textTool{
-  display: flex;
-  flex-direction: column;
+@media screen and (max-width:441px){
+  .addProduct{
+      padding: 10px;
+      margin-bottom: 100px;
+  }
+  .iconSelect{
+      font-size: 20px;
+      color: var(--green2);
+      position: absolute;
+      left: 65%;
+      top:70px
+  }
 }

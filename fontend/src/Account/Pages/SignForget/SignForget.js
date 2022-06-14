@@ -47,7 +47,7 @@ function SingForget() {
             showConfirmButton: false,
             timer: 1500,
           }).then(() => {
-            errMsg.innerHTML = '已發送連結至您的信箱，<br/>如5分鐘內未收到信件，<br/>請再點擊發送一次'
+            errMsg.innerHTML = '<span style="color: red;">已發送連結至您的信箱</span>'
           });
         }
         // 仍在測試中
@@ -61,7 +61,7 @@ function SingForget() {
     <>
     {now == 'true' ? <LoginNav /> : <UnloginNav />}
       <main className={style.main}>
-        <h1 className={style.h1}>重設密碼</h1>
+        <h1 className={style.h1}>發送驗證信</h1>
       <form className={style.form} id="form1" method="post" onSubmit={fetchAccount}>
         <label htmlFor="account">您的帳號</label>
         <input id="account" type="text" name="account" />

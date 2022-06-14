@@ -20,6 +20,19 @@
   margin-top: 1rem;
 }
 
-.myproductbtn {
-  font-size: 2rem;
+@media screen and (max-width:441px){
+  .myproductbtn {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .personal-info--card__display h2 {
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+  
+  .personal-info--card__display p {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+  }
 }
+

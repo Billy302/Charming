@@ -117,63 +117,67 @@ const PersonalInfo = (props) => {
   return (
     <section className={classes['personal-info']}>
       {/* 大頭照 */}
-      <div className={classes['personal-info--image']}>
-        {image.preview ? (
-          <img src={image.preview} alt="user logo" />
-        ) : (
-          <img
-            src={
-              userLogo
-                ? `http://localhost:3000/blog/upload/icon/${userLogo}`
-                : defaultIcon
-            }
-            alt="user logo"
-            className={classes['personal-info--image__user-upload']}
-          />
-        )}
-        <div className={classes['personal-info--upload-logo']}>
-          <form method="POST" onSubmit={imageUploadHandler} id="logo-form">
-            {!displayCancelBtn ? (
-              <label
-                htmlFor="logo"
-                className={`${classes['custom-file-upload']}`}
-              >
-                上傳大頭照
-              </label>
-            ) : (
-              <div
-                className={classes['personal-info--upload-logo__cancel-submit']}
-              >
-                <MyProductBtn
-                  type="button"
-                  onClick={cancelUploadHandler}
-                  value="取消"
-                />{' '}
-                <MyProductBtn type="submit" form="logo-form" value="上傳" />
-              </div>
-            )}
-            <input type="file" name="logo" id="logo" onChange={fileHandler} />
-          </form>
-        </div>
-      </div>
-
-      <div className={classes['personal-info--card']}>
-        <div>
-          {changeInfo ? (
-            <EditInfo
-              onDisplay={displayInfoHandler}
-              userStatusData={userStatus}
-              onReRenderStatus={updateStatusRenderHandler}
-            />
+      <div className={classes.imgAndText}>
+        <div className={classes['personal-info--image']}>
+          {image.preview ? (
+            <img src={image.preview} alt="user logo" />
           ) : (
-            <InfoDisplay
-              onEdit={displayEditHandler}
-              userStatusData={userStatus}
+            <img
+              src={
+                userLogo
+                  ? `http://localhost:3000/blog/upload/icon/${userLogo}`
+                  : defaultIcon
+              }
+              alt="user logo"
+              className={classes['personal-info--image__user-upload']}
             />
           )}
+          <div className={classes['personal-info--upload-logo']}>
+            <form method="POST" onSubmit={imageUploadHandler} id="logo-form">
+              {!displayCancelBtn ? (
+                <label
+                  htmlFor="logo"
+                  className={`${classes['custom-file-upload']}`}
+                >
+                  上傳大頭照
+                </label>
+              ) : (
+                <div
+                  className={
+                    classes['personal-info--upload-logo__cancel-submit']
+                  }
+                >
+                  <MyProductBtn
+                    type="button"
+                    onClick={cancelUploadHandler}
+                    value="取消"
+                  />{' '}
+                  <MyProductBtn type="submit" form="logo-form" value="上傳" />
+                </div>
+              )}
+              <input type="file" name="logo" id="logo" onChange={fileHandler} />
+            </form>
+          </div>
+        </div>
+
+        <div className={classes['personal-info--card']}>
+          <div>
+            {changeInfo ? (
+              <EditInfo
+                onDisplay={displayInfoHandler}
+                userStatusData={userStatus}
+                onReRenderStatus={updateStatusRenderHandler}
+              />
+            ) : (
+              <InfoDisplay
+                onEdit={displayEditHandler}
+                userStatusData={userStatus}
+              />
+            )}
+          </div>
         </div>
       </div>
-      <div className={classes.designer}>
+      {/* <div className={classes.designer}>
         <img
           src={`http://localhost:3000/Home/ProductImg/logo1-1.jpeg`}
           alt="user logo"
@@ -187,7 +191,7 @@ const PersonalInfo = (props) => {
             <p>加入時間</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   )
 }

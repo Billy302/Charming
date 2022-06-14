@@ -1,4 +1,3 @@
-import style from './MyProduct.module.css'
 // component
 import Banner from '../Components/MyProductHeader/Banner'
 import PersonalInfo from '../Components/MyProductHeader/PersonalInfo'

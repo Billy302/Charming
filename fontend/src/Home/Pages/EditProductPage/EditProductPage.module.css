@@ -12,12 +12,16 @@
     border-radius: 15px;
     --textAreaWidth:100%;
 }
+.addProduct p{
+    padding-bottom: 20px;
+}
 /* 全體文字樣式 */
 .title{
     font-size: var(--heading4);
     color: var(--brown2);
     padding-right:50px ;
     white-space: nowrap;
+    overflow: scroll;
 }
 
 /* 新增圖片、影片、商品名稱、描述文案、商品類別的外框 */
@@ -75,11 +79,7 @@
     color: var(--brown2);
 }
 /* 影片大小限制文字 */
-.warnText{
-    margin-left: 100px;
-    color: var(--gray3);
-    font-size: var(--heading4);
-}
+
 .productPrice{
     display: flex;
     justify-content: space-between;
@@ -153,4 +153,18 @@ textarea{
 }
 input:active{
     border: 2px solid var(--brown1);
+}
+
+@media screen and (max-width:441px){
+    .addProduct{
+        padding: 10px;
+        margin-bottom: 100px;
+    }
+    .iconSelect{
+        font-size: 20px;
+        color: var(--brown2);
+        position: absolute;
+        left: 65%;
+        top:70px
+    }
 }

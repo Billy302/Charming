@@ -1,5 +1,6 @@
 /* 卡片排列方式 */
 .product{
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -24,9 +25,8 @@
     flex-wrap: wrap;
 }
 .cardFlex > div{
-    width:20%;
-}
-
+    width: 250px;
+  }
 .cardFlex::-webkit-scrollbar {
     display: none; /* Chrome Safari */
   }

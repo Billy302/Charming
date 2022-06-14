@@ -3,7 +3,7 @@
     .mainPage{
       position: sticky;
       top: 0;
-      z-index:999;
+      z-index:99900;
       background-color: rgba(255,255,255,.8);
       --allNavText:var(--heading4);
       --allSearchText:var(--heading5);
@@ -299,9 +299,6 @@
       top: 13px;
   }
   /* -------------- */
-  .showList{
-    /* display: none; */
-  }
   .phoneDisplayNone{
     display: none;
   }
@@ -312,5 +309,8 @@
   .phoneIcon{
     font-size: var(--heading4);
     margin-top: 15px;
+  }
+  .hello{
+    display: none;
   }
 }

@@ -51,6 +51,7 @@ function SignIn() {
             timer: 1500,
           }).then(() => {
             navigate("/Product?page=1");
+            // navigate("/Product?page=1");
           });
         }
       });

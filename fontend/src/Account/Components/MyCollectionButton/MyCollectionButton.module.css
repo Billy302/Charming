@@ -21,3 +21,12 @@
 .ProductBtobButton a:hover {
   background-color: var(--brown3);
 }
+@media screen and (max-width:441px){
+  .ProductBtobButton{
+    flex-direction: row;
+    justify-content: center;
+  }
+  .ProductBtobButton a:first-child {
+    margin-right: 10px;
+  }
+}

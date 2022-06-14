@@ -15,14 +15,14 @@ function LoginHome() {
     <header>
       {now == 'true' ? <LoginNav /> : <UnloginNav />}
 
-      <hgroup>
+      {/* <hgroup>
         <p className={Style.carousel}>
           <AiTwotoneSound className={Style.icon} />
           <p className={Style.middleText}>
             指揮中心快訊：新增75例COVID-19確定病例，分別為2例本土及73例境外移入
           </p>
         </p>
-      </hgroup>
+      </hgroup> */}
 
       {/* <SliderSection/> */}
       <section className={Style.productType}>

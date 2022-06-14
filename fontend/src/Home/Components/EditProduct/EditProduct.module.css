@@ -4,12 +4,12 @@
     /* overflow: scroll; */
     flex-wrap: wrap;
 }
-.cardFlex > div{
-    width:20%;
-}
 
 .cardFlex::-webkit-scrollbar {
     display: none; /* Chrome Safari */
+  }
+  .cardFlex > div{
+    width: 250px;
   }
 @media screen and (max-width:1024px){
     .cardFlex > div{

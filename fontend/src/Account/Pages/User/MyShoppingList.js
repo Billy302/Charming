@@ -9,19 +9,28 @@ function MyShoppingList() {
       <LoginNav />
       {/* 上方選單 */}
       <nav className={style.navLeft}>
-        <Link to="/membercenter/account" className={style.unactive}>
+        <Link
+          to="/membercenter/account"
+          className={`${style.unactive} ${style.link}`}
+        >
           會員中心 <hr />
         </Link>
-        <Link to="/membercenter/shoppinglist?page=1" className={style.active}>
+        <Link
+          to="/membercenter/shoppinglist?page=1"
+          className={`${style.active} ${style.link}`}
+        >
           購買清單 <hr />
         </Link>
-        <Link to="/membercenter/collection?page=1" className={style.unactive}>
+        <Link
+          to="/membercenter/collection?page=1"
+          className={`${style.unactive} ${style.link}`}
+        >
           我的收藏 <hr />
+          {/* user 追蹤的文章 */}
         </Link>
       </nav>
 
       {/* 右側內文 */}
-
       <main className={style.main}>
         <OrderList />
       </main>

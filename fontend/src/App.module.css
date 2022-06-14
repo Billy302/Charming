@@ -60,6 +60,9 @@ body {
   -webkit-font-smoothing: antialiased;
   /* -moz-osx-font-smoothing: grayscale; */
 }
+.content{
+  min-height: calc(100vh - 205px);
+}
 nav, hgroup, section{
   margin: 0px var(--holdpadding);
 }

@@ -64,7 +64,7 @@
         border: none;
         border-radius: 99px;
         color: var(--white);
-        background-color: var(--brown2);
+        background-color: var(--green2);
         font-weight: bold;
         display: block;
         position: fixed;
@@ -72,7 +72,7 @@
         border-radius: 100px;
         right: 15px;
         z-index: 9;
-        box-shadow: 0px 0px 8px var(--brown1);
+        box-shadow: 0px 0px 8px var(--green2);
     }
     .arrangement{
         display: block;

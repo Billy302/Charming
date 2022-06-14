@@ -134,14 +134,14 @@ function Cart3() {
         .then((obj) => {
           console.log(obj)
         })
-      fetch(`http://localhost:3001/Sales/api/mail`, {
-        method: 'post',
-        body: orderData,
-      })
-        .then((r) => r.json())
-        .then((obj) => {
-          console.log(obj)
-        })
+      // fetch(`http://localhost:3001/Sales/api/mail`, {
+      //   method: 'post',
+      //   body: orderData,
+      // })
+      //   .then((r) => r.json())
+      //   .then((obj) => {
+      //     console.log(obj)
+      //   })
 
       Navigate('../Sales/Cart4')
     }

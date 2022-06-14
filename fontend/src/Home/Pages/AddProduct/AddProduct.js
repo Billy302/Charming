@@ -293,11 +293,11 @@ function AddProduct() {
                     setProductType(e.target.value)
                   }}
                 >
-                  <option value={'101'}>攝影</option>
-                  <option value={'102'}>NFT</option>
-                  <option value={'103'}>UI/UX</option>
-                  <option value={'104'}>報告/教材</option>
-                  <option value={'105'}>Logo/插圖</option>
+                  <option value={'101'}>NFT</option>
+                  <option value={'102'}>UI/UX</option>
+                  <option value={'103'}>書籍/翻譯</option>
+                  <option value={'104'}>Logo</option>
+                  <option value={'105'}>插圖</option>
                 </select>
                 <BsCaretDownFill className={style.iconSelect} />
               </div>
@@ -305,7 +305,10 @@ function AddProduct() {
           </div>
           <div className={style.submitButtonField}>
             <input type="submit" value="上架" className={style.submitButton} />
-            <Link to="../MyProduct?page=1" className={style.submitButton}>
+            <Link
+              to="/shopcenter/myproduct?page=1"
+              className={style.submitButton}
+            >
               {' '}
               取消{' '}
             </Link>

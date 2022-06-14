@@ -347,7 +347,10 @@ function EditProduct() {
           </div>
           <div className={style.submitButtonField}>
             <input type="submit" value="上架" className={style.submitButton} />
-            <Link to="../MyProduct?page=1" className={style.submitButton}>
+            <Link
+              to="/shopcenter/myproduct?page=1"
+              className={style.submitButton}
+            >
               {' '}
               取消{' '}
             </Link>

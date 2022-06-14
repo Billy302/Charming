@@ -25,7 +25,7 @@ function PhoneFooter() {
           <GiDiscussion className={Style.icon} />
           <p>柴社</p>
         </Link>
-        <a href="/account">
+        <a href="/membercenter/account">
           <FaUser className={Style.icon} />
           <p>會員中心</p>
         </a>

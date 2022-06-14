@@ -12,7 +12,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 .personal-info--image__user-upload:hover {
@@ -84,7 +83,6 @@
 }
 /* 設計師資訊 */
 .designer{
-  margin-left: 100px;
   display: flex;
   align-items: center;
   font-size: var(--heading4);
@@ -109,4 +107,48 @@
 .displayFlex{
   display: flex;
   
+}
+.imgAndText{
+  width: 100%;
+  display: flex;
+
+}
+@media screen and (max-width:1024px){
+   
+}
+@media screen and (max-width:780px) {
+    
+}
+@media screen and (max-width:441px){
+  .personal-info {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    --circleSize:8rem;
+  
+  }
+  .imgAndText{
+    display: flex;
+    align-items: center;
+  }
+  .personal-info--card{
+    width: 100%;
+    margin-right: 15px;
+  }
+  .designer{
+    margin-left:0px;
+    justify-content: center;
+  }
+  .personal-info--upload-logo label{
+    bottom: 20px;
+    left: -40px;
+    width: var(--circleSize);
+    height: var(--circleSize);
+    border-radius: 50%;
+    opacity: 0;
+  }
+  .custom-file-upload {
+    text-align: center;
+    font-size:var(--heading5);
+  }
 }

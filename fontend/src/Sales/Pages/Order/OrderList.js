@@ -89,7 +89,7 @@ function OrderList() {
           </tbody>
         </table>
       </section>
-      <Pagination totalPages={totalPage} />
+      {/* <Pagination totalPages={totalPage} /> */}
     </>
   )
 }
