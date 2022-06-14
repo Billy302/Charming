@@ -1,23 +1,48 @@
 import React, { useState } from 'react'
 import style from './LoginNav.module.css'
-import { AiOutlineGlobal } from 'react-icons/ai'
-import { BsFillBellFill } from 'react-icons/bs'
-import { FaShoppingCart, FaAngleDown } from 'react-icons/fa'
+import { FaShoppingCart } from 'react-icons/fa'
 import { ImSearch } from 'react-icons/im'
 import logo from '../../Assets/charming_logo.png'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function LoginNav(props) {
+  const MySwal = withReactContent(Swal)
+
+  const logOut = (e) => {
+    //—————————————登出畫面———————————————
+    e.preventDefault()
+    MySwal.fire({
+      title: '確定要登出嗎?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#795252',
+      confirmButtonText: '確定',
+      cancelButtonColor: '#d33',
+      cancelButtonText: '取消',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('id')
+        localStorage.setItem('auth', false)
+        MySwal.fire({
+          title: '登出成功',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          navigate('/')
+        })
+      }
+    })
+  }
+
   // 取得包含目前URL的狀態和位置的物件函數
   const location = useLocation()
-  const Params = useParams()
   const navigate = useNavigate()
 
   const searchParams = new URLSearchParams(location.search)
-
-  let userId = searchParams.get('id') ? searchParams.get('id') : ''
-  let type = searchParams.get('typeID') ? searchParams.get('typeID') : ''
-
+  let nowPage = searchParams.get('page') ? searchParams.get('page') : ''
   let searchItem = searchParams.get('itemsName')
     ? searchParams.get('itemsName')
     : ''
@@ -36,21 +61,24 @@ function LoginNav(props) {
   window.addEventListener('scroll', displayItemType)
 
   function goPath() {
-    console.log(searchItem)
-    if (searchItem) {
-      navigate(
-        `../${
-          location.pathname +
-          location.search.replace(
+    // 先判斷搜尋欄內是否有值
+    if (searchValue) {
+      // 判斷是否已經有搜尋過
+      if (searchItem) {
+        navigate(
+          `../Product${location.search.replace(
             `itemsName=${searchItem}`,
             `itemsName=${searchValue}`
-          )
-        }`
-      )
-    } else {
-      navigate(
-        `../${location.pathname + location.search}&itemsName=${searchValue}`
-      )
+          )}`
+        )
+      } else {
+        // 判斷來源處有沒有Query
+        if (searchParams.search) {
+          navigate(`../Product${searchParams}&page=1&itemsName=${searchValue}`)
+        } else {
+          navigate(`../Product?page=1&itemsName=${searchValue}`)
+        }
+      }
     }
   }
 
@@ -60,7 +88,7 @@ function LoginNav(props) {
       <nav className={style.navBar}>
         {/* logo 與charming文字 */}
         <div className={style.charmingLogo}>
-          <a href={`/Product?id=${userId}&page=1`} className={style.logoIcon}>
+          <a href={`/`} className={style.logoIcon}>
             <img src={logo} alt="logo" />
             <p>柴米Charming</p>
           </a>
@@ -106,21 +134,30 @@ function LoginNav(props) {
         <div className={style.charmingItem}>
           <ul className={style.itemStyle}>
             <div>
-              <li className={style.changeLanguage}>
+              {/* <li className={style.changeLanguage}>
                 <AiOutlineGlobal />
                 <select>
                   <option value="australia">繁體中文</option>
                   <option value="English">English</option>
                 </select>
                 <FaAngleDown />
-              </li>
-              <a href="/Portfolio" className={style.phoneDisplayNone}>
-                <li>柴米人</li>
+              </li> */}
+              <div className={style.hello}>
+                <p> Hello!</p>
+                <a href="/membercenter/account">
+                  <p>{localStorage.getItem('name')}</p>
+                </a>
+              </div>
+              <a href="/Product?page=1" className={style.phoneDisplayNone}>
+                <li>探索</li>
               </a>
               <a href="/blog" className={style.phoneDisplayNone}>
                 <li>柴訊</li>
               </a>
-              <a href="/AskPage" className={style.phoneDisplayNone}>
+              <a className={style.phoneDisplayNone}>
+                <li>柴米人</li>
+              </a>
+              <a className={style.phoneDisplayNone}>
                 <li>柴社</li>
               </a>
             </div>
@@ -131,23 +168,16 @@ function LoginNav(props) {
                   <FaShoppingCart className={style.phoneIcon} />
                 </li>
               </a>
-              <a href="">
-                <li>
-                  <BsFillBellFill className={style.phoneIcon} />
-                </li>
-              </a>
+
               <li className={style.showList}>
-                <a href="/account">
-                  <img src={logo} alt="logo" />
-                </a>
+                <img src={logo} alt="logo" />
                 {/*--hover頭像時出現時才出現的會員表單 --*/}
                 <div className={style.navList}>
-                  <a href="">會員資料修改</a>
-                  <a href="">我的設計</a>
-                  <a href={`/MyProduct?id=${userId}&page=1`}>我的商品</a>
-                  <a href="/collection">我的收藏</a>
-                  <a href={`/BtobPage/Order?id=${userId}&page=1`}>購買清單</a>
-                  <a href="/">登出</a>
+                  <Link to={`/membercenter/account`}>會員中心</Link>
+                  <Link to={`/shopcenter/myproduct?page=1`}>賣家中心</Link>
+                  <Link to={`/membercenter/collection?page=1`}>我的收藏</Link>
+                  <Link to={`/membercenter/shoppinglist?page=1`}>購買清單</Link>
+                  <button onClick={logOut}>登出</button>
                 </div>
                 {/* ——————————————————————————————————————— */}
               </li>
@@ -162,73 +192,48 @@ function LoginNav(props) {
       >
         <hr />
         <ul className={style.itemList}>
-          {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=101`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=101`}>
               <li>NFT</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=101`}>
               <li>NFT</li>
             </a>
           )}
-          {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=102`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=102`}>
               <li>UI/UX</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=102`}>
               <li>UI/UX</li>
             </a>
           )}
-          {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=103`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=103`}>
               <li>書籍/翻譯</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=103`}>
               <li>書籍/翻譯</li>
             </a>
           )}
-          {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=104`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=104`}>
               <li>Logo</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=104`}>
               <li>Logo</li>
             </a>
           )}
-          {!type ? (
-            <a href={`${location.pathname + location.search}&typeID=105`}>
+          {nowPage ? (
+            <a href={`/Product/${location.search}&typeID=105`}>
               <li>插圖</li>
             </a>
           ) : (
-            <a
-              href={`${
-                location.pathname +
-                location.search.replace(`&typeID=${type}`, ``)
-              }`}
-            >
+            <a href={`/Product?page=1&typeID=105`}>
               <li>插圖</li>
             </a>
           )}

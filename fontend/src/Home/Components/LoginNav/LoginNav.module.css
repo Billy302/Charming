@@ -3,7 +3,7 @@
     .mainPage{
       position: sticky;
       top: 0;
-      z-index:999;
+      z-index:99900;
       background-color: rgba(255,255,255,.8);
       --allNavText:var(--heading4);
       --allSearchText:var(--heading5);
@@ -80,8 +80,9 @@
       --circleSize:40px;
     }
     /* hover頭像顯示清單的參照物 */
-    .showList img{
-     object-fit:cover;
+    .showList a img{
+      top: 5px;
+      width: 100%;
     }
     .showList > :first-child{
       display: inline-block;
@@ -105,6 +106,7 @@
     display: none;
     border: 1px solid var(--gray3);
     border-radius:15px;
+    background-color: #fff;
   }
   /* 小箭頭 */
   .navList::before{
@@ -118,7 +120,7 @@
    border-right: 10px solid transparent;
    border-left: 10px solid transparent;
  }
- .navList a{
+ .navList a, .navList button{
    width: 100%;
    padding:10px;
    display: block;
@@ -131,13 +133,17 @@
    white-space:nowrap;
    text-align: center;
  }
+ .navList button{
+  color: var(--red);
+  font-weight: bold;
+ }
  /* 登出紅字 */
- .navList a:last-child{
-    color: var(--red);
-  }
-  .navList a:hover{
+  .navList a:hover, .navList button:hover{
     background-color: var(--allHoverColor);
     color: var(--allTextColor);
+  }
+  .navList button:hover{
+    color: #fff;
   }
 /* ——————————————————————————————————————— */
 
@@ -227,6 +233,22 @@
   .itemList a:hover{
     background-color: var(--allHoverColor);
   }
+  /* 歡迎句 */
+  .hello{
+    display: flex;
+    font-size: var(--heading5);
+    font-weight: bold;
+  }
+  .hello :first-child{
+    color: var(--green1);
+    font-weight:200;
+    padding-right: 10px;
+  }
+  .hello :last-child{
+    color: var(--green1);
+    font-weight: bold;
+  }
+  
 /* ——————————————————————————————————————— */
 
  /* —————————————————RWD——————————————————— */
@@ -277,9 +299,6 @@
       top: 13px;
   }
   /* -------------- */
-  .showList{
-    display: none;
-  }
   .phoneDisplayNone{
     display: none;
   }
@@ -291,7 +310,7 @@
     font-size: var(--heading4);
     margin-top: 15px;
   }
-
-  
-  
+  .hello{
+    display: none;
+  }
 }
