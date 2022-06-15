@@ -65,6 +65,7 @@ const EditInfo = (props) => {
     // 告訴 PersonalInfo 使用者已經修改完成
     props.onDisplay()
   }
+  console.log(userId)
 
   return (
     <div className={classes['personal-info--card__display']}>
@@ -74,14 +75,14 @@ const EditInfo = (props) => {
           type="text"
           id="title"
           // onChange={titleChangeHandler}
-          defaultValue={userStatusData[0].status_title}
+          defaultValue={userStatusData[0]?.status_title}
           ref={titleUseRef}
         ></input>
         <label htmlFor="context">修改內文</label>
         <textarea
           id="context"
           // onChange={contextChangeHandler}
-          defaultValue={userStatusData[0].status_content}
+          defaultValue={userStatusData[0]?.status_content}
           ref={contentUseRef}
         ></textarea>
         <p></p>

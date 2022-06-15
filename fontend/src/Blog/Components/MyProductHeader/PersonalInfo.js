@@ -61,7 +61,7 @@ const PersonalInfo = (props) => {
       `http://localhost:3001/blog/logo/render?userid=${userId}`
     )
     const result = await data.json()
-    setUserLogo(result[0].logo_file)
+    setUserLogo(result.logo_file)
   }
 
   useEffect(() => {

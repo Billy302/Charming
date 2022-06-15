@@ -69,6 +69,7 @@ const Banner = (props) => {
   useEffect(() => {
     fetchBanner()
   }, [])
+
   return (
     <>
       <div className={classes['banner']}>
@@ -82,7 +83,7 @@ const Banner = (props) => {
         ) : (
           <img
             src={
-              userBanner.banner_file
+              userBanner?.banner_file
                 ? `http://localhost:3000/blog/upload/banner/${userBanner.banner_file}`
                 : DefalutImage
             }
