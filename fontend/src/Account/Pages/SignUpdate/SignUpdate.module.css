@@ -16,6 +16,7 @@
   text-align: center;
   color: var(--brown2);
   padding: 30px;
+  font-size: var(--heading3);
 }
 
 .hr {
@@ -47,9 +48,8 @@
 }
 
 .form input::placeholder {
-  color: var(--brown3);
+  color: var(--brown2);
   font-size: var(--heading6);
-  padding: 10px;
 }
 
 .google {
@@ -87,6 +87,7 @@
 .password {
   position: absolute;
   right: 20px;
-  top: 97px;
+  top: 109px;
   z-index: 2;
+  font-size: var(--heading5);
 }

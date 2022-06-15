@@ -20,6 +20,7 @@
   text-align: center;
   color: var(--brown2);
   padding: 30px;
+  font-size: var(--heading3);
 }
 
 .hr {
@@ -64,7 +65,7 @@
 
 .p {
   padding: 10px;
-  font-size: var(--heading6);
+  font-size: var(--heading5);
 }
 
 .button {
@@ -91,19 +92,21 @@
   position: absolute;
   right: 20px;
   bottom: 55px;
+  font-size: var(--heading5);
 }
 
 .password {
   position: absolute;
-  right: 10px;
-  bottom: 93px;
+  right: 12px;
+  bottom: 96px;
   z-index: 2;
+  font-size: var(--heading5);
 }
 
 .checkMsg{
   height: 5px;
   color: red;
-  font-size: small;
+  font-size: 14px;
   padding: 5px 10px;
 }
 

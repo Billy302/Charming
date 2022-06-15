@@ -75,11 +75,10 @@ function SingForget() {
           onChange={handleChangeEmail}
         />
         <p className={style.p}>
-            請輸入你註冊時的Email，我們會發送一封<br />
-            信件，點擊信件中的連結以重設密碼
+            請輸入你註冊時的Email，我們會發送一<br />封信件，點擊信件中的連結以重設密碼
           </p>
         {/* 顯示登入錯誤訊息 */}
-        <p id="msg"></p>
+        <p className={style.msg} id="msg"></p>
         <button typeof="submit" className={style.button}>送出</button>
       </form>
       </main>

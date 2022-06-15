@@ -20,6 +20,7 @@
   text-align: center;
   color: var(--brown2);
   padding: 30px;
+  font-size: var(--heading3);
 }
 
 .hr {
@@ -51,7 +52,7 @@
 }
 
 .form input::placeholder {
-  color: var(--brown3);
+  color: var(--brown2);
   font-size: var(--heading6);
 }
 
@@ -64,7 +65,7 @@
 
 .p {
   padding: 10px;
-  font-size: var(--heading6);
+  font-size: var(--heading5);
 }
 
 .button {
@@ -90,8 +91,9 @@
 .password {
   position: absolute;
   right: 20px;
-  top: 106px;
+  top: 117px;
   z-index: 2;
+  font-size: var(--heading5);
 }
 
 /* 基本資料頁 */
@@ -151,7 +153,7 @@ select:focus {
 }
 
 .checkMsg{
-  font-size: small;
+  font-size: var(--heading5);
   justify-content: flex-end;
   height: 8px;
   margin: auto;

@@ -104,7 +104,7 @@ function SignIn() {
             登入
           </button>
         </form>
-        <p>
+        <p className={style.p}>
           還不是會員嗎? <Link to="/signup">立即註冊</Link>
         </p>
         <img src={"http://localhost:3000/Account/login.png"} width='400'/>

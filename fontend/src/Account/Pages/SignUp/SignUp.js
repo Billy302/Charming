@@ -137,7 +137,7 @@ function SignUp() {
             <span id="showCheck"></span>
             <br />
           </div>
-          <p>
+          <p className={style.p}>
             已經是會員? <Link to="/signin">點此登入</Link>
           </p>
 
@@ -236,7 +236,7 @@ function SignUp() {
               <button id="submit" type="submit" className={style.button}>
                 註冊
               </button>
-              <p>
+              <p className={style.p}>
                 點擊「註冊」即表示你同意我們的<a target="_blank" href="http://localhost:3000/signup/policya">使用條款</a>及
                 <a target="_blank" href="http://localhost:3000/signup/policyb">隱私政策</a>
               </p>

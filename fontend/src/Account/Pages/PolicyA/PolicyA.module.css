@@ -17,10 +17,12 @@
   text-align: center;
   color: var(--brown2);
   padding: 30px;
+  font-size: var(--heading3);
 }
 
 .h3{
   margin: 10px;
+  font-size: var(--heading4);
 }
 
 .hr {
@@ -31,6 +33,5 @@
 .p {
   padding: 10px;
   font-size: var(--heading5);
-  /* color: black; */
 }
 

@@ -99,6 +99,7 @@
   text-align: center;
   color: var(--brown2);
   padding: 30px;
+  font-size: var(--heading3);
 }
 
 @media screen and (max-width:780px) {

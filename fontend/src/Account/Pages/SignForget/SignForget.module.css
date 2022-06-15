@@ -30,6 +30,7 @@
   text-align: center;
   color: var(--brown2);
   padding: 30px;
+  font-size: var(--heading3);
 }
 
 .hr {
@@ -67,7 +68,12 @@
 
 .p {
   padding: 10px;
-  font-size: var(--heading6);
+  font-size: 14px;
+}
+
+.msg{
+  font-size: 14px;
+  text-align: center;
 }
 
 .button {
