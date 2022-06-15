@@ -1,0 +1,17 @@
+.btn {
+  color: var(--white);
+  background-color: var(--green2);
+  font-size: var(--heading4);
+  border: 0.1rem solid #fff;
+  border-radius: 1rem;
+  display: inline;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.1s;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: var(--green3);
+  color: var(--green1);
+}

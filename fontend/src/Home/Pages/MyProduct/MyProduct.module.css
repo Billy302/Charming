@@ -10,13 +10,16 @@
     border: none;
     border-radius: 15px;
     color: var(--white);
-    background-color: var(--brown2);
+    background-color: var(--green2);
     font-weight: bold;
 }
 .addButton:hover{
-    color: var(--brown2);
-    background-color: var(--brown3);
+    color: var(--green1);
+    background-color: var(--green3);
     Cursor:pointer;
+}
+.addButton1{
+    display: none;
 }
 .cardFlex {
     display: flex;
@@ -33,6 +36,34 @@
 .arrangement{
     display: flex;
 }
+/* 設計師資訊 */
+.designer{
+    white-space:nowrap;
+    display: flex;
+    align-items: center;
+    font-size: var(--heading4);
+    margin: 20px;
+  }
+  .designer img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  .name{
+    font-size: var(--heading3);
+    color: var(--green2);
+  }
+  .info{
+    color: var(--brown1);
+  }
+  .info p{
+    margin-right: 20px;
+  }
+  .displayFlex{
+    display: flex;
+  }
+  /* ——————————————————————————————————————— */
 @media screen and (max-width:1024px){
     .cardFlex > div{
         width:25%;
@@ -50,5 +81,28 @@
     }
     .middleText {
         font-size: var(--heading6);
+    }
+    .addButton{
+        display: none;
+    }
+    .addButton1{
+        font-size: var(--heading3);
+        width: 55px;
+        height: 55px;
+        border: none;
+        border-radius: 99px;
+        color: var(--white);
+        background-color: var(--green2);
+        font-weight: bold;
+        display: block;
+        position: fixed;
+        bottom: 100px;
+        border-radius: 100px;
+        right: 15px;
+        z-index: 9;
+        box-shadow: 0px 0px 8px var(--green2);
+    }
+    .arrangement{
+        display: block;
     }
 }

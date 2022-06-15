@@ -1,59 +1,117 @@
-// 功能：取得全部商品資料。Method: GET。URL: /api/product
-// Where -> 產品名稱 & 使用者
-// 計算筆數 => Json轉陣列
-// 功能：刪除商品。Method: DELETE。URL: /api/product/:id
-import React, { useEffect, useState } from "react";
-import Style from "./Product.module.css";
-import Card from "../Card/Card";
-import productItem from "../../Mockdata/product_items.json"
-
+import React, { useEffect, useState } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import Style from './Product.module.css'
+import Card from '../Card/Card'
+import Pagination from '../../../Sales/Components/Pagination/Pagination'
+import { FaBorderAll } from 'react-icons/fa'
 
 function MyProduct() {
   const [products, setProducts] = useState([])
+  const [totalPage, setTotalPage] = useState([])
+
+  // 排序
+  const [selectedValue, setSelectedValue] = useState('')
+  const sortOptions = [
+    '價格低->高',
+    '價格高->低',
+    '售出筆數低->高',
+    '售出筆數高->低',
+  ]
+  const sortValue = {
+    '價格低->高': '&order=price&sort=asc',
+    '價格高->低': '&order=price&sort=desc',
+    '售出筆數低->高': '&order=sell_count&sort=asc',
+    '售出筆數高->低': '&order=sell_count&sort=desc',
+  }
+  // 取得當前網址資訊
+  const location = useLocation()
+  // 引用useNavigate套件
+  let navigate = useNavigate()
+  // 判斷網址內是否包含sort欄位 | order欄位
+  const searchParams = new URLSearchParams(location.search)
+  let nowSort = searchParams.get('sort') ? searchParams.get('sort') : ''
+  let nowOrder = searchParams.get('order') ? searchParams.get('order') : ''
+  let nowID = localStorage.getItem('id')
+
+  function goPath(value) {
+    if (nowSort) {
+      navigate(
+        `../${
+          location.pathname +
+          location.search.replace(
+            `&order=${nowOrder}&sort=${nowSort}`,
+            `${value}`
+          )
+        }`
+      )
+    } else {
+      navigate(`../${location.pathname + location.search + value}`)
+    }
+  }
   const fetchProducts = async () => {
-    //向遠端伺服器get資料 http://localhost:3000/Sales/api/product?id=1
-    const response = await fetch('http://localhost:3000/Sales/api/product?id=1')
-    const data = await response.json();
+    const response = await fetch(
+      `http://localhost:3001/Sales/api/product${location.search}&id=${nowID}`
+    )
+    const data = await response.json()
+    //測試
     // 載入資料後設定到狀態中
     // 設定到狀態後，因改變狀態會觸發updating生命周期，然後重新render一次
-    setProducts(data);
+    setProducts(data[0])
+    setTotalPage(data[2])
   }
-  
+
   // didMount
   useEffect(() => {
     fetchProducts()
-    console.log(products);
-  }, [])
-  
-  const doFirst = () => {
-    // 先跟 HTML 畫面產生關聯，再建事件聆聽功能
-    document.getElementById("theFile").onchange = fileChange;
-  };
-  const fileChange = () => {
-    let file = document.getElementById("theFile").files[0];
-    let image = document.getElementById("image").files[0];
-    let readFile = new FileReader();
-    readFile.readAsDataURL(file);
-    readFile.addEventListener("load", function () {
-      image.src = readFile.result;
-      image.style.maxWidth = "500px";
-      image.style.maxHeight = "500px";
-    });
-  };
-  window.addEventListener("load", doFirst);
+  }, [location.search, selectedValue])
+
   return (
-    <>
+    <div className={Style.product}>
+      {/* 排序 */}
+      <div className={Style.order} id="select">
+        <label htmlFor="sort">
+          <FaBorderAll />
+        </label>
+        <select
+          name="sort"
+          id="sort"
+          value={selectedValue}
+          onChange={(e) => {
+            setSelectedValue(sortOptions[e.target.value])
+            goPath(sortValue[e.target.value])
+          }}
+        >
+          {sortOptions.map((v, i) => {
+            return (
+              <option key={i} value={v}>
+                {v}
+              </option>
+            )
+          })}
+        </select>
+      </div>
+
       <div className={Style.arrangement}>
         <ul className={Style.cardFlex}>
-            {productItem.map((r) => (
-              <div>
-              <Card key={r.id} ID={r.id} author_name={r
-              .author_name} product_name={r['product_name']} product_copy={r.product_copy} price={r.price} pic_path={r.pic_path} sell_count={r.sell_count}/>
-              </div>
-            ))}
+          {products.map((r) => (
+            <div key={r.ID}>
+              <Card
+                userID={nowID}
+                ID={r.ID}
+                author_name={r.author_name}
+                product_name={r['product_name']}
+                product_copy={r.product_copy}
+                price={r.price}
+                pic_path={r.pic_path}
+                sell_count={r.sell_count}
+                love={r.love}
+              />
+            </div>
+          ))}
         </ul>
       </div>
-    </>
-  );
+      <Pagination totalPages={totalPage} />
+    </div>
+  )
 }
-export default MyProduct;
+export default MyProduct

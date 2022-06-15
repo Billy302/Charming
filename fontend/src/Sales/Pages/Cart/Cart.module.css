@@ -1,0 +1,427 @@
+:root {
+  --sizeS: 100px;
+  --sizeM: 150px;
+  --sizeL: 200px;
+  --sizeXL: 450px;
+}
+/* 表格-固定尺寸 */
+.blockSizeS {
+  width: var(--sizeS);
+}
+.blockSizeM {
+  width: var(--sizeM);
+}
+.blockSizeL {
+  width: var(--sizeL);
+}
+.blockSizeXL {
+  width: var(--sizeXL);
+}
+.price{
+  color: var(--red);
+}
+/* —————————————表格———————————————— */
+.shoppingList{
+  width: 80%;
+  display: flex;  
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--brown1);
+}
+.shoppingList tr:nth-child(2n) {
+  background-color: var(--brown4);
+  /* border-radius:0 0 15px 15px; */
+}
+.shoppingListS{
+  width: 60%;
+  display: flex;  
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--brown1);
+}
+.shoppingListS tr:nth-child(2n) {
+  background-color: var(--brown4);
+  /* border-radius:0 0 15px 15px; */
+}
+/* 表單項目名稱 */
+.listTitle{
+  border-radius: 15px 15px 0 0 ;
+  padding: 10px 0;
+  font-size: var(--heading5);
+  background-color: var(--brown2);
+  color: var(--white);
+}
+/* 表單項目 */ 
+.listItem:last-child{
+  border: 2px solid var(--brown3);
+  border-radius: 0 0 15px 15px;
+}
+.listItem tr{
+  display: flex;
+  align-items: center;
+}
+.listItem tr:last-child{
+  border-radius: 0 0 15px 15px;
+}
+.listItem th{
+  font-size: var(--heading5);
+}
+.listItem td{
+  border-radius: 15px;
+  font-size: var(--heading4);
+}
+.listItem img{
+  height: 100px;
+  object-fit: cover;
+}
+/* Cart2.js使用 */
+.listItem{
+  border:2px solid var(--brown3);
+  border-radius:0 0 15px 15px;
+}
+.listItem2{
+  padding: 10px 0px;
+}
+.listItem2:last-child{
+  border-radius: 0 0 15px 15px;
+}
+/* ——————————————————————————————————————— */
+/* ————————————————按鈕——————————————————— */
+/* 刪除按鈕 */
+.blockButton {
+  padding: 5px 15px;
+  color: var(--white);
+  background-color: var(--red);
+  font-size: var(--heading5);
+  border: 0px;
+  border-radius: 99px;
+  white-space:nowrap;
+}
+.blockButton:hover {
+  background-color: var(--red1);
+}
+
+/* 送出按鈕 */
+.checkButton{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px;
+}
+/* 開始結帳 */
+.button1{
+    color: var(--white);
+    background-color: var(--brown2);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 99px;
+    font-size: var(--heading4);
+    margin: 0px 30px;
+}
+.button1:hover{
+  background-color: var(--brown1);
+}
+/* 繼續選購 */
+.button2{
+    color: var(--white);
+    background-color: var(--brown3);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 99px;
+    font-size: var(--heading4);
+    margin: 0px 30px;
+}
+.button2:hover{
+  background-color: var(--brown4);
+}
+/* ——————————————————————————————————————— */
+
+/* ————cart.js（購物車為空時出現的畫面）———— */
+.emptyCart{
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  background:url(../../Assets/shopingCar.png) no-repeat center ;
+  background-size: 50%;
+}
+.emptyCart div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0;
+  font-size: var(--heading3);
+  color: var(--brown2);
+}
+.emptyCart a{
+  margin: 20px;
+  padding: 10px 30px;
+  border-radius: 99px;
+  color: #fff;
+  background-color: var(--brown2);
+}
+.emptyCart a:hover{
+  background-color: var(--brown3);
+}
+/* ——————————————————————————————————————— */
+/* ————cart2.js（填資料頁面）———— */
+/* 輸入框 */
+.infoInput{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.infoInput label{
+  width: 150px;
+  padding: 20px 0px;
+}
+.infoInput input{
+  width: 200px;
+  margin: 10px 0px;
+  border: 1px solid var(--brown3);
+  background-color: var(--brown4);
+  padding: 0px 20px;
+  font-size: var(--heading4);
+  border-radius: 15px;
+  color: var(--brown1);
+}
+.totalPrice {
+  margin: 20px 0;
+}
+
+.totalPrice label{
+  font-size: var(--heading4);
+}
+.totalPrice input{
+  width: 120px;
+  border: none;
+  background-color: #fff;
+  font-size: var(--heading3);
+  color: var(--red);
+  font-weight: bold;
+}
+/* 輸入框section */
+.blockText{
+  display: flex;
+  justify-content: flex-start;
+  color: var(--brown2);
+  font-size: var(--heading4);
+}
+/* ———————————Cart3.js(信用卡)————————————————— */
+.card{
+   display: flex;
+   flex-direction: column;
+  align-items: center;
+  margin: 50px 0px;
+  font-size: var(--heading4);
+  color: var(--brown2);
+}
+.card div{
+  max-width:100%;
+  margin:5px 0;
+}
+.card label{
+  width: 150px;
+  display: inline-block;
+  text-align: right;
+}
+.card input, select{
+  width: 250px;
+  font-size: var(--heading4);
+  border: 1px solid var(--brown3);
+  border-radius: 15px;
+  margin: 0 10px;
+  color: var(--brown2);
+  padding: 5px 10px;
+  vertical-align: middle;
+}
+.card select{
+  width: 115px;
+}
+/* 驗證輸入警告 */
+.warning{
+  display: flex;
+  justify-content: flex-end;
+  color: var(--red);
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+/* ——————————————————————————————————————— */
+/*-----success.js----- */
+.SuccessCart div{
+  margin: 120px 0px;
+}
+.SuccessCart p{
+  color: var(--green2);
+  font-size: var(--heading3);
+}
+.SuccessCart img{
+  display: flex;
+  margin: 0 auto;
+  width: 10%;
+}
+/* ------------------- */
+.tableScroll{
+  margin: 50px 0;
+  width: 1090px;
+  height: 500px;
+  overflow-y:scroll;
+}
+
+.blockTextInput{
+  margin: 20px;
+  font-weight: bold;
+}
+
+.successText{
+  color: var(--green3);
+}
+
+.block{
+  display: flex;
+}
+
+@media screen and (max-width:441px){
+  /* ------Card------ */
+  .emptyCart{
+    height: 70vh;
+    background-size: 100%;
+  }
+  .emptyCart div{
+    font-size: var(--heading4);
+  }
+  /* ---------------- */
+  /* ----card1.js---- */
+
+  .blockPicture{
+    margin: 5px 0px;
+  }
+  .blockPicture th{
+    display: none;
+  }
+  .phoneCart{
+    padding: 0px 10px;
+    display:flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  .phoneCart td:first-child{
+  order: 1;
+  padding-top: 10px;
+  font-weight: bold;
+  color: var(--green2);
+  }
+  .listItem{
+    border: none;
+  }
+  .listItem td{
+    font-size: var(--heading5);
+  }
+  .cartTable{
+    padding: 0px 10px;
+  }
+  .phoneCart td{ 
+    font-size: var(--heading6);
+  }
+  .price{
+    font-weight: bold;
+    padding-right:10px ;
+  }
+  /* ---------------- */
+  /* -------cart2.js--------- */
+  .infoInput{
+    margin-top:50px;
+  }
+  .shoppingListS{
+    width: 95%;
+    display: flex;  
+    flex-direction: column;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+    color: var(--brown1);
+  }
+  .totalPrice{
+    order: -1;
+    margin: 0px;
+  }
+  /* ---------------- */
+  /* ----cart3.js---- */
+  .creditCard{
+    margin-top: 60px;
+  }
+  /* ---------------- */
+  /* ------表格------ */
+  .shoppingList{
+    width: 100%;
+  }
+  .displayNone{
+    display: none;
+  }
+  .listTitle{
+   display: none;
+  }
+  .listItem{
+    margin-top: 60px;
+    margin-bottom: 80px;
+  }
+  .listItem:last-child{
+    border: none;
+  }
+  /* 按鈕 */
+  .checkButton{
+    position: fixed;
+    z-index: 999;
+    top: 23px;
+    background-color: rgba(255,255,255,1);
+    padding: 5px 0px;
+    border-bottom: 2px solid var(--brown3);
+    justify-content: space-between;
+  }
+  .button2, .button1{
+    margin: 0px;
+    color: var(--brown1);
+    padding: 10px 20px;
+    background-color: #fff;
+  }
+  .button2::before{
+    content: "<< ";
+    font-weight: bold;
+  }
+  .button1{
+    font-weight: bold;
+  }
+  .button1::after{
+    content: " >>";
+    font-weight: bold;
+  }
+  .button1:hover{
+    background-color: var(--brown4);
+  }
+  /*------card3------- */
+  .card{
+    margin: 10px 0;
+  }
+  .card label{
+    width: 200px;
+    /* display: block; */
+    text-align:left;
+  }
+  .card input, select{
+    margin:5px 0px;
+  }
+  .date{
+    margin-right: 15px;
+
+  }
+  .card div{
+    max-width:70%;
+    margin:5px 0;
+  }
+  .ttttt{
+    margin-bottom: 100px;
+  }
+}

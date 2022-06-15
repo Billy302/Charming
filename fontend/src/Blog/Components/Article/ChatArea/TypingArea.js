@@ -1,45 +1,85 @@
-import classes from './TypingArea.module.css';
-import { useState } from 'react';
-import usericon from './img/usericon.png';
-import PillBtn from '../../UI/PillBtn';
-import { useParams } from 'react-router-dom';
+import classes from './TypingArea.module.css'
+import { useState, useEffect } from 'react'
+import usericon from './img/usericon.png'
+import PillBtn from '../../UI/PillBtn'
+import { useParams } from 'react-router-dom'
+import { async } from 'validate.js'
 
 const TypingArea = (props) => {
-    const [chatContext, setChatContext] = useState('');
+  // 紀錄當前瀏覽到哪一篇網頁
+  const params = useParams()
+  const currentArticle = params.id
 
-    const params = useParams();
-    const currentArticle = params.id;
+  // ---------- 留言功能
 
-    const chatTypingHandler = (e) => {
-        setChatContext(e.target.value);
-    };
+  // 紀錄 user 的留言state
+  const [userInput, setUserInput] = useState('')
+  const chatTypingHandler = (e) => {
+    setUserInput(e.target.value)
+  }
 
-    const chatPostHandler = (e) => {
-        e.preventDefault();
-        // const chatDetail = { context: chatContext, id: Math.random(), img: usericon };
-        // props.onChatMsg(chatDetail);
-        // setChatContext('');
-        fetch(`http://localhost:7000/insert/comment/`, {
-            method: 'POST',
-            body: JSON.stringify({ chatContext }),
-        })
-            .then((res) => res.json())
-            .then((data) => console.log(data));
-    };
-    return (
-        <form onSubmit={chatPostHandler} method="post" className={classes['typing-area']}>
-            <label htmlFor="input"></label>
-            <input
-                type="text"
-                id="input"
-                name="test"
-                placeholder="新增回應...."
-                onChange={chatTypingHandler}
-                value={chatContext}
-            />
-            <PillBtn className={classes['typing-area--btn']}>送出留言</PillBtn>
-        </form>
-    );
-};
+  // 送出留言時把留言寫到資料庫，並且把剛剛新增的那筆留言丟回ChatArea component，該 component 會把這筆留言丟到 TypingArea 做 render
 
-export default TypingArea;
+  const chatPostHandler = (e) => {
+    e.preventDefault()
+
+    fetch(`http://localhost:3001/Blog/insert/comment/${currentArticle}`, {
+      method: 'POST',
+      body: JSON.stringify({ userInput }),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log('新增成功'))
+
+    // 紀錄剛剛使用者輸入的留言
+    const userTyping = {
+      comments_desc: userInput,
+      user_account: userAccount,
+      comments_id: Math.random(),
+    }
+    // two way binding
+    setUserInput('')
+    // 把userTyping 當作 parameter 丟回上一層
+    props.onChatMsgPassing(userTyping)
+  }
+
+  // 選擇目前瀏覽網頁的使用者id，要寫進去 userTyping(好丟回上一層)
+  const userId = localStorage.getItem('id')
+  const [userAccount, setUserAccount] = useState('')
+  const userName = async () => {
+    const data = await fetch(
+      `http://localhost:3001/Blog/userinfo?userid=${userId}`
+    )
+    const result = await data.json()
+
+    setUserAccount(result[0].user_account)
+  }
+
+  useEffect(() => {
+    userName()
+  }, [])
+
+  return (
+    <form
+      onSubmit={chatPostHandler}
+      method="post"
+      className={classes['typing-area']}
+    >
+      <label htmlFor="input"></label>
+      <input
+        type="text"
+        id="input"
+        name="test"
+        placeholder="新增回應...."
+        onChange={chatTypingHandler}
+        value={userInput}
+      />
+      <PillBtn className={classes['typing-area--btn']}>送出留言</PillBtn>
+    </form>
+  )
+}
+
+export default TypingArea

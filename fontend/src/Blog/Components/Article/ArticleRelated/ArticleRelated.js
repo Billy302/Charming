@@ -1,6 +1,7 @@
 import classes from './ArticleRelated.module.css';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { RiNumber1, RiNumber2, RiNumber3, RiNumber4, RiNumber5 } from 'react-icons/ri';
+import Fade from 'react-reveal/Fade';
 
 const ArticleRelated = (props) => {
     return (

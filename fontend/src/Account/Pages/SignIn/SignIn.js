@@ -50,7 +50,7 @@ function SignIn() {
             showConfirmButton: false,
             timer: 1500,
           }).then(() => {
-            navigate("/LoginHome");
+            navigate("/Product?page=1");
             // navigate("/Product?page=1");
           });
         }

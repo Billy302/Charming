@@ -1,0 +1,71 @@
+:root{
+  --circleSize:30px;
+}
+.progressBar {
+  display: flex;
+  width: 100%;
+  margin: 50px 0px;
+  justify-content: center;
+}
+.center{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.center p{
+  margin: 0px 25px;
+  margin-top: 10px;
+  font-size: var(--heading5);
+  color: var(--brown2);
+  white-space:nowrap;
+}
+.progressRound {
+  width: var(--circleSize);
+  height: var(--circleSize);
+  border-radius: 50%;
+  background-color: var(--yellow1);
+}
+.progressLine {
+  width: 30%;
+  height: 5px;
+  right: 0px;
+  top:calc(var(--circleSize) *2 + 2.5px);
+  margin: -50px;
+  background-color: var(--yellow1);
+  z-index: -1;
+}
+.progressActive {
+  background-color: var(--brown2);
+  z-index: 0;
+}
+/* 手機版 "購物車 " nav */
+.title{
+  display: none;
+}
+@media screen and (max-width:600px){
+  .progressBar{
+    margin: 30px 0px;
+  }
+  .center p{
+    font-size: var(--heading6);
+  }
+}
+@media screen and (max-width:450px){
+  .progressBar{
+    display: none;
+  }
+  .title{
+    position: fixed;
+    top: 0px;
+    right: 0;
+    z-index: 999;
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    padding:20px;    
+    font-size: var(--heading4);
+    color: var(--brown1);
+  }
+}

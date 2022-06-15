@@ -1,42 +1,36 @@
-import React from "react";
-import Style from "./LoginHome.module.css";
+import React from 'react'
+import Style from './LoginHome.module.css'
 // component
-import LoginNav from "../../Components/LoginNav/LoginNav";
-import Card from "../../Components/Card/Card";
-import AsideProductLIst from "../../Components/AsideProductLIst/AsideProductLIst";
-import Product from "../../Components/Product/Product";
-import Slider from "../../Components/Slider/Slider";
-import SliderSection from "../../Components/SliderSection/SliderSection";
-
+import LoginNav from '../../Components/LoginNav/LoginNav'
+import AsideProductLIst from '../../Components/AsideProductLIst/AsideProductLIst'
+import Product from '../../Components/Product/Product'
 
 // react icon
-import { AiTwotoneSound } from "react-icons/ai";
-
-// data
-import users from "../../Mockdata/users.json";
-import { ImOpt } from "react-icons/im";
-// const connection = require('../../../../../backend/modules/mysql_config');
+import { AiTwotoneSound } from 'react-icons/ai'
+import UnloginNav from '../../Components/UnloginNav/UnloginNav'
 
 function LoginHome() {
+  let now = localStorage.getItem('auth')
   return (
     <header>
-      <LoginNav />
-      <hgroup>
+      {now == 'true' ? <LoginNav /> : <UnloginNav />}
+
+      {/* <hgroup>
         <p className={Style.carousel}>
           <AiTwotoneSound className={Style.icon} />
           <p className={Style.middleText}>
             指揮中心快訊：新增75例COVID-19確定病例，分別為2例本土及73例境外移入
           </p>
         </p>
-      </hgroup>
+      </hgroup> */}
 
-      <SliderSection/>
+      {/* <SliderSection/> */}
       <section className={Style.productType}>
-        <AsideProductLIst />
+        <AsideProductLIst className={Style.displayNone} />
         <Product />
       </section>
     </header>
-  );
+  )
 }
 
-export default LoginHome;
+export default LoginHome

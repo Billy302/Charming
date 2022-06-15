@@ -1,0 +1,88 @@
+/* 上方nav */
+.navLeft {
+  font-size: 24px;
+  display: flex;
+  position: relative;
+  transition: .5s 0.2s;
+  white-space:nowrap;
+  align-items: center;
+}
+
+.navLeft a{
+  transition: .3s 0.1s;
+}
+.dispalyFlex{
+  display: flex;
+}
+.link{
+  padding-right: 50px;
+  margin: 15px;
+  font-weight: 700;
+}
+.unactive{
+  text-decoration: none;
+  color: var(--brown3);
+}
+.active{
+  font-size: 28px;
+  text-decoration: none;
+  color: var(--brown2);
+}
+
+.navLeft a hr {
+  width: 100%;
+  border-top: 3px solid;
+  position: absolute;
+  left: -20px;
+}
+
+.navLeft a:hover {
+  color: var(--brown2);
+}
+
+
+/* 右側邊內文 */
+.myAccount{
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: var(--desk-border-radius);
+  margin-left: 30px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  padding-right: 20px;
+  width: 100%;
+  color: var(--brown2);
+  font-weight: 700;
+  margin: 10px;
+}
+@media screen and (max-width:780px) {
+  .myAccount{
+    margin:15px 10px 100px 10px;
+  }
+}
+@media screen and (max-width:441px){
+
+  .navLeft{
+    font-size:var(--heading5) ;
+    justify-content: center;
+  }
+  .main{
+    flex-direction: column;
+    align-items: center;
+  }
+  .link{
+    padding-right: 0px;
+  }
+  .dispalyFlex{
+    display: flex;
+    flex-direction: column;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+  .navLeft a hr{
+    left: 0px;
+  }
+}
