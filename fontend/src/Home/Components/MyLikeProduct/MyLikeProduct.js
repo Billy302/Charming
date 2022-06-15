@@ -3,14 +3,14 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Style from './MyLikeProduct.module.css'
 import Card from '../Card/Card'
 import Pagination from '../../../Sales/Components/Pagination/Pagination'
-import {FaBorderAll} from "react-icons/fa"
+import { FaBorderAll } from 'react-icons/fa'
 
 function MyProduct() {
   const [products, setProducts] = useState([])
   const [totalPage, setTotalPage] = useState([])
 
   // 排序
-  const [selectedValue, setSelectedValue] = useState('')
+  const [selectedValue, setSelectedValue] = useState('價格低->高')
   const sortOptions = [
     '價格低->高',
     '價格高->低',
@@ -31,7 +31,7 @@ function MyProduct() {
   const searchParams = new URLSearchParams(location.search)
   let nowSort = searchParams.get('sort') ? searchParams.get('sort') : ''
   let nowOrder = searchParams.get('order') ? searchParams.get('order') : ''
-  let nowID = searchParams.get('id')
+  let nowPage = searchParams.get('page')
 
   function goPath(value) {
     if (nowSort) {
@@ -50,8 +50,11 @@ function MyProduct() {
   }
 
   const fetchProducts = async () => {
+    console.log(sortValue[selectedValue])
     const response = await fetch(
-      `http://localhost:3001/Sales/api/productUser?id=1&order=price&sort=desc&page=1`
+      `http://localhost:3001/Sales/api/productUser${
+        location.search
+      }&id=${localStorage.getItem('id')}`
     )
     const data = await response.json()
     //測試
@@ -64,14 +67,14 @@ function MyProduct() {
   // didMount
   useEffect(() => {
     fetchProducts()
-  }, [location.search, selectedValue])
+  }, [selectedValue, location.search])
 
   return (
     <div className={Style.product}>
       {/* 排序 */}
       <div className={Style.order} id="select">
-        <label for="sort" htmlFor="cars">
-        <FaBorderAll/>
+        <label htmlFor="sort">
+          <FaBorderAll />
         </label>
         <select
           name="sort"
@@ -92,12 +95,12 @@ function MyProduct() {
         </select>
       </div>
 
-      <div className={Style.arrangement}>
+      <div>
         <ul className={Style.cardFlex}>
           {products.map((r) => (
             <div key={r.ID}>
               <Card
-                userID={nowID}
+                userID={localStorage.getItem('id')}
                 ID={r.ID}
                 author_name={r.author_name}
                 product_name={r['product_name']}

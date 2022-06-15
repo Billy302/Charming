@@ -1,30 +1,14 @@
 .author-card {
-  padding: 3rem 10rem;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 8rem; */
+  /* margin: 0 auto; */
+  /* margin-left: 19rem; */
+  padding: 8rem 10rem;
 }
 
 .author-card--loop {
-}
-
-@media (max-width: 1200px) {
-}
-
-@media (max-width: 992px) {
-}
-
-@media (max-width: 768px) {
-  .author-card {
-    padding: 1rem 10rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .author-card {
-    padding: 0rem 10rem;
-  }
-}
-
-@media (max-width: 480px) {
-}
-
-@media (max-width: 375px) {
+  /* display: flext; */
+  /* margin: 8 30rem; */
 }

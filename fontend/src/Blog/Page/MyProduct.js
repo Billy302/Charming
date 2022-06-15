@@ -1,15 +1,16 @@
 import Banner from '../Components/MyProductHeader/Banner'
 import PersonalInfo from '../Components/MyProductHeader/PersonalInfo'
-import SearchBar from '../Components/SearchBar/SearchBar'
 import LoginNav from '../../Home/Components/LoginNav/LoginNav'
-import UnloginNav from '../../Home/Components/UnloginNav/UnloginNav'
+import MyProduct from '../../Home/Pages/MyProduct/MyProduct'
+
 
 const MyProductHeader = () => {
   return (
     <>
-      {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
+      <LoginNav />
       <Banner />
       <PersonalInfo />
+      <MyProduct />
     </>
   )
 }

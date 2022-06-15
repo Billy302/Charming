@@ -1,6 +1,4 @@
-// 功能：新增訂單。Method: POST。URL: /api/order
 // http://localhost:3000/Sales/Cart3
-
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Cards from 'react-credit-cards'
@@ -134,9 +132,17 @@ function Cart3() {
       })
         .then((r) => r.json())
         .then((obj) => {
-          // 新增storage:addID 提供給Cart4使用
-          storage.setItem('addID', obj)
+          console.log(obj)
         })
+      // fetch(`http://localhost:3001/Sales/api/mail`, {
+      //   method: 'post',
+      //   body: orderData,
+      // })
+      //   .then((r) => r.json())
+      //   .then((obj) => {
+      //     console.log(obj)
+      //   })
+
       Navigate('../Sales/Cart4')
     }
   }
@@ -159,13 +165,11 @@ function Cart3() {
         </div>
 
         {/* 輸入欄 */}
-        <section>
+        <section className={Style.ttttt}>
           <form className={Style.card} name="card">
             {/* 卡號 */}
             <div>
-              <label for="cardNumber" htmlFor="name">
-                信用卡卡號 :{' '}
-              </label>
+              <label htmlFor="cardNumber">信用卡卡號 : </label>
               <input
                 id="cardNumber"
                 type="tel"
@@ -177,13 +181,11 @@ function Cart3() {
                 }}
                 onFocus={(e) => SetFocus(e.target.name)}
               ></input>
-              <div id="cardNumberMsg"></div>
+              <div className={Style.warning} id="cardNumberMsg"></div>
             </div>
             {/* 持卡者姓名 */}
             <div>
-              <label for="cardName" htmlFor="name">
-                持卡者姓名 :{' '}
-              </label>
+              <label htmlFor="cardName">持卡者姓名 : </label>
               <input
                 id="cardName"
                 type="text"
@@ -196,7 +198,7 @@ function Cart3() {
                 onFocus={(e) => SetFocus(e.target.name)}
                 required
               ></input>
-              <div id="cardNameMsg"></div>
+              <div className={Style.warning} id="cardNameMsg"></div>
             </div>
             {/* 到期日期 */}
             <div>
@@ -234,13 +236,11 @@ function Cart3() {
                 <option value="29">2029</option>
                 <option value="30">2030</option>
               </select>
-              <div id="cardDateMsg"></div>
+              <div className={Style.warning} id="cardDateMsg"></div>
             </div>
             {/* 驗證碼 */}
             <div>
-              <label for="cardCvc" htmlFor="cvv">
-                後三碼 :{' '}
-              </label>
+              <label htmlFor="cardCvc">後三碼 : </label>
               <input
                 id="cardCvc"
                 type="tel"
@@ -251,7 +251,7 @@ function Cart3() {
                 }}
                 onFocus={(e) => SetFocus(e.target.name)}
               ></input>
-              <div id="cardCvcMsg"></div>
+              <div className={Style.warning} id="cardCvcMsg"></div>
             </div>
           </form>
         </section>

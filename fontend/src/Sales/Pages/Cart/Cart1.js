@@ -1,10 +1,11 @@
 // http://localhost:3000/Sales/Cart1
-import React from 'react'
+import React, { useState } from 'react'
 import Processbar from '../../Components/Processbar/Processbar'
 import Cart from './Cart'
 import Style from './Cart.module.css'
 import { useNavigate } from 'react-router-dom'
 import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
+import Swal from 'sweetalert2'
 
 function Cart1() {
   // 使用 useNavigate 套件
@@ -24,7 +25,7 @@ function Cart1() {
     // 分割localStorage的項目清單=>["1","2",""]，要刪除最後一筆
     let items = itemString.split(' |')
     items.pop()
-    console.log(items.length)
+
 
     // 動態生成table的內容
     for (let i = 0; i < items.length; i++) {
@@ -33,9 +34,9 @@ function Cart1() {
       )
       cartTable.push(
         <tr key={i + 1} className={Style.blockPicture} id={ID}>
-          <th className={Style.blockSizeS} scope="row">
+          <td className={Style.blockSizeS} scope="row">
             {i + 1}
-          </th>
+          </td>
           <td className={Style.blockSizeL}>
             <img
               className={Style.blockSizeM}
@@ -43,10 +44,8 @@ function Cart1() {
               src={`http://localhost:3000/Home/ProductImg/${pic_path}`}
             />
           </td>
-          <div className={Style.phoneCart}>
-            <td className={Style.blockSizeM}>{author_name}</td>
-            <td className={Style.blockSizeXL}>{product_name}</td>
-          </div>
+          <td className={Style.blockSizeM}>{author_name}</td>
+          <td className={Style.blockSizeXL}>{product_name}</td>
           <td className={`${Style.blockSizeM} ${Style.price}`}>
             {'$' + price}
           </td>
@@ -59,7 +58,6 @@ function Cart1() {
       )
     }
   }
-
   // 刪除語法
   function deleteItem(e) {
     // 取得按鈕所在位置的ID
@@ -70,72 +68,85 @@ function Cart1() {
     // 清除按鈕所在位置的html語法
     document.getElementById(itemId).remove()
   }
-
   return (
     <>
       <LoginNav />
       {/* 購物車為空時出現的畫面 */}
-      {/* <Cart /> */}
+      {localStorage.getItem('addItemList') != null ? '' : <Cart />}
       {/* 進度條 */}
-      <Processbar step="1" />
+      {localStorage.getItem('addItemList') != null ? (
+        <Processbar step="1" />
+      ) : (
+        ''
+      )}
       {/* 表格 */}
-      <table className={Style.shoppingList}>
-        <thead className={Style.listTitle}>
-          <tr>
-            <th
-              scope="col"
-              className={`${Style.blockSizeS} ${Style.displayNone}`}
-            >
-              No.
-            </th>
-            <th scope="col" className={Style.blockSizeL}>
-              產品圖
-            </th>
-            <th
-              scope="col"
-              className={`${Style.blockSizeM} ${Style.displayNone}`}
-            >
-              設計師
-            </th>
-            <th scope="col" className={Style.blockSizeXL}>
-              品項
-            </th>
-            <th scope="col" className={Style.blockSizeM}>
-              售價
-            </th>
-            <th scope="col" className={Style.blockSizeM}>
-              刪除
-            </th>
-          </tr>
-        </thead>
-        <tbody className={Style.listItem}>
-          <div className={Style.cartTable}>{cartTable}</div>
-        </tbody>
-      </table>
+      {localStorage.getItem('addItemList') != null ? (
+        <table className={Style.shoppingList}>
+          <thead className={Style.listTitle}>
+            <tr>
+              <th
+                scope="col"
+                className={`${Style.blockSizeS} ${Style.displayNone}`}
+              >
+                No.
+              </th>
+              <th scope="col" className={Style.blockSizeL}>
+                產品圖
+              </th>
+              <th
+                scope="col"
+                className={`${Style.blockSizeM} ${Style.displayNone}`}
+              >
+                設計師
+              </th>
+              <th scope="col" className={Style.blockSizeXL}>
+                品項
+              </th>
+              <th scope="col" className={Style.blockSizeM}>
+                售價
+              </th>
+              <th scope="col" className={Style.blockSizeM}>
+                刪除
+              </th>
+            </tr>
+          </thead>
+          <tbody className={Style.listItem}>{cartTable}</tbody>
+        </table>
+      ) : (
+        ''
+      )}
       {/* 按鈕 */}
-      <div className={Style.checkButton}>
-        <button
-          className={Style.button2}
-          onClick={() => {
-            Navigate('/Product/1')
-          }}
-        >
-          繼續選購
-        </button>
-        <button
-          className={Style.button1}
-          onClick={() => {
-            // 到下一頁
-            if (storage.getItem('addItemList')) {
-              Navigate('../Sales/Cart2')
-            } else {
-              alert('請選購商品')
-            }
-          }}
-        >
-          開始結帳
-        </button>
-      </div>
+      {localStorage.getItem('addItemList') != null ? (
+        <div className={Style.checkButton}>
+          <button
+            className={Style.button2}
+            onClick={() => {
+              Navigate(`/Product?page=1`)
+            }}
+          >
+            繼續選購
+          </button>
+          <button
+            className={Style.button1}
+            onClick={() => {
+              // 到下一頁
+              if (storage.getItem('addItemList')) {
+                Navigate('../Sales/Cart2')
+              } else {
+                Swal.fire({
+                  title: `Error!`,
+                  text: '請選購商品',
+                  icon: 'error',
+                })
+              }
+            }}
+          >
+            開始結帳
+          </button>
+        </div>
+      ) : (
+        ''
+      )}
     </>
   )
 }

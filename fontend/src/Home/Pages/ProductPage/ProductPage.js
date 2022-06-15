@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import style from './ProductPage.module.css'
 //component
 import LoginNav from '../../Components/LoginNav/LoginNav'
@@ -26,7 +27,7 @@ function ProductPage() {
       let data = await response.json()
       let dt = new Date(data[0]['create_time'])
       data[0]['create_time'] = dt.toLocaleString()
-      console.log(data[0]);
+      console.log(data[0])
       setProducts(data[0])
     } else {
       const response = await fetch(
@@ -36,7 +37,7 @@ function ProductPage() {
       let data = await response.json()
       let dt = new Date(data[0]['create_time'])
       data[0]['create_time'] = dt.toLocaleString()
-      console.log(data[0]);
+      console.log(data[0])
       setProducts(data[0])
     }
   }
@@ -49,12 +50,18 @@ function ProductPage() {
   const a = products.pic_path.split(' ')
 
   // 小圖
-  let p = []
+  let picture = []
   for (let i = 0; i < a.length; i++) {
-    p.push(
-      <button className={style.smallImg}>
+    const s = style['bigImg' + i]
+    picture.push(
+      <button className={style.ProductImg}>
         <img
-          className={style.smallImg2}
+          className={`${s} ${style.bigImg}`}
+          alt="圖片顯示失敗"
+          src={`http://localhost:3000/Home/ProductImg/${a[i]}`}
+        />
+        <img
+          className={style.smallImg}
           alt="圖片顯示失敗"
           src={`http://localhost:3000/Home/ProductImg/${a[i]}`}
         />
@@ -65,9 +72,13 @@ function ProductPage() {
   let storage = localStorage
 
   function additem() {
-    if (UserId) {
+    if (localStorage.getItem('auth') == 'true') {
       if (storage[products.ID]) {
-        alert('已成功加入購物車')
+        Swal.fire({
+          icon: 'warning',
+          title: 'warning!',
+          text: '此商品已經加入購物車',
+        })
       } else {
         if (storage['addItemList'] == null) {
           storage['addItemList'] = `${products.ID} |`
@@ -82,25 +93,27 @@ function ProductPage() {
           price: products.price,
         }
         storage.setItem(products.ID, JSON.stringify(productCart))
+        document.getElementById('cartMsg').innerHTML = '已加入購物車'
       }
     } else {
-      alert('請先登入會員')
+      Swal.fire({
+        icon: 'warning',
+        title: 'warning!',
+        text: '請先登入會員',
+      })
     }
   }
+
   return (
     <>
-      {UserId ? <LoginNav /> : <UnloginNav />}
+      {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
       {/* 商品名稱 */}
       <section className={style.ProductPage}>
-        {/* 圖片放置區 */}
-
         <div className={style.displayFlex}>
-          <img
-            className={style.bigImg}
-            alt=""
-            src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
-          />
-          <div>{p}</div>
+          {/*———————————————圖片放置區————————————————  */}
+          <div className={style.phonePicture}>{picture}</div>
+          {/* ——————————————————————————————————————— */}
+
           {/* 價格，數量，加入購物車按鈕，收藏按鈕 */}
           <div className={style.priceDiv}>
             <h3>
@@ -118,7 +131,11 @@ function ProductPage() {
             <div className={style.displayFlex}>
               <div className={style.buyNumber}>
                 <button onClick={additem} className={style.shoppingCar}>
-                  加入購物車
+                  {storage[products.ID] ? (
+                    <p id="cartMsg">已加入購物車</p>
+                  ) : (
+                    <p id="cartMsg">加入購物車</p>
+                  )}
                 </button>
               </div>
             </div>
@@ -151,7 +168,7 @@ function ProductPage() {
         {/* 商品簡介 */}
         <article className={style.ProductText}>
           <div className={style.ProductTitle}>商品介紹</div>
-          <pre>{products.product_copy}</pre>
+          <pre dangerouslySetInnerHTML={{ __html: products.product_copy }} />
         </article>
       </section>
     </>

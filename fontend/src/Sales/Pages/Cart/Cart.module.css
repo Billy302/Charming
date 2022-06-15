@@ -26,7 +26,6 @@
   display: flex;  
   flex-direction: column;
   margin: 0 auto;
-  border-collapse: collapse;
   text-align: center;
   color: var(--brown1);
 }
@@ -39,7 +38,6 @@
   display: flex;  
   flex-direction: column;
   margin: 0 auto;
-  border-collapse: collapse;
   text-align: center;
   color: var(--brown1);
 }
@@ -142,17 +140,17 @@
 
 /* ————cart.js（購物車為空時出現的畫面）———— */
 .emptyCart{
-  height: 100vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
-  background:url(./shopingCar.png) no-repeat center ;
+  background:url(../../Assets/shopingCar.png) no-repeat center ;
   background-size: 50%;
 }
 .emptyCart div{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 150px 0;
+  margin: 100px 0;
   font-size: var(--heading3);
   color: var(--brown2);
 }
@@ -242,7 +240,30 @@
 .card select{
   width: 115px;
 }
+/* 驗證輸入警告 */
+.warning{
+  display: flex;
+  justify-content: flex-end;
+  color: var(--red);
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
 /* ——————————————————————————————————————— */
+/*-----success.js----- */
+.SuccessCart div{
+  margin: 120px 0px;
+}
+.SuccessCart p{
+  color: var(--green2);
+  font-size: var(--heading3);
+}
+.SuccessCart img{
+  display: flex;
+  margin: 0 auto;
+  width: 10%;
+}
+/* ------------------- */
 .tableScroll{
   margin: 50px 0;
   width: 1090px;
@@ -266,7 +287,7 @@
 @media screen and (max-width:441px){
   /* ------Card------ */
   .emptyCart{
-    height: 100vh;
+    height: 70vh;
     background-size: 100%;
   }
   .emptyCart div{
@@ -353,7 +374,6 @@
   /* 按鈕 */
   .checkButton{
     position: fixed;
-
     z-index: 999;
     top: 23px;
     background-color: rgba(255,255,255,1);
@@ -400,5 +420,8 @@
   .card div{
     max-width:70%;
     margin:5px 0;
+  }
+  .ttttt{
+    margin-bottom: 100px;
   }
 }

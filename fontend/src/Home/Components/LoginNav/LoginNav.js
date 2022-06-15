@@ -192,7 +192,7 @@ function LoginNav(props) {
       >
         <hr />
         <ul className={style.itemList}>
-          {nowPage ? (
+          {!nowPage ? (
             <a href={`/Product/${location.search}&typeID=101`}>
               <li>NFT</li>
             </a>
@@ -201,7 +201,7 @@ function LoginNav(props) {
               <li>NFT</li>
             </a>
           )}
-          {nowPage ? (
+          {!nowPage ? (
             <a href={`/Product/${location.search}&typeID=102`}>
               <li>UI/UX</li>
             </a>
@@ -210,7 +210,7 @@ function LoginNav(props) {
               <li>UI/UX</li>
             </a>
           )}
-          {nowPage ? (
+          {!nowPage ? (
             <a href={`/Product/${location.search}&typeID=103`}>
               <li>書籍/翻譯</li>
             </a>
@@ -219,7 +219,7 @@ function LoginNav(props) {
               <li>書籍/翻譯</li>
             </a>
           )}
-          {nowPage ? (
+          {!nowPage ? (
             <a href={`/Product/${location.search}&typeID=104`}>
               <li>Logo</li>
             </a>
@@ -228,7 +228,7 @@ function LoginNav(props) {
               <li>Logo</li>
             </a>
           )}
-          {nowPage ? (
+          {!nowPage ? (
             <a href={`/Product/${location.search}&typeID=105`}>
               <li>插圖</li>
             </a>

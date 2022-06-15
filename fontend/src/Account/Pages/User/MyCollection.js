@@ -4,7 +4,7 @@ import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb'
 import { useState, useEffect } from 'react'
 import Trending from '../../../Blog/Components/FrontPage/TrendingArticle/Trending'
-import MyLoveProduct from '../../../Home/Components/MyLikeProduct/MyLikeProduct'
+import MyLikeProduct from '../../../Home/Components/MyLikeProduct/MyLikeProduct'
 import MyCollectionButton from '../../Components/MyCollectionButton/MyCollectionButton'
 import { GiConsoleController } from 'react-icons/gi'
 
@@ -36,16 +36,24 @@ function MyCollection() {
   return (
     <>
       <LoginNav />
-      <BreadCrumb />
       {/* 上方選單 */}
       <nav className={style.navLeft}>
-        <Link to="/account" className={style.unactive}>
+        <Link
+          to="/membercenter/account"
+          className={`${style.unactive} ${style.link}`}
+        >
           會員中心 <hr />
         </Link>
-        <Link to="/shoppinglist" className={style.unactive}>
+        <Link
+          to="/membercenter/shoppinglist?page=1"
+          className={`${style.unactive} ${style.link}`}
+        >
           購買清單 <hr />
         </Link>
-        <Link to="/collection" className={style.active}>
+        <Link
+          to="/membercenter/collection?page=1"
+          className={`${style.active} ${style.link}`}
+        >
           我的收藏 <hr />
           {/* user 追蹤的文章 */}
         </Link>
@@ -56,22 +64,24 @@ function MyCollection() {
           onRenderProduct={renderProductHandler}
           onRenderArticle={renderArticleHandler}
         />
-        <main className={style.main}>
-          {renderProduct ? (
-            <MyLoveProduct />
-          ) : (
-            allFavArticle.map((aritcle) => {
-              return (
-                <Link
-                  to={`../blog/article/${aritcle.article_id}`}
-                  key={aritcle.article_id}
-                >
-                  <Trending article={aritcle} key={aritcle.fav_id} />
-                </Link>
-              )
-            })
-          )}
-        </main>
+        <div className={style.myAccount}>
+          <main className={style.main}>
+            {renderProduct ? (
+              <MyLikeProduct />
+            ) : (
+              allFavArticle.map((aritcle) => {
+                return (
+                  <Link
+                    to={`../blog/article/${aritcle.article_id}`}
+                    key={aritcle.article_id}
+                  >
+                    <Trending article={aritcle} key={aritcle.fav_id} />
+                  </Link>
+                )
+              })
+            )}
+          </main>
+        </div>
       </section>
     </>
   )

@@ -7,7 +7,11 @@ const AuthorHeader = (props) => {
   return (
     <div className={classes['author-pic']}>
       <div className={classes['author-banner']}>
-        <img src={defaultImage} alt="banner" />
+        <img
+          src={defaultImage}
+          alt="banner"
+          className={classes['banner--uploadimage']}
+        />
       </div>
       <div className={classes['author-logo']}>
         <img

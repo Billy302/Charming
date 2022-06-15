@@ -5,6 +5,8 @@ import EditInfo from './EditInfo'
 import swal from 'sweetalert'
 import defaultIcon from './favicon.ico'
 import MyProductBtn from '../UI/MyProductBtn'
+import { style } from '@mui/system'
+import { MdLocationOn, MdCalendarToday } from 'react-icons/md'
 
 const PersonalInfo = (props) => {
   // 判斷目前是要 render 修改文案(true)還是顯示文案(false)
@@ -38,9 +40,7 @@ const PersonalInfo = (props) => {
   // 把使用者上傳的 logo 傳到後端
   const imageUploadHandler = async (e) => {
     swal('圖片上傳成功', '您的品味真好', 'success')
-
     e.preventDefault()
-
     let formData = new FormData()
     formData.append('file', image.data)
     const response = await fetch(
@@ -61,7 +61,7 @@ const PersonalInfo = (props) => {
       `http://localhost:3001/blog/logo/render?userid=${userId}`
     )
     const result = await data.json()
-    setUserLogo(result.logo_file)
+    setUserLogo(result[0].logo_file)
   }
 
   useEffect(() => {
@@ -115,64 +115,84 @@ const PersonalInfo = (props) => {
   }
 
   return (
-    <div className={classes['personal-info']}>
-      <div className={classes['personal-info--image']}>
-        {image.preview ? (
-          <img src={image.preview} alt="user logo" />
-        ) : (
-          <img
-            src={
-              userLogo
-                ? `http://localhost:3000/blog/upload/icon/${userLogo}`
-                : defaultIcon
-            }
-            alt="user logo"
-            className={classes['personal-info--image__user-upload']}
-          />
-        )}
-        <div className={classes['personal-info--upload-logo']}>
-          <form method="POST" onSubmit={imageUploadHandler} id="logo-form">
-            {!displayCancelBtn ? (
-              <label
-                htmlFor="logo"
-                className={`${classes['custom-file-upload']}`}
-              >
-                上傳大頭照
-              </label>
-            ) : (
-              <div
-                className={classes['personal-info--upload-logo__cancel-submit']}
-              >
-                <MyProductBtn
-                  type="button"
-                  onClick={cancelUploadHandler}
-                  value="取消"
-                />
-                <MyProductBtn type="submit" form="logo-form" value="上傳" />
-              </div>
-            )}
-            <input type="file" name="logo" id="logo" onChange={fileHandler} />
-          </form>
-        </div>
-      </div>
-
-      <div className={classes['personal-info--card']}>
-        <div>
-          {changeInfo ? (
-            <EditInfo
-              onDisplay={displayInfoHandler}
-              userStatusData={userStatus}
-              onReRenderStatus={updateStatusRenderHandler}
-            />
+    <section className={classes['personal-info']}>
+      {/* 大頭照 */}
+      <div className={classes.imgAndText2}>
+        <div className={classes['personal-info--image']}>
+          {image.preview ? (
+            <img src={image.preview} alt="user logo" />
           ) : (
-            <InfoDisplay
-              onEdit={displayEditHandler}
-              userStatusData={userStatus}
+            <img
+              src={
+                userLogo
+                  ? `http://localhost:3000/blog/upload/icon/${userLogo}`
+                  : defaultIcon
+              }
+              alt="user logo"
+              className={classes['personal-info--image__user-upload']}
             />
           )}
+          <div className={classes['personal-info--upload-logo']}>
+            <form method="POST" onSubmit={imageUploadHandler} id="logo-form">
+              {!displayCancelBtn ? (
+                <label
+                  htmlFor="logo"
+                  className={`${classes['custom-file-upload']}`}
+                >
+                  上傳大頭照
+                </label>
+              ) : (
+                <div
+                  className={
+                    classes['personal-info--upload-logo__cancel-submit']
+                  }
+                >
+                  <MyProductBtn
+                    type="button"
+                    onClick={cancelUploadHandler}
+                    value="取消"
+                  />{' '}
+                  <MyProductBtn type="submit" form="logo-form" value="上傳" />
+                </div>
+              )}
+              <input type="file" name="logo" id="logo" onChange={fileHandler} />
+            </form>
+          </div>
+        </div>
+
+        <div className={classes['personal-info--card']}>
+          <div>
+            {changeInfo ? (
+              <EditInfo
+                onDisplay={displayInfoHandler}
+                userStatusData={userStatus}
+                onReRenderStatus={updateStatusRenderHandler}
+              />
+            ) : (
+              <InfoDisplay
+                onEdit={displayEditHandler}
+                userStatusData={userStatus}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+      {/* <div className={classes.designer}>
+        <img
+          src={`http://localhost:3000/Home/ProductImg/logo1-1.jpeg`}
+          alt="user logo"
+        />
+        <div>
+          <p className={classes.name}>{localStorage.getItem('name')}</p>
+          <div className={`${classes.displayFlex} ${classes.info}`}>
+            <MdLocationOn />
+            <p>位置</p>
+            <MdCalendarToday />
+            <p>加入時間</p>
+          </div>
+        </div>
+      </div> */}
+    </section>
   )
 }
 

@@ -35,8 +35,6 @@ blog.post('/insert/comment/:id', async (req, res) => {
     res.json(result);
 });
 
-// render search page ， 精選文章上面的抬頭點進去
-
 blog.get('/search/:category', async (req, res) => {
     const sqlUpdate = `SELECT * FROM blog_topictoblog left JOIN blog_topic ON blog_topictoblog.topic_ID = blog_topic.topic_ID LEFT JOIN blog_article ON blog_topictoblog.article_ID = blog_article.article_id WHERE blog_topictoblog.topic_ID = ${req.params.category};`;
     const [result] = await db.query(sqlUpdate).catch((e) => console.log(`${sqlUpdate} error`));
@@ -60,7 +58,7 @@ blog.get('/renderSearch', async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../../fontend/public/Blog/upload/banner');
+        cb(null, '../fontend/public/Blog/upload/banner');
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -84,7 +82,7 @@ blog.post('/image', uploadImage.single('file'), async (req, res) => {
 
 blog.get('/image/render', async (req, res) => {
     const userId = req.query.userid;
-    const sqlSelect = `select * from user_pic_status where user_id = ${userId} `;
+    const sqlSelect = `select * from user_pic_status where user_id = ${userId}`;
     const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
     res.json(result);
 });
@@ -93,7 +91,7 @@ blog.get('/image/render', async (req, res) => {
 
 const storageLogo = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '../../fontend/public/Blog/upload/icon');
+        cb(null, '../fontend/public/Blog/upload/icon');
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
@@ -107,8 +105,7 @@ blog.post('/logo', uploadLogo.single('file'), async (req, res) => {
     const image = req.file.originalname;
     // const updateImg = `DELETE FROM us_banner_logo WHERE user_id = ${userId} ;
     // INSERT INTO us_banner_logo(user_id, logo_file) VALUES ('${userId}','${image}')`;
-    const updateImg = `UPDATE user_pic_status set logo_file = '${image}' where user_id = ${userId}`;
-    const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
+    const updateImg = `UPDATE user_pic_status set logo_file = '${image}' where user_id = ${userId}`;    const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
     res.json(result);
 });
 

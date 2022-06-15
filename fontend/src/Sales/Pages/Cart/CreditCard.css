@@ -18,7 +18,7 @@
 .rccs__card--discover .rccs__card__background,
 .rccs__card--maestro .rccs__card__background,
 .rccs__card--mastercard .rccs__card__background {
-  background-image: url(./any_pattern.jpg);
+  background-image: url(../../Assets/any_pattern.jpg);
   border-radius: 15px;
 }
 
@@ -36,6 +36,6 @@
   rccs-animate-background: true; */
 
 .rccs__card--unknown > div {
-  background-image: url(./any_pattern.jpg);
+  background-image: url(../../Assets/any_pattern.jpg);
   border-radius: 15px;
 }

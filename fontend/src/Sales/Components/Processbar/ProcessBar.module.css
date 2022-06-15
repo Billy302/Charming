@@ -13,6 +13,7 @@
   align-items: center;
 }
 .center p{
+  margin: 0px 25px;
   margin-top: 10px;
   font-size: var(--heading5);
   color: var(--brown2);
@@ -37,7 +38,7 @@
   background-color: var(--brown2);
   z-index: 0;
 }
-/* 手機版"購物車"nav */
+/* 手機版 "購物車 " nav */
 .title{
   display: none;
 }

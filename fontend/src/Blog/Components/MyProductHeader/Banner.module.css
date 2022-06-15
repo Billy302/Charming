@@ -1,54 +1,63 @@
-.banner {
-  margin-top: 8rem;
-  position: relative;
-  height: 50rem;
-}
-
 .banner img {
   width: 100%;
   object-fit: cover;
+  position: relative;
+  box-sizing: border-box;
+
 }
 
 .banner--uploadimage {
   width: 100%;
-  max-height: 50rem;
+  max-height: 40rem;
   object-fit: contain;
 }
 
+/* 編輯背景圖片按鈕 */
 .banner--upload {
+  width: 100%;
   position: absolute;
-  top: 85%;
-  left: 85%;
+  bottom: 0;
+  transition: 0.2s;
 }
-
+.custom-file-upload{
+  width: 100%;
+  opacity: 0;
+}
+.banner:hover .custom-file-upload{
+  opacity: 1;
+}
 .banner--upload input[type='file'] {
   display: none;
 }
+.banner--upload form{
+  display: flex;
+  justify-content: center;
+}
 
 .custom-file-upload {
-  color: var(--brown1);
-  background-color: #ccc;
-  border: 1px solid #ccc;
-  border-radius: 1rem;
-  display: inline;
-  padding: 0.6rem 1.2rem;
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0px;
+    background:rgba(53,95,28,.5);
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: bold;
+  }
+  .icon{
+    top: 2px;
+    right: 5px;
+  }
+/* ——————————————————————————————————————— */
+.banner--upload__cancel-submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  color: var(--white);
+  text-align: center;
+  padding: 20px 0px;
+  background:rgba(53,95,28,.5);
   cursor: pointer;
   transition: 0.5s;
-}
-
-.custom-file-upload:hover {
-  background-color: #eee;
-  border: 1px solid #eee;
-}
-
-.myproductbtn {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.banner--upload__cancel-submit {
-  display: flex;
-  flex-direction: column;
-  transform: translateY(-7rem) translateX(4rem);
-  transition: 1s;
+  font-weight: bold;
 }
