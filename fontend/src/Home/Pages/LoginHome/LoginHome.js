@@ -8,21 +8,22 @@ import Product from '../../Components/Product/Product'
 // react icon
 import { AiTwotoneSound } from 'react-icons/ai'
 import UnloginNav from '../../Components/UnloginNav/UnloginNav'
+import mainpic from '../../Assets/type1.png'
 
 function LoginHome() {
   let now = localStorage.getItem('auth')
   return (
     <header>
       {now == 'true' ? <LoginNav /> : <UnloginNav />}
-
-      {/* <hgroup>
+      <hgroup>
         <p className={Style.carousel}>
-          <AiTwotoneSound className={Style.icon} />
+          {/* <AiTwotoneSound className={Style.icon} /> */}
           <p className={Style.middleText}>
-            指揮中心快訊：新增75例COVID-19確定病例，分別為2例本土及73例境外移入
+            The 13th Epson International Pano Award 愛普生第 13 屆國際全景攝影獎
           </p>
         </p>
-      </hgroup> */}
+      </hgroup>
+      <img src={mainpic} className={Style.mainpic}></img>
 
       {/* <SliderSection/> */}
       <section className={Style.productType}>
