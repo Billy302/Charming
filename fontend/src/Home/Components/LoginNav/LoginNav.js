@@ -24,6 +24,7 @@ function LoginNav(props) {
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem('id')
+        localStorage.removeItem('name')
         localStorage.setItem('auth', false)
         MySwal.fire({
           title: '登出成功',
