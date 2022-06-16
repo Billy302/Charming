@@ -16,12 +16,12 @@
 6. 主視覺(劉芷廷)
 ## 影片
 影片介紹
-1.引言: 劉芷廷 xx:xx ~ xx:xx
-2.視覺: 劉芷廷 xx:xx ~ xx:xx
-3.會員: 鍾立婷 xx:xx ~ xx:xx
-4.電商: 謝協昌 xx:xx ~ xx:xx
-5.部落格: 蔡燦鴻 xx:xx ~ xx:xx
-6.討論區: 陳亭 xx:xx ~ xx:xx
-7.作品集: 吳紹雍 xx:xx ~ xx:xx
-8.結語: 謝協昌 xx:xx ~ xx:xx
+1. 引言: 劉芷廷 xx:xx ~ xx:xx
+2. 視覺: 劉芷廷 xx:xx ~ xx:xx
+3. 會員: 鍾立婷 xx:xx ~ xx:xx
+4. 電商: 謝協昌 xx:xx ~ xx:xx
+5. 部落格: 蔡燦鴻 xx:xx ~ xx:xx
+6. 討論區: 陳亭 xx:xx ~ xx:xx
+7. 作品集: 吳紹雍 xx:xx ~ xx:xx
+8. 結語: 謝協昌 xx:xx ~ xx:xx
 
