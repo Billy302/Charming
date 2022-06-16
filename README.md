@@ -1,5 +1,7 @@
 # Charming
 ## 網站介紹
+資展國際股份有限公司  前端軟體工程師就業養成班 專題
+## 主題 
 專為設計師開發的電商網站，六人團隊
 ## 使用技術
 1. 前端 React
@@ -14,12 +16,12 @@
 6. 主視覺(劉芷廷)
 ## 影片
 影片介紹
-引言: 劉芷廷 xx:xx ~ xx:xx
-視覺: 劉芷廷 xx:xx ~ xx:xx
-會員: 鍾立婷 xx:xx ~ xx:xx
-電商: 謝協昌 xx:xx ~ xx:xx
-部落格: 蔡燦鴻 xx:xx ~ xx:xx
-討論區: 陳亭 xx:xx ~ xx:xx
-作品集: 吳紹雍 xx:xx ~ xx:xx
-結語: 謝協昌 xx:xx ~ xx:xx
+1.引言: 劉芷廷 xx:xx ~ xx:xx
+2.視覺: 劉芷廷 xx:xx ~ xx:xx
+3.會員: 鍾立婷 xx:xx ~ xx:xx
+4.電商: 謝協昌 xx:xx ~ xx:xx
+5.部落格: 蔡燦鴻 xx:xx ~ xx:xx
+6.討論區: 陳亭 xx:xx ~ xx:xx
+7.作品集: 吳紹雍 xx:xx ~ xx:xx
+8.結語: 謝協昌 xx:xx ~ xx:xx
 
