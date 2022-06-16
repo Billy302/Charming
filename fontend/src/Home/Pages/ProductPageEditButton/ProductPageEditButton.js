@@ -1,64 +1,117 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import style from "./ProductPageEditButton.module.css";
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import style from './ProductPageEditButton.module.css'
 //component
-import LoginNav from "../../Components/LoginNav/LoginNav";
+import LoginNav from '../../Components/LoginNav/LoginNav'
 // icon
-import { MdLocationOn, MdCalendarToday } from "react-icons/md";
+import { MdLocationOn, MdCalendarToday } from 'react-icons/md'
+import UnloginNav from '../../Components/UnloginNav/UnloginNav'
 
 function ProductPage() {
   const [products, setProducts] = useState({
-    pic_path: "",
-  });
+    pic_path: '',
+  })
 
   // 連線檔
-  const catchUserId = useParams();
+  const catchUserId = useParams()
+  const UserId = catchUserId.UserId ? catchUserId.UserId : ''
   const fetchProducts = async () => {
-    //向遠端伺服器get資料 http://localhost:3000/Sales/api/product?id=1
-    const response = await fetch(
-      //取單一商品資料
-      `http://localhost:3001/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
-    );
-    const data = await response.json();
-    // 載入資料後設定到狀態中
-    // 設定到狀態後，因改變狀態會觸發updating生命周期，然後重新render一次
-    setProducts(data[0]);
-  };
+    // 向遠端伺服器get資料 http://localhost:3001/Sales/api/product?id=1
+    // 判斷是遊客還是會員
+    if (UserId) {
+      const response = await fetch(
+        //取單一商品資料
+        `http://localhost:3001/Sales/api/product/${catchUserId.UserId}/${catchUserId.ProductID}`
+      )
+      let data = await response.json()
+      let dt = new Date(data[0]['create_time'])
+      data[0]['create_time'] = dt.toLocaleString()
+      console.log(data[0])
+      setProducts(data[0])
+    } else {
+      const response = await fetch(
+        //取單一商品資料
+        `http://localhost:3001/Sales/api/product/${catchUserId.ProductID}`
+      )
+      let data = await response.json()
+      let dt = new Date(data[0]['create_time'])
+      data[0]['create_time'] = dt.toLocaleString()
+      console.log(data[0])
+      setProducts(data[0])
+    }
+  }
   // console.log(products);
   // didMount
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts()
+  }, [])
 
-  const a = products.pic_path.split(" ");
+  const a = products.pic_path.split(' ')
 
   // 小圖
-  let p = [];
+  let picture = []
   for (let i = 0; i < a.length; i++) {
-    p.push(
-      <button className={style.smallImg}>
+    const s = style['bigImg' + i]
+    picture.push(
+      <button className={style.ProductImg}>
         <img
-          className={style.smallImg2}
+          className={`${s} ${style.bigImg}`}
+          alt="圖片顯示失敗"
+          src={`http://localhost:3000/Home/ProductImg/${a[i]}`}
+        />
+        <img
+          className={style.smallImg}
           alt="圖片顯示失敗"
           src={`http://localhost:3000/Home/ProductImg/${a[i]}`}
         />
       </button>
-    );
+    )
+  }
+  // new
+  let storage = localStorage
+
+  function additem() {
+    if (localStorage.getItem('auth') == 'true') {
+      if (storage[products.ID]) {
+        Swal.fire({
+          icon: 'warning',
+          title: 'warning!',
+          text: '此商品已經加入購物車',
+        })
+      } else {
+        if (storage['addItemList'] == null) {
+          storage['addItemList'] = `${products.ID} |`
+        } else {
+          storage['addItemList'] += `${products.ID} |`
+        }
+        const productCart = {
+          ID: products.ID,
+          pic_path: a[0],
+          author_name: products.author_name,
+          product_name: products.product_name,
+          price: products.price,
+        }
+        storage.setItem(products.ID, JSON.stringify(productCart))
+      }
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'warning!',
+        text: '請先登入會員',
+      })
+    }
   }
   return (
     <>
-      <LoginNav />
+      {localStorage.getItem('auth') == 'true' ? <LoginNav /> : <UnloginNav />}
       {/* 商品名稱 */}
       <section className={style.ProductPage}>
-        {/* 圖片放置區 */}
-
         <div className={style.displayFlex}>
-          <img
-            className={style.bigImg}
-            alt=""
-            src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
-          />
-          <div>{p}</div>
+          {/*———————————————圖片放置區————————————————  */}
+          <div className={style.phonePicture}>{picture}</div>
+          {/* ——————————————————————————————————————— */}
+
           {/* 價格，數量，加入購物車按鈕，收藏按鈕 */}
           <div className={style.priceDiv}>
             <h3>
@@ -74,14 +127,8 @@ function ProductPage() {
             </h3>
             <p className={style.price}>${products.price}</p>
             <div className={style.displayFlex}>
-              <div>
-                <p className={style.littleInformation}>繳交檔案格式：</p>
-                <pre className={style.littleInformation}>
-                  {products.file_type}
-                </pre>
-              </div>
               <div className={style.buyNumber}>
-                <a href={`/MyProduct/Edit/1/${products.ID}`}>
+                <a href={`/MyProduct/EditProduct/${products.ID}`}>
                   <button className={style.EditProduct}>編輯商品</button>
                 </a>
               </div>
@@ -93,7 +140,7 @@ function ProductPage() {
               <img
                 className={style.designerPicture}
                 alt=""
-                src={require("../../Assets/charming_logo.png")}
+                src={require('../../Assets/charming_logo.png')}
               />
               <div>
                 <p className={style.aboutDesigner}>{products.author_name}</p>
@@ -115,10 +162,10 @@ function ProductPage() {
         {/* 商品簡介 */}
         <article className={style.ProductText}>
           <div className={style.ProductTitle}>商品介紹</div>
-          <pre>{products.product_copy}</pre>
+          <pre dangerouslySetInnerHTML={{ __html: products.product_copy }} />
         </article>
       </section>
     </>
-  );
+  )
 }
-export default ProductPage;
+export default ProductPage

@@ -1,23 +1,15 @@
-// 功能：取得全部商品資料。Method: GET。URL: /api/product
-// Where -> 產品名稱 & 使用者
-// 計算筆數 => Json轉陣列
-// 功能：刪除商品。Method: DELETE。URL: /api/product/:id
 import React, { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
 import Style from './EditProduct.module.css'
 import EditCard from '../EditCard/EditCard'
-import Pagination from '../Pagination/Pagination'
+import Pagination from '../../../Sales/Components/Pagination/Pagination'
 
 function EditProduct() {
   const [products, setProducts] = useState([])
   const [totalPage, setTotalPage] = useState([])
 
-  // 取得當前網址資訊
-  const location = useLocation()
-
   // 抓取網址中的id
-  const searchParams = new URLSearchParams(location.search)
-  let nowSort = searchParams.get('id')
+
+  let nowSort = localStorage.getItem('id')
 
   const fetchProducts = async () => {
     //向遠端伺服器get資料 http://localhost:3001/Sales/api/productShop?id=2
@@ -55,8 +47,8 @@ function EditProduct() {
             </div>
           ))}
         </ul>
+      <Pagination totalPages={totalPage} />
       </div>
-      <Pagination totalPages={totalPage} search={location.search} />
     </>
   )
 }

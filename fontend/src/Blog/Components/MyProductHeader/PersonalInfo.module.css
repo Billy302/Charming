@@ -1,0 +1,189 @@
+.personal-info {
+  /* width:100%; */
+  display: flex;
+  transition: 0.5s;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  --circleSize:15rem;
+
+}
+.personal-info--image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personal-info--image__user-upload:hover {
+  transition: 0.5s;
+}
+
+.test {
+  font-size: 2rem;
+}
+
+.personal-info--image img {
+  width: var(--circleSize);
+  height: var(--circleSize);
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+/* 文字框 */
+.personal-info--card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 3rem;
+  width: 50%;
+  box-shadow: 0px 1px 5px var(--gray3);
+  border-radius: 15px;
+  color: var(--brown1);
+}
+/* hover賣場頭像出現換圖片樣式 */
+.personal-info--upload-logo label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:rgba(53,95,28,.5);
+  position: absolute;
+  bottom: 20px;
+  left: -75px;
+  width: var(--circleSize);
+  height: var(--circleSize);
+  border-radius: 50%;
+  opacity: 0;
+ 
+}
+.custom-file-upload {
+  color: var(--white);
+  background-color: var(--green2);
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+  opacity: 0;
+  
+}
+.personal-info--image:hover .custom-file-upload{
+  opacity: 1;
+}
+.personal-info--image:hover .personal-info--upload-logo{
+  opacity: 1;
+}
+/* ——————————————————————————————————————— */
+
+.personal-info--upload-logo__cancel-submit{
+  display: flex;
+}
+.personal-info--upload-logo input[type='file'] {
+  display: none;
+}
+/* 設計師資訊 */
+.designer{
+  white-space:nowrap;
+  display: flex;
+  align-items: center;
+  font-size: var(--heading4);
+  margin:30px 100px 0px 100px;
+}
+.DesignerTitle{
+  font-size: var(--heading4);
+  color: var(--brown1);
+  margin-top: 5px;
+}
+.DesignerTitle:first-child{
+  font-weight: bold;
+}
+
+.designer img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.name{
+  font-size: var(--heading3);
+  color: var(--green2);
+}
+.info{
+  color: var(--brown1);
+}
+.info p{
+  margin-right: 20px;
+}
+.displayFlex{
+  display: flex;
+}
+/* ——————————————————————————————————————— */
+.imgAndText{
+  width: 100%;
+  display: flex;
+
+}
+.imgAndText2{
+  width: 100%;
+  display: flex;
+
+}
+/* 訪客視角 */
+@media screen and (max-width:441px){
+  .personal-info {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    --circleSize:8rem;
+  
+  }
+  /* 設計師資訊字體 */
+ .name{
+  font-size: var(--heading3);
+ }
+ .info p{
+  margin-right: 0px;
+}
+.DesignerTitle{
+  font-size: var(--heading5);
+}
+  .imgAndText{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .imgAndText2{
+    display: flex;
+    align-items: center;
+  }
+  .personal-info--card{
+    width: 60%;
+    margin-right: 15px;
+  }
+  .personal-info--upload-logo label{
+    bottom: 20px;
+    left: -40px;
+    width: var(--circleSize);
+    height: var(--circleSize);
+    border-radius: 50%;
+    opacity: 0;
+  }
+  .custom-file-upload {
+    text-align: center;
+    font-size:var(--heading5);
+  }
+  /* 設計師文字flex排列 */
+  .phoneFlex{
+    display: flex;
+    align-items: center;
+    padding-bottom:10px ;
+    justify-content: center;
+  }
+  .DesignerTitle{
+    margin-top: 0px;
+    margin-right: 20px;
+  }
+  .info{
+    display: none;
+  }
+}

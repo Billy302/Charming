@@ -1,21 +1,13 @@
-var express = require("express");
-var sales = express.Router();
-
-var multer = require("multer");
-var upload = multer();
-
-var fs = require("fs");
-
+// 引用套件
 const { body, validationResult, check } = require("express-validator");
-
+var nodemailer = require("nodemailer");
+var express = require("express");
+var multer = require("multer");
+var fs = require("fs");
+// 引用
 const connection = require("../../modules/mysql_config");
-
-// 全部商品資料需要加入where
-
-// 全部都要加回傳訊息，成功或失敗 參考 https://reurl.cc/WrAgDL
-// 圖片上傳 & 刪除 參考 https://reurl.cc/Gx5veA
-// 處理multipart/form-data https://reurl.cc/n1q27X
-// 後端表單驗證 https://reurl.cc/vdp2kN
+var sales = express.Router();
+var upload = multer();
 
 /* 商品 
 1. 功能：取得全部商品資料。Method: GET。URL: /api/product?id=  完成
@@ -35,7 +27,7 @@ sales
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 15;
+    let rowsPerPage = 20;
 
     // 分頁數
     let pageCount = 0;
@@ -67,7 +59,7 @@ sales
     }
 
     sql += ` order by product_items.${order} ${sort}
-    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+    limit ${(activePage - 1) * rowsPerPage},20;
     SELECT count(*) as totalItems FROM product_items`;
 
     if ((typeID.length != 0) & (itemsName.length != 0)) {
@@ -133,7 +125,7 @@ sales
       body("productName")
         .notEmpty()
         .withMessage("商品名稱不得為空")
-        .isLength({ max: 45 })
+        .isLength({ max: 50 })
         .withMessage("商品名稱長度錯誤"),
       body("productCopy").notEmpty().withMessage("商品文案不得為空"),
       body("price")
@@ -149,17 +141,17 @@ sales
       const error = validationResult(req);
 
       // 有錯誤就回傳，沒錯誤就跑SQL
-      // if (!error.isEmpty()) {
-      //   res.send({ error: error.array() });
-      // } else {
-      //   const sql = `INSERT INTO product_items( author_name, product_name, product_copy, price, pic_path, type_id)
-      // VALUES ('${req.body.authorName}','${req.body.productName}','${req.body.productCopy}','${req.body.price}','${req.body.picPath}','${req.body.typeID}')`;
-      //   // 執行SQL語法，新增商品資料
-      //   const [datas] = await connection.query(sql).catch((error) => {
-      //     console.log(`執行 Query : ${sql}時出錯 `);
-      //   });
-      // }
-      console.log(req.body);
+      if (!error.isEmpty()) {
+        res.send({ error: error.array() });
+      } else {
+        const sql = `INSERT INTO product_items( author_name, product_name, product_copy, price, pic_path, type_id)
+      VALUES ('${req.body.authorName}','${req.body.productName}','${req.body.productCopy}','${req.body.price}','${req.body.picPath}','${req.body.typeID}')`;
+        // 執行SQL語法，新增商品資料
+        const [datas] = await connection.query(sql).catch((error) => {
+          console.log(`執行 Query : ${sql}時出錯 `);
+        });
+        res.send("成功");
+      }
     }
   );
 
@@ -204,14 +196,14 @@ sales
   // http://localhost:3001/Sales/api/product/1
   // 需要一個參數，透過Params->商品ID  : id
   .delete(async (req, res, next) => {
-    const sql = `DELETE FROM product_items WHERE ID = ${req.params.id}`;
+    const sql = `DELETE FROM product_items WHERE ID = '${req.params.id}'`;
     // 執行SQL，刪除商品項目
     const datas = await connection.query(sql).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
     });
     res.send("delete : /api/product/:id");
   })
-  // 查詢單筆商品資料(遊客)
+  // 查詢單筆商品資料(FOR遊客 或 編輯)
   // http://localhost:3001/Sales/api/product/2
   // 需要一個參數，透過Params ->商品ID : id
   .get(async (req, res, next) => {
@@ -238,7 +230,7 @@ sales.get("/api/product/:userID/:productID", async (req, res, next) => {
   FROM product_items
   INNER JOIN all_type
   on product_items.type_id = all_type.sid
-  WHERE ID=${req.params.productID}`;
+  WHERE ID=${req.params.productID} `;
 
   // 執行SQL，查詢商品的細項
   const [datas] = await connection.query(sql).catch((error) => {
@@ -252,7 +244,7 @@ sales.get("/api/product/:userID/:productID", async (req, res, next) => {
   const [love] = await connection.query(sql2);
 
   // 如果查詢有值，datas中的lover存為True
-  if (love.length) {
+  if (love != "") {
     datas[0]["love"] = "true";
   } else {
     datas[0]["love"] = "false";
@@ -273,7 +265,7 @@ sales
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 15;
+    let rowsPerPage = 20;
 
     // 分頁數
     let pageCount = 0;
@@ -291,7 +283,7 @@ sales
     ON product_love.product_ID  = product_items.ID
     WHERE product_love.user_id = '${req.query.id}'
     order by product_items.${order} ${sort}
-    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+    limit ${(activePage - 1) * rowsPerPage},20;
     SELECT count(*) as totalItems FROM product_love WHERE product_love.user_id = '${
       req.query.id
     }';`;
@@ -300,6 +292,27 @@ sales
     const [datas] = await connection.query(sql).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
     });
+
+    // 查詢LOVE需要一個變數，userID : id
+    const sql2 = `SELECT * from product_love where user_id = ${req.query.id}`;
+
+    // 執行SQL語法，取得使用者有哪些LOVE
+    const [love] = await connection.query(sql2).catch((error) => {
+      console.log(`執行 Query : ${sql2}時出錯 `);
+    });
+
+    // 比較取出的商品中，是否有被使用者點過LOVE(新增datas物件中的love屬性)
+    // 如果有就將商品資料中love為true
+    for (let i = 0; i < Object.keys(datas[0]).length; i++) {
+      for (let j = 0; j < Object.keys(love).length; j++) {
+        if (datas[0][i]["ID"] == love[j]["product_ID"]) {
+          datas[0][i]["love"] = "true";
+        }
+      }
+      if (!datas[0][i]["love"]) {
+        datas[0][i]["love"] = "false";
+      }
+    }
 
     // 計算 分頁總數
     if (Object.values(datas[1][0]) > 0) {
@@ -323,7 +336,7 @@ sales
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 15;
+    let rowsPerPage = 20;
 
     // 分頁數
     let pageCount = 0;
@@ -344,41 +357,43 @@ sales
     // 兩個查詢第一個查詢商品，第二個查詢商品總數
     // 查詢商品需要三個變數，order依據 : order / order順序 : sort / Page頁數 : page
     // 預設為查詢第一頁，依照價格低到高
-    let sql = `SELECT product_items.* , all_type.type
-    FROM product_items
-    INNER JOIN all_type
-    on product_items.type_id = all_type.sid
-    WHERE product_items.author_name = '${authorData[0].username}'`;
 
-    if (typeID.length != 0) {
-      sql += ` and product_items.type_id ='${typeID}'`;
+    if (authorData.length) {
+      let sql = `SELECT product_items.* , all_type.type
+      FROM product_items
+      INNER JOIN all_type
+      on product_items.type_id = all_type.sid
+      WHERE product_items.author_name = '${authorData[0].username}'`;
+
+      if (typeID.length != 0) {
+        sql += ` and product_items.type_id ='${typeID}'`;
+      }
+
+      sql += ` order by product_items.${order} ${sort}
+      limit ${(activePage - 1) * rowsPerPage},20;
+      SELECT count(*) as totalItems FROM product_items WHERE product_items.author_name = '${
+        authorData[0].username
+      }'`;
+
+      if (typeID.length != 0) {
+        sql += ` and product_items.type_id ='${typeID}'`;
+      }
+
+      // 執行SQL語法，取得商品資料 & 商品總數
+      const [datas] = await connection.query(sql).catch((error) => {
+        console.log(`執行 Query : ${sql}時出錯 `);
+      });
+      // 計算 分頁總數
+      if (Object.values(datas[1][0]) > 0) {
+        pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
+      }
+
+      // 分頁總數，加進陣列
+      datas.push(pageCount);
+
+      // 總共回傳，商品資料 / 商品總數 /  分頁總數
+      res.json(datas);
     }
-
-    sql += ` order by product_items.${order} ${sort}
-    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
-    SELECT count(*) as totalItems FROM product_items WHERE product_items.author_name = '${
-      authorData[0].username
-    }'`;
-
-    if (typeID.length != 0) {
-      sql += ` and product_items.type_id ='${typeID}'`;
-    }
-
-    // 執行SQL語法，取得商品資料 & 商品總數
-    const [datas] = await connection.query(sql).catch((error) => {
-      console.log(`執行 Query : ${sql}時出錯 `);
-    });
-
-    // 計算 分頁總數
-    if (Object.values(datas[1][0]) > 0) {
-      pageCount = Math.ceil(Object.values(datas[1][0]) / rowsPerPage); //pageCount即分頁資料總頁數
-    }
-
-    // 分頁總數，加進陣列
-    datas.push(pageCount);
-
-    // 總共回傳，商品資料 / 商品總數 /  分頁總數
-    res.json(datas);
   });
 
 /*訂單
@@ -398,7 +413,7 @@ sales
     let activePage = req.query.page ? req.query.page : 1;
 
     // 一次取幾筆
-    let rowsPerPage = 15;
+    let rowsPerPage = 20;
 
     // 分頁數
     let pageCount = 0;
@@ -407,7 +422,7 @@ sales
     const sql = `SELECT product_case.* 
     FROM product_case 
     WHERE product_case.user_ID  = '${req.query.id}'
-    limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};
+    limit ${(activePage - 1) * rowsPerPage},20;
     SELECT count(*) as totalItems FROM product_case WHERE product_case.user_ID  = '${
       req.query.id
     }'`;
@@ -423,23 +438,19 @@ sales
 
     // 加進陣列 分頁總數
     datas.push(pageCount);
-
     res.send(datas);
   })
   // 新增訂單 & 訂單詳細，處理multipart/form-data的狀態
   // http://localhost:3001/Sales/api/orderUser
+  // 前端傳值 addUser & addItemList
+  // addUser : 1 | 150  (用戶ID | 總價)
+  // addItemList :
+  // [{"ID":26,
+  // "pic_path":"illustration1-1.jpeg",
+  // "author_name":"mohammadkasim",
+  // "product_name":"建立原創的兒童書籍插圖和封面",
+  // "price":150}]
   .post(upload.array(), async (req, res, next) => {
-    // 前端傳值 addUser & addItemList
-
-    // addUser : 1 | 150  (用戶ID | 總價)
-
-    // addItemList :
-    // [{"ID":26,
-    // "pic_path":"illustration1-1.jpeg",
-    // "author_name":"mohammadkasim",
-    // "product_name":"建立原創的兒童書籍插圖和封面",
-    // "price":150}]
-
     // 接值
     let { addUser, addItemList } = req.body;
     // [1],[150]
@@ -455,7 +466,7 @@ sales
       console.log(`執行 Query : ${sql}時出錯 `);
     });
     // 取得訂單總數，總數 = 最後一筆的ID
-    sql = `SELECT count(*) total FROM product_case`;
+    sql = `SELECT ID  FROM product_case ORDER by create_time desc LIMIT 1`;
 
     const [orderCount] = await connection.query(sql).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
@@ -465,18 +476,19 @@ sales
     let sql2 = "INSERT INTO product_case_items(case_ID, product_ID) VALUES";
     for (let i = 0; i < addItemList.length; i++) {
       if (i < addItemList.length - 1) {
-        sql2 += `('${orderCount[0]["total"]}','${addItemList[i]["ID"]}'),`;
+        sql2 += `('${orderCount[0]["ID"]}','${addItemList[i]["ID"]}'),`;
       } else {
-        sql2 += `('${orderCount[0]["total"]}','${addItemList[i]["ID"]}')`;
+        sql2 += `('${orderCount[0]["ID"]}','${addItemList[i]["ID"]}')`;
       }
     }
+    console.log(sql2);
     const [orderDetail] = await connection.query(sql2).catch((error) => {
       console.log(`執行 Query : ${sql}時出錯 `);
     });
 
     let orderID = [];
     orderID.push(parseInt(addUser[0]), orderCount[0]["total"]);
-    res.send(orderID);
+    res.send("成功");
   });
 
 // 取得使用者訂單的詳細內容 TO C
@@ -501,7 +513,7 @@ sales.get("/api/orderUser/:id", async (req, res, next) => {
 // http://localhost:3001/Sales/api/orderUser/1/17
 // 需要一個參數，透過params-> 使用者ID : userID | 訂單ID : caseID
 sales.get("/api/orderUser/:userID/:caseID", async (req, res, next) => {
-  let sql = `SELECT product_case.ID as CaseID, product_case.create_time, product_case.total_price , product_items.pic_path ,
+  let sql = `SELECT product_case.ID as CaseID, product_case_items.product_ID as productID, product_case.create_time, product_case.total_price , product_items.pic_path ,
   product_items.author_name ,product_items.product_name , product_items.price
   FROM product_case_items
   JOIN product_case
@@ -525,7 +537,7 @@ sales.get("/api/orderShop", async (req, res, next) => {
   let itemsName = req.query.itemsName ? req.query.itemsName : "";
   let activePage = req.query.page ? req.query.page : 1;
   // 一次取幾筆
-  let rowsPerPage = 15;
+  let rowsPerPage = 20;
   // 分頁數
   let pageCount = 0;
 
@@ -554,7 +566,7 @@ sales.get("/api/orderShop", async (req, res, next) => {
     sql += ` and product_items.product_name like '%%${itemsName}%%'`;
   }
   // 查詢範圍
-  sql += `limit ${(activePage - 1) * rowsPerPage},${activePage * rowsPerPage};`;
+  sql += `limit ${(activePage - 1) * rowsPerPage},20;`;
   // 查詢筆數
   sql += `SELECT count(*) as totalItems 
   FROM product_case_items  
@@ -616,36 +628,52 @@ sales
   });
 
 /* 雜項
-1. 功能 : 上傳圖片。Method: POST。URL: /api/upload  檔案儲存位置 fontend/src/Home/Assets/ProductImg 未驗證
-2. 功能 : 刪除圖片。Method: POST。URL: /api/delete  未驗證
+圖片檔案儲存位置 fontend/src/Home/Assets/ProductImg
+1. 功能 : 上傳圖片。Method: POST。URL: /api/upload  
+2. 功能 : 刪除圖片。Method: POST。URL: /api/delete  
+3. 功能 : 寄送Mail。Method: POST。URL: /api/Mail  
+4. 功能 : 取得會員資料。 MEethod GET。URL: /api/member
 */
 
 // 設定multer內的參數，由前端限定上傳格式，檔案另存位置 & 檔名
 var storage = multer.diskStorage({
   // 檔案上傳到這裡
   destination: function (req, file, cb) {
-    cb(null, "../../../fontend/public/Home/ProductImg");
+    cb(null, "../fontend/public/Home/ProductImg");
   },
+
   // 定義檔案名稱規範
   filename: function (req, file, cb) {
-    cb(null, Date.now());
+    cb(null, Date.now().toString() + file.originalname.substr(-5));
   },
 });
 
 upload = multer({ storage: storage });
 // 新增圖片檔
-// 前端input type="file" name="uploadedFiles"，限制5筆資料
+// 前端input type="file"
+// http://localhost:3001/Sales/api/upload
 sales.post(
   "/api/upload",
-  upload.array("uploadedFiles", 5),
-  async (req, res, next) => {
-    res.send(JSON.stringify(req.files));
+  upload.array("theFile1", 5),
+  function (req, res, next) {
+    console.log(req.files);
+    // {"fieldname":"theFile1",
+    // "originalname":"Andrew.png",
+    // "encoding":"7bit",
+    // "mimetype":"image/png",
+    // "destination":"uploads",
+    // "filename":"1649758841069.jpge",
+    // "path":"uploads\\1649758841069-Andrew.jpge",
+    // "size":8810
+    // }
+    res.send(req.files);
   }
 );
 // 刪除圖片檔
 // 需要一個參數，以body -> 檔名 : name
+// http://localhost:3001/Sales/api/delete
 sales.post("/api/delete", async (req, res, next) => {
-  fs.unlink(`../fontend/src/Home/assets/${req.body.id}.png`, (err) => {
+  fs.unlink(`../fontend/public/Home/ProductImg/${req.body.name}`, (err) => {
     if (err) {
       console.log(err);
       res.send("刪除文件失敗");
@@ -653,6 +681,67 @@ sales.post("/api/delete", async (req, res, next) => {
       res.send("刪除文件成功");
     }
   });
+});
+
+// Mail設定，用hotmail寄送，SMTP
+var mailTransport = nodemailer.createTransport({
+  host: "smtp-mail.outlook.com",
+  port: 587,
+  tls: {
+    rejectUnauthorized: false,
+  },
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASSWORD,
+  },
+});
+// 寄送mail
+// 當前測試只能用hotmail，無論發送者或接收者
+// http://localhost:3001/Sales/api/mail
+// 前端傳值 addUser & addItemList
+// addUser : 1 | 150  (用戶ID | 總價)
+// addItemList :
+// [{"ID":26,
+// "pic_path":"illustration1-1.jpeg",
+// "author_name":"mohammadkasim",
+// "product_name":"建立原創的兒童書籍插圖和封面",
+// "price":150}]
+sales.post("/api/mail", upload.none(), async (req, res, next) => {
+  // 取得用戶的信箱
+  let { addUser, addItemList } = req.body;
+  addUser = addUser.split(" | ");
+  // 轉換型別
+  addItemList = JSON.parse(addItemList);
+  // addItemList[i]["pic_path"] 檔案名稱
+
+  const sql = `SELECT username , email FROM us_user WHERE  id = '${addUser[0]}'`;
+  const [data] = await connection.query(sql).catch((error) => {
+    console.log(`執行 Query : ${sql}時出錯 `);
+  });
+  let picPath = [];
+  for (let i = 0; i < addItemList.length; i++) {
+    picPath.push({
+      filename: addItemList[i]["pic_path"],
+      path: `../fontend/public/Home/ProductImg/${addItemList[i]["pic_path"]}`,
+    });
+  }
+  mailTransport.sendMail({
+    from: process.env.GMAIL_USER,
+    to: data[0]["email"],
+    subject: "Charming網，您的商品已送達",
+    html: `<div>親愛的會員${data[0]["username"]}，</div><div>    您所購買的商品已送達，請參照附件</div>`,
+    attachments: picPath,
+  });
+  res.send("成功");
+});
+
+// http://localhost:3001/Sales/api/member?id=1
+sales.get("/api/member", async (req, res, next) => {
+  const sql = `SELECT username , join_at FROM us_user WHERE id = '${req.query.id}'`;
+  const [data] = await connection.query(sql).catch((error) => {
+    console.log(`執行 Query : ${sql}時出錯 `);
+  });
+  res.send(data[0]);
 });
 
 module.exports = sales;

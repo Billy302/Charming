@@ -1,0 +1,32 @@
+.ProductBtobButton {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 8px;
+  font-size: var(--heading4);
+}
+
+.ProductBtobButton a {
+  width: 150px;
+  color: var(--brown2);
+  margin-bottom: 5px;
+  padding: 10px 20px;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0px 2px 2px var(--gray3);
+  white-space: nowrap;
+  font-weight: bold;
+  Cursor:pointer;
+}
+.ProductBtobButton a:hover {
+  background-color: var(--brown3);
+}
+@media screen and (max-width:441px){
+  .ProductBtobButton{
+    flex-direction: row;
+    justify-content: center;
+  }
+  .ProductBtobButton a:first-child {
+    margin-right: 10px;
+  }
+}

@@ -1,35 +1,37 @@
 /* 上方nav */
 .navLeft {
-  padding: 0px 0px 10px 20px;
   font-size: 24px;
   display: flex;
   position: relative;
   transition: .5s 0.2s;
+  white-space:nowrap;
+  align-items: center;
 }
 
 .navLeft a{
   transition: .3s 0.1s;
 }
-
-.unactive{
-  padding: 0px 50px 0px 0px;
+.dispalyFlex{
+  display: flex;
+}
+.link{
+  padding-right: 50px;
   margin: 15px;
   font-weight: 700;
+}
+.unactive{
   text-decoration: none;
   color: var(--brown3);
 }
 .active{
-  padding: 0px 50px 0px 0px;
-  margin: 15px;
-  font-weight: 700;
   font-size: 28px;
   text-decoration: none;
   color: var(--brown2);
 }
 
 .navLeft a hr {
-  width: 150px;
-  border-top: 5px solid;
+  width: 100%;
+  border-top: 3px solid;
   position: absolute;
   left: -20px;
 }
@@ -38,104 +40,49 @@
   color: var(--brown2);
 }
 
-/* 左側邊選單 */
-/* .aside {
-  margin: 0px 55px;
-  width: 15%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-.ul li a {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: block;
-  padding: 10px;
-  margin: 5px;
-  color: var(--brown2);
-  text-decoration: none;
-  border: 1px solid var(--brown3);
-  border-radius: var(--desk-border-radius);
-  background-color: var(--brown3);
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.ul li a:hover {
-  margin: 0;
-  font-size: 26px;
-} */
 
 /* 右側邊內文 */
-.main {
-  margin: 10px auto 50px;
-  width: 80%;
+.myAccount{
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   border-radius: var(--desk-border-radius);
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  margin-left: 30px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  padding-right: 20px;
+  width: 100%;
   color: var(--brown2);
   font-weight: 700;
-  display: flex;
-  flex-direction: column;
+  margin: 10px;
 }
+@media screen and (max-width:780px) {
+  .myAccount{
+    margin:15px 10px 100px 10px;
+  }
+}
+@media screen and (max-width:441px){
 
-.main img {
-  width: 80px;
-}
-
-/* 大頭貼 姓名 登入狀態 會員稱號 */
-.item1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-}
-
-.item1 img{
-  margin: 0px 0px 15px;
-}
-
-/* 基本資料 */
-.item2 {
-  width: 50%;
-  margin-right: 10px;
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0px 0px 150px;
-}
-
-.item2 label {
-  padding: 10px;
-}
-.item2 p {
-  padding: 10px;
-}
-
-/* 編輯button */
-.item3 {
-  width: 25%;
-  align-self: flex-end;
-}
-
-.h1 {
-  text-align: center;
-  color: var(--brown2);
-  padding: 30px;
-}
-
-.form {
-  color: var(--main-color);
-}
-
-.form label {
-  margin: 5px;
-}
-
-.button {
-  padding: 5px;
-  margin: 25px 0px 50px 0px;
-  width: 80px;
-  border-radius: 15px;
-  border: 2px solid var(--brown2);
-  background-color: var(--brown2);
-  color: #ffffff;
-  cursor: pointer
+  .navLeft{
+    font-size:var(--heading5) ;
+    justify-content: center;
+  }
+  .main{
+    flex-direction: column;
+    align-items: center;
+  }
+  .link{
+    padding-right: 0px;
+  }
+  .dispalyFlex{
+    display: flex;
+    flex-direction: column;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+  .navLeft a hr{
+    left: 0px;
+  }
 }

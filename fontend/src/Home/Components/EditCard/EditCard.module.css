@@ -14,6 +14,8 @@
 }
 .cardSize img{
 	width: 100%;
+	height: 200px;
+	object-fit: cover;
 }
 
 /* 點讚愛心 */
@@ -57,7 +59,7 @@
 	align-items: flex-end;
 }
 .icons{
-	color: var(--brown2);
+	color: var(--green2);
 	margin-left: 15px;
 	font-size: var(--heading4);
 }

@@ -9,8 +9,8 @@
     margin-left: 2rem;
 }
 
-a:link,
-a:visited {
+.pillbtn a:link,
+.pillbtn a:visited {
     color: #795252;
 }
 

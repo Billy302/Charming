@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import Style from './Product.module.css'
 import Card from '../Card/Card'
-import Pagination from '../Pagination/Pagination'
+import Pagination from '../../../Sales/Components/Pagination/Pagination'
+import { FaBorderAll } from 'react-icons/fa'
 
 function MyProduct() {
   const [products, setProducts] = useState([])
@@ -30,7 +31,7 @@ function MyProduct() {
   const searchParams = new URLSearchParams(location.search)
   let nowSort = searchParams.get('sort') ? searchParams.get('sort') : ''
   let nowOrder = searchParams.get('order') ? searchParams.get('order') : ''
-  let nowID = searchParams.get('id')
+  let nowID = localStorage.getItem('id')
 
   function goPath(value) {
     if (nowSort) {
@@ -47,10 +48,9 @@ function MyProduct() {
       navigate(`../${location.pathname + location.search + value}`)
     }
   }
-
   const fetchProducts = async () => {
     const response = await fetch(
-      `http://localhost:3001/Sales/api/product${location.search}`
+      `http://localhost:3001/Sales/api/product${location.search}&id=${nowID}`
     )
     const data = await response.json()
     //測試
@@ -66,11 +66,12 @@ function MyProduct() {
   }, [location.search, selectedValue])
 
   return (
-    <>
+    <div className={Style.product}>
       {/* 排序 */}
-      <section id="select">
-        <h2>排序方式</h2>
-        <label htmlFor="cars">選擇:</label>
+      <div className={Style.order} id="select">
+        <label htmlFor="sort">
+          <FaBorderAll />
+        </label>
         <select
           name="sort"
           id="sort"
@@ -88,7 +89,7 @@ function MyProduct() {
             )
           })}
         </select>
-      </section>
+      </div>
 
       <div className={Style.arrangement}>
         <ul className={Style.cardFlex}>
@@ -109,8 +110,8 @@ function MyProduct() {
           ))}
         </ul>
       </div>
-      <Pagination totalPages={totalPage} search={location.search} />
-    </>
+      <Pagination totalPages={totalPage} />
+    </div>
   )
 }
 export default MyProduct

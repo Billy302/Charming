@@ -1,33 +1,13 @@
-// 功能：取得會員個人資料 Method: ? URL: ? ，等會員寫完
-// 功能：加入購物車，order(key) 基本資料(姓名/聯絡方式/總價) ，要看會員怎麼寫
-// 先用JSON假資料取代
 // http://localhost:3000/Sales/Cart2
-
-import React, { useState, useEffect } from 'react'
-import Processbar from '../../Components/ProcessBar/Processbar'
+import React, { useState } from 'react'
+import Processbar from '../../Components/Processbar/Processbar'
 import Style from './Cart.module.css'
 import { useNavigate } from 'react-router-dom'
 import LoginNav from '../../../Home/Components/LoginNav/LoginNav'
-import number from '../../Json/number.json'
 
 function Cart2() {
   // 使用 useNavigate 套件
   let Navigate = useNavigate()
-
-  // 要看會員怎麼寫
-  // const [member, setmember] = useState([])
-  // const fetchProducts = async () => {
-  //   const response = await fetch(
-  //     `http://localhost:3001/Sales/api/orderUser?id=`
-  //   )
-  //   const data = await response.json()
-  //   setmember(data[0])
-  // }
-
-  // componentDidMount
-  // useEffect(() => {
-  //   fetchProducts()
-  // }, [])
 
   const [inputText, setInputText] = useState('')
 
@@ -77,24 +57,12 @@ function Cart2() {
       {/* 輸入框 */}
       <form className={Style.infoInput}>
         <div className={Style.blockText}>
-          <label for="inputName">姓名</label>
+          <label htmlor="inputName">姓名</label>
           <input
             id="inputName"
             type="text"
             disabled
-            value={number[0].username}
-            onChange={(e) => {
-              setInputText(e.target.value)
-            }}
-          />
-        </div>
-        <div className={Style.blockText}>
-          <label for="inputTel">聯絡方式</label>
-          <input
-            id="inputTel"
-            type="text"
-            disabled
-            value={number[0].mobile}
+            value={localStorage.getItem('name')}
             onChange={(e) => {
               setInputText(e.target.value)
             }}
@@ -122,7 +90,7 @@ function Cart2() {
         </thead>
         <tbody className={Style.listItem}>{cartTable}</tbody>
         <div className={Style.totalPrice}>
-          <label for="inputPrice">總價：</label>
+          <label htmlFor="inputPrice">總價：</label>
           <input
             className={Style.totalPrice}
             id="inputPrice"
@@ -153,7 +121,10 @@ function Cart2() {
             // 到下一頁
             Navigate('../Sales/Cart3')
             // 將個人資料存入Session，購買者ID & 訂單總價
-            storage.setItem('addUser', `1 | ${totalPrice}`)
+            storage.setItem(
+              'addUser',
+              `${storage.getItem('id')} | ${totalPrice}`
+            )
           }}
         >
           確認訂單

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Styles from './Card.module.css'
-import { FcLikePlaceholder, FcDislike } from 'react-icons/fc'
-import { useLocation, useParams } from 'react-router-dom'
+import { FcLikePlaceholder, FcLike } from 'react-icons/fc'
 
 interface CardProps {
   userID: number
@@ -29,12 +28,7 @@ const Card: React.FC<CardProps> = ({
   // let a = products[0]["pic_path"].split(" ");
   const a = pic_path.split(' ')
 
-  // 取得當前網址資訊
-  const location = useLocation()
-
-  // 抓取網址中的id
-  const searchParams = new URLSearchParams(location.search)
-  let nowSort = searchParams.get('id') ? searchParams.get('id') : ''
+  let nowSort = localStorage.getItem('id') ? localStorage.getItem('id') : ''
 
   const [loveState, setLoveState] = useState(love)
 
@@ -61,39 +55,37 @@ const Card: React.FC<CardProps> = ({
   return (
     <li className={Styles.cardContainer}>
       <div id="card" className={Styles.cardSize}>
-          {userID ? (
-            <a href={`/Product/${userID}/${ID}`}>
-              {' '}
-              <img
-                alt="圖片無法顯示"
-                src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
-              />
-            </a>
-          ) : (
-            <a href={`/Product/${ID}`}>
-              {' '}
-              <img
-                alt="圖片無法顯示"
-                src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
-              />
-            </a>
-          )}
+        {userID ? (
+          <a href={`/Product/${ID}`}>
+            {' '}
+            <img
+              alt="圖片無法顯示"
+              src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
+            />
+            <h2>{product_name}</h2>
+          </a>
+        ) : (
+          <a href={`/Product/${ID}`}>
+            {' '}
+            <img
+              alt="圖片無法顯示"
+              src={`http://localhost:3000/Home/ProductImg/${a[0]}`}
+            />
+            <h2>{product_name}</h2>
+          </a>
+        )}
 
         {nowSort ? (
           loveState == 'true' ? (
-            <FcLikePlaceholder className={Styles.like} onClick={check} />
+            <FcLike className={Styles.like} onClick={check} />
           ) : (
-            <FcDislike className={Styles.like} onClick={check} />
+            <FcLikePlaceholder className={Styles.like} onClick={check} />
           )
         ) : (
           ''
         )}
-        <a href="">
-          <h2>{product_name}</h2>
-        </a>
-        <a href="">
-          <p>{author_name}</p>
-        </a>
+
+        <a href="/shopcenter/myproductLook?page=1">{author_name}</a>
 
         <div className={Styles.price}>
           <h3>${price}</h3>

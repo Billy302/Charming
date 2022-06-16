@@ -21,6 +21,13 @@
 .productType{
     display: flex;
 }
+.mainpic{
+    max-width: 60%;
+    margin: 70px auto;
+    display: flex;
+    justify-content: center;
+    /* height: 400px; */
+}
 @media screen and (max-width:1024px){
     .icon{
         position: absolute;
@@ -34,5 +41,9 @@
 @media screen and (max-width:441px){
     .middleText {
         font-size: var(--heading6);
+    }
+    .mainpic{
+        max-width: 100%;
+        margin: 20px auto;
     }
 }

@@ -7,6 +7,8 @@ function AsideProductLIst() {
   let newPath = []
   const searchParams = new URLSearchParams(location.search)
   let type = searchParams.get('typeID') ? searchParams.get('typeID') : ''
+  let current = searchParams.get('page') ? searchParams.get('page') : '1'
+
   if (type) {
     newPath.push(
       <aside className={style.AsideProduct}>
