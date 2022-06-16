@@ -192,51 +192,21 @@ function LoginNav(props) {
       >
         <hr />
         <ul className={style.itemList}>
-          {!nowPage ? (
-            <a href={`/Product/${location.search}&typeID=101`}>
-              <li>NFT</li>
-            </a>
-          ) : (
             <a href={`/Product?page=1&typeID=101`}>
               <li>NFT</li>
             </a>
-          )}
-          {!nowPage ? (
-            <a href={`/Product/${location.search}&typeID=102`}>
-              <li>UI/UX</li>
-            </a>
-          ) : (
             <a href={`/Product?page=1&typeID=102`}>
               <li>UI/UX</li>
             </a>
-          )}
-          {!nowPage ? (
-            <a href={`/Product/${location.search}&typeID=103`}>
-              <li>書籍/翻譯</li>
-            </a>
-          ) : (
             <a href={`/Product?page=1&typeID=103`}>
               <li>書籍/翻譯</li>
             </a>
-          )}
-          {!nowPage ? (
-            <a href={`/Product/${location.search}&typeID=104`}>
-              <li>Logo</li>
-            </a>
-          ) : (
             <a href={`/Product?page=1&typeID=104`}>
               <li>Logo</li>
             </a>
-          )}
-          {!nowPage ? (
-            <a href={`/Product/${location.search}&typeID=105`}>
-              <li>插圖</li>
-            </a>
-          ) : (
             <a href={`/Product?page=1&typeID=105`}>
               <li>插圖</li>
             </a>
-          )}
         </ul>
         <hr />
       </div>
