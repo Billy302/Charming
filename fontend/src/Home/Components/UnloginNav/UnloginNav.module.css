@@ -1,0 +1,237 @@
+/* ———————————————登入後nav—————————————— */
+    /* 固定在最上層 */
+    .mainPage{
+      position: sticky;
+      top: 0;
+      z-index:1;
+      background-color: rgba(255,255,255,.8);
+      --allNavText:var(--heading4);
+      --allSearchText:var(--heading5);
+      --allTextColor:var(--brown2);
+      --allHoverColor:var(--brown3);
+      --searchBarWidth:100%;
+      --searchBarHeight:70%;
+      --itemListPadding:7%;
+    }
+    /* nav最外圍 */
+    .navBar{
+      display: flex;
+      justify-content:space-between;
+    }
+    
+    /* 選項最外圍 */
+    .itemStyle{
+      display: flex;
+    }
+    .itemStyle > div{
+      display: flex;
+      align-items: center;
+    }
+    /* 全體li樣式 */
+    .itemStyle li{
+      margin-top: 5px;
+      margin-bottom:10px;
+      padding:5px 10px;
+      left: .5em;
+      color: var(--allTextColor);
+      font-size: var(--allNavText);
+      font-weight:bold;
+      align-items: center;
+      white-space:nowrap;
+      border-radius: 15px;
+    }
+    .itemStyle a li:hover{
+      color: var(--allHoverColor);
+    }
+/* logoIcon */
+    .logoIcon{
+      display: flex;
+      align-items: center;
+      padding-top: 5px;
+    }
+    .logoIcon img{
+      object-fit: contain;
+      width: 50px;
+    }
+    .logoIcon p{
+      padding-left:.3em ;
+      white-space:nowrap;
+      color: var(--allTextColor);
+      font-size: var(--allNavText);
+      font-weight: bold;
+    }
+ 
+    /* 語言切換 */
+    .itemStyle select {
+      width: auto;
+      font-size: var(--allNavText);
+      font-weight: bold;
+      border: none;
+      outline: none;
+      appearance: none;
+      color: var(--allTextColor);
+      padding: 0px 5px;
+      background-color: transparent;
+   } 
+   .changeLanguage{
+    vertical-align: middle;
+   }
+
+/* ——————————————————————————————————————— */
+
+/* ——————————————搜尋條————————————————— */
+    .searchBar{
+      display: flex;
+      margin-top: 5px;
+      margin-left: 15px;
+    }
+    .searchBar > :first-child{
+      width: var(--searchBarWidth);
+      height: var(--searchBarHeight);
+      border: var(--border);
+      border-radius: 15px 0px 0px 15px;
+      padding:0px 15px;
+      font-size: var(--allSearchText);
+      outline: none;
+      background-color: transparent;
+    }
+    .searchBar > :last-child{
+      color: var(--white);
+      font-size: var(--allSearchText);
+      align-items: center;
+      width: 60px;
+      height: var(--searchBarHeight);
+      border: var(--border);
+      border-left: none;
+      border-radius: 0px 15px 15px 0px;
+      background-color: var(--allTextColor);
+    }
+    .searchBar > :last-child:hover{
+    background-color: var(--brown1);
+  }
+/* ———————————————pad search bar—————————————— */
+  .padSearch{
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+  .padSearchBar{
+    display: none;
+    width: var(--searchBarWidth);
+    height: var(--searchBarHeight);
+    padding:0 1px 0 20px;
+      border-radius: 30px;
+      background-color: var(--white);
+      border:var(--border);
+      outline: none;
+      background-color: transparent;
+  }
+  .padSearchBar:focus{
+    border: var(--border);
+  }
+  .padSearchIcon{
+    display: none;
+    color: var(--allTextColor);
+      position: absolute;
+      top: 8px;
+      left:9px;
+      bottom: .7em;
+      z-index: 1;
+  }
+/* ——————————————————————————————————————— */
+
+/* —————————往下滾動時滑時出現的種類選項———————— */
+.displayblock{
+  display: block;
+}
+.displayNone{
+  display: none;
+}
+  .itemList{
+    font-size: var(--heading4);
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 15px;
+  }
+  .itemList a{
+    padding:.5em ;
+    border-radius: 99px;
+    padding-right:var(--itemListPadding) ;
+    padding-left:var(--itemListPadding) ;
+    /* white-space:nowrap; */
+  }
+  .itemList li{
+    color: var(--allTextColor);
+  }
+  .itemList a:hover{
+    background-color: var(--allHoverColor);
+  }
+  .loginButton{
+    border: var(--border);
+    padding: 10px;
+    margin-right: 5px;
+  }
+/* ——————————————————————————————————————— */
+
+ /* —————————————————RWD——————————————————— */
+@media screen and (max-width:1024px){
+  .searchBar{
+    display: none;
+  }
+  .padSearchBar{
+    display: flex;
+  }
+  .padSearchIcon{
+    display: flex;
+  }
+  .mainPage{
+    --itemListPadding:6%;
+  }
+ 
+}
+@media screen and (max-width:800px) {
+  .mainPage{
+    --allNavText:var(--heading5);
+    --allSearchText:var(--heading6);
+    --itemListPadding:4%;
+
+  }
+  .changeLanguage{
+    display: none;
+  }
+  
+}
+@media screen and (max-width:441px){
+  .mainPage{
+    --itemListPadding:1%;
+    --searchBarWidth:100%;
+    --searchBarHeight:70%;
+  }
+  .charmingLogo p{
+    display: none;
+  }
+  .charmingLogo{
+    margin-bottom: 10px;
+  }
+  /* 手機版searchbar得margin */
+  .padSearchBar{
+    margin-top: 5px;
+  }
+  .padSearchIcon{
+      top: 13px;
+  }
+  /* -------------- */
+  .phoneDisplayNone{
+    display: none;
+  }
+  .padSearch{
+    margin-top: 0px;
+    margin-left: 0px;
+  }
+  .phoneIcon{
+    font-size: var(--heading4);
+    margin-top: 15px;
+  }
+
+  
+  
+}

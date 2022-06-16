@@ -1,0 +1,23 @@
+.personal-info--card__display form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[id='title'] {
+  font-size: 1.5rem;
+}
+
+textarea {
+  font-size: 1.4rem;
+  height: 10rem;
+}
+
+label {
+  font-size: 2rem;
+}
+
+.myproductionbtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5rem;
+}

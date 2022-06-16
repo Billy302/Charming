@@ -1,0 +1,33 @@
+.slide {
+  /* position: absolute; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* transition: transform 1s;
+  overflow: hidden;
+  width: 50%; */
+}
+
+.slider--image {
+  object-fit: cover;
+  width: 100%;
+  max-height: 75vh;
+  border-radius: 2%;
+  transition: 0.8s;
+  filter: grayscale(50%);
+}
+
+/* .slide img:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(0deg, rgba(255, 210, 71, 0.59), rgba(255, 210, 71, 0.59));
+} */
+
+.slider--image:hover {
+  filter: grayscale(0);
+  filter: brightness(110%);
+}

@@ -1,0 +1,87 @@
+/* 共通項目 */
+*{
+  padding: 0;
+  margin: 0;
+  margin: 0px;
+  box-sizing: border-box;
+  position: relative;
+}
+:root{
+  /* 色票 */
+  --white: #FFFFFF;
+  --brown1: #472929;
+  --brown2: #795252;
+  --brown3: #D6C5C5;
+  --brown4: #F4EFEF;
+  --gray1: #333333;
+  --gray2: #4F4F4F;
+  --gray3: #BDBDBD;
+  --gray4: #E0E0E0;
+  --yellow1: #FFD247;
+  --yellow2: #FFEBAF;
+  --green1: #355F1C;
+  --green2: #72925F;
+  --green3: #B8D1A9;
+  --red:#b72020;
+  /* 字體大小 */
+  --heading1: 56px;
+  --heading2: 48px;
+  --heading3: 32px;
+  --heading4: 20px;
+  --heading5: 16px;
+  --heading6: 12px;
+  --heading7: 10px;
+  --heading8: 8px;
+  /* 圓角 */
+  --desk-border-radius:15px;
+  /* 網頁版border寬度 */
+  --border:2px solid var(--brown2);
+  --pageBorder:40px;
+  --holdpadding:50px;
+}
+html{
+  font-size: 62.5%;
+}
+a{
+  text-decoration: none;
+  color: var(--brown2);
+}
+
+li{
+  list-style: none;
+}
+hr{
+  border: 1px solid var(--brown3);
+}
+
+body {
+  /* 黑體字 */
+  font-family: -apple-system, BlinkMacSystemFont;
+  /* 內文細黑體 */
+  -webkit-font-smoothing: antialiased;
+  /* -moz-osx-font-smoothing: grayscale; */
+}
+.content{
+  min-height: calc(100vh - 205px);
+}
+nav, hgroup, section{
+  margin: 0px var(--holdpadding);
+}
+nav{
+  z-index: 1;
+  padding-top: 10px;
+}
+
+
+@media screen and (max-width:1024px){
+  :root{
+    --holdpadding:20px;
+  }
+}
+
+@media screen and (max-width:441px){
+  :root{
+    --holdpadding:10px;
+  }
+  
+}

@@ -1,0 +1,62 @@
+.author-card {
+  border: 0.1rem solid #eee;
+  box-shadow: 0.1rem 0.1rem 0.3rem #eee;
+  padding: 4rem;
+  margin: auto;
+}
+
+.author-card--body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.author-card--body img {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.author-card--body img:hover {
+  transform: scale(1.05) translateY(-1rem);
+}
+
+.author-card--body__content {
+  padding-left: 2rem;
+}
+
+.author-card--body__content {
+  color: black;
+}
+
+.author-card--body__content h2 {
+  transition: 0.5s;
+}
+
+.author-card--body__content h2:hover {
+  color: var(--yellow1);
+  cursor: pointer;
+}
+
+.author-card--footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border: 0.1rem solid #eee;
+  padding: 2rem 0;
+  box-shadow: 0.1rem 0.1rem 0.3rem #eee;
+}
+
+.author-card--footer__btn {
+  margin: 0;
+}

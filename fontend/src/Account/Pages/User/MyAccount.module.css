@@ -1,0 +1,133 @@
+/* 上方nav */
+.navLeft {
+  font-size: 24px;
+  display: flex;
+  position: relative;
+  transition: .5s 0.2s;
+  white-space:nowrap;
+  align-items: center;
+}
+
+.navLeft a{
+  transition: .3s 0.1s;
+}
+.dispalyFlex{
+  display: flex;
+}
+
+.link{
+  padding-right: 50px;
+  margin: 15px;
+  font-weight: 700;
+}
+.unactive{
+  text-decoration: none;
+  color: var(--brown3);
+}
+.active{
+  font-size: 28px;
+  text-decoration: none;
+  color: var(--brown2);
+}
+
+.navLeft a hr {
+  width: 100%;
+  border-top: 3px solid;
+  position: absolute;
+  left: -20px;
+}
+
+.navLeft a:hover {
+  color: var(--brown2);
+}
+
+/* 內文 */
+.myAccount{
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  margin:15px 100px;
+  border-radius: var(--desk-border-radius);
+}
+.main {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+  width: 100%;
+  color: var(--brown2);
+  font-weight: 700;
+  margin: 10px;
+}
+
+.main img {
+  width: 80px;
+}
+/* 大頭貼 姓名 登入狀態 會員稱號 */
+.item1 {
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  border-radius: 15px 0px 0px 15px;
+  padding: 60px ;
+  background-color: var(--brown2);
+  color: white;
+}
+
+.item1 img{
+  margin-bottom: 15px;
+}
+
+/* 基本資料 */
+.item2 {
+  border:1px solid var(--brown2);
+  border-radius: 0px 15px 15px 0px;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  color: var(--brown2);
+  margin-right: 20px;
+}
+
+.item2 label {
+  padding: 10px;
+  margin: 5px;
+
+}
+
+.h1 {
+  text-align: center;
+  color: var(--brown2);
+  padding: 30px;
+}
+
+@media screen and (max-width:780px) {
+  .myAccount{
+    margin:15px 10px 100px 10px;
+  }
+}
+@media screen and (max-width:441px){
+  .navLeft{
+    font-size:var(--heading5) ;
+    justify-content: center;
+  }
+  .main{
+    flex-direction: column;
+    align-items: center;
+  }
+  .item1 {
+    width: 90%;
+    border-radius: 15px 15px 0px 0px;
+    margin-right: 20px;
+  }
+  .item2 {
+    width: 90%;
+    border-radius: 0px 0px 15px 15px;
+  }
+  .link{
+    padding-right: 0px;
+  }
+  .navLeft a hr{
+    left: 0px;
+  }
+}

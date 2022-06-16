@@ -1,0 +1,49 @@
+.carousel {
+    width: 100%;
+    height: 55px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px var(--gray3) inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brown2);
+}
+.icon{
+    position: absolute;
+   left: 10%;
+}
+
+.middleText {
+    font-size: var(--heading5);
+    text-align: center;
+    padding:0PX 10%;
+}
+.productType{
+    display: flex;
+}
+.mainpic{
+    max-width: 60%;
+    margin: 70px auto;
+    display: flex;
+    justify-content: center;
+    /* height: 400px; */
+}
+@media screen and (max-width:1024px){
+    .icon{
+        position: absolute;
+       left: 5%;
+    }
+    .displayNone{
+        display: none;
+    }
+    
+}
+@media screen and (max-width:441px){
+    .middleText {
+        font-size: var(--heading6);
+    }
+    .mainpic{
+        max-width: 100%;
+        margin: 20px auto;
+    }
+}

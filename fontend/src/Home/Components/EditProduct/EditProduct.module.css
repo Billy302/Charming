@@ -1,0 +1,32 @@
+/* 卡片排列方式 */
+.cardFlex {
+    display: flex;
+    /* overflow: scroll; */
+    flex-wrap: wrap;
+}
+
+.cardFlex::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+  .cardFlex > div{
+    width: 250px;
+  }
+@media screen and (max-width:1024px){
+    .cardFlex > div{
+        width:25%;
+    }
+    
+}
+@media screen and (max-width:780px) {
+    .cardFlex > div{
+        width:33%;
+    }
+}
+@media screen and (max-width:600px){
+    .cardFlex > div{
+        width:50%;
+    }
+    .middleText {
+        font-size: var(--heading6);
+    }
+}

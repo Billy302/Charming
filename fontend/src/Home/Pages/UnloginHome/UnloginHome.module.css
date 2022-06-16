@@ -1,0 +1,217 @@
+  /* 字體 */
+  .heading2{
+    line-height:200%;
+    font-size:var(--heading2);
+    color: var(--brown2);
+    font-weight:bold;
+  }
+  .heading3{
+    line-height:140%;
+    font-size:var(--heading3);
+    color: var(--brown2);
+  }
+  .heading4{
+    font-size:var(--heading4);
+    color: var(--brown2);
+    font-weight:bold;
+  }
+  .heading5{
+    font-size:var(--heading5);
+    color: var(--brown2);
+    font-weight:bold;
+  }
+  /*-------------下方為各component專用項-----------------*/
+  :root{
+    --headerMargin:100px;
+  }
+  .displayblock{
+    display: block;
+  }
+  .displayNone{
+    display: none;
+  }
+  .headerSlogan{
+    margin:30px 0px 30px var(--headerMargin);
+    padding: 60px 0px 0px 0px;
+  }
+  .backgroundImg{
+    height: 600px;
+    background:url(../../Assets/mainPage.png) no-repeat  center right -100px;
+    background-size: 70%;
+
+  }
+
+  /* 主search bar */
+  .searchbar{
+    display: flex;
+    --searchHeight:50px;
+    margin:0px var(--headerMargin);
+  }
+  .searchInput{
+    width: 30%;
+    height:var(--searchHeight);
+    border: 2px solid var(--brown2);
+    border-radius: 15px 0px 0px 15px;
+    padding:0px 15px;
+    font-size: var(--heading4);
+    outline: none;
+  }
+  .searchInput:active{
+    border: 2px solid var(--brown2);
+  }
+  .searchButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height:var(--searchHeight);
+    border: 2px solid var(--brown2);
+    border-left: none;
+    border-radius: 0px 15px 15px 0px;
+    background-color: var(--brown2);
+  }
+  .iconStyle{
+    font-size: var(--heading4);
+    font-weight:bold;
+    color: var(--white);
+  }
+.searchButton:hover{
+  background-color: var(--brown1);
+}
+.searchTag{
+    border: 1px solid var(--brown3);
+    border-radius: 15px;
+    background-color: white;
+    margin-left: 6px;
+    color: var(--brown2);
+}
+
+/* 產品頁介紹 */
+.product{
+  /* margin-top: 100px; */
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.product img{
+  width: 100%;
+}
+
+/* 柴米人頁面介紹 */
+.portfolio{
+  margin-top: 100px;
+  display: flex;
+  align-items:center;
+  text-align: center;
+}
+.portfolio img{
+  width: 100%;
+ }
+
+ /* 柴訊介紹 */
+.blog{
+  margin-top: 100px;
+  display: flex;
+  align-items:center;
+  text-align: center;
+}
+
+.blog img{
+  width: 100%;
+}
+.phoneDisplay{
+  display: none;
+}
+
+.joinButton{
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  width: 180px;
+  height: 50px;
+  font-size: var(--heading4);
+  border: none;
+  border-radius: 50px;
+  background-color: var(--brown2);
+  color: var(--white);
+}
+.tags{
+  margin: 20px var(--headerMargin) 0px var(--headerMargin);
+}
+.tags a button{
+  padding:0px 5px;
+}
+.tags::before{
+  content: "熱門搜尋：";
+  font-size: var(--heading5);
+  color: var(--brown2);
+}
+@media screen and (max-width:1024px){
+  .backgroundImg{
+    height: 500px;
+    background:url(../../Assets/mainPage.png) no-repeat  center right -60px;
+    background-size: 70%;
+  }
+  :root{
+    --headerMargin:50px;
+  }
+}
+@media screen and (max-width:780px) {
+ 
+  .heading2{
+    font-size:var(--heading3);
+  }
+  .heading3{
+    font-size:var(--heading4);
+  }
+  .heading4{
+    font-size:var(--heading5);
+  }
+  .heading5{
+    font-size:var(--heading6);
+  }
+  .portfolio{
+    display: block;
+  }
+  .blog{
+    display: block;
+  }
+  .phoneDisplay{
+    display: block;
+  }
+  .blogText{
+    display: none;
+  }
+  
+}
+@media screen and (max-width:441px){
+  .headerSlogan{
+    margin:30px 0px;
+    padding: 0px;
+    text-align: center;
+  }
+  .searchbar{
+    --searchHeight:40px;
+  }
+  .backgroundImg{
+    height: 250px;
+    background:none;
+    background-size: 70%;
+  }
+  .product{
+    display: block;
+  }
+  .product img{
+    width: 70%;
+  }
+  .tags{
+    margin-top:10px;
+  }
+  .searchInput{
+    width: 80%;
+  }
+  .tags{
+    text-align: center;
+  }
+}

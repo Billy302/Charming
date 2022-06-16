@@ -1,0 +1,158 @@
+/* 外框線 */
+.outline {
+  margin: 20px auto;
+  width: 80%;
+  height: 1200px;
+  border-radius: var(--desk-border-radius);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  color: var(--brown2);
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.outline a{
+  color: #4061A1
+}
+
+.h1 {
+  text-align: center;
+  color: var(--brown2);
+  padding: 30px;
+}
+
+.hr {
+  width: 300px;
+  margin: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  color: var(--main-color);
+}
+
+.form label {
+  margin: 5px;
+}
+
+.form input {
+  border-radius: 15px;
+  border: 2px solid var(--brown3);
+  color: var(--brown2);
+  /* width: 250px; */
+  padding: 5px 15px;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: var(--brown2);
+}
+
+.form input::placeholder {
+  color: var(--brown3);
+  font-size: var(--heading6);
+}
+
+.google {
+  margin: 20px 0 10px 0;
+  border: 1px solid var(--brown2);
+  border-radius: var(--desk-border-radius);
+  padding: 10px 20px;
+}
+
+.p {
+  padding: 10px;
+  font-size: var(--heading6);
+}
+
+.button {
+  padding: 5px;
+  margin: 25px;
+  width: 209px;
+  border-radius: 15px;
+  border: 2px solid var(--brown2);
+  background-color: var(--brown2);
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover{
+  background-color: var(--brown1);
+}
+
+.passwordShow {
+  position: relative;
+}
+
+.password {
+  position: absolute;
+  right: 20px;
+  top: 106px;
+  z-index: 2;
+}
+
+/* 基本資料頁 */
+.form2 {
+  display: flex;
+  flex-direction: column;
+  color: var(--main-color);
+}
+
+.form2 label {
+  margin: 5px;
+}
+
+.form2 input,
+select {
+  border-radius: 15px;
+  border: 2px solid var(--brown3);
+  color: var(--brown2);
+  padding: 5px 15px;
+  margin: 5px;
+}
+
+.form2 input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--brown2);
+}
+
+.form2 input::placeholder {
+  color: var(--brown3);
+  font-size: var(--heading6);
+}
+
+.form2 section {
+  padding: 5px;
+}
+
+.form2 img {
+  width: 50px;
+}
+
+.form2 div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form2 button {
+  padding: 5px;
+  margin: 25px;
+  width: 150px;
+  border-radius: 15px;
+  border: 2px solid var(--brown2);
+  background-color: var(--brown2);
+  color: #ffffff;
+  cursor: pointer
+}
+
+.checkMsg{
+  font-size: small;
+  justify-content: flex-end;
+  height: 8px;
+  margin: auto;
+}

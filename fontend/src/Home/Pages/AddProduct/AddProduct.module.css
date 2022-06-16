@@ -1,0 +1,170 @@
+/* 整體最外圍 */
+:root{
+  --borderRadius:15px;
+  --bigPictureSize:50%;
+  --smallPictureSize:150px;
+}
+.addProduct{    
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 100px;
+  box-shadow: 0px 0px 5px var(--gray3);
+  border-radius: 15px;
+  --textAreaWidth:100%;
+}
+.addProduct p{
+  padding-bottom: 20px;
+}
+/* 全體文字樣式 */
+.title{
+  font-size: var(--heading4);
+  color: var(--green2);
+  padding-right:50px ;
+  white-space: nowrap;
+  overflow: scroll;
+}
+
+/* 新增圖片、影片、商品名稱、描述文案、商品類別的外框 */
+.pictureField{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+}
+
+/* 新增圖片間距 */
+.btn{
+  visibility:hidden;
+  width: 20px;
+}
+/* 文字輸入框樣式 */
+.inputTextStyle{
+  border: 2px solid var(--green2);
+  border-radius: 15px;
+  width: var(--textAreaWidth);
+  padding: 10px;
+  font-size: var(--heading4);
+}
+/* 文章輸入框樣式 */
+.inputArticleStyle{
+  border: 2px solid var(--green2);
+  border-radius: 15px;
+  width: var(--textAreaWidth);
+  height:400px;
+  resize:none;
+  padding: 10px;
+  font-size: var(--heading4);
+}
+.inputArticleStyle2{
+  border: 2px solid var(--green2);
+  border-radius: 15px;
+  width: var(--textAreaWidth);
+  height:120px;
+  resize:none;
+  padding: 10px;
+  font-size: var(--heading4);
+}
+/* 新增圖片的label */
+.addPicture{
+  padding: 50px;
+  border: 3px dotted var(--green2);
+  border-radius: 15px;
+}
+/* 新增圖片label中間的icon */
+.icon{
+  position: absolute;
+  right: 33%;
+  top: 33%;
+  font-size: 50px;
+  color: var(--green2);
+}
+/* 影片大小限制文字 */
+
+.productPrice{
+  display: flex;
+  justify-content: space-between;
+}
+/* 商品類別 */
+.theSelect{
+  /* width: var(--textAreaWidth); */
+  font-size: var(--heading4);
+  appearance: none;
+  color: var(--green2);
+  padding: 7px 5px;
+  z-index: 1;
+  background-color: transparent;
+  padding:10px 40px 10px 10px;
+}
+/*商品類別箭頭小icon*/
+.iconSelect{
+  font-size: 20px;
+  color: var(--green2);
+  position: absolute;
+  left: 85%;
+}
+.itemStyle{
+  display: flex;
+  justify-content: space-between;
+}   
+
+/* 較長備貨 */
+.prepareTime{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-size: var(--heading4);
+  color: var(--green2);
+}
+.submitButtonField{
+  display: flex;
+  justify-content: center;
+}
+.submitButton{
+  appearance: none;
+  padding:15px 30px;
+  border: none;
+  font-size: var(--heading4);
+  border-radius: 15px;
+  color: var(--white);
+  margin: 5px;
+  margin-top: 50px;
+  background-color: var(--green2);
+}
+.submitButton:hover{
+  background-color: var(--green1);
+
+}
+.smallImg{
+  border: 3px dotted var(--green2);
+  width: var(--smallPictureSize);
+  height: var(--smallPictureSize);
+  border-radius: var(--borderRadius);
+  overflow: hidden;
+  object-fit: contain;
+  z-index: 999;
+}
+input{
+  outline:none
+}
+textarea{
+  outline:none
+
+}
+input:active{
+  border: 2px solid var(--green1);
+}
+
+@media screen and (max-width:441px){
+  .addProduct{
+      padding: 10px;
+      margin-bottom: 100px;
+  }
+  .iconSelect{
+      font-size: 20px;
+      color: var(--green2);
+      position: absolute;
+      left: 65%;
+      top:70px
+  }
+}

@@ -1,0 +1,38 @@
+.personal-info--card__display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin:20px;
+}
+
+.personal-info--card__display h2 {
+  font-size: 3rem;
+}
+
+.personal-info--card__display p {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+}
+
+.personal-info--card__display-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width:441px){
+  .myproductbtn {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .personal-info--card__display h2 {
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+  
+  .personal-info--card__display p {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+  }
+}
+

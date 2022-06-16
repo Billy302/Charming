@@ -1,0 +1,36 @@
+/* 外框線 */
+.main {
+  margin: 30px auto;
+  padding: 20px 250px 50px 250px;
+  width: 80%;
+  height: auto;
+  border-radius: var(--desk-border-radius);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  color: var(--brown2);
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h1 {
+  text-align: center;
+  color: var(--brown2);
+  padding: 30px;
+}
+
+.h3{
+  margin: 10px;
+}
+
+.hr {
+  width: auto;
+  margin: 10px 0px 50px 0px;
+}
+
+.p {
+  padding: 10px;
+  font-size: var(--heading5);
+  /* color: black; */
+}
+

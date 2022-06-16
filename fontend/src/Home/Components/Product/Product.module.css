@@ -1,0 +1,51 @@
+/* 卡片排列方式 */
+.product{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.order{
+    display: flex;
+    margin: 20px 0 10px 0;
+    align-self:flex-end;
+    align-items: center;
+
+}
+.order label{
+    font-size: var(--heading4);
+    color: var(--brown2);
+    text-align: center;
+}
+.order select{
+    width: 100%;
+}
+.cardFlex {
+    display: flex;
+    /* overflow: scroll; */
+    flex-wrap: wrap;
+}
+.cardFlex > div{
+    width: 250px;
+  }
+.cardFlex::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+@media screen and (max-width:1024px){
+    .cardFlex > div{
+        width:25%;
+    }
+    
+}
+@media screen and (max-width:780px) {
+    .cardFlex > div{
+        width:33%;
+    }
+}
+@media screen and (max-width:441px){
+    .cardFlex > div{
+        width:50%;
+    }
+    .middleText {
+        font-size: var(--heading6);
+    }
+}

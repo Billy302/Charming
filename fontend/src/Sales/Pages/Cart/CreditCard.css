@@ -1,0 +1,41 @@
+.rccs__card {
+  height: 182.873px;
+  /* margin-bottom: 10; */
+  /* position: relative; */
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+  /* width: 290px; */
+
+  /* background: linear-gradient(
+     25deg
+  , #986, #234); */
+}
+
+.rccs__card--visaelectron .rccs__card__background,
+.rccs__card--visa .rccs__card__background,
+.rccs__card--discover .rccs__card__background,
+.rccs__card--maestro .rccs__card__background,
+.rccs__card--mastercard .rccs__card__background {
+  background-image: url(../../Assets/any_pattern.jpg);
+  border-radius: 15px;
+}
+
+/* rccs-signature-background: repeating-linear-gradient(
+    0.1deg,
+    #fff 20%,
+    #fff 40%,
+    #fea 40%,
+    #fea 44%,
+    #fff 44%
+  );
+  rccs-default-background: linear-gradient(25deg, #d32121, #178a63);
+  rccs-unknown-background: linear-gradient(25deg, rgb(160, 18, 101), #999);
+  rccs-background-transition: 0.5s;
+  rccs-animate-background: true; */
+
+.rccs__card--unknown > div {
+  background-image: url(../../Assets/any_pattern.jpg);
+  border-radius: 15px;
+}

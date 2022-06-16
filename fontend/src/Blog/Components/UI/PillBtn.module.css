@@ -1,0 +1,25 @@
+.pillbtn {
+    color: #795252;
+    border: 1px solid #795252;
+    border-radius: 2rem;
+    background-color: transparent;
+    width: 10.6rem;
+    height: 3rem;
+    transition: 0.5s;
+    margin-left: 2rem;
+}
+
+.pillbtn a:link,
+.pillbtn a:visited {
+    color: #795252;
+}
+
+.pillbtn:hover {
+    transform: translateY(-0.8rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.pillbtn:active {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
