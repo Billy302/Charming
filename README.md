@@ -1,7 +1,25 @@
 # Charming
-## Index
-## About Charming/Collection
-## Tech Applied
-## Features
-## Source
-## Others
+## 網站介紹
+專為設計師開發的電商網站，六人團隊
+## 使用技術
+1. 前端 React
+2. 後端 Node.js
+3. 資料庫 MySQL
+## 功能介紹
+1. 會員管理(鍾立婷)
+2. 購物平台、購物車、訂單管理(謝協昌(程式)、劉芷廷(切版))
+3. 部落格(蔡燦鴻)
+4. 討論區(陳亭)
+5. 作品集(吳紹雍)
+6. 主視覺(劉芷廷)
+## 影片
+影片介紹
+引言: 劉芷廷 xx:xx ~ xx:xx
+視覺: 劉芷廷 xx:xx ~ xx:xx
+會員: 鍾立婷 xx:xx ~ xx:xx
+電商: 謝協昌 xx:xx ~ xx:xx
+部落格: 蔡燦鴻 xx:xx ~ xx:xx
+討論區: 陳亭 xx:xx ~ xx:xx
+作品集: 吳紹雍 xx:xx ~ xx:xx
+結語: 謝協昌 xx:xx ~ xx:xx
+
