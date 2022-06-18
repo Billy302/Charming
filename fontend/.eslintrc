@@ -4,6 +4,7 @@
   "rules": {
     "prettier/prettier": "warn",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-closing-bracket-location": [1, { "location": "tag-aligned" }]
   }
 }
