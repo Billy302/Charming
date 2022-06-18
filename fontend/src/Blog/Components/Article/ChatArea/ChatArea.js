@@ -2,16 +2,19 @@ import classes from './ChatArea.module.css'
 import { useState, useEffect } from 'react'
 import ChatList from './ChatList'
 import TypingArea from './TypingArea'
-import usericon from './img/usericon.png'
 import { useParams } from 'react-router-dom'
 
 const ChatArea = () => {
-  const [chatContext, setChatContext] = useState([])
-
+  // 該篇文章的id (傳入資料庫用)
   const params = useParams()
   const currentArticle = params.id
 
-  // render目前文章的comment
+  // ---------- render文章留言功能
+
+  // 接收文章留言
+  const [chatContext, setChatContext] = useState([])
+
+  // 從資料庫撈出這則文章的所有留言，並更新state
   useEffect(() => {
     fetch(`http://localhost:3001/blog/comment/${currentArticle}`)
       .then((res) => res.json())
@@ -20,18 +23,16 @@ const ChatArea = () => {
       })
   }, [currentArticle])
 
-  // 拿 ChatArea 傳上來的訊息再傳給 ChatList
+  // 拿 TypingArea 傳上來的訊息再傳給 ChatList
+  // 如果有新的使用者在 TypingArea component 留言， TypingArea component 會觸發這個 function ，並且更新 state 後傳到 ChatList 再做一次 render
   const chatMsgPassingHandler = (message) => {
     setChatContext((prev) => [...prev, message])
   }
 
   return (
     <section className={classes['chat-area']}>
-      <TypingArea
-        onChatMsg={chatMsgPassingHandler}
-        onChatMsgPassing={chatMsgPassingHandler}
-      />
-      {chatContext && <ChatList src={usericon} messageContext={chatContext} />}
+      <TypingArea onChatMsgPassing={chatMsgPassingHandler} />
+      {chatContext && <ChatList messageContext={chatContext} />}
     </section>
   )
 }

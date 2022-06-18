@@ -2,7 +2,6 @@ import classes from './ArticleContext.module.css'
 import AuthorCard from '../AuthorCard/AuthorCard'
 import ArticleShare from '../ArticleShare/ArticleShare'
 import PillBtn from '../../UI/PillBtn'
-import Fade from 'react-reveal/Fade'
 import SearchBar from '../../SearchBar/SearchBar'
 
 const ArticleContext = (props) => {
@@ -29,9 +28,6 @@ const ArticleContext = (props) => {
             <div className={classes['article--context__share']}>
               <ArticleShare />
             </div>
-            {/* <PillBtn className={classes['article--context__fav']}>
-              收藏文章
-            </PillBtn> */}
           </div>
           <aside className={classes['article--trending-related']}>
             <div>
@@ -41,6 +37,7 @@ const ArticleContext = (props) => {
               />
               <SearchBar className={classes.searchbar} />
             </div>
+            <div classname="haha" type="input" test={isFollowingAuthor}></div>
           </aside>
         </article>
       </div>
