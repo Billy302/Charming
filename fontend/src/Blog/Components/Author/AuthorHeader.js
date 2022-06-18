@@ -1,17 +1,11 @@
 import classes from './AuthorHeader.module.css'
 import defaultImage from './blog.png'
-
 const AuthorHeader = (props) => {
   const { authorDetail } = props
-
   return (
     <div className={classes['author-pic']}>
       <div className={classes['author-banner']}>
-        <img
-          src={defaultImage}
-          alt="banner"
-          className={classes['banner--uploadimage']}
-        />
+        <img src={defaultImage} alt="banner" />
       </div>
       <div className={classes['author-logo']}>
         <img
@@ -22,5 +16,4 @@ const AuthorHeader = (props) => {
     </div>
   )
 }
-
 export default AuthorHeader
