@@ -2,14 +2,17 @@ import classes from './ChatList.module.css'
 import usericon from './img/favicon.ico'
 
 const ChatList = (props) => {
-  console.log(props.messageContext)
+  // 這個 component 拿來 render 文章中的所有留言
+  const { messageContext } = props
   return (
+    // 確認有沒有留言，有的話上一條 border top
     <div
       className={`${classes['chatlist']} ${props.className} ${
-        props.messageContext.length >= 1 ? classes.render : ''
+        messageContext.length >= 1 ? classes.render : ''
       }`}
     >
-      {props.messageContext.map((msg) => {
+      {/* map 所有的留言 */}
+      {messageContext.map((msg) => {
         return (
           <div
             className={`${classes['chatlist--loop']} `}

@@ -1,8 +1,6 @@
 import Trending from './Trending'
 import classes from './TrendingArticle.module.css'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import Fade from 'react-reveal/Fade'
+import { Link } from 'react-router-dom'
 import Skeleton from '@mui/material/Skeleton'
 
 const TrendingArticle = (props) => {

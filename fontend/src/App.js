@@ -3,6 +3,7 @@ import Style from './App.module.css'
 import { Route, Routes } from 'react-router-dom'
 
 //component
+// import Footer from './Home/Components/footer/Footer'
 import Footer from './Home/Components/Footer/Footer'
 import PhoneFooter from './Home/Components/PhoneFooter/PhoneFooter'
 
@@ -13,7 +14,6 @@ import EditProductPage from './Home/Pages/EditProductPage/EditProductPage'
 import AddProduct from './Home/Pages/AddProduct/AddProduct'
 import ProductPage from './Home/Pages/ProductPage/ProductPage'
 import ProductPageEditButton from './Home/Pages/ProductPageEditButton/ProductPageEditButton'
-
 
 //購物車頁
 import Cart1 from './Sales/Pages/Cart/Cart1'
