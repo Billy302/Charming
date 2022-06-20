@@ -9,7 +9,7 @@ function PhoneFooter() {
   return (
     <div>
       <div className={Style.phoneFooter}>
-        <a href="/Portfolio">
+        <a href="/">
           <ImProfile className={Style.icon} />
           <p>柴米人</p>
         </a>
@@ -21,7 +21,7 @@ function PhoneFooter() {
           <MdOutlineVolunteerActivism className={Style.icon} />
           <p>精選商品</p>
         </a>
-        <Link to={`/Communication`}>
+        <Link to={`/`}>
           <GiDiscussion className={Style.icon} />
           <p>柴社</p>
         </Link>

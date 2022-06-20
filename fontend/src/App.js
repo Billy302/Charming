@@ -3,7 +3,8 @@ import Style from './App.module.css'
 import { Route, Routes } from 'react-router-dom'
 
 //component
-import Footer from './Home/Components/footer/Footer'
+// import Footer from './Home/Components/footer/Footer'
+import Footer from './Home/Components/Footer/Footer'
 import PhoneFooter from './Home/Components/PhoneFooter/PhoneFooter'
 
 //首頁
