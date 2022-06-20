@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import classes from './SliderSection.module.css'
 import slider1 from './img/slider1.png'
 import slider2 from './img/slider2.jpeg'
@@ -7,6 +7,7 @@ import Slider from './Slider.js'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
+// render 三張 slider
 const SliderSection = (props) => {
   const sliderData = [
     { image: slider1, article: 37 },
@@ -14,10 +15,6 @@ const SliderSection = (props) => {
     { image: slider3, article: 24 },
   ]
   const [current, setCurrent] = useState(0)
-
-  //   setInterval(() => {
-  //     nextSlideHandler()
-  //   }, 5000)
 
   const maxSlide = sliderData.length - 1
 
