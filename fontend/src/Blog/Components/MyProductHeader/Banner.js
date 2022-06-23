@@ -19,7 +19,6 @@ const Banner = (props) => {
   const [image, setImage] = useState({ preview: '', data: '' })
   const [status, setStatus] = useState('')
 
-
   // 利用createObjectURL api 來預覽圖片並記錄圖片
   const fileHandler = (e) => {
     const img = {
@@ -70,9 +69,10 @@ const Banner = (props) => {
   useEffect(() => {
     fetchBanner()
   }, [])
+
+  console.log(userBanner.banner_file)
   return (
     <>
-
       <div className={classes['banner']}>
         {image.preview ? (
           <img

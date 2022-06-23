@@ -8,7 +8,7 @@ import Product from '../../Components/Product/Product'
 // react icon
 import { AiTwotoneSound } from 'react-icons/ai'
 import UnloginNav from '../../Components/UnloginNav/UnloginNav'
-import mainpic from '../../Assets/type1.png'
+import mainpic from './type1.png'
 
 function LoginHome() {
   let now = localStorage.getItem('auth')

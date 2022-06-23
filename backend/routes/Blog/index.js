@@ -37,7 +37,9 @@ blog.post('/insert/comment/:id', async (req, res) => {
 
 blog.get('/search/:category', async (req, res) => {
     const sqlUpdate = `SELECT * FROM blog_topictoblog left JOIN blog_topic ON blog_topictoblog.topic_ID = blog_topic.topic_ID LEFT JOIN blog_article ON blog_topictoblog.article_ID = blog_article.article_id WHERE blog_topictoblog.topic_ID = ${req.params.category};`;
-    const [result] = await db.query(sqlUpdate).catch((e) => console.log(`${sqlUpdate} error`));
+    const [result] = await db
+        .query(sqlUpdate)
+        .catch((e) => console.log(`${sqlUpdate} error`));
     res.json(result);
 });
 
@@ -50,7 +52,9 @@ blog.get('/renderSearch', async (req, res) => {
     SELECT * FROM blog_topictoblog LEFT JOIN blog_article ON blog_topictoblog.article_ID = blog_article.article_id WHERE topic_ID = 4 LIMIT 6; 
     SELECT * FROM blog_topictoblog LEFT JOIN blog_article ON blog_topictoblog.article_ID = blog_article.article_id WHERE topic_ID = 5 LIMIT 6; 
     SELECT * FROM blog_topictoblog LEFT JOIN blog_article ON blog_topictoblog.article_ID = blog_article.article_id WHERE topic_ID = 6 LIMIT 6;`;
-    const [result] = await db.query(sqlUpdate).catch((e) => console.log(`${sqlUpdate} error`));
+    const [result] = await db
+        .query(sqlUpdate)
+        .catch((e) => console.log(`${sqlUpdate} error`));
     res.json(result);
 });
 
@@ -72,9 +76,9 @@ blog.post('/image', uploadImage.single('file'), async (req, res) => {
     const userId = req.query.userid;
     const image = req.file.originalname;
     const updateImg = `UPDATE user_pic_status set banner_file = '${image}' where user_id = ${userId}`;
-    // const updateImg = `DELETE FROM us_banner_pic WHERE user_id = ${userId} ;
-    // INSERT INTO us_banner_pic(user_id, banner_file) VALUES ('${userId}','${image}')`;
-    const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
+    const [result] = await db
+        .query(updateImg)
+        .catch((e) => console.log(`${updateImg} error`));
     res.json(result);
 });
 
@@ -83,7 +87,9 @@ blog.post('/image', uploadImage.single('file'), async (req, res) => {
 blog.get('/image/render', async (req, res) => {
     const userId = req.query.userid;
     const sqlSelect = `select * from user_pic_status where user_id = ${userId}`;
-    const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
+    const [result] = await db
+        .query(sqlSelect)
+        .catch((e) => console.log(`${sqlSelect} error`));
     res.json(result);
 });
 
@@ -103,9 +109,10 @@ const uploadLogo = multer({ storage: storageLogo });
 blog.post('/logo', uploadLogo.single('file'), async (req, res) => {
     const userId = req.query.userid;
     const image = req.file.originalname;
-    // const updateImg = `DELETE FROM us_banner_logo WHERE user_id = ${userId} ;
-    // INSERT INTO us_banner_logo(user_id, logo_file) VALUES ('${userId}','${image}')`;
-    const updateImg = `UPDATE user_pic_status set logo_file = '${image}' where user_id = ${userId}`;    const [result] = await db.query(updateImg).catch((e) => console.log(`${updateImg} error`));
+    const updateImg = `UPDATE user_pic_status set logo_file = '${image}' where user_id = ${userId}`;
+    const [result] = await db
+        .query(updateImg)
+        .catch((e) => console.log(`${updateImg} error`));
     res.json(result);
 });
 
@@ -113,7 +120,9 @@ blog.post('/logo', uploadLogo.single('file'), async (req, res) => {
 blog.get('/logo/render', async (req, res) => {
     const userId = req.query.userid;
     const sqlSelect = `select * from user_pic_status where user_id = ${userId}`;
-    const [result] = await db.query(sqlSelect).catch((e) => console.log(`${sqlSelect} error`));
+    const [result] = await db
+        .query(sqlSelect)
+        .catch((e) => console.log(`${sqlSelect} error`));
     res.json(result);
 });
 
@@ -123,7 +132,9 @@ blog.get('/insert/fav', async (req, res) => {
     const articleId = req.query.id;
     const userId = req.query.userid;
     const sqlInsert = `INSERT INTO blog_fav(fav_user, fav_article) VALUES ('${userId}','${articleId}')`;
-    const result = await db.query(sqlInsert).catch((e) => console.log(`${sqlInsert} error`));
+    const result = await db
+        .query(sqlInsert)
+        .catch((e) => console.log(`${sqlInsert} error`));
     res.json(result);
 });
 
@@ -131,7 +142,9 @@ blog.get('/delete/fav', async (req, res) => {
     const articleId = req.query.id;
     const userId = req.query.userid;
     const sqlDelete = `DELETE FROM blog_fav WHERE fav_article = ${articleId} and fav_user = ${userId}`;
-    const result = await db.query(sqlDelete).catch((e) => console.log(`${sqlDelete} error`));
+    const result = await db
+        .query(sqlDelete)
+        .catch((e) => console.log(`${sqlDelete} error`));
     res.json(result);
 });
 

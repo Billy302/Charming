@@ -3,25 +3,21 @@ import style from './SearchBar.module.css'
 import { ImSearch } from 'react-icons/im'
 import { useNavigate } from 'react-router-dom'
 
+// search bar component
 function SearchBar(props) {
+  // 紀錄使用者打了什麼
   const [searchKeyword, setSearchKeyword] = useState()
-  const userId = localStorage.getItem('id')
-  // const searchParams = new URLSearchParams(location.search)
-
-  // let userId = searchParams.get('id') ? searchParams.get('id') : ''
-
-  const navigate = useNavigate()
-
   const userInput = (e) => {
     setSearchKeyword(e.target.value)
   }
 
+  // 按下送出後網頁跳轉
+  const navigate = useNavigate()
   const keywordSearch = () => {
     navigate(`../blog/keyword/search?keyword=${searchKeyword}`)
   }
 
   return (
-    //固定住nav在下移的時候不動
     <div className={`${style.searchbar} ${props.className}`}>
       <input
         className={style.searchInput}

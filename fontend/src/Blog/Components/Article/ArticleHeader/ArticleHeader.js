@@ -1,7 +1,7 @@
 import classes from './ArticleHeader.module.css'
-import { useEffect } from 'react'
 
 const ArticleHeader = (props) => {
+  // render article title and image
   return (
     <header>
       <div className={classes['article--header']}>

@@ -4,8 +4,6 @@ import InfoDisplayLook from './InfoDisplayLook'
 import EditInfo from './EditInfo'
 import swal from 'sweetalert'
 import defaultIcon from './favicon.ico'
-import MyProductBtn from '../UI/MyProductBtn'
-import { style } from '@mui/system'
 import { MdLocationOn, MdCalendarToday } from 'react-icons/md'
 
 const PersonalInfo = (props) => {
@@ -21,8 +19,6 @@ const PersonalInfo = (props) => {
   const [userLogo, setUserLogo] = useState('')
 
   // render user status
-  const [editTitle, setEditTitle] = useState('')
-  const [contextTitle, setContextTitle] = useState('')
   const [userStatus, setUserStatus] = useState([])
 
   // ------------上傳user logo 邏輯

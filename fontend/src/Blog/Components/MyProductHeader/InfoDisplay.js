@@ -15,7 +15,7 @@ const InfoDisplay = (props) => {
   return (
     <div className={classes['personal-info--card__display']}>
       <h2>{userStatusData[0]?.status_title || '寫點什麼吧！'}</h2>
-      <p>{userStatusData[0]?.status_content || '寫點什麼吧！'}</p>
+      <p>{userStatusData[0]?.status_content || '快來新增一點內容吧！'}</p>
       <div className={classes['personal-info--card__display-btn']}>
         <MyProductBtn
           type="button"
