@@ -53,15 +53,15 @@
 	1.無論前後端都有編寫註解，讓團隊成員方便閱讀
 	2.所有資料在輸入時都有進行前後端的驗證，前端自行編寫驗證，後端使用套件
 	3.前端使用 React 的 Hook ，Local Storage 來完成整個專案，網站架構三層
-	useEffect 控制渲染畫面的時機(生命週期)
-	useState 控制會影響畫面的狀態
-	useLocation 、useParams 取得網址的資料，來完成傳API時所需的條件、組合切換到不同頁面時的網址
-	LocalStorage 暫存購物車的資料
+	    useEffect 控制渲染畫面的時機(生命週期)
+	    useState 控制會影響畫面的狀態
+	    useLocation 、useParams 取得網址的資料，來完成傳API時所需的條件、組合切換到不同頁面時的網址
+	    LocalStorage 暫存購物車的資料
 	4.後端編寫參考自 RESTful API 規則，分為商品、特殊商品、訂單等分類
-	nodemailer 寄送 Mail，考量到 gmail 的二階段認證問題，選用 hotmail 作為發信源頭
-	multer 處理 form-data格式資料 & 檔案格式
-	express-validator 做基本驗證
-	mysql2 處理 與資料庫相關的工作，Ex: 商品的CRUD等...
+	    nodemailer 寄送 Mail，考量到 gmail 的二階段認證問題，選用 hotmail 作為發信源頭
+	    multer 處理 form-data格式資料 & 檔案格式
+	    express-validator 做基本驗證
+	    mysql2 處理 與資料庫相關的工作，Ex: 商品的CRUD等...
 >EX:
 1. 功能：取得使用者的全部訂單。Method: GET。URL: /api/order/orderUser 
 2. 功能：取得使用者的訂單詳細內容。Method: GET。URL: /appi/orderUser/:id 
